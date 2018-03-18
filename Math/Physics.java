@@ -27,6 +27,10 @@ public class Physics {
 		
 		return angleFromXAxis(new Coordinate3D(x,y,z));
 	}
+	
+	public static double radsToDegrees (double rads) {
+		return Math.PI * rads / 180.0;
+	}
 
 	public static double calculateBounceAngleWithGround (BallInPlay inPlay) {
 

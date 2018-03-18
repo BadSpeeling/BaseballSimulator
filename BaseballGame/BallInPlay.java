@@ -14,6 +14,7 @@ public class BallInPlay extends OnFieldObject {
 	boolean inAir = true; //if the ball is in the air.  if true subject to air resistance.  if false, subject to friction with field
 	double airDistance;
 	double airTime;
+	InPlayType type;
 	
 	public BallInPlay (double x, double y, double z, double launchAngle, double launchDir, double launchSpeed) {
 		super(x,y,z);
@@ -22,6 +23,24 @@ public class BallInPlay extends OnFieldObject {
 		this.launchDir = launchDir;
 		this.velocity = Physics.calculateInitalVelo(launchSpeed, launchAngle, launchDir);
 		this.lastLoc = new Coordinate3D(0,0,0);
+		
+		//determine what kind of ball was hit
+		if (launchSpeed <= 20) {
+			type = InPlayType.BUNT;
+		}
+		
+		else if (Physics.radsToDegrees(launchAngle) <= 10) {
+			type = InPlayType.GROUNDER;
+		}
+		
+		else if (Physics.radsToDegrees(launchAngle) <= 20) {
+			type = InPlayType.LINER;
+		}
+		
+		else {
+			type = InPlayType.FLYBALL;
+		}
+		
 	}
 	
 	public BallInPlay (BallInPlay copy) {
