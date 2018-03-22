@@ -61,11 +61,11 @@ public class Game {
 	
 	public void liveBallDriver (LinkedList <Fielder> onTheField, BallInPlay hitBall) {
 		
-		
+		//recalculate landing spot whenever you need to
+		Coordinate3D landingSpot = hitBall.modelBallDistance(stadium);
+				
 		while (!hitBall.state.equals(BallStatus.DEAD)) {
-			
-			Coordinate3D landingSpot = hitBall.modelBallDistance(stadium);
-			
+						
 			if (hitBall.state.equals(BallStatus.IN_AIR)) {
 				view.drawBall(landingSpot, 0x00FF00);
 			}

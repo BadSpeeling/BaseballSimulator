@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.LinkedList;
+
 /* Physics handles all needed physics calculations
  * */
 
@@ -13,7 +16,7 @@ public class Physics {
 	private final static double dragCoef = .3; //unitless
 	private final static double surfaceArea = 0.045; //ft^2
 	private final static double airdensity = 0.0765; //lb/ft^3
-	private final static double mu = 1.8; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
+	private final static double mu = .8; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
 
 	/* Calculates the angle a line makes with the x axis
 	 * from - first point
@@ -52,21 +55,91 @@ public class Physics {
 
 		//only need to do work if the ball has hit the ground
 		if (goingToHitGround(ball)) {
-
+			
+			ball.canRecordOut = false;
+			
 			//the ball will stop bouncing now
-			if (ball.state.equals(BallStatus.IN_AIR) && ball.velocity.z < .2) {
+			if (ball.state.equals(BallStatus.IN_AIR) && Math.abs(ball.velocity.z) < .2) {
 				ball.velocity.z = 0;
 				ball.loc.z = .75;
 				ball.state = BallStatus.ON_GROUND;
 				ball.airDistance = calcPythag(ball.loc.x,ball.loc.y);
 			}
 
-			ball.velocity.z = ball.velocity.z/-3;
+			ball.velocity.z = ball.velocity.z/-5;
 
 		}
 
 	}
+	
+	//calculates slope
+	private static double calculateSlope (double x1, double y1, double x2, double y2) {
+			/*System.out.println(y2);
+			System.out.println(x2);
+			System.out.println(y1);
+			System.out.println(x1);
+			System.out.println();*/
+			return (y2-y1)/(x2-x1);
+	}
+	
+	//generic collision handler. dest is the location the OnFieldObject would like to get to
+	//returns: 0 if not change in direction
+	//0 no collision
+	//1 if flip y direction
+	//2 if flip x direction
+	public static int handleCollision (LinkedList <Coordinate3D> allVals, Coordinate3D dest) {
+		
+		double slack = .5;  //how close the ball must be to the wall for it to count as a collision
 
+		//iterate over all connecting sets of walls
+		for (int i = 0; i < allVals.size()-1; i++) {
+			
+			Coordinate3D p1 = allVals.get(i);
+			Coordinate3D p2 = allVals.get(i+1);
+						
+			//check if ball is reasonably close to wall
+			if (Physics.calcPythag(dest.x-p1.x, dest.y-p1.y) <= 200 && (dest.x > p1.x && dest.x < p2.x)) {
+								
+				double m = calculateSlope(p1.x, p1.y, p2.x, p2.y);
+				double targetY = 0;
+				
+				if (p1.x < p2.x)
+					targetY = m*(dest.x-p1.x)+p1.y;
+				else {
+					targetY = p2.y+m*(dest.x-p2.x);
+				}				
+				
+				//we have collided with the wall {p1,p2}.  we will now flip the velocity and leave function. walls are 10 feet high
+				if (Math.abs(targetY-dest.y) < slack && dest.z < 10) {
+					/*
+					System.out.println("Wall " + (i+1) + " ");
+					System.out.println(loc.x);
+					System.out.println(loc.y);
+					System.out.println(p1.x);
+					System.out.println(p1.y);
+					System.out.println(targetY);
+					System.out.println((loc.x-p1.x));
+					System.out.println(m);
+					*/
+					
+					if (Math.abs(m) < 1) {
+						return 1;
+					}
+					
+					else {
+						return 2;
+					}
+									
+				}
+				
+			}
+			
+		}
+		
+		return 0;
+		
+	}
+	
 	//checks if a coordinate is colliding with an outfield wall
 	public static boolean collision (FieldMatrix dim, Coordinate3D toCheck) {
 		return dim.get((int)toCheck.x, (int)toCheck.y).equals(SectorT.HR) && toCheck.z < 8; 
@@ -176,6 +249,10 @@ public class Physics {
 	
 	public static double groundDistanceBetween (Coordinate3D one, Coordinate3D two) {
 		return Math.sqrt(Math.pow((one.x-two.x), 2.0) + Math.pow(one.y-two.y, 2.0));
+	}
+	
+	public static double distanceBetween (Coordinate3D one, Coordinate3D two) {
+		return Math.sqrt(Math.pow((one.x-two.x), 2.0) + Math.pow(one.y-two.y, 2.0) + Math.pow(one.z-two.z,2.0));
 	}
 
 	//calculates the distance of a homerun

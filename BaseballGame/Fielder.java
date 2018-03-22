@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 //a player that trys to record outs
 public class Fielder extends OnFieldObject {
 	
@@ -10,14 +12,16 @@ public class Fielder extends OnFieldObject {
 	boolean cutOffMan = false;
 	boolean hasBall = false;
 	String fullName;
+	LinkedList <Coordinate3D> dimensions;
 	
-	public Fielder (double x, double y, double z, GamePlayer player, int position, String name) {
+	public Fielder (double x, double y, double z, GamePlayer player, int position, String name, LinkedList <Coordinate3D> dimensions) {
 		super(x,y,z);
 		fRats = player.fRatings;
 		gRats = player.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
 		this.position = position;
 		fullName = name;
+		this.dimensions = dimensions;
 	}
 	
 	//determine what the fielder should do for a hitball
@@ -25,7 +29,8 @@ public class Fielder extends OnFieldObject {
 		
 	}
 	//TODO fielders have no regards to outfield walls
-	//performs all actions a fielder needs to for a tick
+	//performs all actions a fielder needs to for a tick.  in Physics class add wall collision detection function that returns true if collide? 
+	//would take as param the intended displacement and potential walls it could collide with
 	public void brain (BallInPlay curBall, Stadium stad, Coordinate3D landingSpot, GameLogger log) {
 		
 		double runSpeed = 22; //speed of player.  in ft/s
@@ -86,8 +91,8 @@ public class Fielder extends OnFieldObject {
 			
 		}
 		
-		//the player does not need to move if they are within a half foot of the target location 
-		if (Physics.calcPythag(toGo.x, toGo.y) > .5) {
+		//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
+		if (Physics.calcPythag(toGo.x, toGo.y) > .5 && Physics.handleCollision(dimensions, this.loc) == 0) {
 			angleToSpot = Physics.angleFromXAxis(toGo);
 			yDisplacement = runSpeed * Math.sin(angleToSpot) * Physics.tick;
 			xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
@@ -98,9 +103,11 @@ public class Fielder extends OnFieldObject {
 			this.loc.add(xDisplacement, yDisplacement, 0);
 		}
 		
-		if (Physics.groundDistanceBetween(this.loc, curBall.loc) < 1) {
+		//if player is close enough to ball, try to grab it
+		if (Physics.distanceBetween(this.loc, curBall.loc) < 1) {
 			curBall.grabBall(this);
 			
+			//TODO fix up grounded air out interaction
 			if (curBall.state.equals(BallStatus.IN_AIR)) {
 				log.add(GameEvent.caughtFlyBall(fullName, loc));
 				curBall.state = BallStatus.DEAD;
