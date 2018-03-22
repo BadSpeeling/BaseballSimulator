@@ -38,6 +38,7 @@ public class Game {
 	GamePlayer curPitcher;
 	Stadium stadium;
 	GameDisplay view;
+	GameLogger log = new GameLogger ();
 	
 	public Game (RuleSet rules, int id, GameTeam homeTeam, GameTeam awayTeam, Stadium stadium) {
 
@@ -61,9 +62,13 @@ public class Game {
 	public void liveBallDriver (LinkedList <Fielder> onTheField, BallInPlay hitBall) {
 		
 		
-		while (hitBall.inMotion()) {
-		
+		while (!hitBall.state.equals(BallStatus.DEAD)) {
+			
 			Coordinate3D landingSpot = hitBall.modelBallDistance(stadium);
+			
+			if (hitBall.state.equals(BallStatus.IN_AIR)) {
+				view.drawBall(landingSpot, 0x00FF00);
+			}
 			
 			//redraw how the field looks
 			view.drawFieldOutline();
@@ -75,7 +80,7 @@ public class Game {
 			
 			//update all fielders
 			for (Fielder cur: onTheField) {
-				cur.brain(hitBall, stadium, landingSpot);
+				cur.brain(hitBall, stadium, landingSpot, log);
 				view.drawBall(cur.lastLoc, 0x000000);
 				view.drawBall(cur.loc, 0x008000);
 			}

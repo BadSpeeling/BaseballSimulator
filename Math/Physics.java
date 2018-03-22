@@ -28,8 +28,12 @@ public class Physics {
 		return angleFromXAxis(new Coordinate3D(x,y,z));
 	}
 	
-	public static double radsToDegrees (double rads) {
-		return Math.PI * rads / 180.0;
+	public static double radsToDegrees (double rad) {
+		return rad / Math.PI * 180;
+	}
+	
+	public static double degreesToRads (double deg) {
+		return deg * Math.PI / 180;
 	}
 
 	public static double calculateBounceAngleWithGround (BallInPlay inPlay) {
@@ -50,10 +54,10 @@ public class Physics {
 		if (goingToHitGround(ball)) {
 
 			//the ball will stop bouncing now
-			if (ball.inAir && ball.velocity.z < .2) {
+			if (ball.state.equals(BallStatus.IN_AIR) && ball.velocity.z < .2) {
 				ball.velocity.z = 0;
 				ball.loc.z = .75;
-				ball.inAir = false;
+				ball.state = BallStatus.ON_GROUND;
 				ball.airDistance = calcPythag(ball.loc.x,ball.loc.y);
 			}
 
@@ -153,7 +157,7 @@ public class Physics {
 		return Math.sqrt(Math.pow(check.x, 2.0) + Math.pow(check.y, 2.0));
 	}
 
-	/* calculates the initial velocity of the three components of a hit baseball
+	/* calculates the initial velocity of the three components of a hit baseball. to be called when a BallInPlay is created
 	 * hitSpeed - how fast the ball is hit (ft/s)
 	 * launchAgle - angle made with z-axis (rad)
 	 * hitDir - angle made with 1st base line (rad)
@@ -168,6 +172,10 @@ public class Physics {
 
 		return new Coordinate3D (xVelo, yVelo, zVelo);
 
+	}
+	
+	public static double groundDistanceBetween (Coordinate3D one, Coordinate3D two) {
+		return Math.sqrt(Math.pow((one.x-two.x), 2.0) + Math.pow(one.y-two.y, 2.0));
 	}
 
 	//calculates the distance of a homerun
@@ -191,7 +199,8 @@ public class Physics {
 		double yAccel = 0;
 		double zAccel = 0;
 
-		if (ball.inAir) {
+		//in air
+		if (ball.state.equals(BallStatus.IN_AIR)) {
 
 			xAccel = calculateAirResistanceAccl(ball.velocity.x);
 			yAccel = calculateAirResistanceAccl(ball.velocity.y);

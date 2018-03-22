@@ -36,11 +36,15 @@ public class FielderTest {
 		cur.loadDimensions(input);
 
 		LinkedList <Fielder> fielders = new LinkedList <Fielder> ();
-		fielders.add(new Fielder(250,250,0, homeTeam.pitcher, 1));
-		fielders.add(new Fielder(50,300,0, homeTeam.pitcher, 1));
-		fielders.add(new Fielder(300,50,0, homeTeam.pitcher, 1));
+		fielders.add(new Fielder(250,250,0, homeTeam.pitcher, 7,"Eric"));
+		fielders.add(new Fielder(50,300,0, homeTeam.pitcher, 8, "John"));
+		fielders.add(new Fielder(300,50,0, homeTeam.pitcher, 9, "Frye"));
+		fielders.add(new Fielder(-5,-5,0, homeTeam.pitcher, 2, "catcher"));
+		fielders.add(new Fielder(100,15,0, homeTeam.pitcher, 3, "first"));
+		fielders.add(new Fielder(15,100,0, homeTeam.pitcher, 5, "third"));
+		fielders.add(new Fielder(110,70,0, homeTeam.pitcher, 4, "second"));
 		
-		BallInPlay hitBall = new BallInPlay (0,0,3,.3,Math.PI/4+.02,159.23);
+		BallInPlay hitBall = new BallInPlay (0,0,3,.3,Math.PI/5-.05,159.23);
 		
 		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, cur);
 		g.liveBallDriver(fielders, hitBall);

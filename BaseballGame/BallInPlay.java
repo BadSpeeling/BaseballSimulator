@@ -1,7 +1,6 @@
+
 import java.util.HashMap;
 import java.util.LinkedList;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 //a batted ball that obeys basic laws of physics.  measurments in feet and seconds
 public class BallInPlay extends OnFieldObject {
@@ -11,7 +10,7 @@ public class BallInPlay extends OnFieldObject {
 	final double launchDir; //xy plane direction
 	Coordinate3D velocity; //velocity of ball in 3 directions
 	Coordinate3D lastLoc; //last spot of ball. used to clear out the graphics
-	boolean inAir = true; //if the ball is in the air.  if true subject to air resistance.  if false, subject to friction with field
+	BallStatus state = BallStatus.IN_AIR; //if the ball is in the air.  if true subject to air resistance.  if false, subject to friction with field
 	double airDistance;
 	double airTime;
 	InPlayType type;
@@ -51,7 +50,7 @@ public class BallInPlay extends OnFieldObject {
 		this.launchDir = copy.launchDir;
 		this.velocity = new Coordinate3D (copy.velocity.x, copy.velocity.y, copy.velocity.z);
 		this.lastLoc = new Coordinate3D (copy.lastLoc.x, copy.lastLoc.y, copy.lastLoc.z);
-		this.inAir = copy.inAir;
+		this.state = copy.state;
 		
 	}
 	
@@ -72,7 +71,7 @@ public class BallInPlay extends OnFieldObject {
 		//deals with colliding with floor
 		Physics.handleGroundCollision(this);
 		
-		if (inAir) {
+		if (state.equals(BallStatus.IN_AIR)) {
 			airTime += Physics.tick;
 		}
 		
@@ -112,7 +111,7 @@ public class BallInPlay extends OnFieldObject {
 	}
 	
 	//set the balls velocity to zero.  return true if the ball was successfully picked up
-	public boolean pickUpBall (GamePlayer fielder) {
+	public boolean grabBall (Fielder fielder) {
 		
 		velocity.x = 0;
 		velocity.y = 0;
@@ -121,6 +120,9 @@ public class BallInPlay extends OnFieldObject {
 		
 	} 
 	
+	//handles a wall collision
+	//TODO the ball collides with portions of a wall that would be there if it extended that far.  not that big an issue, more so cosmetic.
+	//can be solved by making sure the ball is within the x coordiantes of the end points
 	public void handleCollision (HashMap <String, Coordinate3D> dims) {
 		
 		double slack = .5;  //how close the ball must be to the wall for it to count as a collision
