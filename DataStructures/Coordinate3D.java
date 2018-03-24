@@ -18,6 +18,10 @@ public class Coordinate3D {
 		return new Coordinate3D(this.x-other.x, this.y-other.y, this.z-other.z);
 	}
 	
+	public double mag () {
+		return Physics.calculateHorizontalDist(this);
+	}
+	
 	public void add (double x, double y, double z) {
 		this.x += x;
 		this.y += y;

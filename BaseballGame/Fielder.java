@@ -1,4 +1,7 @@
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 //a player that trys to record outs
 public class Fielder extends OnFieldObject {
@@ -6,21 +9,23 @@ public class Fielder extends OnFieldObject {
 	FieldingRatings fRats;
 	GeneralRatings gRats;
 	Coordinate3D lastLoc;
-	int position; //number from 1-9, standard baseball numbering
-	Coordinate3D destination; //the coordinate the fielder wants to get to
-	FielderDecision action;
-	boolean cutOffMan = false;
+	Position position; //number from 1-9, standard baseball numbering
+	Coordinate3D destination = null; //the coordinate the fielder wants to get to. should be null if the decision needs to be made
+	FielderDecision action = FielderDecision.UNKNOWN;
 	boolean hasBall = false;
 	String fullName;
-	LinkedList <Coordinate3D> dimensions;
+	LinkedList <Coordinate3D> dimensions; //TODO make static
+	static List <Object> gameEvents = new LinkedList <Object> ();
+	int lastEventRead = 0;
 	
-	public Fielder (double x, double y, double z, GamePlayer player, int position, String name, LinkedList <Coordinate3D> dimensions) {
-		super(x,y,z);
+	
+	public Fielder (Coordinate3D loc, GamePlayer player, LinkedList <Coordinate3D> dimensions) {
+		super(loc);
 		fRats = player.fRatings;
 		gRats = player.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
-		this.position = position;
-		fullName = name;
+		this.position = player.pos;
+		fullName = player.fullName();
 		this.dimensions = dimensions;
 	}
 	
@@ -28,12 +33,11 @@ public class Fielder extends OnFieldObject {
 	public void decideInitAction (BallInPlay curBall) {
 		
 	}
-	//TODO fielders have no regards to outfield walls
-	//performs all actions a fielder needs to for a tick.  in Physics class add wall collision detection function that returns true if collide? 
-	//would take as param the intended displacement and potential walls it could collide with
-	public void brain (BallInPlay curBall, Stadium stad, Coordinate3D landingSpot, GameLogger log) {
+	
+	//controls all decisions that a fielder needs to make
+	public void brain (BallInPlay curBall, Stadium stad, Map <String, BallInPlay> model, GameLogger log, FieldEvent status) {
 		
-		double runSpeed = 22; //speed of player.  in ft/s
+		double runSpeed = gRats.speed; //speed of player.  in ft/s
 		
 		//System.out.println(toGo);
 		//System.out.println(this.loc);
@@ -43,53 +47,81 @@ public class Fielder extends OnFieldObject {
 		double yDisplacement = 0;
 		double angleToSpot = 0;
 		
-		//if (curBall.inAir.equals(BallStatus.IN_AIR)) {
-		if (true) {
-			//outfielders
-			if (this.position >= 7) {
-				//calculate displacement
-				toGo = landingSpot.diff(this.loc); //vector pointing in direction player needs to run
-			
-			}
-			
-			//third base
-			else if (this.position == 5) {
-				toGo = new Coordinate3D (0, 90, 0).diff(this.loc);
-			}
-			
-			//first base
-			else if (this.position == 3) {
-				toGo = new Coordinate3D (90, 0, 0).diff(this.loc);
-			}
-			
-			//catcher
-			else if (this.position == 2) {
-				toGo = new Coordinate3D (0,0,0).diff(this.loc);
-			}
-			
-			//2nd base
-			else if (this.position == 4) {
+		//if the player doesnt know where they should be running to, decide
+		if (destination == null) {
+						
+			//determine where we want the player to run to
+			if (curBall.type.equals(InPlayType.FLYBALL)) {
 				
-				//hit to right field, is cutoff man
-				if (Physics.radsToDegrees(curBall.launchDir) <= 45) {
-					this.cutOffMan = true;
-					Coordinate3D cutOffLoc = new Coordinate3D (130,90,0);
-					toGo = cutOffLoc.diff(this.loc);
-					log.add(GameEvent.becameCutoffMan(this.fullName, cutOffLoc));
+				if (this.position.equals(Position.CATCHER)) {
+					destination = FieldConstants.homePlate;
+					status.fOnHome = this;
 				}
 				
-				//guard second
+				else if (this.position.equals(Position.FIRST)) {
+					destination = FieldConstants.firstBase;
+					status.fOnFirst = this;
+				}
+				
+				else if (this.position.equals(Position.SECOND)) {
+					
+					//cutoff
+					if (Physics.radsToDegrees(curBall.launchDir) <= 45) {
+						destination = FieldConstants.std2BCutoff;
+						status.fCutoff = this;
+					}
+					
+					else {
+						destination = FieldConstants.secondBase;
+						status.fOnSecond = this;
+					}
+				
+				}
+				
+				else if (this.position.equals(Position.THIRD)) {
+					destination = FieldConstants.thirdBase;
+					status.fOnThird = this;
+				}
+				
+				else if (this.position.equals(Position.SHORT)) {
+					
+					//cutoff
+					if (Physics.radsToDegrees(curBall.launchDir) > 45) {
+						destination = FieldConstants.stdSSCutoff;
+						status.fCutoff = this;
+					}
+					
+					else {
+						destination = FieldConstants.secondBase;
+						status.fOnSecond = this;
+					}
+					
+				}
+				
+				else if (this.position.equals(Position.PITCHER)) {
+					destination = FieldConstants.pitchersMound;
+				}
+				
+				//outfielders
 				else {
-					toGo = new Coordinate3D (90,90,0).diff(this.loc);
+					
+					if (canReachFlyBall(model.get("aM"))) {
+						destination = model.get("aM").loc;
+					}
+					
+					else {
+						destination = model.get("fM").loc;
+					}
+					
 				}
 				
 			}
+			
+			
 			
 		}
 		
-		else if (curBall.state.equals(BallStatus.ON_GROUND)) {
-			
-		}
+		toGo = this.destination.diff(this.loc);
 		
 		//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
 		if (Physics.calcPythag(toGo.x, toGo.y) > .5 && Physics.handleCollision(dimensions, this.loc) == 0) {
@@ -107,20 +139,41 @@ public class Fielder extends OnFieldObject {
 		if (Physics.distanceBetween(this.loc, curBall.loc) < 1) {
 			curBall.grabBall(this);
 			
-			//TODO fix up grounded air out interaction
-			if (curBall.state.equals(BallStatus.IN_AIR)) {
+			//out recorded
+			if (curBall.canRecordOut) {
 				log.add(GameEvent.caughtFlyBall(fullName, loc));
 				curBall.state = BallStatus.DEAD;
 			}
 			
+			//ball is picked up
 			else {
-				log.add(GameEvent.fieldedBall(fullName, loc));
-				this.hasBall = true;
-				curBall.state = BallStatus.FIELDED;
+							
+				if (curBall.state.equals(BallStatus.THROWN)) {
+					curBall.grabBall(this);
+				}
+				
+				else {
+					log.add(GameEvent.fieldedBall(fullName, loc));
+					this.hasBall = true;
+					curBall.state = BallStatus.FIELDED;
+					curBall.throwBall(this, status.fOnSecond.loc);
+					status.beingThrownTo = status.fOnSecond;
+				}
+					
 			}
 				
 		} 
 			
+	}
+	
+	//true if the player can reach a fly ball
+	private boolean canReachFlyBall (BallInPlay airModel) {
+		
+		Coordinate3D distanceRun = airModel.loc.diff(this.loc);
+		double speed = gRats.speed; //running speed
+		
+		return distanceRun.mag() < (speed * airModel.airTime);
+		
 	}
 	
 }

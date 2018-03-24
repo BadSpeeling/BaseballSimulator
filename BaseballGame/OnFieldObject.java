@@ -3,8 +3,8 @@ public class OnFieldObject {
 	
 	Coordinate3D loc;
 	
-	public OnFieldObject (double x, double y, double z) {
-		loc = new Coordinate3D (x,y,z);
+	public OnFieldObject (Coordinate3D loc) {
+		this.loc = loc;
 	}
 	
 }

@@ -16,9 +16,11 @@ public class BallInPlay extends OnFieldObject {
 	boolean canRecordOut = true;
 	InPlayType type;
 	LinkedList <Coordinate3D> allVals;
-
-	public BallInPlay (double x, double y, double z, double launchAngle, double launchDir, double launchSpeed, Stadium stad) {
-		super(x,y,z);
+	
+	//TODO add a tracker that remembers previous locations and time of locations of the ball.  to be used for finding the best route to take.
+	
+	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad) {
+		super(loc);
 		this.launchSpeed = launchSpeed;
 		this.launchAngle = launchAngle;
 		this.launchDir = launchDir;
@@ -54,7 +56,7 @@ public class BallInPlay extends OnFieldObject {
 
 	public BallInPlay (BallInPlay copy) {
 
-		super(copy.loc.x, copy.loc.y, copy.loc.z);
+		super(new Coordinate3D (copy.loc.x, copy.loc.y, copy.loc.z));
 		this.launchSpeed = copy.launchSpeed;
 		this.launchAngle = copy.launchAngle;
 		this.launchDir = copy.launchDir;
@@ -65,66 +67,90 @@ public class BallInPlay extends OnFieldObject {
 
 	}
 
-	public Coordinate3D modelBallDistance (Stadium stad) {
-
-		BallInPlay copy = new BallInPlay (this);
-
-		do {
-			copy.tick(stad);
-		} while (copy.loc.z != .75);
-
-		return copy.loc;
-
+	public BallInPlay modelBallDistance (Stadium stad, boolean inAir) {
+		
+		if (inAir) {
+			BallInPlay copy = new BallInPlay (this);
+	
+			do {
+				copy.tick(stad, true, null);
+			} while (copy.canRecordOut);
+	
+			return copy;
+		}
+		
+		else {
+			BallInPlay copy = new BallInPlay (this);
+			
+			do {
+				copy.tick(stad, true, null);
+			} while (copy.inMotion());
+	
+			return copy;
+		}
+			
 	}
 
-	public void tick (Stadium stad) {
-
-		//deals with colliding with floor
-		Physics.handleGroundCollision(this);
-
-		if (state.equals(BallStatus.IN_AIR)) {
-			airTime += Physics.tick;
-		}
-
-		else {
-			//System.out.println(airTime);
-		}
-
-		//this can be improved.  we clip into slack slightly, but it should never go through wall unless the tick is very high
-		int res = Physics.handleCollision(allVals, loc);
-		//handleCollision(stad.dimCoors);
+	public void tick (Stadium stad, boolean batted, FieldEvent status) {
 		
-		if (res == 1) {
-			this.velocity.y *= -1;
-			canRecordOut = false;
+		//controls a ball that is not being thrown by fielders
+		if (batted) {
+			//deals with colliding with floor
+			Physics.handleGroundCollision(this);
+	
+			if (state.equals(BallStatus.IN_AIR)) {
+				airTime += Physics.tick;
+			}
+	
+			else {
+				//System.out.println(airTime);
+			}
+	
+			//this can be improved.  we clip into slack slightly, but it should never go through wall unless the tick is very high
+			int res = Physics.handleCollision(allVals, loc);
+			//handleCollision(stad.dimCoors);
+			
+			if (res == 1) {
+				this.velocity.y *= -1;
+				this.loc.y -= Physics.slack*2; 
+				canRecordOut = false;
+			}
+	
+			else if (res == 2) {
+				this.velocity.x *= -1;
+				this.loc.x -= Physics.slack*2;
+				canRecordOut = false;
+			}
+	
+			Coordinate3D newPos = Physics.tickPos(loc, velocity);
+	
+			Coordinate3D accl = Physics.calcAccel(this);
+			Coordinate3D newVelo = Physics.tickVelo(velocity, accl);
+	
+			if (Math.abs(newVelo.x) < .005) {
+				newVelo.x = 0;
+			}
+	
+			if (Math.abs(newVelo.y) < .005) {
+				newVelo.y = 0;
+			}
+	
+			lastLoc.x = loc.x;
+			lastLoc.y = loc.y;
+			loc = newPos;
+			velocity = newVelo;
+	
+			//System.out.println(velocity);
+			//System.out.println(loc);
 		}
-
-		else if (res == 2) {
-			this.velocity.x *= -1;
-			canRecordOut = false;
+		
+		//ball being thrown by fielders
+		else {
+			Coordinate3D newPos = Physics.tickPos(loc, velocity);
+			lastLoc = loc;
+			loc = newPos;
 		}
-
-		Coordinate3D newPos = Physics.tickPos(loc, velocity);
-
-		Coordinate3D accl = Physics.calcAccel(this);
-		Coordinate3D newVelo = Physics.tickVelo(velocity, accl);
-
-		if (Math.abs(newVelo.x) < .005) {
-			newVelo.x = 0;
-		}
-
-		if (Math.abs(newVelo.y) < .005) {
-			newVelo.y = 0;
-		}
-
-		lastLoc.x = loc.x;
-		lastLoc.y = loc.y;
-		loc = newPos;
-		velocity = newVelo;
-
-		//System.out.println(velocity);
-		//System.out.println(loc);
-
+		
 	}
 
 	//true if the ball is still in motion
@@ -140,7 +166,20 @@ public class BallInPlay extends OnFieldObject {
 		velocity.z = 0;
 		return true;
 
-	} 
+	}
+	
+	public void throwBall (Fielder thrower, Coordinate3D target) {
+		
+		System.out.println(target);
+		
+		double throwSpeed = 100; //in ft/s
+		Coordinate3D spot = target.diff(thrower.loc);
+		double angle = Physics.angleFromXAxis(spot);
+		velocity = new Coordinate3D(throwSpeed*Math.cos(angle), throwSpeed*Math.sin(angle), 0);
+		
+		state = BallStatus.THROWN;
+		
+	}
 
 	//handles a wall collision
 	//can be solved by making sure the ball is within the x coordiantes of the end points

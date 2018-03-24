@@ -1,6 +1,8 @@
 import java.awt.Color;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Scanner;
 import javax.swing.*;
 
@@ -10,15 +12,16 @@ import javax.swing.*;
 
 public class Game {
 	
-	final int PITCHERNUM = 0;
-	final int CATCHERNUM = 1;
-	final int FIRSTNUM = 2;
-	final int SECONDNUM = 3;
-	final int THIRDNUM = 4;
-	final int SHORTNUM = 5;
-	final int LEFTNUM = 6;
-	final int CENTERNUM = 7;
-	final int RIGHTNUM = 8;
+	//these constants are to be used when accessing the fielders linkedlist
+	static final int PITCHERNUM = 0;
+	static final int CATCHERNUM = 1;
+	static final int FIRSTNUM = 2;
+	static final int SECONDNUM = 3;
+	static final int THIRDNUM = 4;
+	static final int SHORTNUM = 5;
+	static final int LEFTNUM = 6;
+	static final int CENTERNUM = 7;
+	static final int RIGHTNUM = 8;
 	
 	int gID = 0; //ID of the game being played. The default value is 0.
 	boolean extraInnings = false; //If the game has entered extra innings.
@@ -59,15 +62,22 @@ public class Game {
 				
 	}
 	
-	public void liveBallDriver (LinkedList <Fielder> onTheField, BallInPlay hitBall) {
+	public void fieldEvent (LinkedList <Fielder> onTheField, BallInPlay hitBall) {
 		
 		//recalculate landing spot whenever you need to
-		Coordinate3D landingSpot = hitBall.modelBallDistance(stadium);
-				
+		BallInPlay airModel = hitBall.modelBallDistance(stadium, true);
+		BallInPlay finalModel = hitBall.modelBallDistance(stadium, false);
+		
+		Map <String, BallInPlay> models = new HashMap <String, BallInPlay> ();
+		models.put("aM", airModel);
+		models.put("fM", finalModel);
+		
+		FieldEvent status = new FieldEvent ();
+		
 		while (!hitBall.state.equals(BallStatus.DEAD)) {
 						
 			if (hitBall.state.equals(BallStatus.IN_AIR)) {
-				view.drawBall(landingSpot, 0x00FF00);
+				view.drawBall(airModel.loc, 0x00FF00);
 			}
 			
 			//redraw how the field looks
@@ -76,11 +86,11 @@ public class Game {
 			view.drawBall(hitBall.loc, 0xFF0000);
 			view.repaint();
 			
-			hitBall.tick(stadium);
+			hitBall.tick(stadium, status.beingThrownTo == null, status);
 			
 			//update all fielders
 			for (Fielder cur: onTheField) {
-				cur.brain(hitBall, stadium, landingSpot, log);
+				cur.brain(hitBall, stadium, models, log, status);
 				view.drawBall(cur.lastLoc, 0x000000);
 				view.drawBall(cur.loc, 0x008000);
 			}

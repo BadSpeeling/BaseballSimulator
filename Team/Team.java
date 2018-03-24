@@ -13,7 +13,7 @@ import java.util.TreeSet;
 
 public class Team {
 
-	TreeSet <Player> playersOnTeam = new TreeSet <Player> (); //Set of players on the team
+	LinkedList <Player> playersOnTeam = new LinkedList <Player> (); //Set of players on the team
 	int tID; //Team ID
 	int leagueID; //ID of league that the team is in
 
@@ -116,15 +116,12 @@ public class Team {
 		
 		CircularLinkedList <GamePlayer> lineup = new CircularLinkedList <GamePlayer> (9);
 		
-		Iterator <Player> players = playersOnTeam.descendingIterator();
 		GamePlayer pitcher = null;
 		
 		LinkedList <GamePlayer> fielders = new LinkedList <GamePlayer> ();
 		
-		while (players.hasNext()) {
-			
-			Player cur = players.next();
-			
+		for (Player cur: playersOnTeam) {
+						
 			//if player is a pitcher
 			if ((cur.pos.ordinal()+1) == 1) {
 				pitcher = new GamePlayer(cur.firstName, cur.lastName, cur.pos);

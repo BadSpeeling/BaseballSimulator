@@ -17,7 +17,8 @@ public class Physics {
 	private final static double surfaceArea = 0.045; //ft^2
 	private final static double airdensity = 0.0765; //lb/ft^3
 	private final static double mu = .8; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
-
+	public final static double slack = .5; //how close an object can get to a wall. ft
+	
 	/* Calculates the angle a line makes with the x axis
 	 * from - first point
 	 * to - second point 
@@ -89,7 +90,7 @@ public class Physics {
 	//2 if flip x direction
 	public static int handleCollision (LinkedList <Coordinate3D> allVals, Coordinate3D dest) {
 		
-		double slack = .5;  //how close the ball must be to the wall for it to count as a collision
+		//double slack = .5;  //how close the ball must be to the wall for it to count as a collision
 
 		//iterate over all connecting sets of walls
 		for (int i = 0; i < allVals.size()-1; i++) {
@@ -121,7 +122,7 @@ public class Physics {
 					System.out.println((loc.x-p1.x));
 					System.out.println(m);
 					*/
-					
+										
 					if (Math.abs(m) < 1) {
 						return 1;
 					}
@@ -138,11 +139,6 @@ public class Physics {
 		
 		return 0;
 		
-	}
-	
-	//checks if a coordinate is colliding with an outfield wall
-	public static boolean collision (FieldMatrix dim, Coordinate3D toCheck) {
-		return dim.get((int)toCheck.x, (int)toCheck.y).equals(SectorT.HR) && toCheck.z < 8; 
 	}
 
 	//true if the coordinate is hitting the ground. the ball must end up within an inch of hitting the ground to be considered a collision
@@ -247,10 +243,12 @@ public class Physics {
 
 	}
 	
+	//finds the euclidean dist in 2d plane
 	public static double groundDistanceBetween (Coordinate3D one, Coordinate3D two) {
 		return Math.sqrt(Math.pow((one.x-two.x), 2.0) + Math.pow(one.y-two.y, 2.0));
 	}
 	
+	//find euclidean distance in 3d plane
 	public static double distanceBetween (Coordinate3D one, Coordinate3D two) {
 		return Math.sqrt(Math.pow((one.x-two.x), 2.0) + Math.pow(one.y-two.y, 2.0) + Math.pow(one.z-two.z,2.0));
 	}
@@ -288,6 +286,7 @@ public class Physics {
 		//ball on ground
 		else {
 
+			//ball under influence of friction
 			double fricAccl = calculateFrictionAccl(calcPythag(ball.velocity.x, ball.velocity.y));
 			
 			//System.out.println(fricAccl);

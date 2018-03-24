@@ -3,5 +3,7 @@
  * */
 
 public class GeneralRatings {
-
+	
+	double speed = 22; // ft/s
+	
 }
