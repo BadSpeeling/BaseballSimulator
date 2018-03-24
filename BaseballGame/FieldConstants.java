@@ -17,5 +17,6 @@ public class FieldConstants {
 	final static Coordinate3D stdPitcher = new Coordinate3D (42.426,42.426,0);
 	final static Coordinate3D stdSSCutoff = new Coordinate3D (80,130,0);
 	final static Coordinate3D std2BCutoff = new Coordinate3D (130,80,0);
+	final static Coordinate3D stdPitch = new Coordinate3D (0,0,3);
 	
 }

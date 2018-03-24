@@ -73,6 +73,11 @@ public class Physics {
 
 	}
 	
+	//computes the space-time distance 
+	public static double spaceTimeDistance (LocationTracker trck, Coordinate3D loc, double time) {
+		return Math.sqrt(Math.pow(trck.time-time, 2.0) + Math.pow(trck.loc.x-loc.x, 2.0) + Math.pow(trck.loc.y-loc.y, 2.0) + Math.pow(trck.loc.z-loc.z, 2.0));
+	}
+	
 	//calculates slope
 	private static double calculateSlope (double x1, double y1, double x2, double y2) {
 			/*System.out.println(y2);

@@ -68,6 +68,9 @@ public class Game {
 		BallInPlay airModel = hitBall.modelBallDistance(stadium, true);
 		BallInPlay finalModel = hitBall.modelBallDistance(stadium, false);
 		
+		System.out.println(airModel.airTime);
+		System.out.println(finalModel.airTime);
+		
 		Map <String, BallInPlay> models = new HashMap <String, BallInPlay> ();
 		models.put("aM", airModel);
 		models.put("fM", finalModel);

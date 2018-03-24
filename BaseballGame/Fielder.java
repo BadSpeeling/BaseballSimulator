@@ -37,7 +37,7 @@ public class Fielder extends OnFieldObject {
 	//controls all decisions that a fielder needs to make
 	public void brain (BallInPlay curBall, Stadium stad, Map <String, BallInPlay> model, GameLogger log, FieldEvent status) {
 		
-		double runSpeed = gRats.speed; //speed of player.  in ft/s
+		double runSpeed = gRats.runSpeed(); //speed of player.  in ft/s
 		
 		//System.out.println(toGo);
 		//System.out.println(this.loc);
@@ -110,7 +110,7 @@ public class Fielder extends OnFieldObject {
 					}
 					
 					else {
-						destination = model.get("fM").loc;
+						destination = closestSpot(model.get("fM").tracker, model.get("fM").airTime);
 					}
 					
 				}
@@ -170,9 +170,43 @@ public class Fielder extends OnFieldObject {
 	private boolean canReachFlyBall (BallInPlay airModel) {
 		
 		Coordinate3D distanceRun = airModel.loc.diff(this.loc);
-		double speed = gRats.speed; //running speed
+		double speed = gRats.runSpeed(); //running speed
 		
 		return distanceRun.mag() < (speed * airModel.airTime);
+		
+	}
+	
+	//returns the closest spot the fielder can get to given location, time and speed
+	private Coordinate3D closestSpot (List <LocationTracker> locs, double airTime) {
+		
+		double speed = gRats.runSpeed();
+		Coordinate3D ret = locs.get(locs.size()-1).loc; //if no ball is reachable in time, return the last one
+		double bestSpaceTimeDist = 0;
+		
+		for (LocationTracker cur: locs) {
+			
+			double physicalDistance = Physics.distanceBetween(cur.loc,this.loc);
+			
+			if (position.equals(Position.CENTER)) {
+				System.out.println(physicalDistance);
+			}
+			
+			//the player can reach this ball in an appropriate amount of time
+			if (speed * (cur.time + airTime) >= physicalDistance) {
+				
+				//finds the space time distance
+				double spaceTimeDist = Physics.spaceTimeDistance(cur, this.loc, 0);
+				
+				if (spaceTimeDist > bestSpaceTimeDist) {
+					bestSpaceTimeDist = spaceTimeDist;
+					ret = cur.loc;
+				}
+				
+			}
+			
+		}
+		
+		return ret;
 		
 	}
 	

@@ -1,6 +1,7 @@
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 //a batted ball that obeys basic laws of physics.  measurments in feet and seconds
 public class BallInPlay extends OnFieldObject {
@@ -16,6 +17,7 @@ public class BallInPlay extends OnFieldObject {
 	boolean canRecordOut = true;
 	InPlayType type;
 	LinkedList <Coordinate3D> allVals;
+	List <LocationTracker> tracker; 
 	
 	//TODO add a tracker that remembers previous locations and time of locations of the ball.  to be used for finding the best route to take.
 	
@@ -67,6 +69,7 @@ public class BallInPlay extends OnFieldObject {
 
 	}
 
+	//returns a BallInPlay that's loc is either the place it makes contact with ground or last resting spot
 	public BallInPlay modelBallDistance (Stadium stad, boolean inAir) {
 		
 		if (inAir) {
@@ -80,17 +83,36 @@ public class BallInPlay extends OnFieldObject {
 		}
 		
 		else {
+			
 			BallInPlay copy = new BallInPlay (this);
+			copy.tracker = new LinkedList <LocationTracker> ();
 			
 			do {
 				copy.tick(stad, true, null);
+			} while (copy.canRecordOut);
+			
+			double time = 0;
+			final int split = 10; //time in between recordings
+			int ctr = 0;
+			
+			do {
+				
+				copy.tick(stad, true, null);
+				time += Physics.tick;
+				ctr++;
+								
+				if (ctr % split == 0) {
+					copy.tracker.add(new LocationTracker(copy.loc, time));
+				}
+				
 			} while (copy.inMotion());
-	
+			
 			return copy;
 		}
 			
 	}
 
+	//batted: true if ball is hit by a bat, false if the ball is thrown by a fielder
 	public void tick (Stadium stad, boolean batted, FieldEvent status) {
 		
 		//controls a ball that is not being thrown by fielders
@@ -98,7 +120,7 @@ public class BallInPlay extends OnFieldObject {
 			//deals with colliding with floor
 			Physics.handleGroundCollision(this);
 	
-			if (state.equals(BallStatus.IN_AIR)) {
+			if (canRecordOut) {
 				airTime += Physics.tick;
 			}
 	
@@ -252,4 +274,19 @@ public class BallInPlay extends OnFieldObject {
 			System.out.println();*/
 		return (y2-y1)/(x2-x1);
 	}
+
+	
+}
+
+//tracks the location of the ball after the initial bounce.  to be used to determine the optimal way to play the ball 
+class LocationTracker {
+		
+		Coordinate3D loc; //location of the ball
+		double time; //time 
+		
+		public LocationTracker (Coordinate3D loc, double time) {
+			this.loc = loc;
+			this.time = time;
+		}
+		
 }
