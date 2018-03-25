@@ -32,6 +32,7 @@ public class FielderTest {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 		Stadium stadium = new Stadium ();
 		stadium.loadDimensions(input);
 
@@ -52,10 +53,10 @@ public class FielderTest {
 		fielders.add(new Fielder(FieldConstants.stdSecond, homeTeam.inTheField.get(3), allVals));
 		fielders.add(new Fielder(FieldConstants.stdShort, homeTeam.inTheField.get(5), allVals));
 		
-		BallInPlay hitBall = new BallInPlay (FieldConstants.stdPitch,Physics.degreesToRads(25),Math.PI/3,140.0,stadium);
+		BallInPlay hitBall = new BallInPlay (FieldConstants.stdPitch,Physics.degreesToRads(21),Physics.degreesToRads(90),150.0,stadium);
 		
 		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, stadium);
-		g.fieldEvent(fielders, hitBall);
+		g.fieldEvent(fielders, hitBall, null);
 		
 	}
 	

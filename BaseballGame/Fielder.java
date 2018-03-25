@@ -12,7 +12,6 @@ public class Fielder extends OnFieldObject {
 	Position position; //number from 1-9, standard baseball numbering
 	Coordinate3D destination = null; //the coordinate the fielder wants to get to. should be null if the decision needs to be made
 	FielderDecision action = FielderDecision.UNKNOWN;
-	boolean hasBall = false;
 	String fullName;
 	LinkedList <Coordinate3D> dimensions; //TODO make static
 	static List <Object> gameEvents = new LinkedList <Object> ();
@@ -34,13 +33,50 @@ public class Fielder extends OnFieldObject {
 		
 	}
 	
-	//controls all decisions that a fielder needs to make
-	public void brain (BallInPlay curBall, Stadium stad, Map <String, BallInPlay> model, GameLogger log, FieldEvent status) {
+	public void throwBall (BallInPlay toThrow, Coordinate3D target) {
 		
+		double throwSpeed = 100; //in ft/s
+		Coordinate3D spot = target.diff(this.loc);
+		double angle = Physics.angleFromXAxis(spot);
+		toThrow.velocity = new Coordinate3D(throwSpeed*Math.cos(angle), throwSpeed*Math.sin(angle), 0);
+		toThrow.thrown = true;
+		toThrow.state = BallStatus.THROWN;
+		
+	}
+	
+	//decides who to throw the ball to.  status will be updated to rep who is throwing and who is being thrown to
+	public void throwingBrain (GameLogger log, FieldEvent status, List <Baserunner> runner, BallInPlay curBall) {
+		
+		status.thrower = this;
+		
+		if (position.equals(Position.SECOND)) {
+			status.beingThrownTo = status.fOnFirst;
+		}
+		
+		else if (position.equals(Position.LEFT) ||position.equals(Position.CENTER) || position.equals(Position.RIGHT)) {
+			status.beingThrownTo = status.fCutoff;
+		}
+		
+		else if (position.equals(Position.FIRST)) {
+			status.beingThrownTo = status.fOnThird;
+		}
+		
+		else if (position.equals(Position.THIRD)) {
+			status.beingThrownTo = status.fOnSecond;
+		}
+		
+		else if (position.equals(Position.SHORT)) {
+			status.beingThrownTo = status.fOnSecond;
+		}
+		
+		throwBall(curBall, status.beingThrownTo.loc);
+		
+	}
+	
+	//controls all decisions regarding movement the fielder need to make.  flags actions that need to be taken
+	public void movementBrain (BallInPlay curBall, Map <String, BallInPlay> model, GameLogger log, FieldEvent status) {
+				
 		double runSpeed = gRats.runSpeed(); //speed of player.  in ft/s
-		
-		//System.out.println(toGo);
-		//System.out.println(this.loc);
 		
 		Coordinate3D toGo = null;
 		double xDisplacement = 0;
@@ -48,7 +84,7 @@ public class Fielder extends OnFieldObject {
 		double angleToSpot = 0;
 		
 		//if the player doesnt know where they should be running to, decide
-		if (destination == null) {
+		if (status.newFielderDecisions) {
 						
 			//determine where we want the player to run to
 			if (curBall.type.equals(InPlayType.FLYBALL)) {
@@ -116,15 +152,14 @@ public class Fielder extends OnFieldObject {
 				}
 				
 			}
-			
-			
-			
+						
 		}
 		
 		toGo = this.destination.diff(this.loc);
 		
 		//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
-		if (Physics.calcPythag(toGo.x, toGo.y) > .5 && Physics.handleCollision(dimensions, this.loc) == 0) {
+		if (Physics.calcPythag(toGo.x, toGo.y) > .25 && Physics.handleCollision(dimensions, this.loc) == 0) {
+			
 			angleToSpot = Physics.angleFromXAxis(toGo);
 			yDisplacement = runSpeed * Math.sin(angleToSpot) * Physics.tick;
 			xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
@@ -133,36 +168,25 @@ public class Fielder extends OnFieldObject {
 			lastLoc.x = this.loc.x;
 			lastLoc.y = this.loc.y;
 			this.loc.add(xDisplacement, yDisplacement, 0);
+			
 		}
 		
-		//if player is close enough to ball, try to grab it
-		if (Physics.distanceBetween(this.loc, curBall.loc) < 1) {
-			curBall.grabBall(this);
+		//set flag that the player is next to the ball and will pick it up
+		if (Physics.distanceBetween(this.loc, curBall.loc) < 2 && (curBall.state.equals(BallStatus.IN_AIR) || curBall.state.equals(BallStatus.ON_GROUND))) {
+			status.pickingUpBall = this;	
+		}
 			
-			//out recorded
-			if (curBall.canRecordOut) {
-				log.add(GameEvent.caughtFlyBall(fullName, loc));
-				curBall.state = BallStatus.DEAD;
-			}
-			
-			//ball is picked up
-			else {
-							
-				if (curBall.state.equals(BallStatus.THROWN)) {
-					curBall.grabBall(this);
-				}
-				
-				else {
-					log.add(GameEvent.fieldedBall(fullName, loc));
-					this.hasBall = true;
-					curBall.state = BallStatus.FIELDED;
-					curBall.throwBall(this, status.fOnSecond.loc);
-					status.beingThrownTo = status.fOnSecond;
-				}
-					
-			}
-				
-		} 
+	}
+	
+	//set the balls velocity to zero.  return true if the ball was successfully picked up. flags that the ball is possessed by a fielder
+	public boolean receiveBall (BallInPlay ball, FieldEvent status) {
+
+		status.hasBall = this;
+		ball.state = BallStatus.FIELDED;
+		ball.velocity.x = 0;
+		ball.velocity.y = 0;
+		ball.velocity.z = 0;
+		return true;
 			
 	}
 	
@@ -186,10 +210,6 @@ public class Fielder extends OnFieldObject {
 		for (LocationTracker cur: locs) {
 			
 			double physicalDistance = Physics.distanceBetween(cur.loc,this.loc);
-			
-			if (position.equals(Position.CENTER)) {
-				System.out.println(physicalDistance);
-			}
 			
 			//the player can reach this ball in an appropriate amount of time
 			if (speed * (cur.time + airTime) >= physicalDistance) {

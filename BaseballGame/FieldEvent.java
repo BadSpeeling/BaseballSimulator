@@ -16,6 +16,10 @@ public class FieldEvent {
 	Baserunner bOnSecond = null;
 	Baserunner bOnThrid = null;
 	Fielder beingThrownTo = null;
+	Fielder pickingUpBall = null;
+	Fielder thrower = null;
+	Fielder hasBall = null;
 	boolean reModelBall = false;
+	boolean newFielderDecisions = true;
 	
 }

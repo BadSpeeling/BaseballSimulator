@@ -16,7 +16,7 @@ public class Physics {
 	private final static double dragCoef = .3; //unitless
 	private final static double surfaceArea = 0.045; //ft^2
 	private final static double airdensity = 0.0765; //lb/ft^3
-	private final static double mu = .8; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
+	private final static double mu = 1.8; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
 	public final static double slack = .5; //how close an object can get to a wall. ft
 	
 	/* Calculates the angle a line makes with the x axis
@@ -104,7 +104,7 @@ public class Physics {
 			Coordinate3D p2 = allVals.get(i+1);
 						
 			//check if ball is reasonably close to wall
-			if (Physics.calcPythag(dest.x-p1.x, dest.y-p1.y) <= 200 && (dest.x > p1.x && dest.x < p2.x)) {
+			if (Physics.calcPythag(dest.x-p1.x, dest.y-p1.y) <= 200 && (dest.x > p1.x && dest.x < p2.x) || (dest.x > p2.x && dest.x < p1.x)) {
 								
 				double m = calculateSlope(p1.x, p1.y, p2.x, p2.y);
 				double targetY = 0;
@@ -267,10 +267,6 @@ public class Physics {
 	public static double calcTime (double initialVelo, double acceleration) {
 		return initialVelo/(acceleration/2);
 	}
-	
-	private static double dotProduct (Coordinate3D p1, Coordinate3D p2) {
-		return p1.x*p2.x+p1.y*p2.y;
-	}
 
 	//calculates the resulting acceleration due to current forces
 	public static Coordinate3D calcAccel (BallInPlay ball) {
@@ -293,9 +289,7 @@ public class Physics {
 
 			//ball under influence of friction
 			double fricAccl = calculateFrictionAccl(calcPythag(ball.velocity.x, ball.velocity.y));
-			
-			//System.out.println(fricAccl);
-			
+						
 			if (fricAccl == 0) {
 				ball.velocity.x = 0;
 				ball.velocity.y = 0;
@@ -304,8 +298,6 @@ public class Physics {
 			else {
 								
 				double angle = angleFromXAxis(ball.velocity) + degrees180;
-				
-				//System.out.println(angle);
 				
 				xAccel = fricAccl * Math.cos(angle);
 				yAccel = fricAccl * Math.sin(angle);

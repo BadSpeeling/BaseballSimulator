@@ -45,7 +45,7 @@ public class GameDisplay extends JFrame {
 		Coordinate3D centerCorner = curStadium.dimCoors.get("c");
 		Coordinate3D rightCenterCorner = curStadium.dimCoors.get("rc");
 		Coordinate3D rightCorner = curStadium.dimCoors.get("r");
-		
+				
 		Graphics2D leftFieldLine = board.createGraphics();
 		leftFieldLine.setColor(Color.WHITE);
 		leftFieldLine.draw(new Line2D.Double(offset, ySubtract-(offset), offset, ySubtract-(curStadium.dimCoors.get("l").y+offset)));
@@ -100,7 +100,7 @@ public class GameDisplay extends JFrame {
 
 		}
 	}
-	
+	/*
 	public void drawField (int foul, Stadium stad) {
 		
 		for (int i = -1*stad.dim.get("f") + 1; i < stad.field.field.length - stad.dim.get("f"); i++) {
@@ -121,7 +121,7 @@ public class GameDisplay extends JFrame {
 		
 		
 	}
-	
+	*/
 	public void setCoor (int x, int y, int color) {
 		
 		//System.out.println(board.getHeight()-(y+offset));
