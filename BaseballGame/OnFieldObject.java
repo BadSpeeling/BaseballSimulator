@@ -2,9 +2,11 @@
 public class OnFieldObject {
 	
 	Coordinate3D loc;
+	Coordinate3D lastLoc;
 	
-	public OnFieldObject (Coordinate3D loc) {
+	public OnFieldObject (Coordinate3D loc, Coordinate3D lastLoc) {
 		this.loc = loc;
+		this.lastLoc = lastLoc;
 	}
 	
 }

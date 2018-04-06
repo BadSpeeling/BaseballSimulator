@@ -21,7 +21,7 @@ public class BallInPlay extends OnFieldObject {
 	List <LocationTracker> tracker;
 		
 	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad) {
-		super(loc);
+		super(loc,loc);
 		this.launchSpeed = launchSpeed;
 		this.launchAngle = launchAngle;
 		this.launchDir = launchDir;
@@ -57,7 +57,7 @@ public class BallInPlay extends OnFieldObject {
 
 	public BallInPlay (BallInPlay copy) {
 
-		super(new Coordinate3D (copy.loc.x, copy.loc.y, copy.loc.z));
+		super(copy.loc, copy.loc);
 		this.launchSpeed = copy.launchSpeed;
 		this.launchAngle = copy.launchAngle;
 		this.launchDir = copy.launchDir;
@@ -132,22 +132,26 @@ public class BallInPlay extends OnFieldObject {
 			int res = Physics.handleCollision(allVals, loc);
 			
 			if (res == 1) {
-				
-				//i dont know why i have to do this.  multiplying this.velocity.y by -1/5 results in zero, idk
+								
+				//i dont know why i have to do this.  multiplying this.velocity.y by -1/2 results in zero, idk
 				this.velocity.y *= -1;
-				double add = this.velocity.y *-4/5;
-				this.velocity.y += add;
+				double addY = this.velocity.y *-1/3;
+				double addX = this.velocity.x * -1/3;
+				this.velocity.y += addY;
+				this.velocity.x += addX;
 				this.lastLoc.y = loc.y;
 				this.loc.y -= Physics.slack*2; 
 				canRecordOut = false;
+				
 			}
 	
 			else if (res == 2) {
-				
+								
 				this.velocity.x *= -1;
-				double add = this.velocity.x *-4/5;
-				this.velocity.x += add;
-				this.lastLoc.x = loc.x;
+				double addY = this.velocity.y *-1/3;
+				double addX = this.velocity.x * -1/3;
+				this.velocity.y += addY;
+				this.velocity.x += addX;
 				this.loc.x -= Physics.slack*2;
 				canRecordOut = false;
 
@@ -175,6 +179,7 @@ public class BallInPlay extends OnFieldObject {
 		//ball being thrown by fielders
 		else {
 			Coordinate3D newPos = Physics.tickPos(loc, velocity);
+			velocity.multByFactor(.9999);
 			lastLoc = loc;
 			loc = newPos;
 		}

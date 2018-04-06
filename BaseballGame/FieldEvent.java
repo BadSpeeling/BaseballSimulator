@@ -21,5 +21,7 @@ public class FieldEvent {
 	Fielder hasBall = null;
 	boolean reModelBall = false;
 	boolean newFielderDecisions = true;
+	boolean newBaserunnerDecisions = true;
+	int basesAttempt = 0; //stores the amount of bases the batter will attempt to take
 	
 }

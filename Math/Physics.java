@@ -16,7 +16,7 @@ public class Physics {
 	private final static double dragCoef = .3; //unitless
 	private final static double surfaceArea = 0.045; //ft^2
 	private final static double airdensity = 0.0765; //lb/ft^3
-	private final static double mu = 1.8; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
+	private final static double mu = 1.2; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
 	public final static double slack = .5; //how close an object can get to a wall. ft
 	
 	/* Calculates the angle a line makes with the x axis

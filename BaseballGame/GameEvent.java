@@ -13,4 +13,12 @@ public class GameEvent {
 		return pName + " fielded a ball at " + loc;
 	}
 	
+	static String threwBall (String throwerName, String receiver) {
+		return throwerName + " threw the ball to " + receiver;
+	}
+	
+	static String runToBase (String runner, String base) {
+		return runner + " is running to the base situated at " + base;
+	}
+	
 }

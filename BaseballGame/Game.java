@@ -63,42 +63,72 @@ public class Game {
 
 	}
 
-	public void fieldEvent (LinkedList <Fielder> onTheField, BallInPlay hitBall, List <Baserunner> runners) {
-
+	public void fieldEvent (LinkedList <Fielder> onTheField, BallInPlay hitBall, List <Baserunner> runners, GamePlayer batter) {
+		
+		double time = 0;
+		
 		//recalculate landing spot whenever you need to
 		BallInPlay airModel = hitBall.modelBallDistance(stadium, true);
 		BallInPlay finalModel = hitBall.modelBallDistance(stadium, false);
 
+		
 		Map <String, BallInPlay> models = new HashMap <String, BallInPlay> ();
 		models.put("aM", airModel);
 		models.put("fM", finalModel);
-
+		
 		FieldEvent status = new FieldEvent ();
-
+		
+		Baserunner newBaserunner = new Baserunner (batter);
+		
+		newBaserunner.batterBaseBrain(status, log, models, onTheField, hitBall);
+		runners.add(newBaserunner);
+		
 		while (!hitBall.state.equals(BallStatus.DEAD)) {
-
+			
+			time += Physics.tick;
+			
 			if (hitBall.state.equals(BallStatus.IN_AIR)) {
 				view.drawBall(airModel.loc, 0x00FF00);
 			}
 
+			hitBall.tick(stadium, hitBall.thrown, status);
+			
 			//redraw how the field looks
 			view.drawFieldOutline();
 			view.drawBall(hitBall.lastLoc, 0x00000);
 			view.drawBall(hitBall.loc, 0xFF0000);
 			view.repaint();
-
+						
 			//players have been notified to make a new choice
-
-			//update all fielders
+			if (status.newFielderDecisions) {
+				//update all fielders
+				for (Fielder cur: onTheField) {
+					cur.movementBrain(hitBall, models, log, status);
+				}
+				
+				status.newFielderDecisions = false; //flip status - this will be re flipped below if updates are needed
+				
+			}
+			
+			//move and draw location
 			for (Fielder cur: onTheField) {
-				cur.movementBrain(hitBall, models, log, status);
+				cur.move(hitBall, status, log);
 				view.drawBall(cur.lastLoc, 0x000000);
 				view.drawBall(cur.loc, 0x008000);
 			}
-
-			status.newFielderDecisions = false; //flip status - this will be re flipped below if updates are needed
-
-
+			
+			//moves and draw location
+			for (Baserunner cur: runners) {
+				if (status.newBaserunnerDecisions) {
+					cur.baserunnerBrain(status, log, status.basesAttempt);
+				}  //make new decisions if it has been signaled
+				cur.run(status, log);
+				view.drawBall(cur.lastLoc, 0x000000);
+				view.drawBall(cur.loc, 0x0000FF);
+			}
+			
+			status.newBaserunnerDecisions = false;
+			
 			/* BALL THROWING POLICY:
 			 * 1) A fielder will update the field status to notify the game the that he will pick up the ball by updating FieldEvent.pickingUpBall
 			 * 2) On notification, the fielder will pick up the ball and the ball's status will be changed to FIELDED.  
@@ -111,8 +141,7 @@ public class Game {
 
 			//process player picking up ball
 			if (status.pickingUpBall != null) {
-				status.pickingUpBall.receiveBall(hitBall, status);
-				hitBall.state = BallStatus.FIELDED;
+				status.pickingUpBall.receiveBall(hitBall, status, log);
 			}
 
 			//handle player throwing ball
@@ -131,16 +160,14 @@ public class Game {
 				status.newFielderDecisions = true;				
 			}
 
-			hitBall.tick(stadium, hitBall.thrown, status);
-
 			try {
-				Thread.sleep(5);
+				Thread.sleep(3);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
 		}
-		
+				
 		/*
 		System.out.println(status.beingThrownTo);
 		System.out.println(status.thrower);

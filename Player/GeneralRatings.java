@@ -4,7 +4,7 @@
 
 public class GeneralRatings {
 	
-	private double speed = 22; // ft/s
+	private double speed = 18; // ft/s
 	
 	public double runSpeed () {
 		return speed;
