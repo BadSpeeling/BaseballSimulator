@@ -9,19 +9,25 @@ public class Baserunner extends OnFieldPlayer {
 	Coordinate3D destination = null;
 	Coordinate3D lastLoc = new Coordinate3D (0,0,0);
 	Base baseOn = Base.NONE;
+	FieldEvent status;
+	GameLogger log;
 	
-	Baserunner (GeneralRatings gRatings, String fName) {
+	Baserunner (FieldEvent status, GameLogger log, GeneralRatings gRatings, String fName) {
 		super (FieldConstants.homePlate(), gRatings, fName);
 		destinations = new LinkedList <Coordinate3D> ();
 		this.fName = fName;
+		this.status = status;
+		this.log = log;
 	}
 	
-	public Baserunner (GamePlayer other) {
+	public Baserunner (GamePlayer other,FieldEvent status, GameLogger log) {
 		super(FieldConstants.homePlate(), other.gRatings, other.fullName());
 		destinations = new LinkedList <Coordinate3D> ();
+		this.status = status;
+		this.log = log;
 	}
 	
-	public void baserunnerBrain (FieldEvent status, GameLogger log, int basesTake) {
+	public void baserunnerBrain (int basesTake) {
 		
 		Base temp = baseOn;
 		
@@ -38,7 +44,7 @@ public class Baserunner extends OnFieldPlayer {
 	}
 	
 	//determines which base the batter can get to
-	public void batterBaseBrain (FieldEvent status, GameLogger log, Map <String, BallInPlay> models, List <Fielder> fielders, BallInPlay curBall) {
+	public void batterBaseBrain (Map <String, BallInPlay> models, List <Fielder> fielders, BallInPlay curBall) {
 		
 		int basesTake = 0;
 		
@@ -78,7 +84,7 @@ public class Baserunner extends OnFieldPlayer {
 	}
 	
 	//run to the destination, clear for next destination if reached
-	public void run (FieldEvent status, GameLogger log) {
+	public void run () {
 		
 		if (destination == null && !this.destinations.isEmpty()) {
 			this.destination = this.destinations.poll();

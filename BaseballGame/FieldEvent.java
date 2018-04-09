@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-//encapsulates data all fielders need to know about state of field
+//encapsulates pointers to the OnFieldPlayer that in doing something
 
 public class FieldEvent {
 	

@@ -1,4 +1,5 @@
 
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class BallInPlay extends OnFieldObject {
 	InPlayType type;
 	LinkedList <Coordinate3D> allVals;
 	List <LocationTracker> tracker;
+	Stadium stad;
 		
 	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad) {
 		super(loc,loc);
@@ -27,7 +29,8 @@ public class BallInPlay extends OnFieldObject {
 		this.launchDir = launchDir;
 		this.velocity = Physics.calculateInitalVelo(launchSpeed, launchAngle, launchDir);
 		this.lastLoc = new Coordinate3D(0,0,0);
-
+		this.stad = stad;
+		
 		//determine what kind of ball was hit
 		if (launchSpeed <= 20) {
 			type = InPlayType.BUNT;
@@ -65,11 +68,12 @@ public class BallInPlay extends OnFieldObject {
 		this.lastLoc = new Coordinate3D (copy.lastLoc.x, copy.lastLoc.y, copy.lastLoc.z);
 		this.state = copy.state;
 		this.allVals = copy.allVals;
-
+		this.stad = copy.stad;
+		
 	}
 
 	//returns a BallInPlay that's loc is either the place it makes contact with ground or last resting spot
-	public BallInPlay modelBallDistance (Stadium stad, boolean inAir) {
+	public BallInPlay modelBallDistance (boolean inAir) {
 		
 		if (inAir) {
 			BallInPlay copy = new BallInPlay (this);
@@ -109,6 +113,11 @@ public class BallInPlay extends OnFieldObject {
 			return copy;
 		}
 			
+	}
+	
+	//returns a LocationTracker
+	public List <LocationTracker> ballTracker () {
+		return modelBallDistance(false).tracker;		
 	}
 
 	//batted: true if ball is hit by a bat, false if the ball is thrown by a fielder

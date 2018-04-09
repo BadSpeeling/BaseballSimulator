@@ -1,4 +1,5 @@
 
+
 public enum BallStatus {
 	IN_AIR,ON_GROUND,FIELDED,DEAD,HIT_WALL,THROWN,CAUGHT
 }

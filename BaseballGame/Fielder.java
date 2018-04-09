@@ -13,8 +13,10 @@ public class Fielder extends OnFieldPlayer {
 	FielderDecision action = FielderDecision.UNKNOWN;
 	String fullName;
 	LinkedList <Coordinate3D> dimensions; //TODO make static
+	FieldEvent status;
+	GameLogger log;
 	
-	public Fielder (Coordinate3D loc, GamePlayer player, LinkedList <Coordinate3D> dimensions) {
+	public Fielder (FieldEvent status, GameLogger log, Coordinate3D loc, GamePlayer player, LinkedList <Coordinate3D> dimensions) {
 		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName());
 		fRats = player.fRatings;
 		gRats = player.gRatings;
@@ -22,6 +24,8 @@ public class Fielder extends OnFieldPlayer {
 		this.position = player.pos;
 		fullName = player.fullName();
 		this.dimensions = dimensions;
+		this.status = status;
+		this.log = log;
 	}
 
 	//determine what the fielder should do for a hitball

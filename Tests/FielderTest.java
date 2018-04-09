@@ -44,26 +44,29 @@ public class FielderTest {
 		allVals.add(stadium.dimCoors.get("rc"));
 		allVals.add(stadium.dimCoors.get("r"));
 		
-		LinkedList <Fielder> fielders = new LinkedList <Fielder> ();
-		fielders.add(new Fielder(FieldConstants.stdLeft(), homeTeam.inTheField.get(6), allVals));
-		fielders.add(new Fielder(FieldConstants.stdCenter(), homeTeam.inTheField.get(7), allVals));
-		fielders.add(new Fielder(FieldConstants.stdRight(), homeTeam.inTheField.get(8), allVals));
-		fielders.add(new Fielder(FieldConstants.stdCatcher(), homeTeam.inTheField.get(1), allVals));
-		fielders.add(new Fielder(FieldConstants.stdFirst(), homeTeam.inTheField.get(2), allVals));
-		fielders.add(new Fielder(FieldConstants.stdThird(), homeTeam.inTheField.get(4), allVals));
-		fielders.add(new Fielder(FieldConstants.stdSecond(), homeTeam.inTheField.get(3), allVals));
-		fielders.add(new Fielder(FieldConstants.stdShort(), homeTeam.inTheField.get(5), allVals));
-		
 		BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(21),Physics.degreesToRads(30),130.0,stadium);
 		
-		Baserunner runner = new Baserunner (awayTeam.lineup.next().gRatings, "Name");
-		Baserunner runner1 = new Baserunner (awayTeam.lineup.next().gRatings, "Name2");
+		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, stadium);
+		
+		LinkedList <Fielder> fielders = new LinkedList <Fielder> ();
+		fielders.add(new Fielder(g.status,g.log,FieldConstants.stdLeft(), homeTeam.inTheField.get(6), allVals));
+		fielders.add(new Fielder(g.status,g.log,FieldConstants.stdCenter(), homeTeam.inTheField.get(7), allVals));
+		fielders.add(new Fielder(g.status,g.log,FieldConstants.stdRight(), homeTeam.inTheField.get(8), allVals));
+		fielders.add(new Fielder(g.status,g.log,FieldConstants.stdCatcher(), homeTeam.inTheField.get(1), allVals));
+		fielders.add(new Fielder(g.status,g.log,FieldConstants.stdFirst(), homeTeam.inTheField.get(2), allVals));
+		fielders.add(new Fielder(g.status,g.log,FieldConstants.stdThird(), homeTeam.inTheField.get(4), allVals));
+		fielders.add(new Fielder(g.status,g.log,FieldConstants.stdSecond(), homeTeam.inTheField.get(3), allVals));
+		fielders.add(new Fielder(g.status,g.log,FieldConstants.stdShort(), homeTeam.inTheField.get(5), allVals));
+		
+
+		Baserunner runner = new Baserunner (g.status,g.log,awayTeam.lineup.next().gRatings, "Name");
+		Baserunner runner1 = new Baserunner (g.status,g.log,awayTeam.lineup.next().gRatings, "Name2");
 		runner1.setBaseOn(Base.FIRST);
 		List <Baserunner> runners = new LinkedList <Baserunner> ();
 		runners.add(runner);
 		runners.add(runner1);
 		
-		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, stadium);
+		
 		g.fieldEvent(fielders, hitBall, runners, awayTeam.lineup.next());
 		
 	}

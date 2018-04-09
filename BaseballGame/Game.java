@@ -43,7 +43,8 @@ public class Game {
 	Stadium stadium;
 	GameDisplay view;
 	GameLogger log = new GameLogger ();
-
+	FieldEvent status = new FieldEvent ();
+	
 	public Game (RuleSet rules, int id, GameTeam homeTeam, GameTeam awayTeam, Stadium stadium) {
 
 		this.rules = rules;
@@ -68,19 +69,17 @@ public class Game {
 		double time = 0;
 		
 		//recalculate landing spot whenever you need to
-		BallInPlay airModel = hitBall.modelBallDistance(stadium, true);
-		BallInPlay finalModel = hitBall.modelBallDistance(stadium, false);
+		BallInPlay airModel = hitBall.modelBallDistance(true);
+		BallInPlay finalModel = hitBall.modelBallDistance(false);
 
 		
 		Map <String, BallInPlay> models = new HashMap <String, BallInPlay> ();
 		models.put("aM", airModel);
 		models.put("fM", finalModel);
+				
+		Baserunner newBaserunner = new Baserunner (batter,status,log);
 		
-		FieldEvent status = new FieldEvent ();
-		
-		Baserunner newBaserunner = new Baserunner (batter);
-		
-		newBaserunner.batterBaseBrain(status, log, models, onTheField, hitBall);
+		newBaserunner.batterBaseBrain(models, onTheField, hitBall);
 		runners.add(newBaserunner);
 		
 		while (!hitBall.state.equals(BallStatus.DEAD)) {
@@ -120,9 +119,9 @@ public class Game {
 			//moves and draw location
 			for (Baserunner cur: runners) {
 				if (status.newBaserunnerDecisions) {
-					cur.baserunnerBrain(status, log, status.basesAttempt);
+					cur.baserunnerBrain(status.basesAttempt);
 				}  //make new decisions if it has been signaled
-				cur.run(status, log);
+				cur.run();
 				view.drawBall(cur.lastLoc, 0x000000);
 				view.drawBall(cur.loc, 0x0000FF);
 			}
