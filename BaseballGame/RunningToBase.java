@@ -1,8 +1,8 @@
 
-public class RunningToBase {
+public class RunningToBase extends Message {
 	
 	private Baserunner runner;
-	private Base runningTo;
+	private BaseType runningTo;
 	
 	public Baserunner getRunner() {
 		return runner;
@@ -11,17 +11,17 @@ public class RunningToBase {
 		this.runner = runner;
 	}
 	
-	public Base getRunningTo() {
+	public BaseType getRunningTo() {
 		return runningTo;
 	}
 	
-	public RunningToBase(Baserunner runner, Base runningTo) {
+	public RunningToBase(Baserunner runner, BaseType runningTo) {
 		super();
 		this.runner = runner;
 		this.runningTo = runningTo;
 	}
 	
-	public void setRunningTo(Base runningTo) {
+	public void setRunningTo(BaseType runningTo) {
 		this.runningTo = runningTo;
 	}
 	

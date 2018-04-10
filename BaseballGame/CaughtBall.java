@@ -1,4 +1,4 @@
-public class CaughtBall {
+public class CaughtBall extends Message {
 	
 	private Fielder ballCatcher;
 

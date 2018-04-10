@@ -19,11 +19,10 @@ public class BallInPlay extends OnFieldObject {
 	boolean thrown = false;
 	InPlayType type;
 	LinkedList <Coordinate3D> allVals;
-	List <LocationTracker> tracker;
 	Stadium stad;
 		
 	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad) {
-		super(loc,loc);
+		super(loc,loc, new LinkedList <LocationTracker> ());
 		this.launchSpeed = launchSpeed;
 		this.launchAngle = launchAngle;
 		this.launchDir = launchDir;
@@ -60,7 +59,7 @@ public class BallInPlay extends OnFieldObject {
 
 	public BallInPlay (BallInPlay copy) {
 
-		super(copy.loc, copy.loc);
+		super(copy.loc, copy.loc, copy.getTracker());
 		this.launchSpeed = copy.launchSpeed;
 		this.launchAngle = copy.launchAngle;
 		this.launchDir = copy.launchDir;
@@ -73,6 +72,7 @@ public class BallInPlay extends OnFieldObject {
 	}
 
 	//returns a BallInPlay that's loc is either the place it makes contact with ground or last resting spot
+	//inAir - if the ball modelling should stop when it is in the air
 	public BallInPlay modelBallDistance (boolean inAir) {
 		
 		if (inAir) {
@@ -88,7 +88,6 @@ public class BallInPlay extends OnFieldObject {
 		else {
 			
 			BallInPlay copy = new BallInPlay (this);
-			copy.tracker = new LinkedList <LocationTracker> ();
 			
 			do {
 				copy.tick(stad, true, null);
@@ -98,6 +97,7 @@ public class BallInPlay extends OnFieldObject {
 			final int split = 10; //time in between recordings
 			int ctr = 0;
 			
+			//starts tracking the ball after it cant be an out anymore
 			do {
 				
 				copy.tick(stad, true, null);
@@ -105,7 +105,7 @@ public class BallInPlay extends OnFieldObject {
 				ctr++;
 								
 				if (ctr % split == 0) {
-					copy.tracker.add(new LocationTracker(copy.loc, time));
+					super.track(new LocationTracker(copy.loc, time));
 				}
 				
 			} while (copy.inMotion());
@@ -117,7 +117,7 @@ public class BallInPlay extends OnFieldObject {
 	
 	//returns a LocationTracker
 	public List <LocationTracker> ballTracker () {
-		return modelBallDistance(false).tracker;		
+		return modelBallDistance(false).getTracker();		
 	}
 
 	//batted: true if ball is hit by a bat, false if the ball is thrown by a fielder

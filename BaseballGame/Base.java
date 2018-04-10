@@ -1,58 +1,62 @@
-
-public enum Base {
-	HOME,FIRST,SECOND,THIRD,NONE;
-
-	public Base nextBase () {
-
-		switch (this) {
-		case FIRST:
-			return SECOND;
-		case SECOND:
-			return THIRD;
-		case THIRD:
-			return HOME;
-		case NONE:
-			return FIRST;
-		default:
-			return null;
-		}
-
-	}
-
-	//returns the next base a player should run to
-	public Coordinate3D nextDestination () {
-
-		switch (this) {
-		case FIRST:
-			return FieldConstants.secondBase();
-		case SECOND:
-			return FieldConstants.thirdBase();
-		case THIRD:
-			return FieldConstants.homePlate();
-		case NONE:
-			return FieldConstants.firstBase();
-		default:
-			return null;
-		}
-
+public class Base extends OnFieldObject {
+	
+	private BaseType base;
+	private Fielder fielderOn = null;
+	private Baserunner runnerOn = null;
+	private Baserunner runnerAdvancingTo = null;
+	private boolean forceOut = false;
+	
+	public void setRunnerOn(Baserunner runnerOn) {
+		this.runnerOn = runnerOn;
 	}
 	
-	//gets the equivalent base
-	public Coordinate3D equiv () {
-
-		switch (this) {
-		case SECOND:
-			return FieldConstants.secondBase();
-		case THIRD:
-			return FieldConstants.thirdBase();
-		case HOME:
-			return FieldConstants.homePlate();
-		case FIRST:
-			return FieldConstants.firstBase();
-		default:
-			return null;
-		}
-
+	public void setAdvanceing (Baserunner runner) {
+		this.runnerAdvancingTo = runner;
+	}
+	
+	public Baserunner getAdvancingRunner () {
+		return runnerAdvancingTo;
+	}
+	
+	public boolean runnerOn() {
+		return runnerOn != null;
 	}
 
+	public void setBase(BaseType base) {
+		this.base = base;
+	}
+
+	public boolean isForceOut() {
+		return forceOut;
+	}
+
+	public void setForceOut(boolean forceOut) {
+		this.forceOut = forceOut;
+	}
+
+	public Base(Coordinate3D loc, BaseType base) {
+		super(loc, null, null);
+		this.base = base;
+	}
+	
+	public void arriveAtBase (Fielder fielderOn) {
+		this.fielderOn = fielderOn;
+	}
+	
+	//return true if the base runner reached base safely, false if not
+	public boolean arriveAtBase (Baserunner runnerOn) {
+		
+		if (fielderOn == null) { 
+			this.runnerOn = runnerOn;
+			return true;
+		}
+		
+		return false;
+			
+	}
+	
+	public void clear () {
+		fielderOn = null;
+	}
+	
 }

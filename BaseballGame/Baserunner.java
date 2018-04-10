@@ -8,12 +8,13 @@ public class Baserunner extends OnFieldPlayer {
 	Queue <Coordinate3D> destinations;
 	Coordinate3D destination = null;
 	Coordinate3D lastLoc = new Coordinate3D (0,0,0);
-	Base baseOn = Base.NONE;
+	BaseType baseOn = BaseType.NONE;
 	FieldEvent status;
 	GameLogger log;
+	Base attempt;
 	
 	Baserunner (FieldEvent status, GameLogger log, GeneralRatings gRatings, String fName) {
-		super (FieldConstants.homePlate(), gRatings, fName);
+		super (FieldConstants.homePlate(), gRatings, fName, new LinkedList <LocationTracker> ());
 		destinations = new LinkedList <Coordinate3D> ();
 		this.fName = fName;
 		this.status = status;
@@ -21,7 +22,7 @@ public class Baserunner extends OnFieldPlayer {
 	}
 	
 	public Baserunner (GamePlayer other,FieldEvent status, GameLogger log) {
-		super(FieldConstants.homePlate(), other.gRatings, other.fullName());
+		super(FieldConstants.homePlate(), other.gRatings, other.fullName(), new LinkedList <LocationTracker> ());
 		destinations = new LinkedList <Coordinate3D> ();
 		this.status = status;
 		this.log = log;
@@ -29,7 +30,7 @@ public class Baserunner extends OnFieldPlayer {
 	
 	public void baserunnerBrain (int basesTake) {
 		
-		Base temp = baseOn;
+		BaseType temp = baseOn;
 		
 		for (int i = 0; i < basesTake; i++) {
 			destinations.add(temp.nextDestination());
@@ -38,7 +39,7 @@ public class Baserunner extends OnFieldPlayer {
 		
 	}
 	
-	public void setBaseOn (Base set) {
+	public void setBaseOn (BaseType set) {
 		baseOn = set;
 		loc = baseOn.equiv();
 	}
@@ -78,16 +79,22 @@ public class Baserunner extends OnFieldPlayer {
 		}
 		
 		//baserunnerBrain(status,log,basesTake);
-		status.basesAttempt = basesTake;
+		OnFieldPlayer.messages.add(new AdvancingNumberOfBases(basesTake));
 		//status.newBaserunnerDecisions = false;
 				
 	}
 	
 	//run to the destination, clear for next destination if reached
-	public void run () {
+	public void run (List <Base> bases) {
 		
 		if (destination == null && !this.destinations.isEmpty()) {
 			this.destination = this.destinations.poll();
+			
+			//get pointer to base attemping
+			int baseGoingTo = baseOn.nextBase().num();
+			attempt = bases.get(baseGoingTo);
+			attempt.setAdvanceing(this);
+			
 			log.add(GameEvent.runToBase(fName, this.destination.toString()));
 		}
 		
@@ -108,11 +115,14 @@ public class Baserunner extends OnFieldPlayer {
 			
 			//clear the destination
 			else {
-				if (destination.equals(FieldConstants.firstBase())) {baseOn = Base.FIRST;}
-				else if (destination.equals(FieldConstants.secondBase())) {baseOn = Base.SECOND;}
-				else if (destination.equals(FieldConstants.thirdBase())) {baseOn = Base.THIRD;} 
+				attempt.arriveAtBase(this);
+				if (destination.equals(FieldConstants.firstBase())) {baseOn = BaseType.FIRST;}
+				else if (destination.equals(FieldConstants.secondBase())) {baseOn = BaseType.SECOND;}
+				else if (destination.equals(FieldConstants.thirdBase())) {baseOn = BaseType.THIRD;} 
+				else {baseOn = BaseType.HOME;}
 				destination = null; 
 			}
+			
 		}
 		
 	}

@@ -61,9 +61,9 @@ public class FielderTest {
 
 		Baserunner runner = new Baserunner (g.status,g.log,awayTeam.lineup.next().gRatings, "Name");
 		Baserunner runner1 = new Baserunner (g.status,g.log,awayTeam.lineup.next().gRatings, "Name2");
-		runner1.setBaseOn(Base.FIRST);
+		runner1.setBaseOn(BaseType.SECOND);
 		List <Baserunner> runners = new LinkedList <Baserunner> ();
-		runners.add(runner);
+		//runners.add(runner);
 		runners.add(runner1);
 		
 		

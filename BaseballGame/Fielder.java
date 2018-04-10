@@ -15,9 +15,10 @@ public class Fielder extends OnFieldPlayer {
 	LinkedList <Coordinate3D> dimensions; //TODO make static
 	FieldEvent status;
 	GameLogger log;
+	Base targetBase = null;
 	
 	public Fielder (FieldEvent status, GameLogger log, Coordinate3D loc, GamePlayer player, LinkedList <Coordinate3D> dimensions) {
-		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName());
+		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName(), new LinkedList <LocationTracker> ());
 		fRats = player.fRatings;
 		gRats = player.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
@@ -71,7 +72,9 @@ public class Fielder extends OnFieldPlayer {
 	}
 
 	//controls all decisions regarding movement the fielder need to make.  flags actions that need to be taken
-	public void movementBrain (BallInPlay curBall, Map <String, BallInPlay> model, GameLogger log, FieldEvent status) {
+	//curBall - the actual ball that was hit
+	//model - models of the ending position of balls that were hit
+	public void movementBrain (BallInPlay curBall, Map <String, BallInPlay> model, List <Base> bases) {
 
 		//determine where we want the player to run to
 		if (curBall.type.equals(InPlayType.FLYBALL)) {
@@ -139,34 +142,67 @@ public class Fielder extends OnFieldPlayer {
 			}
 
 		}
-		
+
+		//update the pointer to targetBase if fielder is running to a base
+		if (destination.equals(FieldConstants.firstBase())) {
+			targetBase = bases.get(BaseType.FIRST.num());
+		}
+
+		else if (destination.equals(FieldConstants.secondBase())) {
+			targetBase = bases.get(BaseType.SECOND.num());
+		}
+
+		else if (destination.equals(FieldConstants.thirdBase())) {
+			targetBase = bases.get(BaseType.THIRD.num());
+		}
+
+		else if (destination.equals(FieldConstants.homePlate())) {
+			targetBase = bases.get(BaseType.HOME.num());
+		}
+
 
 	}
-	
+
+
+
 	public void move (BallInPlay curBall, FieldEvent status, GameLogger log) {
 		
-		Coordinate3D toGo = this.destination.diff(this.loc);
-		double runSpeed = gRats.runSpeed();
-		
-		//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
-		if (Physics.calcPythag(toGo.x, toGo.y) > .25 && Physics.handleCollision(dimensions, this.loc) == 0) {
-						
-			double angleToSpot = Physics.angleFromXAxis(toGo);
-			double yDisplacement = runSpeed * Math.sin(angleToSpot) * Physics.tick;
-			double xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
-
-			//move the player
-			lastLoc.x = this.loc.x;
-			lastLoc.y = this.loc.y;
-			this.loc.add(xDisplacement, yDisplacement, 0);
-
+		//only move if theres somewhere to go
+		if (destination != null) {
+			
+			Coordinate3D toGo = this.destination.diff(this.loc);
+			double runSpeed = gRats.runSpeed();
+			
+			if (toGo.mag() < 1) {
+				destination = null;
+				
+				if (targetBase != null) {
+					targetBase.arriveAtBase(this);
+				}
+				
+			}
+			
+			//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
+			if (Physics.calcPythag(toGo.x, toGo.y) > .25 && Physics.handleCollision(dimensions, this.loc) == 0) {
+	
+				double angleToSpot = Physics.angleFromXAxis(toGo);
+				double yDisplacement = runSpeed * Math.sin(angleToSpot) * Physics.tick;
+				double xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
+	
+				//move the player
+				lastLoc.x = this.loc.x;
+				lastLoc.y = this.loc.y;
+				this.loc.add(xDisplacement, yDisplacement, 0);
+	
+			}
+			
+			//set flag that the player is next to the ball and will pick it up
+			if (Physics.distanceBetween(this.loc, curBall.loc) < 2 && (curBall.state.equals(BallStatus.IN_AIR) || curBall.state.equals(BallStatus.ON_GROUND))) {
+				status.pickingUpBall = this;	
+			}
+			
 		}
 
-		//set flag that the player is next to the ball and will pick it up
-		if (Physics.distanceBetween(this.loc, curBall.loc) < 2 && (curBall.state.equals(BallStatus.IN_AIR) || curBall.state.equals(BallStatus.ON_GROUND))) {
-			status.pickingUpBall = this;	
-		}
-		
 	}
 
 	//set the balls velocity to zero.  return true if the ball was successfully picked up. flags that the ball is possessed by a fielder. changes the balls state
@@ -175,6 +211,15 @@ public class Fielder extends OnFieldPlayer {
 		if (ball.canRecordOut) {
 			ball.state = BallStatus.DEAD;
 			return true;
+		}
+		
+		//player is standing at position the ball is thrown to
+		if (destination == null) {
+			
+			if (targetBase.isForceOut()) {
+				status.playerOut = targetBase.getAdvancingRunner();
+			}
+			
 		}
 
 		log.add(GameEvent.fieldedBall(this.fullName, this.loc));
@@ -201,7 +246,7 @@ public class Fielder extends OnFieldPlayer {
 	//ball is a completed model of a ball
 	private LocationTracker closestSpot (BallInPlay ball, double airTime) {
 
-		List <LocationTracker> locs = ball.tracker;
+		List <LocationTracker> locs = ball.getTracker();
 
 		double speed = gRats.runSpeed();
 		LocationTracker ret = locs.get(locs.size()-1); //if no ball is reachable in time, return the last one

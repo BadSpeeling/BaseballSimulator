@@ -32,6 +32,10 @@ public class Coordinate3D {
 		this.z += z;
 	}
 	
+	public boolean within (Coordinate3D other, double epsilon) {
+		return this.diff(other).mag() < epsilon;
+	}
+	
 	public boolean equals (Coordinate3D other) {
 		return x == other.x && y == other.y && z == other.z; 
 	}
