@@ -125,8 +125,10 @@ public class Game {
 				
 				else if (cur instanceof MakeNewDecisions) {
 					
+					fielderToGetBall(onTheField,hitBall.modelBallDistance(false));
+					
 					for (Fielder curFielder: onTheField) {
-						curFielder.movementBrain(hitBall, models, bases);
+						//curFielder.movementBrain(hitBall, models, bases);
 					}
 					
 				}
@@ -178,26 +180,25 @@ public class Game {
 			 * */
 
 			//process player picking up ball
-			if (status.pickingUpBall != null) {
-				status.pickingUpBall.receiveBall(hitBall, status, log);
+			if (status.receivingBall != null) {
+				status.receivingBall.receiveBall(hitBall, status, log);
 			}
 
 			//handle player throwing ball
 			if (status.hasBall != null && !hitBall.thrown) {
 				status.hasBall.throwingBrain(log, status, runners, hitBall);
-				status.pickingUpBall = null;
-				status.newFielderDecisions = true;
+				status.receivingBall = null;
 			}
 
 			//check if fielder can receive throw. must be within 2 feet
 			if (status.beingThrownTo != null && (status.beingThrownTo.loc.diff(hitBall.loc).mag() < 2)) {
-				status.pickingUpBall = status.beingThrownTo;
+				status.receivingBall = status.beingThrownTo;
 				status.beingThrownTo = null;
 				status.thrower = null;
 				hitBall.thrown = false;
-				status.newFielderDecisions = true;				
 			}
 			
+			//check for outs
 			if (status.playerOut != null) {
 				System.out.println("An out was recorded.");
 				runners.remove(status.playerOut);
@@ -291,6 +292,33 @@ public class Game {
 
 		System.out.println("Game Over!");
 
+	}
+	
+	//returns the fielder that can get the a hit ball the earliest.  their destination field will be properly updated
+	public Fielder fielderToGetBall (List <Fielder> fielders, BallInPlay fullModel) {
+		
+		double bestTime = Double.MAX_VALUE;
+		Fielder toRet = null;
+		Coordinate3D loc = null;
+		
+		for (Fielder curFielder: fielders) {
+			
+			LocationTracker cur = curFielder.firstReachableSpot(fullModel);
+			
+			double distance = cur.loc.diff(curFielder.loc).mag();
+			
+			if (distance < bestTime) {
+				System.out.println("go");
+				bestTime = distance;
+				toRet = curFielder;
+				loc = cur.loc;
+			}
+			
+		}
+		
+		toRet.destination = loc;
+		return toRet;
+		
 	}
 
 	//Swaps which team is fielding and which is batting.  To be used after an inning is over.

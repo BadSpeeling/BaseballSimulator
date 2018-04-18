@@ -7,6 +7,8 @@ public class OnFieldPlayer extends OnFieldObject{
 	GeneralRatings gRats;
 	String fName;
 	static Queue <Message> messages = new LinkedList <Message> ();
+	private double height = 6; //ft
+	private double wingspan = 2;
 	
 	private List <LocationTracker> tracker = new LinkedList <LocationTracker> ();
 	
@@ -16,5 +18,8 @@ public class OnFieldPlayer extends OnFieldObject{
 		this.fName = fName;
 	}
 	
+	public double getReach () {
+		return height+wingspan;
+	}
 	
 }

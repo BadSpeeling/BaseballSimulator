@@ -76,73 +76,8 @@ public class Fielder extends OnFieldPlayer {
 	//model - models of the ending position of balls that were hit
 	public void movementBrain (BallInPlay curBall, Map <String, BallInPlay> model, List <Base> bases) {
 
-		//determine where we want the player to run to
-		if (curBall.type.equals(InPlayType.FLYBALL)) {
-
-			if (this.position.equals(Position.CATCHER)) {
-				destination = FieldConstants.homePlate();
-				status.fOnHome = this;
-			}
-
-			else if (this.position.equals(Position.FIRST)) {
-				destination = FieldConstants.firstBase();
-				status.fOnFirst = this;
-			}
-
-			else if (this.position.equals(Position.SECOND)) {
-
-				//cutoff
-				if (Physics.radsToDegrees(curBall.launchDir) <= 45) {
-					destination = FieldConstants.std2BCutoff();
-					status.fCutoff = this;
-				}
-
-				else {
-					destination = FieldConstants.secondBase();
-					status.fOnSecond = this;
-				}
-
-			}
-
-			else if (this.position.equals(Position.THIRD)) {
-				destination = FieldConstants.thirdBase();
-				status.fOnThird = this;
-			}
-
-			else if (this.position.equals(Position.SHORT)) {
-
-				//cutoff
-				if (Physics.radsToDegrees(curBall.launchDir) > 45) {
-					destination = FieldConstants.stdSSCutoff();
-					status.fCutoff = this;
-				}
-
-				else {
-					destination = FieldConstants.secondBase();
-					status.fOnSecond = this;
-				}
-
-			}
-
-			else if (this.position.equals(Position.PITCHER)) {
-				destination = FieldConstants.pitchersMound();
-			}
-
-			//outfielders
-			else {
-
-				if (canReachFlyBall(model.get("aM"))) {
-					destination = model.get("aM").loc;
-				}
-
-				else {
-					destination = closestSpot(model.get("fM"), model.get("fM").airTime).loc;
-				}
-
-			}
-
-		}
-
+		destination = firstReachableSpot(model.get("fM")).loc;
+		
 		//update the pointer to targetBase if fielder is running to a base
 		if (destination.equals(FieldConstants.firstBase())) {
 			targetBase = bases.get(BaseType.FIRST.num());
@@ -169,10 +104,10 @@ public class Fielder extends OnFieldPlayer {
 		
 		//only move if theres somewhere to go
 		if (destination != null) {
-			
+						
 			Coordinate3D toGo = this.destination.diff(this.loc);
 			double runSpeed = gRats.runSpeed();
-			
+						
 			if (toGo.mag() < 1) {
 				destination = null;
 				
@@ -184,11 +119,13 @@ public class Fielder extends OnFieldPlayer {
 			
 			//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
 			if (Physics.calcPythag(toGo.x, toGo.y) > .25 && Physics.handleCollision(dimensions, this.loc) == 0) {
-	
+				
+				System.out.println(loc);
+				
 				double angleToSpot = Physics.angleFromXAxis(toGo);
 				double yDisplacement = runSpeed * Math.sin(angleToSpot) * Physics.tick;
 				double xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
-	
+								
 				//move the player
 				lastLoc.x = this.loc.x;
 				lastLoc.y = this.loc.y;
@@ -198,7 +135,7 @@ public class Fielder extends OnFieldPlayer {
 			
 			//set flag that the player is next to the ball and will pick it up
 			if (Physics.distanceBetween(this.loc, curBall.loc) < 2 && (curBall.state.equals(BallStatus.IN_AIR) || curBall.state.equals(BallStatus.ON_GROUND))) {
-				status.pickingUpBall = this;	
+				status.receivingBall = this;	
 			}
 			
 		}
@@ -216,7 +153,7 @@ public class Fielder extends OnFieldPlayer {
 		//player is standing at position the ball is thrown to
 		if (destination == null) {
 			
-			if (targetBase.isForceOut()) {
+			if (targetBase != null && targetBase.isForceOut()) {
 				status.playerOut = targetBase.getAdvancingRunner();
 			}
 			
@@ -232,14 +169,28 @@ public class Fielder extends OnFieldPlayer {
 
 	}
 
-	//true if the player can reach a fly ball
-	private boolean canReachFlyBall (BallInPlay airModel) {
+	//return the LocationTracker of the first reachable spot.  returns the final resting spot if nowhere is reachable
+	public LocationTracker firstReachableSpot (BallInPlay fullFlightModel) {
 
-		Coordinate3D distanceRun = airModel.loc.diff(this.loc);
-		double speed = gRats.runSpeed(); //running speed
-
-		return distanceRun.mag() < (speed * airModel.airTime);
-
+		List <LocationTracker> flyBallModel = fullFlightModel.getTracker();
+		
+		double bestGroundDistance = Double.MAX_VALUE;
+		LocationTracker toReturn = flyBallModel.get(flyBallModel.size()-1);
+		
+		for (LocationTracker curLoc: flyBallModel) {
+			
+			Coordinate3D cur = curLoc.loc;
+			double physicalDistance = Physics.groundDistanceBetween(cur, loc);
+			double timeGiven = curLoc.time;
+						
+			if (physicalDistance <= timeGiven * gRats.runSpeed() && cur.z < getReach()) {
+				return curLoc;
+			}
+			
+		}
+		
+		return toReturn;
+		
 	}
 
 	//returns the closest spot the fielder can get to given location, time and speed
@@ -247,7 +198,7 @@ public class Fielder extends OnFieldPlayer {
 	private LocationTracker closestSpot (BallInPlay ball, double airTime) {
 
 		List <LocationTracker> locs = ball.getTracker();
-
+				
 		double speed = gRats.runSpeed();
 		LocationTracker ret = locs.get(locs.size()-1); //if no ball is reachable in time, return the last one
 		double bestSpaceTimeDist = 0;

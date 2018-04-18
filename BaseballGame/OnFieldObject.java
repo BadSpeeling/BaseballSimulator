@@ -13,7 +13,7 @@ public class OnFieldObject {
 	public OnFieldObject (Coordinate3D loc, Coordinate3D lastLoc, List <LocationTracker> tracker) {
 		this.loc = loc;
 		this.lastLoc = lastLoc;
-		this.tracker = tracker;
+		this.tracker = new LinkedList <LocationTracker> ();
 	}
 	
 	public void track (LocationTracker toAdd) {

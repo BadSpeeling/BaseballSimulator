@@ -75,37 +75,38 @@ public class BallInPlay extends OnFieldObject {
 	//inAir - if the ball modelling should stop when it is in the air
 	public BallInPlay modelBallDistance (boolean inAir) {
 		
+		double time = 0;
+		final int split = 100; //time in between recordings
+		int ctr = 0;
+		
 		if (inAir) {
 			BallInPlay copy = new BallInPlay (this);
 	
 			do {
+			
+				if (ctr % split == 0) {
+					copy.track(new LocationTracker(copy.loc, time,true));
+				}
+				
 				copy.tick(stad, true, null);
+			
 			} while (copy.canRecordOut);
 	
 			return copy;
 		}
 		
 		else {
-			
+					
 			BallInPlay copy = new BallInPlay (this);
-			
-			do {
-				copy.tick(stad, true, null);
-			} while (copy.canRecordOut);
-			
-			double time = 0;
-			final int split = 10; //time in between recordings
-			int ctr = 0;
 			
 			//starts tracking the ball after it cant be an out anymore
 			do {
-				
 				copy.tick(stad, true, null);
 				time += Physics.tick;
 				ctr++;
 								
 				if (ctr % split == 0) {
-					super.track(new LocationTracker(copy.loc, time));
+					copy.track(new LocationTracker(copy.loc, time,false));
 				}
 				
 			} while (copy.inMotion());
@@ -280,10 +281,12 @@ class LocationTracker {
 		
 		Coordinate3D loc; //location of the ball
 		double time; //time 
+		boolean inAir = true;
 		
-		public LocationTracker (Coordinate3D loc, double time) {
+		public LocationTracker (Coordinate3D loc, double time, boolean inAir) {
 			this.loc = loc;
 			this.time = time;
+			this.inAir = inAir;
 		}
 		
 }
