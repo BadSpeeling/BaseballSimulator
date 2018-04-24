@@ -17,6 +17,7 @@ public class FieldEvent {
 	Baserunner bOnThrid = null;
 	Fielder beingThrownTo = null;
 	Fielder receivingBall = null;
+	Fielder chasingBall = null;
 	Fielder thrower = null;
 	Fielder hasBall = null;
 	Baserunner playerOut = null;

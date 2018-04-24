@@ -29,6 +29,11 @@ public enum Position {
 			
 	}
 	
+	//true if the player is an outfielder
+	public boolean isOutField () {
+		return this.equals(LEFT) || this.equals(CENTER) || this.equals(RIGHT);
+	}
+	
 	/* 
 	 * Returns array of Positions enums passed on numerical positions
 	 * poss: array of numerical positions to get Position enum of

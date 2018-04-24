@@ -16,7 +16,7 @@ public class Physics {
 	private final static double dragCoef = .3; //unitless
 	private final static double surfaceArea = 0.045; //ft^2
 	private final static double airdensity = 0.0765; //lb/ft^3
-	private final static double mu = 1.2; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
+	private final static double mu = .4; //unitless.  this number is unrealistically high to account for other slowing factors that are too complex
 	public final static double slack = .5; //how close an object can get to a wall. ft
 	
 	/* Calculates the angle a line makes with the x axis
@@ -56,7 +56,7 @@ public class Physics {
 
 		//only need to do work if the ball has hit the ground
 		if (goingToHitGround(ball)) {
-			
+
 			ball.canRecordOut = false;
 			
 			//the ball will stop bouncing now
@@ -162,39 +162,39 @@ public class Physics {
 	}
 	
 	//the angle made with respect to the x axis
-	public static double angleFromXAxis (Coordinate3D velo) {
+	public static double angleFromXAxis (Coordinate3D currentLoc) {
 		
 		double angle = 0;
 		
-		if (velo.x != 0) {
-			angle = Math.atan(velo.y/velo.x);
+		if (currentLoc.x != 0) {
+			angle = Math.atan(currentLoc.y/currentLoc.x);
 		}
 			
-		if (velo.x > 0 && velo.y > 0) {
+		if (currentLoc.x > 0 && currentLoc.y > 0) {
 			return angle;
 		}
 		
-		else if (velo.x < 0 && velo.y < 0) {
+		else if (currentLoc.x < 0 && currentLoc.y < 0) {
 			return angle + degrees180;
 		}
 		
-		else if (velo.x > 0 && velo.y < 0) {
+		else if (currentLoc.x > 0 && currentLoc.y < 0) {
 			return angle;
 		}
 		
-		else if (velo.x < 0 && velo.y > 0){
+		else if (currentLoc.x < 0 && currentLoc.y > 0){
 			return angle + degrees180;
 		}
 		
-		else if (velo.x == 0 && velo.y > 0) {
+		else if (currentLoc.x == 0 && currentLoc.y > 0) {
 			return degrees90;
 		}
 		
-		else if (velo.x == 0 && velo.y < 0) {
+		else if (currentLoc.x == 0 && currentLoc.y < 0) {
 			return degrees270;
 		}
 		
-		else if (velo.x < 0 && velo.y == 0) {
+		else if (currentLoc.x < 0 && currentLoc.y == 0) {
 			return degrees180;
 		}
 		

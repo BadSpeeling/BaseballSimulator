@@ -1,6 +1,6 @@
 
 public enum BaseType {
-	HOME,FIRST,SECOND,THIRD,NONE;
+	FIRST,SECOND,THIRD,HOME,NONE,CUTOFF;
 
 	public BaseType nextBase () {
 
@@ -11,7 +11,7 @@ public enum BaseType {
 			return THIRD;
 		case THIRD:
 			return HOME;
-		case NONE:
+		case HOME:
 			return FIRST;
 		default:
 			return null;
@@ -46,7 +46,7 @@ public enum BaseType {
 			return FieldConstants.thirdBase();
 		case THIRD:
 			return FieldConstants.homePlate();
-		case NONE:
+		case HOME:
 			return FieldConstants.firstBase();
 		default:
 			return null;

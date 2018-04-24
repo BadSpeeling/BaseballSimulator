@@ -4,5 +4,10 @@
  * */
 
 public class FieldingRatings {
-		
+	
+	
+	public double throwingSpeed () {
+		return 100;
+	}
+	
 }

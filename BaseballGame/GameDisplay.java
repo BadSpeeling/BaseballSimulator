@@ -129,14 +129,14 @@ public class GameDisplay extends JFrame {
 	
 	}
 	
-	public void drawBall (Coordinate3D hitBall, int color) {
+	public void drawBall (Coordinate3D hitBall, int color, int size) {
 		
 		int i = (int)hitBall.x;
 		int j = (int)hitBall.y;
 		
-		for (int x = i-1; x <= i+1; x++) {
+		for (int x = i-size; x <= i+size; x++) {
 
-			for (int y = j-1; y <= j+1; y++) {
+			for (int y = j-size; y <= j+size; y++) {
 				//System.out.println(board.getHeight()-(y+offset));
 				board.setRGB(x+offset, board.getHeight()-(y+offset), color);
 			}

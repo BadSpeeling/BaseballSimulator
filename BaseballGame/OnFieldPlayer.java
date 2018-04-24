@@ -6,14 +6,13 @@ public class OnFieldPlayer extends OnFieldObject{
 
 	GeneralRatings gRats;
 	String fName;
-	static Queue <Message> messages = new LinkedList <Message> ();
 	private double height = 6; //ft
 	private double wingspan = 2;
 	
 	private List <LocationTracker> tracker = new LinkedList <LocationTracker> ();
 	
-	public OnFieldPlayer(Coordinate3D loc, GeneralRatings gRats, String fName, List <LocationTracker> tracker) {
-		super(loc, loc.copy(), tracker);
+	public OnFieldPlayer(Coordinate3D loc, GeneralRatings gRats, String fName) {
+		super(loc, loc.copy());
 		this.gRats = gRats;
 		this.fName = fName;
 	}

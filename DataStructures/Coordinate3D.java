@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.List;
+
 //3 tuple of components in a 3d space
 
 public class Coordinate3D {
@@ -16,6 +19,43 @@ public class Coordinate3D {
 	//computs the differnce between the two coors
 	public Coordinate3D diff (Coordinate3D other) {
 		return new Coordinate3D(this.x-other.x, this.y-other.y, this.z-other.z);
+	}
+	
+	/*
+	 * returns a list of the bases in ascending order
+	 */
+	public static List <Coordinate3D> basesInOrder () {
+		
+		List <Coordinate3D> ret = new LinkedList <Coordinate3D> ();
+		ret.add(FieldConstants.homePlate());
+		ret.add(FieldConstants.firstBase());
+		ret.add(FieldConstants.secondBase());
+		ret.add(FieldConstants.thirdBase());
+		return ret;
+		
+	}
+	
+	/*
+	 * returns the closest distacne from a list of locations
+	 * */
+	public Coordinate3D closest (List <Coordinate3D> lst) {
+		
+		Coordinate3D ret = null;
+		double dist = Double.MAX_VALUE;
+		
+		for (Coordinate3D cur: lst) {
+			
+			double curDist = Physics.groundDistanceBetween(cur, this);
+			
+			if (curDist < dist) {
+				dist = curDist;
+				ret = cur;
+			}
+			
+		}
+		
+		return ret;
+		
 	}
 	
 	public double mag () {

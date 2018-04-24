@@ -15,4 +15,8 @@ public class AdvancingNumberOfBases extends Message{
 		this.numBases = numBases;
 	}
 	
+	public String toString () {
+		return "The batter will be attempting to achieve " + numBases;
+	}
+	
 }

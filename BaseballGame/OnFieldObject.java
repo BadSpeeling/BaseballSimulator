@@ -8,11 +8,11 @@ public class OnFieldObject {
 	Coordinate3D loc;
 	Coordinate3D lastLoc;
 	
-	private List <LocationTracker> tracker = new LinkedList <LocationTracker> ();
+	private List <LocationTracker> tracker;
 	
-	public OnFieldObject (Coordinate3D loc, Coordinate3D lastLoc, List <LocationTracker> tracker) {
-		this.loc = loc;
-		this.lastLoc = lastLoc;
+	public OnFieldObject (Coordinate3D loc, Coordinate3D lastLoc) {
+		this.loc = new Coordinate3D (loc.x,loc.y,loc.z);
+		this.lastLoc = new Coordinate3D (lastLoc.x,lastLoc.y,lastLoc.z);
 		this.tracker = new LinkedList <LocationTracker> ();
 	}
 	
@@ -22,6 +22,13 @@ public class OnFieldObject {
 	
 	public List <LocationTracker> getTracker () {
 		return tracker;
+	}
+	
+	public void move (Coordinate3D disp) {
+		lastLoc.x = loc.x;
+		lastLoc.y = loc.y;
+		lastLoc.z = loc.z;
+		loc.add(disp.x, disp.y, disp.z);
 	}
 	
 }

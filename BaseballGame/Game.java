@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Scanner;
 import javax.swing.*;
 
@@ -29,6 +30,8 @@ public class Game {
 	static final int SECONDBASE = 1;
 	static final int THIRDBASE = 2;
 	
+	final int WAIT;
+	
 	int gID = 0; //ID of the game being played. The default value is 0.
 	boolean extraInnings = false; //If the game has entered extra innings.
 	RuleSet rules; //Rules for the game. 
@@ -47,10 +50,11 @@ public class Game {
 	Stadium stadium;
 	GameDisplay view;
 	GameLogger log = new GameLogger ();
-	FieldEvent status = new FieldEvent ();
-	LinkedList <Base> bases = new LinkedList <Base> (); 
+	//FieldEvent status = new FieldEvent ();
+	Base [] bases = new Base [4]; 
+	static Queue <Message> messages = new LinkedList <Message> ();
 	
-	public Game (RuleSet rules, int id, GameTeam homeTeam, GameTeam awayTeam, Stadium stadium) {
+	public Game (RuleSet rules, int id, GameTeam homeTeam, GameTeam awayTeam, Stadium stadium, int wait) {
 
 		this.rules = rules;
 		this.stadium = stadium;
@@ -61,20 +65,25 @@ public class Game {
 		this.awayTeam = awayTeam;
 		curBatter = atBat.lineup.next();
 		curPitcher = inField.pitcher;
-
+		
+		WAIT = wait;
+		
 		view = new GameDisplay (500,500, this.stadium.dim.get("f"), stadium);
 		
-		bases.add(new Base (FieldConstants.firstBase(), BaseType.FIRST));
-		bases.add(new Base (FieldConstants.secondBase(), BaseType.SECOND));
-		bases.add(new Base (FieldConstants.thirdBase(), BaseType.THIRD));
-		bases.add(new Base (FieldConstants.homePlate(), BaseType.HOME));
+		bases[0] = (new Base (FieldConstants.firstBase(), BaseType.FIRST));
+		bases[1] = (new Base (FieldConstants.secondBase(), BaseType.SECOND));
+		bases[2] = (new Base (FieldConstants.thirdBase(), BaseType.THIRD));
+		bases[3] = (new Base (FieldConstants.homePlate(), BaseType.HOME));
 		
 		//view.drawField(-1*this.stadium.field.foulTerritory+1, this.stadium);
 		//view.drawFieldOutline();
-
+		
 	}
-
+	
 	public void fieldEvent (LinkedList <Fielder> onTheField, BallInPlay hitBall, List <Baserunner> runners, GamePlayer batter) {
+		
+		Fielder lastBallHandler = null;
+		Fielder currentlyHasBall = null;
 		
 		double time = 0;
 		
@@ -88,31 +97,40 @@ public class Game {
 		
 		//add flag to make new decisions
 		Message newFielderDes = new MakeNewDecisions();
-		OnFieldPlayer.messages.add(newFielderDes);
+		messages.add(newFielderDes);
 		
-		Baserunner newBaserunner = new Baserunner (batter,status,log);
+		Baserunner newBaserunner = new Baserunner (batter,log, BaseType.HOME);
+		hitBall.batter = newBaserunner;
 		
 		newBaserunner.batterBaseBrain(models, onTheField, hitBall);
 		runners.add(newBaserunner);
+
+		//place runners
+		for (Baserunner curRunner: runners) {
+			bases[curRunner.baseOn.num()].arriveAtBase(curRunner);
+		}
+		
+		//first always starts as a force out
+		bases[0].setForceOut(true);
+			
+		
+		//set force outs for rest of bases
+		for (int i = 1; i < bases.length; i++) {
+			
+			if (!bases[i-1].runnerOn()) {
+				break;
+			}
+
+			bases[i].setForceOut(true);
+			
+		}
 		
 		while (!hitBall.state.equals(BallStatus.DEAD)) {
 			
-			time += Physics.tick;
-			
-			if (hitBall.state.equals(BallStatus.IN_AIR)) {
-				view.drawBall(airModel.loc, 0x00FF00);
-			}
-
-			hitBall.tick(stadium, hitBall.thrown, status);
-			
-			//redraw how the field looks
-			view.drawFieldOutline();
-			view.drawBall(hitBall.lastLoc, 0x00000);
-			view.drawBall(hitBall.loc, 0xFF0000);
-			view.repaint();
-			
 			//process messages
-			for (Message cur: OnFieldPlayer.messages) {
+			for (Message cur: messages) {
+				
+				System.out.println(cur);
 				
 				if (cur instanceof AdvancingNumberOfBases) {
 										
@@ -125,120 +143,74 @@ public class Game {
 				
 				else if (cur instanceof MakeNewDecisions) {
 					
-					fielderToGetBall(onTheField,hitBall.modelBallDistance(false));
+					Fielder chasing = fielderToGetBall(onTheField,models.get("fM"));
+					decideRemainingFielders(onTheField,models.get("fM"), chasing);
 					
-					for (Fielder curFielder: onTheField) {
-						//curFielder.movementBrain(hitBall, models, bases);
-					}
+				}
+				
+				
+				else if (cur instanceof BaserunnerOutMsg) {
 					
+					runners.remove(((BaserunnerOutMsg) cur).runner);
+					view.drawBall(((BaserunnerOutMsg) cur).runner.lastLoc, 0x000000,1); //remove baserunner from view
+					
+				}
+				
+				else if (cur instanceof RunScoredMsg) {
+					runners.remove(((RunScoredMsg) cur).scorer);
 				}
 				
 			}
 			
-			/*
-			//players have been notified to make a new choice
-			if (status.newFielderDecisions) {
-				//update all fielders
-				for (Fielder cur: onTheField) {
-					cur.movementBrain(hitBall, models);
-				}
-				
-				status.newFielderDecisions = false; //flip status - this will be re flipped below if updates are needed
-				
+			messages.clear(); //clear out messages for next turn
+			
+			time += Physics.tick;
+						
+			if (hitBall.state.equals(BallStatus.IN_AIR)) {
+				view.drawBall(airModel.loc, 0x00FF00,0);
 			}
-			*/
+
+			hitBall.tick(stadium, hitBall.thrown);
+			
+			//redraw how the field looks
+			view.drawFieldOutline();
+			view.drawBall(hitBall.lastLoc, 0x00000,1);
+			view.drawBall(hitBall.loc, 0xFF0000,1);
+			view.repaint();
+			
+			if (currentlyHasBall != null) {
+				currentlyHasBall.throwingBrain(log, bases, runners, hitBall, onTheField);
+				currentlyHasBall = null;
+			}
+			
 			//move and draw location
 			for (Fielder cur: onTheField) {
-				cur.move(hitBall, status, log);
-				view.drawBall(cur.lastLoc, 0x000000);
-				view.drawBall(cur.loc, 0x008000);
+				cur.move(hitBall, log);
+				
+				//pick up ball
+				if (cur != lastBallHandler && (cur.loc.diff(hitBall.loc).mag() < 4) && hitBall.loc.z < cur.getReach()) {
+					cur.receiveBall(hitBall, log, runners);
+					currentlyHasBall = cur;
+					lastBallHandler = cur;
+					cur.flipHasBall();
+				}
+				
+				view.drawBall(cur.lastLoc, 0x000000,1);
+				view.drawBall(cur.loc, 0x008000,1);
 			}
-			
+						
 			//moves and draw location
 			for (Baserunner cur: runners) {
 				cur.run(bases);
-				view.drawBall(cur.lastLoc, 0x000000);
-				view.drawBall(cur.loc, 0x0000FF);
+				view.drawBall(cur.lastLoc, 0x000000,1);
+				view.drawBall(cur.loc, 0x0000FF,1);
 				
-				//check if runner crossing plate
-				if (cur.baseOn.equals(BaseType.HOME)) {
-					System.out.println("Run scored!");
-					runners.remove(cur);
-				}
-				
-			}
-			
-						
-			/* BALL THROWING POLICY:
-			 * 1) A fielder will update the field status to notify the game the that he will pick up the ball by updating FieldEvent.pickingUpBall
-			 * 2) On notification, the fielder will pick up the ball and the ball's status will be changed to FIELDED.  
-			 * the fielder will update the field status to announce he has picked up the ball
-			 * 3) The fielder will then throw the ball and FieldEvent.pickingUpBall will be set to null.  Set flag for fielder to remake decisions
-			 * The fielder will set the state of who is being thrown to, change the ball's status to THROWN and set the ball's thrown flag to true
-			 * 4) The fielder to receive the ball will continually check if they can catch the ball until it is within 2 feet of them.  Upon receiving throw
-			 * the ball's state should be set to as they were.  thrower and beingthrownTo states are reset
-			 * */
-
-			//process player picking up ball
-			if (status.receivingBall != null) {
-				status.receivingBall.receiveBall(hitBall, status, log);
-			}
-
-			//handle player throwing ball
-			if (status.hasBall != null && !hitBall.thrown) {
-				status.hasBall.throwingBrain(log, status, runners, hitBall);
-				status.receivingBall = null;
-			}
-
-			//check if fielder can receive throw. must be within 2 feet
-			if (status.beingThrownTo != null && (status.beingThrownTo.loc.diff(hitBall.loc).mag() < 2)) {
-				status.receivingBall = status.beingThrownTo;
-				status.beingThrownTo = null;
-				status.thrower = null;
-				hitBall.thrown = false;
-			}
-			
-			//check for outs
-			if (status.playerOut != null) {
-				System.out.println("An out was recorded.");
-				runners.remove(status.playerOut);
-				status.playerOut = null;
-			}
+			} 
 
 			try {
-				Thread.sleep(1);
+				Thread.sleep(WAIT);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-			
-			OnFieldPlayer.messages.clear(); //clear out messages for next turn
-
-		}
-				
-		/*
-		System.out.println(status.beingThrownTo);
-		System.out.println(status.thrower);
-		System.out.println(status.hasBall);
-		System.out.println(hitBall.thrown);
-		System.out.println(status.pickingUpBall);
-		System.out.println(hitBall.state);
-		*/
-		
-	}
-	
-	//resets the fielders on the bases and determines if a base is a force out
-	public void initBases () {
-		
-		boolean force = true;
-		
-		for (int i = 0; i < bases.size(); i++) {
-			
-			Base cur = bases.get(i);
-			cur.clear();
-			cur.setForceOut(force);
-			
-			if (!cur.runnerOn()) {
-				force = false;
 			}
 			
 		}
@@ -295,7 +267,7 @@ public class Game {
 	}
 	
 	//returns the fielder that can get the a hit ball the earliest.  their destination field will be properly updated
-	public Fielder fielderToGetBall (List <Fielder> fielders, BallInPlay fullModel) {
+	private Fielder fielderToGetBall (List <Fielder> fielders, BallInPlay fullModel) {
 		
 		double bestTime = Double.MAX_VALUE;
 		Fielder toRet = null;
@@ -308,7 +280,6 @@ public class Game {
 			double distance = cur.loc.diff(curFielder.loc).mag();
 			
 			if (distance < bestTime) {
-				System.out.println("go");
 				bestTime = distance;
 				toRet = curFielder;
 				loc = cur.loc;
@@ -322,7 +293,7 @@ public class Game {
 	}
 
 	//Swaps which team is fielding and which is batting.  To be used after an inning is over.
-	public GameState halfInningOver () {
+	private GameState halfInningOver () {
 
 		//end of game
 		if (!inningsCTR.top && inningsCTR.inning == rules.numInnings) {
@@ -332,19 +303,31 @@ public class Game {
 		System.out.println("Switching sides.");
 		inningsCTR.nextHalfInning();
 
-		bases.clear();
+		for (int i = 0; i < 4; i++) {
+			bases[i] = null;
+		}
 		
 		return GameState.STANDARD;
 
 	}
-
-	public void ballInPlay (BallInPlay hitBall) {
-
-		final double tick = .05; //how many seconds go by in each tick.  20 ticks per second
-
-
-
-	}
+	
+	/* 
+	 * determines the action for the remaining fielders.  assumes that status.chasingBall has been updated
+	 * @param model the ball in play being modelled
+	 * */
+	private void decideRemainingFielders (List <Fielder> fielders, BallInPlay model, Fielder chaser) {
+		
+		for (Fielder curFielder: fielders) {
+				
+			if (curFielder.destination == null) {
+				curFielder.movementBrain(model, bases,fielders,chaser);
+			}
+			
+		}
+		
+	} 
+	
+	
 
 	/*
 	 * GameState defines the state of a baseball game.  

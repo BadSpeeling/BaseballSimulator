@@ -1,29 +1,68 @@
+import java.util.List;
+
 public class Base extends OnFieldObject {
 	
 	private BaseType base;
 	private Fielder fielderOn = null;
 	private Baserunner runnerOn = null;
-	private Baserunner runnerAdvancingTo = null;
 	private boolean forceOut = false;
-	
-	public void setRunnerOn(Baserunner runnerOn) {
-		this.runnerOn = runnerOn;
+
+	public Base(Coordinate3D loc, BaseType base) {
+		super(loc, loc);
+		this.base = base;
 	}
-	
-	public void setAdvanceing (Baserunner runner) {
-		this.runnerAdvancingTo = runner;
-	}
-	
-	public Baserunner getAdvancingRunner () {
-		return runnerAdvancingTo;
-	}
-	
-	public boolean runnerOn() {
-		return runnerOn != null;
+
+	public BaseType getBase() {
+		return base;
 	}
 
 	public void setBase(BaseType base) {
 		this.base = base;
+	}
+
+	public Fielder getFielderOn() {
+		return fielderOn;
+	}
+	
+	public void leaveBase (Fielder blank) {
+		fielderOn = null;
+	}
+	
+	public void leaveBase (Baserunner blank) {
+		runnerOn = null;
+	}
+	
+	public void arriveAtBase (Fielder arriving) {
+		fielderOn = arriving;
+	}
+	
+	//baserunner reaching the base.  sends message if the baserunner is out
+	//forceOut is flipped since anytime a runner reaches a base safely a forceout cannot occur any longer
+	public void arriveAtBase (Baserunner arriving) {
+		
+		//fielder 
+		if (fielderOn != null && fielderOn.hasBall()) {
+			Game.messages.add(new RunnerOutMsg(this,arriving,fielderOn));
+		}
+		
+		else {
+			runnerOn = arriving; 
+			forceOut = false;
+			
+			if (base.equals(BaseType.HOME) && arriving.attempt != null) {
+				Game.messages.add(new RunScoredMsg(arriving));
+			}
+			
+		}
+ 		
+	}
+	
+	public boolean runnerOn () {
+		return runnerOn != null;
+	}
+
+	public Baserunner getRunnerOn() {
+		return runnerOn;
 	}
 
 	public boolean isForceOut() {
@@ -32,31 +71,6 @@ public class Base extends OnFieldObject {
 
 	public void setForceOut(boolean forceOut) {
 		this.forceOut = forceOut;
-	}
-
-	public Base(Coordinate3D loc, BaseType base) {
-		super(loc, null, null);
-		this.base = base;
-	}
-	
-	public void arriveAtBase (Fielder fielderOn) {
-		this.fielderOn = fielderOn;
-	}
-	
-	//return true if the base runner reached base safely, false if not
-	public boolean arriveAtBase (Baserunner runnerOn) {
-		
-		if (fielderOn == null) { 
-			this.runnerOn = runnerOn;
-			return true;
-		}
-		
-		return false;
-			
-	}
-	
-	public void clear () {
-		fielderOn = null;
 	}
 	
 }
