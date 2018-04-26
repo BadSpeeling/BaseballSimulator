@@ -4,6 +4,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import ball.BallInPlay;
+import datatype.Coordinate3D;
+import game.FieldConstants;
+import game.Game;
+import game.RuleSet;
+import main.BaseType;
+import main.Baserunner;
+import main.Fielder;
+import physics.Physics;
+import stadium.Stadium;
+import team.GameTeam;
+import team.Team;
+
 public class FielderTest {
 	
 	public static void main (String [] args) {
@@ -44,7 +57,7 @@ public class FielderTest {
 		allVals.add(stadium.dimCoors.get("rc"));
 		allVals.add(stadium.dimCoors.get("r"));
 		
-		BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(00),Physics.degreesToRads(80),100,stadium);
+		BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(30),Physics.degreesToRads(80),130,stadium);
 		
 		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, stadium,2);
 		
@@ -60,8 +73,11 @@ public class FielderTest {
 		
 		List <Baserunner> runners = new LinkedList <Baserunner> ();
 		
-		//runners.add(new Baserunner(g.curBatter, g.log, BaseType.THIRD));
-		runners.add(new Baserunner(g.curBatter, g.log, BaseType.SECOND));
+		Baserunner runner1 = new Baserunner(g.curBatter, g.log, BaseType.SECOND);
+		Baserunner runner2 = new Baserunner(g.curBatter, g.log, BaseType.FIRST);
+		
+		runners.add(runner1);
+		runners.add(runner2);
 		
 		g.fieldEvent(fielders, hitBall, runners, awayTeam.lineup.next());
 		
