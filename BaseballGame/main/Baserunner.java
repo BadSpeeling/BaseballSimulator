@@ -13,59 +13,113 @@ import messages.AdvancingNumberOfBases;
 import physics.Physics;
 import player.GamePlayer;
 import ratings.GeneralRatings;
+import stadium.Wall;
 
 public class Baserunner extends OnFieldPlayer {
 
 	public Queue <Coordinate3D> destinations;
 	public Coordinate3D destination = null;
 	public Coordinate3D lastLoc = new Coordinate3D (0,0,0);
-	public BaseType baseOn = BaseType.NONE;
+	public Base baseOn = null;
 	public GameLogger log;
-	public Base attempt;
+	public Base attempt = null;
 	private Base homeBase;
 	private boolean advancing = true;
-	
-	Baserunner (GameLogger log, GeneralRatings gRatings, String fName, BaseType on) {
-		super (on.equiv(), gRatings, fName);
+
+	Baserunner (GameLogger log, GeneralRatings gRatings, String fName, int color) {
+		super (FieldConstants.homePlate(), gRatings, fName, color);
 		destinations = new LinkedList <Coordinate3D> ();
-		baseOn = on;
 		this.fName = fName;
 		this.log = log;
 	}
 
-	public Baserunner (GamePlayer other, GameLogger log, BaseType on) {
-		super(on.equiv(), other.gRatings, other.fullName());
+	public Baserunner (GamePlayer other, GameLogger log, int color) {
+		super(FieldConstants.homePlate(), other.gRatings, other.fullName(), color);
 		destinations = new LinkedList <Coordinate3D> ();
 		this.log = log;
-		baseOn = on;
 	}
-	
+
+	public void advancing () {
+		advancing = true;
+	}
+
 	public void setHomeBase (Base home) {
 		homeBase = home;
 	}
-	
+
 	public Base getHomeBase () {
 		return homeBase;
 	}
 
-	public void baserunnerBrain (int basesTake) {
+	//adds the bases to run to to the queue
+	//returns whether of not the player will be moving
+	public boolean baserunnerBrain (int basesTake) {
 
-		BaseType temp = baseOn;
-
+		BaseType temp = baseOn.getBase();
+		
 		for (int i = 0; i < basesTake; i++) {
 			destinations.add(temp.nextDestination());
 			temp = temp.nextBase();
 		}
-
+		
+		return !destinations.isEmpty();
+		
+	}
+	
+	public boolean run (Base [] bases, List <Wall> walls) {
+		
+		if (destination == null) {
+			
+			//we are done running for now
+			if (destinations.isEmpty()) {
+				attempt = null;
+				return false;
+			}
+			
+			else {
+				
+				//set destination
+				destination = destinations.poll();
+				
+				if (baseOn != null) {
+					baseOn.leaveBase(this);
+					baseOn = null;
+				}
+				
+				int baseNum = destination.equivBase().num();
+				
+				if (baseNum != -1)
+					attempt = bases[baseNum];
+				
+			}
+			
+		}
+		
+		else {
+			
+			move(destination.diff(loc));
+			
+			if (Physics.within(destination.diff(loc), 2.0)) {
+				if (attempt.arriveAtBase(this))
+					baseOn = attempt;
+				destination = null;
+			}
+			
+		}
+		
+		return true;
+		
 	}
 
-	public void setBaseOn (BaseType set) {
+	public void setBaseOn (Base set) {
 		baseOn = set;
-		loc = baseOn.equiv();
+		loc = baseOn.getBase().equiv();
 	}
 
 	//determines which base the batter can get to
-	public void batterBaseBrain (Map <String, BallInPlay> models, List <Fielder> fielders, BallInPlay curBall) {
+	public void batterBaseBrain (Map <String, BallInPlay> models, List <Fielder> fielders, BallInPlay curBall, Base [] bases) {
+		
+		baseOn = bases[3];
 
 		int basesTake = 0;
 		//find the time it will take for the ball to be fielded
@@ -95,91 +149,29 @@ public class Baserunner extends OnFieldPlayer {
 
 	}
 	
+	public boolean isAttempting () {
+		return attempt != null;
+	}
+	
+	//run back to the home base.  set advancing to false
 	public void returnToHomeBase () {
+		
+		if (homeBase == null) {
+			return;
+		}
 		
 		advancing = false;
 		destination = null;
 		destinations.clear();
 		BaseType on = attempt.getBase();
-		
+
 		while (on != homeBase.getBase()) {
 			on = on.prevBase();
 			destinations.add(on.equiv());
-		}
-		
-		destination = destinations.poll();
-		
-	}
-	
-	//run to the destination, clear for next destination if reached
-	public void run (Base [] bases) {
-
-		//get a new destination
-		if (destination == null) {
-
-			//we have a new base to go to
-			if (!destinations.isEmpty()) {
-
-				destination = destinations.poll();
-				
-				int baseGoingTo = -1;
-				
-				//get pointer to base attemping
-				if (advancing) {
-					baseGoingTo = baseOn.nextBase().num();
-				}
-				
-				else {
-					baseGoingTo = baseOn.prevBase().num();
-				}
-				
-				if (attempt != null) {
-					attempt.leaveBase(this);
-				}
-
-				attempt = bases[baseGoingTo];
-
-			}
-			
-			//we are done advancing bases
-			else {
-				attempt = null;
-			}
-
+			System.out.println(on);
 		}
 
-		//run to the new destination
-		else {
-			
-			Coordinate3D toGo = this.destination.diff(this.loc);
-
-			//not close enough to destination, keep on going
-			if (toGo.mag() > 1) {
-
-				double angle = Physics.angleFromXAxis(toGo);
-				double speed = gRats.runSpeed();
-
-				this.lastLoc.x = this.loc.x;
-				this.lastLoc.y = this.loc.y;
-
-				this.loc.x += Physics.tick*speed*Math.cos(angle);
-				this.loc.y += Physics.tick*speed*Math.sin(angle);
-			}
-
-			//arrived at base
-			else {
-
-				attempt.arriveAtBase(this);
-
-				if (destination.equals(FieldConstants.firstBase())) {baseOn = BaseType.FIRST;}
-				else if (destination.equals(FieldConstants.secondBase())) {baseOn = BaseType.SECOND;}
-				else if (destination.equals(FieldConstants.thirdBase())) {baseOn = BaseType.THIRD;} 
-				else {baseOn = BaseType.HOME;}
-				destination = null; 
-				
-			}
-
-		}
+		homeBase.setForceOut(true);
 
 	}
 

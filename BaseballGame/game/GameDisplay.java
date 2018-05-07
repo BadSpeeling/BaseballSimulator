@@ -5,6 +5,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 
 import datatype.Coordinate3D;
 import stadium.Stadium;
+import stadium.Wall;
 
 public class GameDisplay extends JFrame {
 	
@@ -44,20 +46,27 @@ public class GameDisplay extends JFrame {
 		int basePathDistance = 90;
 		
 		int offset = curStadium.dim.get("f");
-		Coordinate3D leftCorner = curStadium.dimCoors.get("l");
-		Coordinate3D leftCenterCorner = curStadium.dimCoors.get("lc");
-		Coordinate3D centerCorner = curStadium.dimCoors.get("c");
-		Coordinate3D rightCenterCorner = curStadium.dimCoors.get("rc");
-		Coordinate3D rightCorner = curStadium.dimCoors.get("r");
+		
+		List <Wall> walls = curStadium.getWalls();
+		Wall w1 = walls.get(0);
+		Wall w2 = walls.get(1);
+		Wall w3 = walls.get(2);
+		Wall w4 = walls.get(3);
+		
+		Coordinate3D leftCorner = w1.getP1();
+		Coordinate3D leftCenterCorner = w2.getP1();
+		Coordinate3D centerCorner = w3.getP1();
+		Coordinate3D rightCenterCorner = w4.getP1();
+		Coordinate3D rightCorner = w4.getP2();
 				
 		Graphics2D leftFieldLine = board.createGraphics();
 		leftFieldLine.setColor(Color.WHITE);
-		leftFieldLine.draw(new Line2D.Double(offset, ySubtract-(offset), offset, ySubtract-(curStadium.dimCoors.get("l").y+offset)));
+		leftFieldLine.draw(new Line2D.Double(offset, ySubtract-(offset), offset, ySubtract-(leftCorner.y+offset)));
 		leftFieldLine.dispose();
 		
 		Graphics2D rightFieldLine = board.createGraphics();
 		rightFieldLine.setColor(Color.WHITE);
-		rightFieldLine.draw(new Line2D.Double(offset, ySubtract-(offset), offset+curStadium.dimCoors.get("r").x, ySubtract-(offset)));
+		rightFieldLine.draw(new Line2D.Double(offset, ySubtract-(offset), offset+rightCorner.x, ySubtract-(offset)));
 		rightFieldLine.dispose();
 		
 		Graphics2D secondBaseLine = board.createGraphics();
@@ -133,16 +142,40 @@ public class GameDisplay extends JFrame {
 	
 	}
 	
-	public void drawBall (Coordinate3D hitBall, int color, int size) {
+	public void removeSpot (Coordinate3D hitBall, int size) {
 		
-		int i = (int)hitBall.x;
-		int j = (int)hitBall.y;
+		int i = (int)hitBall.x+offset;
+		int j = (int)hitBall.y+offset;
+		
+		if (i-size < 0 || i+size > board.getHeight() || j-size < 0 || j+size > board.getWidth()) {
+			return;
+		}
 		
 		for (int x = i-size; x <= i+size; x++) {
 
 			for (int y = j-size; y <= j+size; y++) {
 				//System.out.println(board.getHeight()-(y+offset));
-				board.setRGB(x+offset, board.getHeight()-(y+offset), color);
+				board.setRGB(x, board.getHeight()-(y), 0x000000);
+			}
+
+		}
+		
+	}
+	
+	public void drawBall (Coordinate3D hitBall, int color, int size) {
+		
+		int i = (int)hitBall.x+offset;
+		int j = (int)hitBall.y+offset;
+		
+		if (i-size < 0 || i+size > 450 || j-size < 0 || j+size > 450) {
+			return;
+		}
+		
+		for (int x = i-size; x <= i+size; x++) {
+
+			for (int y = j-size; y <= j+size; y++) {
+				//System.out.println(board.getHeight()-(y+offset));
+				board.setRGB(x, board.getHeight()-(y), color);
 			}
 
 		}

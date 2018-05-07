@@ -50,14 +50,9 @@ public class FielderTest {
 		Stadium stadium = new Stadium ();
 		stadium.loadDimensions(input);
 
-		LinkedList <Coordinate3D> allVals = new LinkedList <Coordinate3D> ();
-		allVals.add(stadium.dimCoors.get("l"));
-		allVals.add(stadium.dimCoors.get("lc"));
-		allVals.add(stadium.dimCoors.get("c"));
-		allVals.add(stadium.dimCoors.get("rc"));
-		allVals.add(stadium.dimCoors.get("r"));
-		
-		BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(30),Physics.degreesToRads(80),130,stadium);
+
+		/*
+		BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(45),Physics.degreesToRads(80),105,stadium);
 		
 		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, stadium,2);
 		
@@ -73,14 +68,14 @@ public class FielderTest {
 		
 		List <Baserunner> runners = new LinkedList <Baserunner> ();
 		
-		Baserunner runner1 = new Baserunner(g.curBatter, g.log, BaseType.SECOND);
-		Baserunner runner2 = new Baserunner(g.curBatter, g.log, BaseType.FIRST);
+		Baserunner runner1 = new Baserunner(g.curBatter, g.log);
+		Baserunner runner2 = new Baserunner(g.curBatter, g.log);
 		
 		runners.add(runner1);
 		runners.add(runner2);
 		
 		g.fieldEvent(fielders, hitBall, runners, awayTeam.lineup.next());
-		
+		*/
 	}
 	
 }

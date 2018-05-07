@@ -18,6 +18,7 @@ import physics.Physics;
 import player.GamePlayer;
 import player.Position;
 import ratings.FieldingRatings;
+import stadium.Wall;
 
 //a player that trys to record outs
 public class Fielder extends OnFieldPlayer {
@@ -28,27 +29,37 @@ public class Fielder extends OnFieldPlayer {
 	public Coordinate3D destination = null; //the coordinate the fielder wants to get to. should be null if the decision needs to be made
 	public FielderDecision action = FielderDecision.UNKNOWN;
 	public String fullName;
-	public LinkedList <Coordinate3D> dimensions; //TODO make static
 	public GameLogger log;
 	public Base baseGuard = null;
 	private boolean hasBall = false;
 	private BallInPlay ball = null;
-	private double actionTime = 0;
 	private Coordinate3D throwingDestination = null;
 	
-	public Fielder (GameLogger log, Coordinate3D loc, GamePlayer player, LinkedList <Coordinate3D> dimensions) {
-		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName());
+	public Fielder (GameLogger log, Coordinate3D loc, GamePlayer player, int color) {
+		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName(), color);
 		fRats = player.fRatings;
 		gRats = player.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
 		this.position = player.pos;
 		fullName = player.fullName();
-		this.dimensions = dimensions;
 		this.log = log;
+	}
+	
+	public Fielder (GamePlayer cur, int color) {
+		super(Coordinate3D.standardPos(cur.pos), cur.gRatings, cur.fullName(), color);
+		fRats = cur.fRatings;
+		gRats = cur.gRatings;
+		lastLoc = new Coordinate3D(0,0,0);
+		this.position = cur.pos;
+		fullName = cur.fullName();
 	}
 
 	public Coordinate3D getThrowingDestination() {
 		return throwingDestination;
+	}
+	
+	public void resetLoc () {
+		loc = Coordinate3D.standardPos(position);
 	}
 
 	public void setThrowingDestination(Coordinate3D throwingDestination) {
@@ -67,8 +78,9 @@ public class Fielder extends OnFieldPlayer {
 	public void decideInitAction (BallInPlay curBall) {
 
 	}
-
-	public void throwBall (BallInPlay toThrow) {
+	
+	//post condition: throwingDestination set to null
+	public void throwBall (BallInPlay toThrow, Base [] bases) {
 
 		double throwSpeed = gRats.throwSpeed();
 		Coordinate3D spot = throwingDestination.diff(this.loc);
@@ -77,19 +89,24 @@ public class Fielder extends OnFieldPlayer {
 		toThrow.thrown = true;
 		ball = null;
 		hasBall = false;
+		throwingDestination = null;
 		toThrow.state = BallStatus.THROWN;
-
+		
+		//run to nearest base after throwing ball, set base
+		destination = loc.closest(Coordinate3D.basesInOrder());
+		
+		//dont update if outfielder
+		if (!position.isOutField())
+			baseGuard = bases[destination.equivBase().num()];
+		
 	}
 	
-	public double getActionTime () {
-		return actionTime;
-	}
-	
-	//decides who to throw the ball to.  status will be updated to rep who is throwing and who is being thrown to
-	public void throwingBrain (GameLogger log, Base [] bases, List <Baserunner> runners, BallInPlay curBall, List <Fielder> fielders) {
+	//decides who to throw the ball to, or set a new destination to run to
+	//kill the play if there is no throw or action needed to be made
+	public void throwingBrain (Base [] bases, List <Baserunner> runners, BallInPlay curBall, List <Fielder> fielders) {
 
-		//only do something if there are no runners
-		if (!runners.isEmpty() && destination == null) {
+		//only do something if there are runners
+		if (!runners.isEmpty()) {
 			
 			Baserunner firstAdvancing = null;
 			
@@ -102,9 +119,13 @@ public class Fielder extends OnFieldPlayer {
 				
 			}
 			
-			//no one is advancing, the play should end
 			if (firstAdvancing == null) {
 				curBall.state = BallStatus.DEAD;
+			}
+			
+			//no one is advancing, the play should end
+			if (firstAdvancing == null) {
+				//curBall.state = BallStatus.DEAD;
 				return;
 			}
 			
@@ -124,30 +145,42 @@ public class Fielder extends OnFieldPlayer {
 			if (throwingDestination == null) {
 
 				baseGuard = targetBase;
-				setDestination(targetBase.loc);
+				setDestination(targetBase.loc,bases);
 
 			}
 			
 			//add time for transfer
 			else {
-				actionTime = gRats.gloveToHandTime();
+				setActionTimer(gRats.windUpTime());
 			}
 
+		}
+		
+		else {
+			curBall.state = BallStatus.DEAD;
 		}
 
 	}
 
-	//sets the fielders destination equals to a copy of param
-	public void setDestination (Coordinate3D dest) {
+	//sets the fielders destination equals to a copy of param.  sets baseGuard val
+	public void setDestination (Coordinate3D dest, Base [] bases) {
 		destination = dest.copy();
+		
+		int val = destination.equivBase().num();
+		
+		//set guard value
+		if (val != -1)
+			baseGuard = bases[val];
+
+		
 	}
 
 	/*controls all decisions regarding movement the fielder need to make.  flags actions that need to be taken
 	 *curBall - the actual ball that was hit
 	 *model - models of the ending position of balls that were hit
-	 *returns the type of base the player is covering
+	 *returns whether the player is moving
 	 */
-	public void movementBrain (BallInPlay model, Base [] bases, List <Fielder> allFielders, Fielder ballChaser) {
+	public boolean movementBrain (BallInPlay model, Base [] bases, List <Fielder> allFielders, Fielder ballChaser, List <Wall> walls) {
 
 		//set destination to stay in same place
 		destination = loc;
@@ -201,9 +234,7 @@ public class Fielder extends OnFieldPlayer {
 			//OF
 			else {
 
-				Coordinate3D loc = playerChasingBall.loc;
-				loc.add(RandomNumber.roll(-10, 10), RandomNumber.roll(-10, 10), 0);
-				destination = loc;
+				return false;
 
 			}
 
@@ -217,7 +248,17 @@ public class Fielder extends OnFieldPlayer {
 			}
 
 		}
-
+		
+		//leave base if they were on one
+		if (baseGuard != null) {
+			baseGuard.leaveBase(this);
+		}
+		
+		setDestination(destination,bases);
+		
+		return destination != null;
+		
+		/*
 		//update the pointer to targetBase if fielder is running to a base
 		if (destination.equals(FieldConstants.firstBase())) {
 			baseGuard = bases[(BaseType.FIRST.num())];
@@ -234,15 +275,12 @@ public class Fielder extends OnFieldPlayer {
 		else if (destination.equals(FieldConstants.homePlate())) {
 			baseGuard = bases[(BaseType.HOME.num())];
 		}
+		*/
 
-	}
-	
-	public void tickActionTimer () {
-		actionTime -= Physics.tick;
 	}
 
 	//updates the player location
-	public void move (BallInPlay curBall, GameLogger log) {
+	public boolean run (Base [] bases, List <Wall> walls) {
 		
 		//only move if theres somewhere to go
 		if (destination != null) {
@@ -252,37 +290,32 @@ public class Fielder extends OnFieldPlayer {
 
 			//we are on the base
 			if (toGo.mag() < 1) {
+				
 				destination = null; //remove destination
 
 				//update the base
 				if (baseGuard != null) {
 					baseGuard.arriveAtBase(this);
 				}
-
+				
 			}
 
 			//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
-			if (Physics.calcPythag(toGo.x, toGo.y) > .25 && Physics.handleCollision(dimensions, this.loc) == 0) {
+			else if (Physics.handleCollision(walls, this.loc) == 0) {
 
-				double angleToSpot = Physics.angleFromXAxis(toGo);
-				double yDisplacement = runSpeed * Math.sin(angleToSpot) * Physics.tick;
-				double xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
+				move(toGo);
 
-				//move the player
-				lastLoc.x = loc.x;
-				lastLoc.y = loc.y;
-				loc.add(xDisplacement, yDisplacement, 0);
-
-				if (ball != null) {
-					ball.move(new Coordinate3D(xDisplacement, yDisplacement,0));
+				if (hasBall) {
+					ball.move(toGo, gRats.runSpeed());
 				}
 
 			}
-
-			//set flag that the player is next to the ball and will pick it up
-
+			
+			return true;
 
 		}
+		
+		return false;
 
 	}
 
@@ -318,18 +351,23 @@ public class Fielder extends OnFieldPlayer {
 		return true;
 
 	}
+	
+	public void resetHasBall () {
+		hasBall = false;
+	}
 
 	//return true if picking up ball was successful
 	public boolean pickUpBall (BallInPlay ball) {
-		actionTime = gRats.gloveToHandTime();
+		setActionTimer(gRats.gloveToHandTime());
 		this.ball = ball;
+		this.hasBall = true;
 		return true;
 	}
 
 	//return the LocationTracker of the first reachable spot.  returns the final resting spot if nowhere is reachable
 	public LocationTracker firstReachableSpot (BallInPlay fullFlightModel) {
 
-		final int SLACK = 10;
+		final int SLACK = 15;
 
 		List <LocationTracker> flyBallModel = fullFlightModel.getTracker();
 

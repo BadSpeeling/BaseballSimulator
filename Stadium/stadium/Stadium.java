@@ -1,5 +1,7 @@
 package stadium;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 import datatype.Coordinate3D;
@@ -15,7 +17,8 @@ public class Stadium {
 
 	public HashMap <String, Integer> dim = new HashMap <String, Integer> ();
 	//FieldMatrix field;
-	public HashMap <String, Coordinate3D> dimCoors = new HashMap <String, Coordinate3D> (); //stores the xy coordinate of the dims
+	private List <Wall> walls = new LinkedList <Wall> (); //stores the xy coordinate of the dim
+
 	public int max;
 
 	/* Loads the dimensions of the field into dimensions map
@@ -64,12 +67,15 @@ public class Stadium {
 		double xR = dim.get("r");
 		double yR = 0;
 
-		dimCoors.put("l", new Coordinate3D(xBegin, yBegin, 0));
-		dimCoors.put("lc", new Coordinate3D(xLC, yLC, 0));
-		dimCoors.put("c", new Coordinate3D(xC, yC, 0));
-		dimCoors.put("rc", new Coordinate3D(xRC, yRC, 0));
-		dimCoors.put("r", new Coordinate3D(xR, yR, 0));
+		walls.add(new Wall(xBegin,yBegin,xLC,yLC,10));
+		walls.add(new Wall(xLC,yLC,xC,yC,10));
+		walls.add(new Wall(xC,yC,xRC,yRC,10));
+		walls.add(new Wall(xRC,yRC,xR,yR,10));
 
+	}
+	
+	public List<Wall> getWalls() {
+		return walls;
 	}
 
 }

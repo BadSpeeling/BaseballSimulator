@@ -6,11 +6,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import datatype.Coordinate3D;
+import game.Game;
 import main.Baserunner;
 import main.Fielder;
 import main.OnFieldObject;
+import messages.BallOverWallMsg;
 import physics.Physics;
 import stadium.Stadium;
+import stadium.Wall;
 
 //a batted ball that obeys basic laws of physics.  measurments in feet and seconds
 public class BallInPlay extends OnFieldObject {
@@ -25,13 +28,12 @@ public class BallInPlay extends OnFieldObject {
 	public boolean canRecordOut = true;
 	public boolean thrown = false;
 	public InPlayType type;
-	public LinkedList <Coordinate3D> allVals;
 	public Stadium stad;
 	public Baserunner batter = null;
 	private Fielder holding = null;
 
-	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad) {
-		super(loc,loc);
+	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad, int color) {
+		super(loc,loc, color);
 		this.launchSpeed = launchSpeed;
 		this.launchAngle = launchAngle;
 		this.launchDir = launchDir;
@@ -56,25 +58,16 @@ public class BallInPlay extends OnFieldObject {
 			type = InPlayType.FLYBALL;
 		}
 
-		//loads all the walls that the ball could hit
-		allVals = new LinkedList <Coordinate3D> ();
-		allVals.add(stad.dimCoors.get("l"));
-		allVals.add(stad.dimCoors.get("lc"));
-		allVals.add(stad.dimCoors.get("c"));
-		allVals.add(stad.dimCoors.get("rc"));
-		allVals.add(stad.dimCoors.get("r"));
-
 	}
 
 	public BallInPlay (BallInPlay copy) {
 
-		super(copy.loc, copy.loc);
+		super(copy.loc, copy.loc, copy.getColor());
 		this.launchSpeed = copy.launchSpeed;
 		this.launchAngle = copy.launchAngle;
 		this.launchDir = copy.launchDir;
 		this.velocity = new Coordinate3D (copy.velocity.x, copy.velocity.y, copy.velocity.z);
 		this.state = copy.state;
-		this.allVals = copy.allVals;
 		this.stad = copy.stad;
 
 	}
@@ -86,7 +79,7 @@ public class BallInPlay extends OnFieldObject {
 	public void setHolding(Fielder holding) {
 		this.holding = holding;
 	}
-	
+
 	//returns a BallInPlay that's loc is either the place it makes contact with ground or last resting spot
 	//inAir - if the ball modelling should stop when it is in the air
 	public BallInPlay modelBallDistance (boolean inAir) {
@@ -104,7 +97,7 @@ public class BallInPlay extends OnFieldObject {
 				copy.track(new LocationTracker(copy.loc, time,true));
 
 
-				copy.tick(stad, true);
+				copy.tick(stad, true, true);
 
 			} while (copy.canRecordOut);
 
@@ -117,7 +110,7 @@ public class BallInPlay extends OnFieldObject {
 
 			//starts tracking the ball after it cant be an out anymore
 			do {
-				copy.tick(stad, true);
+				copy.tick(stad, true, true);
 				time += Physics.tick;
 				ctr++;
 
@@ -138,7 +131,9 @@ public class BallInPlay extends OnFieldObject {
 	}
 
 	//batted: true if ball is hit by a bat, false if the ball is thrown by a fielder
-	public void tick (Stadium stad, boolean batted) {
+	public void tick (Stadium stad, boolean batted, boolean model) {
+
+		List <Wall> walls = stad.getWalls();
 
 		//controls a ball that is not being thrown by fielders
 		if (state.equals(BallStatus.IN_AIR) || state.equals(BallStatus.ON_GROUND)) {
@@ -155,7 +150,7 @@ public class BallInPlay extends OnFieldObject {
 			}
 
 			//this can be improved.  we clip into slack slightly, but it should never go through wall unless the tick is very high
-			int res = Physics.handleCollision(allVals, loc);
+			int res = Physics.handleCollision(walls, loc);
 
 			if (res == 1) {
 
@@ -183,6 +178,12 @@ public class BallInPlay extends OnFieldObject {
 
 			}
 
+			else if (res == 3) {
+				if (!model) {
+					Game.messages.add(new BallOverWallMsg(canRecordOut, batter));
+				}
+			}
+
 			Coordinate3D newPos = Physics.tickPos(loc, velocity);
 
 			Coordinate3D accl = Physics.calcAccel(this);
@@ -205,15 +206,15 @@ public class BallInPlay extends OnFieldObject {
 		//ball being thrown by fielders
 		else if (state.equals(BallStatus.THROWN)) {
 			Coordinate3D newPos = Physics.tickPos(loc, velocity);
-			velocity.multByFactor(.9992);
+			velocity.multByFactor(.9995);
 			lastLoc = loc;
 			loc = newPos;
 		}
-		
+
 		//the ball should follow the velocity of the player carrying it
 		else if (state.equals(BallStatus.CARRIED)) {
-			
-			
+
+
 		}
 
 	}
@@ -225,6 +226,7 @@ public class BallInPlay extends OnFieldObject {
 
 	//handles a wall collision
 	//can be solved by making sure the ball is within the x coordiantes of the end points
+	//@depracated
 	public void handleCollision (HashMap <String, Coordinate3D> dims) {
 
 		double slack = .5;  //how close the ball must be to the wall for it to count as a collision

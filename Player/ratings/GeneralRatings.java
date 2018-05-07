@@ -12,7 +12,7 @@ public class GeneralRatings {
 	}
 	
 	public double gloveToHandTime () {
-		return 1.0;
+		return .5;
 	}
 	
 	public double windUpTime () {
@@ -21,7 +21,7 @@ public class GeneralRatings {
 	
 	//in ft/s
 	public double throwSpeed () {
-		return 80;
+		return 100;
 	}
 	
 }
