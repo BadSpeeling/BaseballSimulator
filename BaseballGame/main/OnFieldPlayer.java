@@ -16,13 +16,15 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 	private double height = 6; //ft
 	private double wingspan = 2;
 	private double actionTimer = 0;
+	private int id;
 	
 	private List <LocationTracker> tracker = new LinkedList <LocationTracker> ();
 	
-	public OnFieldPlayer(Coordinate3D loc, GeneralRatings gRats, String fName, int color) {
+	public OnFieldPlayer(Coordinate3D loc, GeneralRatings gRats, String fName, int color, int id) {
 		super(loc, loc.copy(), color);
 		this.gRats = gRats;
 		this.fName = fName;
+		this.id = id;
 	}
 	
 	public abstract boolean run (Base [] bases, List <Wall> walls);
@@ -42,6 +44,10 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 		lastLoc.y = loc.y;
 		loc.add(xDisplacement, yDisplacement, 0);
 		
+	}
+	
+	public int getID () {
+		return id;
 	}
 	
 	public void setActionTimer (double val) {

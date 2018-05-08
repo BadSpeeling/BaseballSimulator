@@ -26,15 +26,15 @@ public class Baserunner extends OnFieldPlayer {
 	private Base homeBase;
 	private boolean advancing = true;
 
-	Baserunner (GameLogger log, GeneralRatings gRatings, String fName, int color) {
-		super (FieldConstants.homePlate(), gRatings, fName, color);
+	public Baserunner (GameLogger log, GeneralRatings gRatings, String fName, int color, int id) {
+		super (FieldConstants.homePlate(), gRatings, fName, color, id);
 		destinations = new LinkedList <Coordinate3D> ();
 		this.fName = fName;
 		this.log = log;
 	}
 
 	public Baserunner (GamePlayer other, GameLogger log, int color) {
-		super(FieldConstants.homePlate(), other.gRatings, other.fullName(), color);
+		super(FieldConstants.homePlate(), other.gRatings, other.fullName(), color, other.pID);
 		destinations = new LinkedList <Coordinate3D> ();
 		this.log = log;
 	}
@@ -193,7 +193,7 @@ public class Baserunner extends OnFieldPlayer {
 	}
 
 	public String toString () {
-		return this.fName;
+		return this.fName + " " + getID();
 	}
 
 }

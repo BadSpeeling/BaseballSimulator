@@ -35,8 +35,8 @@ public class Fielder extends OnFieldPlayer {
 	private BallInPlay ball = null;
 	private Coordinate3D throwingDestination = null;
 	
-	public Fielder (GameLogger log, Coordinate3D loc, GamePlayer player, int color) {
-		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName(), color);
+	public Fielder (GameLogger log, Coordinate3D loc, GamePlayer player, int color, int id) {
+		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName(), color, id);
 		fRats = player.fRatings;
 		gRats = player.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
@@ -46,7 +46,7 @@ public class Fielder extends OnFieldPlayer {
 	}
 	
 	public Fielder (GamePlayer cur, int color) {
-		super(Coordinate3D.standardPos(cur.pos), cur.gRatings, cur.fullName(), color);
+		super(Coordinate3D.standardPos(cur.pos), cur.gRatings, cur.fullName(), color, cur.pID);
 		fRats = cur.fRatings;
 		gRats = cur.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
@@ -434,7 +434,7 @@ public class Fielder extends OnFieldPlayer {
 	}
 
 	public String toString () {
-		return fullName;
+		return fullName + "" + getID();
 	}
 
 }

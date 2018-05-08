@@ -39,7 +39,7 @@ public class InningTest {
 		GameTeam awayTeam = away.makeInGameTeam(true);
 
 		RuleSet ruleSet = new RuleSet (rules);
-		ruleSet.numInnings = 3;
+		ruleSet.numInnings = 9;
 
 		Scanner input = null;
 		try {
@@ -57,7 +57,10 @@ public class InningTest {
 		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, stadium,2);
 
 		g.playGame();
-
+		
+		System.out.println(g.awayScore.runs);
+		System.out.println(g.homeScore.runs);
+		
 	}
 
 }

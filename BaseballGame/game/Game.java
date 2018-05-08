@@ -19,6 +19,7 @@ import main.BaseType;
 import main.Baserunner;
 import main.Fielder;
 import main.MakeNewDecisions;
+import main.OnFieldObject;
 import main.OnFieldPlayer;
 import messages.AdvancingNumberOfBases;
 import messages.BallOverWallMsg;
@@ -38,7 +39,7 @@ import team.GameTeam;
  * */
 
 public class Game {
-	
+		
 	private final int WHITE = 0xFFFFFF;
 	private final int BLACK = 0x000000;
 	
@@ -110,15 +111,6 @@ public class Game {
 	
 	public void fieldEvent (LinkedList <Fielder> onTheField, BallInPlay hitBall, List <Baserunner> runners, GamePlayer batter) {
 		
-		/*
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		*/
-		
 		Fielder lastBallHandler = null;
 		Fielder currentlyHasBall = null;
 		
@@ -157,6 +149,10 @@ public class Game {
 			
 		}
 		
+		for (Fielder curFielder: onTheField) {
+			drawObject(curFielder);
+		}
+		
 		List <OnFieldPlayer> movingPlayers = new LinkedList <OnFieldPlayer> ();
 		List <Baserunner> runnersRemove =  new LinkedList <Baserunner> ();
 		
@@ -184,7 +180,7 @@ public class Game {
 				}
 				
 				else if (cur instanceof RunnerOutMsg) {
-					runnersRemove.add(((RunnerOutMsg)cur).runner);
+					runnerOut(runners,movingPlayers,((RunnerOutMsg) cur).runner);
 				}
 				
 				else if (cur instanceof MakeNewDecisions) {
@@ -197,8 +193,8 @@ public class Game {
 				
 				else if (cur instanceof FlyballCaughtMsg) {
 										
-					runnersRemove.add(((FlyballCaughtMsg)cur).runner);
-								
+					runnerOut(runners,movingPlayers,((FlyballCaughtMsg) cur).runner);
+					
 					for (Baserunner curRunner: runners) {
 						curRunner.returnToHomeBase();
 					}
@@ -207,21 +203,18 @@ public class Game {
 				
 				else if (cur instanceof RunScoredMsg) {
 					Baserunner curRunner = ((RunScoredMsg) cur).scorer;
-					toUpdate.runs++;
-					runners.remove(curRunner);
-					movingPlayers.remove(curRunner);
-					view.drawBall(curRunner.loc, 0x000000, 1);
-					toUpdate.runs++;
+					runScored(runners, movingPlayers, curRunner);
 				}
 				
 				else if (cur instanceof ForceOutMsg) {
 					
 					ForceOutMsg msg1 = (ForceOutMsg)cur;
 					
+					//determine who the forceout was
 					for (Baserunner curRunner: runners) {
 						
 						if (curRunner.attempt == msg1.outAt) {
-							runnersRemove.add(curRunner);
+							runnerOut(runners,movingPlayers,curRunner);
 						}
 						
 						break;
@@ -232,26 +225,16 @@ public class Game {
 				
 				else if (cur instanceof BallOverWallMsg) {
 					
-					for (Baserunner curRunner: runners) {
-						toUpdate.runs++;
-						runners.remove(curRunner);
-						movingPlayers.remove(curRunner);
-						view.drawBall(curRunner.loc, 0x000000, 1);
-					}
+					while (!runners.isEmpty())
+						runScored(runners,movingPlayers,runners.get(0));
+					
 					
 					hitBall.state = BallStatus.DEAD;
 					
 				}
 				
 			}
-			
-			//remove baserunners
-			for (Baserunner rem: runnersRemove) {
-				removeRunner(runners,movingPlayers,rem);
-			}
-			
-			runnersRemove.clear();
-			
+		
 			messages.clear(); //clear out messages for next turn
 			
 			time += Physics.tick;
@@ -260,8 +243,7 @@ public class Game {
 						
 			//redraw how the field looks
 			view.drawFieldOutline();
-			view.drawBall(hitBall.lastLoc, 0x00000,1);
-			view.drawBall(hitBall.loc, 0xFF0000,1);
+			drawObject(hitBall);
 			view.repaint();
 			
 			List <OnFieldPlayer> newList = new LinkedList <OnFieldPlayer> ();
@@ -274,8 +256,7 @@ public class Game {
 				//add players back to list
 				if (mover.run(bases, stadium.getWalls())) {
 					newList.add(mover);
-					view.drawBall(mover.lastLoc, 0x000000,1);
-					view.drawBall(mover.loc, mover.getColor(),1);
+					drawObject(mover);
 				}
 				
 			}
@@ -291,7 +272,7 @@ public class Game {
 					lastBallHandler = cur;
 				}
 				
-				view.drawBall(cur.loc, cur.getColor(), 1);
+				drawObject(hitBall);
 				
 			}
 			
@@ -302,6 +283,7 @@ public class Game {
 				
 				if (currentlyHasBall.canPerformAction()) {
 					
+					//TODO this can be significantly improved
 					if (currentlyHasBall.destination == null && currentlyHasBall.getThrowingDestination() == null) {
 						currentlyHasBall.throwingBrain(bases, runners, hitBall, onTheField);
 					}
@@ -315,11 +297,13 @@ public class Game {
 					
 			}
 			
+			/*
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			*/
 		
 			
 			//check for play being over
@@ -344,7 +328,8 @@ public class Game {
 		
 		System.out.println("Event over.");
 		//remove ball locator
-		view.drawBall(airModel.loc, 0x000000,0);
+		clearObject(hitBall);
+		view.drawBall(airModel.loc, 0x000000,0); //remove ball marker
 		return;
 		
 	}
@@ -367,16 +352,13 @@ public class Game {
 						
 			fieldEvent(fielders, hitBall, runners, atBat.lineup.next());
 			
-			if (inningsCTR.getOuts() == 3) {
-				return;
-			}
-			
 			//reset fielders
 			for (Fielder curFielder: fielders) {
-				view.removeSpot(curFielder.loc, 1);
+				clearObject(curFielder);
 				curFielder.resetHasBall();
 				curFielder.resetLoc();
 				curFielder.destination = null;
+				curFielder.baseGuard = null;
 			}
 			
 			//reset baserunners
@@ -398,6 +380,11 @@ public class Game {
 			view.removeSpot(hitBall.loc, 1);
 			
 		}
+		
+		for (Fielder curFielder: fielders) {
+			clearObject(curFielder);
+		}
+		
 	}
 	
 	public void playGame () {
@@ -410,7 +397,7 @@ public class Game {
 			gameOver = halfInningOver();
 			
 		}
-		
+				
 	}
 	
 	//returns the fielder that can get the a hit ball the earliest.  their destination field will be properly updated
@@ -437,6 +424,20 @@ public class Game {
 		toRet.destination = loc;
 		return toRet;
 		
+	}
+	
+	//draws the current location and removes the previous
+	private void drawObject (OnFieldObject obj) {
+		
+		view.drawBall(obj.lastLoc, BLACK, 1);
+		view.drawBall(obj.loc, obj.getColor(), 1);
+		
+	}
+	
+	//clear ball spot
+	private void clearObject (OnFieldObject obj) {
+		view.drawBall(obj.lastLoc, BLACK, 1);
+		view.drawBall(obj.loc, BLACK, 1);
 	}
 
 	//Swaps which team is fielding and which is batting.  To be used after an inning is over.
@@ -485,16 +486,24 @@ public class Game {
 		
 	} 
 	
-	//removes runner from event
-	private void removeRunner (List <Baserunner> runners, List <OnFieldPlayer> movingPlayers, OnFieldPlayer rem) {
+	
+	//removes runner from event, inc outs
+	private void runnerOut (List <Baserunner> runners, List <OnFieldPlayer> movingPlayers, OnFieldPlayer rem) {
 		
 		runners.remove(rem);
 		movingPlayers.remove(rem);
-		view.drawBall(rem.loc, 0x000000, 1);
+		clearObject(rem);
 		inningsCTR.incOuts();
 		
 	}
 	
+	private void runScored (List <Baserunner> runners, List <OnFieldPlayer> movingPlayers, OnFieldPlayer rem) {
+		runners.remove(rem);
+		movingPlayers.remove(rem);
+		clearObject(rem);
+		toUpdate.runs++;
+		
+	}
 
 	/*
 	 * GameState defines the state of a baseball game.  
