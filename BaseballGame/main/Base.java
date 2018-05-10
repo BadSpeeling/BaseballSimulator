@@ -42,6 +42,10 @@ public class Base extends OnFieldObject {
 		forceOut = false;
 	}
 	
+	public int getMarkerSize () {
+		return 1;
+	}
+	
 	public void leaveBase (Baserunner blank) {
 		runnerOn = null;
 	}

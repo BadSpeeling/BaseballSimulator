@@ -102,7 +102,8 @@ public class Physics {
 	}
 
 	private static boolean within (double x1, double x2, double val) {
-		return (x1 >= val && x2 <= val) || (x2 >= val && x1 <= val);
+		final double SLACK = 1.0;
+		return (x1+SLACK >= val && x2-SLACK <= val) || (x2+SLACK >= val && x1-SLACK <= val);
 	}
 
 	//generic collision handler. dest is the location the OnFieldObject would like to get to

@@ -1,5 +1,6 @@
 package game;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
@@ -7,9 +8,16 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.ScrollPaneLayout;
+import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
 
 import datatype.Coordinate3D;
 import stadium.Stadium;
@@ -22,21 +30,56 @@ public class GameDisplay extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public Stadium curStadium;
-	public BufferedImage board;
-	public JLabel frame = new JLabel (); 
-	public int offset; //the amount of foul territory
+	private Stadium curStadium;
+	private BufferedImage board;
+	private JLabel frame = new JLabel (); 
+	private int offset; //the amount of foul territory
+	private JTextArea info; 
+	private JScrollPane scrollBar;
 	
 	public GameDisplay (int x, int y, int offset, Stadium curStadium) {
+		
 		super("Display Test");
-		setSize(600, 600);
-		board = new BufferedImage (x,y,BufferedImage.TYPE_3BYTE_BGR);
-		frame = new JLabel (new ImageIcon(board));
-		this.add(frame);
-		frame.setVisible(true);
-		setVisible(true);
+		setSize(1200, 800);
+		setLayout(new FlowLayout());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		this.offset = offset;
 		this.curStadium = curStadium;
+		
+		board = new BufferedImage (x,y,BufferedImage.TYPE_3BYTE_BGR);
+		frame = new JLabel (new ImageIcon(board));
+		add(frame);
+		frame.setVisible(true);
+		
+		info = new JTextArea();
+		info.setVisible(true);
+		info.setSize(300, 500);
+		info.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+		info.setEnabled(false);
+		
+		scrollBar = new JScrollPane(info);
+		scrollBar.setVisible(true);
+		scrollBar.setPreferredSize(info.getSize());
+		
+		getContentPane().add(scrollBar);
+		
+		setVisible(true);
+		
+	}
+	
+	public void writeText (String text) {
+		info.setText(info.getText() + "\n" + text);
+			
+		//update the text later
+		Thread setBar = new Thread () {
+			public void run () {
+				scrollBar.getVerticalScrollBar().setValue(scrollBar.getVerticalScrollBar().getMaximum());
+			}
+		};
+		
+		SwingUtilities.invokeLater(setBar);
+		
 	}
 	
 	//draws the outfield walls and foul lines

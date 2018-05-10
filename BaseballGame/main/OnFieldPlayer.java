@@ -40,8 +40,6 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 		double xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
 
 		//move the player
-		lastLoc.x = loc.x;
-		lastLoc.y = loc.y;
 		loc.add(xDisplacement, yDisplacement, 0);
 		
 	}

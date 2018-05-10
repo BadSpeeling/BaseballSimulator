@@ -138,9 +138,6 @@ public class BallInPlay extends OnFieldObject {
 		//controls a ball that is not being thrown by fielders
 		if (state.equals(BallStatus.IN_AIR) || state.equals(BallStatus.ON_GROUND)) {
 
-			lastLoc.x = loc.x;
-			lastLoc.y = loc.y;
-
 			//deals with colliding with floor
 			Physics.handleGroundCollision(this);
 
@@ -160,7 +157,7 @@ public class BallInPlay extends OnFieldObject {
 				double addX = this.velocity.x * -1/3;
 				this.velocity.y += addY;
 				this.velocity.x += addX;
-				this.lastLoc.y = loc.y;
+				//this.lastLoc.y = loc.y;
 				this.loc.y -= Physics.slack*2; 
 				canRecordOut = false;
 
@@ -185,7 +182,6 @@ public class BallInPlay extends OnFieldObject {
 			}
 
 			Coordinate3D newPos = Physics.tickPos(loc, velocity);
-
 			Coordinate3D accl = Physics.calcAccel(this);
 			Coordinate3D newVelo = Physics.tickVelo(velocity, accl);
 
@@ -207,7 +203,6 @@ public class BallInPlay extends OnFieldObject {
 		else if (state.equals(BallStatus.THROWN)) {
 			Coordinate3D newPos = Physics.tickPos(loc, velocity);
 			velocity.multByFactor(.9995);
-			lastLoc = loc;
 			loc = newPos;
 		}
 
@@ -219,6 +214,22 @@ public class BallInPlay extends OnFieldObject {
 
 	}
 
+	public int getMarkerSize () {
+		
+		if (loc.z < 10) {
+			return 0;
+		}
+		
+		else if (loc.z < 20) {
+			return 1;
+		}
+		
+		else {
+			return 2;
+		}
+		
+	}
+	
 	//true if the ball is still in motion
 	public boolean inMotion () {
 		return velocity.x != 0 || velocity.y != 0 || velocity.z != 0;

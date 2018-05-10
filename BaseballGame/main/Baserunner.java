@@ -38,6 +38,10 @@ public class Baserunner extends OnFieldPlayer {
 		destinations = new LinkedList <Coordinate3D> ();
 		this.log = log;
 	}
+	
+	public int getMarkerSize () {
+		return 1;
+	}
 
 	public void advancing () {
 		advancing = true;

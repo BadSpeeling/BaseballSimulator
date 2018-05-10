@@ -53,6 +53,10 @@ public class Fielder extends OnFieldPlayer {
 		this.position = cur.pos;
 		fullName = cur.fullName();
 	}
+	
+	public int getMarkerSize () {
+		return 1;
+	}
 
 	public Coordinate3D getThrowingDestination() {
 		return throwingDestination;

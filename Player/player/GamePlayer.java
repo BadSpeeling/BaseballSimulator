@@ -9,27 +9,11 @@ import game.ThrownPitch;
 import ratings.PitchRatings;
 
 public class GamePlayer extends Player {
-	
-	public Hashtable <String, Double> stats = new Hashtable <String, Double> ();
-	
+		
 	public GamePlayer (String f, String l, Position p) {
 		
 		super(f,l,p);
-		
-		Scanner input = null;
-		
-		try {
-			input = new Scanner (new File ("Player\\Stats\\stats.txt"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		String [] vals = input.nextLine().split(",");
-		
-		for (int i = 0; i < vals.length; i++) {
-			stats.put(vals[i], 0.0);
-		}
-		
+				
 	}
 	
 	/* Throw the pitch.  Alters the arriving location of the pitch based on pitchers ratings

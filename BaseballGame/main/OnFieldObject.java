@@ -8,7 +8,7 @@ import physics.Physics;
 
 //An on field object is anything moving entity apparent on a baseball field
 
-public class OnFieldObject {
+public abstract class OnFieldObject {
 
 	public Coordinate3D loc;
 	public Coordinate3D lastLoc;
@@ -17,13 +17,16 @@ public class OnFieldObject {
 	
 	private List <LocationTracker> tracker;
 
+	
 	public OnFieldObject (Coordinate3D loc, Coordinate3D lastLoc, int color) {
 		this.loc = new Coordinate3D (loc.x,loc.y,loc.z);
 		this.lastLoc = new Coordinate3D (lastLoc.x,lastLoc.y,lastLoc.z);
 		this.tracker = new LinkedList <LocationTracker> ();
 		this.color = color;
 	}
-
+	
+	public abstract int getMarkerSize ();
+	
 	public void track (LocationTracker toAdd) {
 		tracker.add(toAdd);
 	}
@@ -43,16 +46,11 @@ public class OnFieldObject {
 		double xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
 
 		//move the player
-		lastLoc.x = loc.x;
-		lastLoc.y = loc.y;
 		loc.add(xDisplacement, yDisplacement, 0);
 
 	}
 
 	public void move (Coordinate3D disp) {
-		lastLoc.x = loc.x;
-		lastLoc.y = loc.y;
-		lastLoc.z = loc.z;
 		loc.add(disp.x, disp.y, disp.z);
 	}
 
