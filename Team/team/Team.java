@@ -8,7 +8,6 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 import datatype.CircularLinkedList;
-import player.GamePlayer;
 import player.Player;
 import player.Position;
 
@@ -18,7 +17,9 @@ import player.Position;
  * */
 
 public class Team {
-
+	
+	private static int nextID = 1;
+	
 	public LinkedList <Player> playersOnTeam = new LinkedList <Player> (); //Set of players on the team
 	public int tID; //Team ID
 	public int leagueID; //ID of league that the team is in
@@ -92,7 +93,7 @@ public class Team {
 
 		for (int i = 0; i < posToAdd.length; i++) {
 
-			Player toAdd = new Player (allFirstNames[r.nextInt(allFirstNames.length)], allLastNames[r.nextInt(allLastNames.length)], posToAdd[i]);
+			Player toAdd = new Player (allFirstNames[r.nextInt(allFirstNames.length)], allLastNames[r.nextInt(allLastNames.length)], posToAdd[i], nextID++);
 			playersOnTeam.add(toAdd);
 
 		}
@@ -120,20 +121,20 @@ public class Team {
 	 * */
 	public GameTeam makeInGameTeam (boolean homeTeam) {
 		
-		CircularLinkedList <GamePlayer> lineup = new CircularLinkedList <GamePlayer> (9);
+		CircularLinkedList <Player> lineup = new CircularLinkedList <Player> (9);
 		
-		GamePlayer pitcher = null;
+		Player pitcher = null;
 		
-		LinkedList <GamePlayer> fielders = new LinkedList <GamePlayer> ();
+		LinkedList <Player> fielders = new LinkedList <Player> ();
 		
 		for (Player cur: playersOnTeam) {
 						
 			//if player is a pitcher
 			if ((cur.pos.ordinal()+1) == 1) {
-				pitcher = new GamePlayer(cur.firstName, cur.lastName, cur.pos);
+				pitcher = new Player(cur.firstName, cur.lastName, cur.pos, cur.pID);
 			}
 			
-			GamePlayer toAdd = new GamePlayer(cur.firstName, cur.lastName, cur.pos);
+			Player toAdd = new Player(cur.firstName, cur.lastName, cur.pos, cur.pID);
 			
 			lineup.add(toAdd);
 			fielders.add(toAdd);

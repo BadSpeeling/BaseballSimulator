@@ -9,19 +9,19 @@ import java.util.LinkedList;
 import datatype.CircularLinkedList;
 import game.Linescore;
 import manager.Manager;
-import player.GamePlayer;
+import player.Player;
 
 public class GameTeam {
 	
-	public CircularLinkedList <GamePlayer> lineup; //Lineup. This variable is a CLL because a lineup loops back up to the first spot once it reaches the end.
-	public LinkedList <GamePlayer> inTheField;
-	public GamePlayer pitcher; //Current player on the mound.
-	public HashSet <GamePlayer> bench; //Available players on bench.  This variable is a set because there is no ordering of the players.
-	public HashSet <GamePlayer> bullPen; //Available players in the bullpen.  No specific ordering.
+	public CircularLinkedList <Player> lineup; //Lineup. This variable is a CLL because a lineup loops back up to the first spot once it reaches the end.
+	public LinkedList <Player> inTheField;
+	public Player pitcher; //Current player on the mound.
+	public HashSet <Player> bench; //Available players on bench.  This variable is a set because there is no ordering of the players.
+	public HashSet <Player> bullPen; //Available players in the bullpen.  No specific ordering.
 	public Manager manager; //Manager.
 	public Linescore score;
 	
-	public GameTeam (CircularLinkedList <GamePlayer> lineup, GamePlayer pitcher, HashSet <GamePlayer> bench, HashSet <GamePlayer> bullPen, Manager manager, boolean homeTeam, LinkedList <GamePlayer> inField) {
+	public GameTeam (CircularLinkedList <Player> lineup, Player pitcher, HashSet <Player> bench, HashSet <Player> bullPen, Manager manager, boolean homeTeam, LinkedList <Player> inField) {
 		this.lineup = lineup;
 		this.pitcher = pitcher;
 		this.bench = bench;

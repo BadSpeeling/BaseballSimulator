@@ -1,4 +1,4 @@
-package game;
+package ui;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
@@ -7,35 +7,43 @@ import java.awt.geom.Line2D;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import datatype.Coordinate3D;
 import stadium.Stadium;
 import stadium.Wall;
+import stats.BattingStatline;
+import stats.Scorecard;
 
 public class GameDisplay extends JFrame {
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	private Stadium curStadium;
 	private BufferedImage board;
 	private JLabel frame = new JLabel (); 
 	private int offset; //the amount of foul territory
+	
 	private JTextArea info; 
 	private JScrollPane scrollBar;
+	
+	private StatsTable homeStats;
+	private StatsTable awayStats;
 	
 	public GameDisplay (int x, int y, int offset, Stadium curStadium) {
 		
@@ -64,10 +72,28 @@ public class GameDisplay extends JFrame {
 		
 		getContentPane().add(scrollBar);
 		
+		awayStats = new StatsTable (9,10,1);
+		homeStats = new StatsTable (9,10,1);
+		awayStats.setVisible(true);
+		awayStats.setSize(200, 100);
+		homeStats.setVisible(true);
+		homeStats.setSize(200, 100);
+		
+		getContentPane().add(awayStats);
+		
+		
 		setVisible(true);
 		
 	}
 	
+	public StatsTable getHomeStats() {
+		return homeStats;
+	}
+
+	public StatsTable getAwayStats() {
+		return awayStats;
+	}
+
 	public void writeText (String text) {
 		info.setText(info.getText() + "\n" + text);
 			

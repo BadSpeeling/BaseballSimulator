@@ -10,7 +10,6 @@ import ratings.PitchingRatings;
 
 public class Player implements Comparable <Player>{
 	
-	public static int nextID = 1;
 	public int pID; //ID of player.
 	public int teamID; //ID of the team the player is on. 0 means that the player is a free agent.
 	public int leagueID; //ID of the league that the player is in. 0 means that the player is not in a league.
@@ -25,9 +24,9 @@ public class Player implements Comparable <Player>{
 	/* 
 	 * Basic constructor for Player.  Only uses first and last name, position and a unique ID
 	 * */
-	public Player (String f, String l, Position p) {
+	public Player (String f, String l, Position p, int id) {
 		
-		pID = nextID++;
+		pID = id;
 		firstName = f;
 		lastName = l;
 		pos = p;

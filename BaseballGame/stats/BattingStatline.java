@@ -56,5 +56,11 @@ public class BattingStatline extends Statline {
 		}
 		
 	}
+
+	public String toString() {
+		return super.toString() + "BattingStatline [plateAppearances=" + plateAppearances + ", runs=" + runs + ", rbi=" + rbi + ", ab="
+				+ ab + ", pa=" + pa + "]";
+	}
+
 	
 }

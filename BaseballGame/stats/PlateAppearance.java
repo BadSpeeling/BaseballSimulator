@@ -1,5 +1,7 @@
 package stats;
 
+import game.InningCounters;
+
 public class PlateAppearance {
 	
 	private final int abID; //unique ab id
@@ -15,13 +17,13 @@ public class PlateAppearance {
 	
 	private Result outcome;
 
-	public PlateAppearance(int abID, int outs, int inning, int pID, int hID) {
+	public PlateAppearance(int abID, int pID, int hID, InningCounters ctr) {
 		super();
 		this.abID = abID;
-		this.inning = inning;
+		this.inning = ctr.getInning();
 		this.pID = pID;
 		this.hID = hID;
-		this.numOuts = outs;
+		this.numOuts = ctr.getInning();
 	}
 
 	public void setOutcome(Result outcome) {
@@ -66,6 +68,12 @@ public class PlateAppearance {
 	
 	public void incPitches () {
 		pitchesSeen++;
+	}
+
+	public String toString() {
+		return "PlateAppearance [abID=" + abID + ", pID=" + pID + ", hID=" + hID + ", inning=" + inning + ", strikes="
+				+ strikes + ", balls=" + balls + ", pitchesSeen=" + pitchesSeen + ", numOuts=" + numOuts
+				+ ", runsScored=" + runsScored + ", outcome=" + outcome + "]";
 	}
 	
 }

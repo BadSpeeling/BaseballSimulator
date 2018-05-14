@@ -16,7 +16,7 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 	private double height = 6; //ft
 	private double wingspan = 2;
 	private double actionTimer = 0;
-	private int id;
+	private final int id;
 	
 	private List <LocationTracker> tracker = new LinkedList <LocationTracker> ();
 	

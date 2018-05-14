@@ -1,7 +1,7 @@
 package game;
 import datatype.PitchType;
 import datatype.RandomNumber;
-import player.GamePlayer;
+import player.Player;
 import ratings.PitchRatings;
 
 /* ThrownPitch is a ball the has been pitched by a pitcher to a hitter
@@ -46,7 +46,7 @@ public class ThrownPitch {
 	 * pitcher - the player that threw the ball
 	 * rats - the ratings of the type of pitch for the given pitcher
 	 * */
-	public void generateFinalLocation (GamePlayer pitcher, PitchRatings rats) {
+	public void generateFinalLocation (Player pitcher, PitchRatings rats) {
 		
 		x += RandomNumber.roll(-1, 1);
 		y += RandomNumber.roll(-1, 1);

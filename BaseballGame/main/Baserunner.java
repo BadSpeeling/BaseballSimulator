@@ -11,7 +11,7 @@ import game.Game;
 import game.GameLogger;
 import messages.AdvancingNumberOfBases;
 import physics.Physics;
-import player.GamePlayer;
+import player.Player;
 import ratings.GeneralRatings;
 import stadium.Wall;
 
@@ -33,7 +33,7 @@ public class Baserunner extends OnFieldPlayer {
 		this.log = log;
 	}
 
-	public Baserunner (GamePlayer other, GameLogger log, int color) {
+	public Baserunner (Player other, GameLogger log, int color) {
 		super(FieldConstants.homePlate(), other.gRatings, other.fullName(), color, other.pID);
 		destinations = new LinkedList <Coordinate3D> ();
 		this.log = log;

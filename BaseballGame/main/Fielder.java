@@ -15,7 +15,7 @@ import game.GameLogger;
 import messages.FlyballCaughtMsg;
 import messages.ForceOutMsg;
 import physics.Physics;
-import player.GamePlayer;
+import player.Player;
 import player.Position;
 import ratings.FieldingRatings;
 import stadium.Wall;
@@ -34,8 +34,8 @@ public class Fielder extends OnFieldPlayer {
 	private boolean hasBall = false;
 	private BallInPlay ball = null;
 	private Coordinate3D throwingDestination = null;
-	
-	public Fielder (GameLogger log, Coordinate3D loc, GamePlayer player, int color, int id) {
+
+	public Fielder (GameLogger log, Coordinate3D loc, Player player, int color, int id) {
 		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName(), color, id);
 		fRats = player.fRatings;
 		gRats = player.gRatings;
@@ -45,8 +45,9 @@ public class Fielder extends OnFieldPlayer {
 		this.log = log;
 	}
 	
-	public Fielder (GamePlayer cur, int color) {
+	public Fielder (Player cur, int color) {
 		super(Coordinate3D.standardPos(cur.pos), cur.gRatings, cur.fullName(), color, cur.pID);
+		System.out.println(cur.pID);
 		fRats = cur.fRatings;
 		gRats = cur.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
@@ -328,7 +329,6 @@ public class Fielder extends OnFieldPlayer {
 
 		//check for fly out
 		if (ball.canRecordOut) {
-			ball.state = BallStatus.DEAD;
 			Game.messages.add(new FlyballCaughtMsg(this,runners.get(runners.size()-1)));
 			ball.canRecordOut = false;
 		}

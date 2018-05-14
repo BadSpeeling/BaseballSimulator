@@ -99,4 +99,10 @@ public class Statline {
 		strikeouts++;
 	}
 
+	public String toString() {
+		return "Statline [pID=" + pID + ", hits=" + hits + ", doubles=" + doubles + ", triples=" + triples
+				+ ", homeruns=" + homeruns + ", walks=" + walks + ", strikeouts=" + strikeouts + "]";
+	}
+	
+
 }

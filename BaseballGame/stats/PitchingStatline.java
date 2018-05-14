@@ -59,5 +59,10 @@ public class PitchingStatline extends Statline {
 		}
 		
 	}
+
+	public String toString() {
+		return super.toString() + "PitchingStatline [battersFaced=" + battersFaced + ", bf=" + bf + ", outsRec=" + outsRec + ", era=" + era
+				+ ", ra=" + ra + "]";
+	}
 	
 }

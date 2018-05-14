@@ -31,13 +31,6 @@ public class InningTest {
 		Team away = new Team ();
 		away.addFakePlayers(playersOnTeam);
 
-		home.printTeam();
-		System.out.println();
-		away.printTeam();
-
-		GameTeam homeTeam = home.makeInGameTeam(true);
-		GameTeam awayTeam = away.makeInGameTeam(true);
-
 		RuleSet ruleSet = new RuleSet (rules);
 		ruleSet.numInnings = 9;
 
@@ -54,7 +47,7 @@ public class InningTest {
 
 		BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(45),Physics.degreesToRads(80),105,stadium, 0x000000);
 
-		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, stadium,2);
+		Game g = new Game (ruleSet, 1, home, away, stadium,2);
 
 		g.playGame();
 		
