@@ -1,6 +1,6 @@
 package messages;
 import main.BaseType;
-import main.Baserunner;
+import objects.Baserunner;
 
 public class RunningToBase extends Message {
 	

@@ -1,6 +1,6 @@
 package messages;
-import main.Baserunner;
-import main.Fielder;
+import objects.Baserunner;
+import objects.Fielder;
 
 public class FlyballCaughtMsg extends BaserunnerOutMsg {
 	

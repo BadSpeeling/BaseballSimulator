@@ -1,4 +1,4 @@
-package main;
+package objects;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +12,7 @@ import datatype.RandomNumber;
 import game.FieldConstants;
 import game.Game;
 import game.GameLogger;
+import main.FielderDecision;
 import messages.FlyballCaughtMsg;
 import messages.ForceOutMsg;
 import physics.Physics;
@@ -27,32 +28,33 @@ public class Fielder extends OnFieldPlayer {
 	public Coordinate3D lastLoc;
 	public Position position; //number from 1-9, standard baseball numbering
 	public Coordinate3D destination = null; //the coordinate the fielder wants to get to. should be null if the decision needs to be made
-	public FielderDecision action = FielderDecision.UNKNOWN;
 	public String fullName;
-	public GameLogger log;
 	public Base baseGuard = null;
 	private boolean hasBall = false;
 	private BallInPlay ball = null;
 	private Coordinate3D throwingDestination = null;
-
-	public Fielder (GameLogger log, Coordinate3D loc, Player player, int color, int id) {
+	private boolean throwingDecisionMade = false;
+	
+	public Fielder (Coordinate3D loc, Player player, int color, int id) {
 		super(Coordinate3D.standardPos(player.pos), player.gRatings, player.fullName(), color, id);
 		fRats = player.fRatings;
 		gRats = player.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
 		this.position = player.pos;
 		fullName = player.fullName();
-		this.log = log;
 	}
 	
 	public Fielder (Player cur, int color) {
 		super(Coordinate3D.standardPos(cur.pos), cur.gRatings, cur.fullName(), color, cur.pID);
-		System.out.println(cur.pID);
 		fRats = cur.fRatings;
 		gRats = cur.gRatings;
 		lastLoc = new Coordinate3D(0,0,0);
 		this.position = cur.pos;
 		fullName = cur.fullName();
+	}
+	
+	public boolean needToMakeThrowingDecision () {
+		return !throwingDecisionMade;
 	}
 	
 	public int getMarkerSize () {
@@ -88,7 +90,7 @@ public class Fielder extends OnFieldPlayer {
 	public void throwBall (BallInPlay toThrow, Base [] bases) {
 
 		double throwSpeed = gRats.throwSpeed();
-		Coordinate3D spot = throwingDestination.diff(this.loc);
+		Coordinate3D spot = throwingDestination.diff(toThrow.loc);
 		double angle = Physics.angleFromXAxis(spot);
 		toThrow.velocity = new Coordinate3D(throwSpeed*Math.cos(angle), throwSpeed*Math.sin(angle), 0);
 		toThrow.thrown = true;
@@ -106,10 +108,18 @@ public class Fielder extends OnFieldPlayer {
 		
 	}
 	
+	public void setThrowingDecisionMade(boolean throwingDecisionMade) {
+		this.throwingDecisionMade = throwingDecisionMade;
+	}
+
 	//decides who to throw the ball to, or set a new destination to run to
 	//kill the play if there is no throw or action needed to be made
-	public void throwingBrain (Base [] bases, List <Baserunner> runners, BallInPlay curBall, List <Fielder> fielders) {
-
+	//returns the fielder the ball is being thrown to
+	public Fielder throwingBrain (Base [] bases, List <Baserunner> runners, BallInPlay curBall, List <Fielder> fielders) {
+		
+		Fielder ret = null;
+		throwingDecisionMade = true;
+		
 		//only do something if there are runners
 		if (!runners.isEmpty()) {
 			
@@ -131,7 +141,7 @@ public class Fielder extends OnFieldPlayer {
 			//no one is advancing, the play should end
 			if (firstAdvancing == null) {
 				//curBall.state = BallStatus.DEAD;
-				return;
+				return null;
 			}
 			
 			Baserunner leadRunner = runners.get(0);
@@ -142,6 +152,7 @@ public class Fielder extends OnFieldPlayer {
 
 				if (curFielder != this && curFielder.baseGuard == targetBase) {
 					throwingDestination = curFielder.loc;
+					ret = curFielder;
 				}
 
 			}
@@ -151,12 +162,14 @@ public class Fielder extends OnFieldPlayer {
 
 				baseGuard = targetBase;
 				setDestination(targetBase.loc,bases);
-
+				return null;
+				
 			}
 			
 			//add time for transfer
 			else {
 				setActionTimer(gRats.windUpTime());
+				return ret;
 			}
 
 		}
@@ -164,6 +177,8 @@ public class Fielder extends OnFieldPlayer {
 		else {
 			curBall.state = BallStatus.DEAD;
 		}
+		
+		return null;
 
 	}
 
@@ -186,7 +201,12 @@ public class Fielder extends OnFieldPlayer {
 	 *returns whether the player is moving
 	 */
 	public boolean movementBrain (BallInPlay model, Base [] bases, List <Fielder> allFielders, Fielder ballChaser, List <Wall> walls) {
-
+		
+		if (hasBall == true) {
+			destination = null;
+			return false;
+		}
+		
 		//set destination to stay in same place
 		destination = loc;
 
@@ -325,7 +345,8 @@ public class Fielder extends OnFieldPlayer {
 	}
 
 	//set the balls velocity to zero.  return true if the ball was successfully picked up. flags that the ball is possessed by a fielder. changes the balls state
-	public boolean receiveBall (BallInPlay ball, GameLogger log, List <Baserunner> runners) {
+	//post-condition: fielders destination will be set to null
+	public boolean receiveBall (BallInPlay ball, List <Baserunner> runners) {
 
 		//check for fly out
 		if (ball.canRecordOut) {
@@ -361,8 +382,9 @@ public class Fielder extends OnFieldPlayer {
 	}
 
 	//return true if picking up ball was successful
-	public boolean pickUpBall (BallInPlay ball) {
+	private boolean pickUpBall (BallInPlay ball) {
 		setActionTimer(gRats.gloveToHandTime());
+		ball.loc.z = loc.z;
 		this.ball = ball;
 		this.hasBall = true;
 		return true;
@@ -371,7 +393,7 @@ public class Fielder extends OnFieldPlayer {
 	//return the LocationTracker of the first reachable spot.  returns the final resting spot if nowhere is reachable
 	public LocationTracker firstReachableSpot (BallInPlay fullFlightModel) {
 
-		final int SLACK = 15;
+		final int SLACK = 5;
 
 		List <LocationTracker> flyBallModel = fullFlightModel.getTracker();
 
@@ -383,7 +405,7 @@ public class Fielder extends OnFieldPlayer {
 			double physicalDistance = Physics.groundDistanceBetween(cur, loc);
 			double timeGiven = curLoc.time;
 
-			if ((physicalDistance+SLACK) <= timeGiven * gRats.runSpeed() && cur.z < getReach()) {
+			if ((physicalDistance+SLACK) <= (timeGiven * gRats.runSpeed()) + getReach()/2 && cur.z < getReach()) {
 				return curLoc;
 			}
 

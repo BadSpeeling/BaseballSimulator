@@ -11,16 +11,12 @@ import javax.swing.*;
 
 import ball.BallInPlay;
 import ball.BallStatus;
+import ball.HitBallType;
 import ball.LocationTracker;
 import datatype.Coordinate3D;
 import datatype.RandomNumber;
-import main.Base;
 import main.BaseType;
-import main.Baserunner;
-import main.Fielder;
 import main.MakeNewDecisions;
-import main.OnFieldObject;
-import main.OnFieldPlayer;
 import messages.AdvancingNumberOfBases;
 import messages.BallOverWallMsg;
 import messages.BaserunnerOutMsg;
@@ -29,6 +25,11 @@ import messages.ForceOutMsg;
 import messages.Message;
 import messages.RunScoredMsg;
 import messages.RunnerOutMsg;
+import objects.Base;
+import objects.Baserunner;
+import objects.Fielder;
+import objects.OnFieldObject;
+import objects.OnFieldPlayer;
 import physics.Physics;
 import player.Player;
 import stadium.Stadium;
@@ -84,14 +85,14 @@ public class Game {
 	public Stadium stadium;
 	public GameDisplay view;
 	public GameLogger log = new GameLogger ();
-	//FieldEvent status = new FieldEvent ();
 	public Base [] bases = new Base [4]; 
 	public static Queue <Message> messages = new LinkedList <Message> ();
 
-	private Scorecard homeStats;
-	private Scorecard awayStats;
-	private Scorecard pitchingCard;
-	private Scorecard battingCard;
+	//score cards and extra variables to facilitate swapping
+	private Scorecard homeStats; //home stats
+	private Scorecard awayStats;  //away stats
+	private Scorecard pitchingCard; //always has team pitching
+	private Scorecard battingCard; //always has team batting
 
 	public Game (RuleSet rules, int id, Team homeTeam, Team awayTeam, Stadium stadium, int wait) {
 
@@ -106,8 +107,22 @@ public class Game {
 		this.homeTeam = home;
 		this.awayTeam = away;
 
-		homeStats = new Scorecard (homeTeam.tID,1);
-		awayStats = new Scorecard (awayTeam.tID,1);
+
+		WAIT = wait;
+
+		view = new GameDisplay (500,500, this.stadium.dim.get("f"), stadium);
+
+		//add players on field to cards
+		for (Player curPlayerInStartingLineUp: atBat.inTheField) {
+			view.getAwayStats().addBattingRow(curPlayerInStartingLineUp.pID, curPlayerInStartingLineUp.fullName());
+		}
+
+		for (Player curPlayerInStartingLineUp: inField.inTheField) {
+			view.getHomeStats().addBattingRow(curPlayerInStartingLineUp.pID, curPlayerInStartingLineUp.fullName());
+		}
+
+		homeStats = new Scorecard (homeTeam.tID,1,view.getHomeStats());
+		awayStats = new Scorecard (awayTeam.tID,1,view.getAwayStats());
 
 		pitchingCard = homeStats;
 		battingCard = awayStats;
@@ -119,15 +134,7 @@ public class Game {
 		for (Player curPlayer: awayTeam.playersOnTeam) {
 			awayStats.addPlayer(curPlayer.pID);
 		}
-	
-		WAIT = wait;
 
-		view = new GameDisplay (500,500, this.stadium.dim.get("f"), stadium);
-		
-		for (Player curPlayerInStartingLineUp: atBat.inTheField) {
-			view.getAwayStats().addBattingRow(curPlayerInStartingLineUp.pID, curPlayerInStartingLineUp.fullName());
-		}
-		
 		bases[0] = (new Base (FieldConstants.firstBase(), BaseType.FIRST, WHITE));
 		bases[1] = (new Base (FieldConstants.secondBase(), BaseType.SECOND, WHITE));
 		bases[2] = (new Base (FieldConstants.thirdBase(), BaseType.THIRD, WHITE));
@@ -138,9 +145,10 @@ public class Game {
 
 	public void fieldEvent (LinkedList <Fielder> onTheField, BallInPlay hitBall, List <Baserunner> runners, Player batter, Player pitcher, PlateAppearance pa) {
 
-		Fielder lastBallHandler = null;
+		//store ball handler info
 		Fielder currentlyHasBall = null;
-
+		Fielder chasing = null;
+		
 		double time = 0;
 
 		//recalculate landing spot whenever you need to
@@ -180,22 +188,19 @@ public class Game {
 			drawObject(curFielder);
 		}
 
-		List <OnFieldPlayer> movingPlayers = new LinkedList <OnFieldPlayer> ();
-
 		//draw ball marker
 		view.drawBall(airModel.loc, 0x00FF00,0);
 
 		int frame = 0;
 		int outsRec = 0; //number of outs recorded during this play
-
+		int curOuts = outsRec; //used to determine if outs new outs were records
+				
 		while (!hitBall.state.equals(BallStatus.DEAD)) {
 
 			frame++;
 
 			//process messages
 			for (Message cur: messages) {
-
-				view.writeText(cur.toString());
 
 				if (cur instanceof AdvancingNumberOfBases) {
 
@@ -207,20 +212,20 @@ public class Game {
 				}
 
 				else if (cur instanceof RunnerOutMsg) {
-					runnerOut(runners,movingPlayers,((RunnerOutMsg) cur).runner);
+					runnerOut(runners,((RunnerOutMsg) cur).runner);
 					outsRec++;
 				}
 
 				else if (cur instanceof MakeNewDecisions) {
 
-					Fielder chasing = fielderToGetBall(onTheField,models.get("fM"));
-					decideRemainingFielders(onTheField,models.get("fM"), chasing, movingPlayers);
+					chasing = fielderToGetBall(onTheField,models.get("fM"));
+					decideRemainingFielders(onTheField,models.get("fM"), chasing);
 
 				}
 
 				else if (cur instanceof FlyballCaughtMsg) {
 
-					runnerOut(runners,movingPlayers,((FlyballCaughtMsg) cur).runner);
+					runnerOut(runners,((FlyballCaughtMsg) cur).runner);
 					outsRec++;
 
 					for (Baserunner curRunner: runners) {
@@ -231,7 +236,8 @@ public class Game {
 
 				else if (cur instanceof RunScoredMsg) {
 					Baserunner curRunner = ((RunScoredMsg) cur).scorer;
-					runScored(runners, movingPlayers, curRunner, batter.pID, pitcher.pID);
+					runScored(runners, curRunner, batter.pID, pitcher.pID);
+					view.writeText(curRunner.fName + " has scored a run.");
 				}
 
 				else if (cur instanceof ForceOutMsg) {
@@ -242,7 +248,7 @@ public class Game {
 					for (Baserunner curRunner: runners) {
 
 						if (curRunner.attempt == msg1.outAt) {
-							runnerOut(runners,movingPlayers,curRunner);
+							runnerOut(runners,curRunner);
 							outsRec++;
 						}
 
@@ -255,9 +261,10 @@ public class Game {
 				else if (cur instanceof BallOverWallMsg) {
 
 					while (!runners.isEmpty())
-						runScored(runners,movingPlayers,runners.get(0), batter.pID, pitcher.pID);
+						runScored(runners,runners.get(0), batter.pID, pitcher.pID);
 
-					pa.setOutcome(Result.HR);
+					view.writeText(newBaserunner.fName + " has hit a homerun.");
+					newBaserunner.setBestBaseAchieved(3);
 					hitBall.state = BallStatus.DEAD;
 
 				}
@@ -266,49 +273,58 @@ public class Game {
 
 			messages.clear(); //clear out messages for next turn
 
+			//check if any outs were made on the last iteration, if so notify fielders to make new decisions
+			if (curOuts != outsRec) {
+				curOuts = outsRec;
+				//messages.add(new MakeNewDecisions());
+			}
+
 			time += Physics.tick;
 			hitBall.tick(stadium, hitBall.thrown,false);
 
 			for (Fielder cur: onTheField) {
-
+				
+				cur.decrementActionTimer();
 				cur.run(bases, stadium.getWalls());
-
-				//pick up ball. last handler cannot pick up ball
-				if (cur != lastBallHandler && (cur.loc.diff(hitBall.loc).mag() < 4) && hitBall.loc.z < cur.getReach()) {
-					cur.receiveBall(hitBall, log, runners);
-					currentlyHasBall = cur;
-					lastBallHandler = cur;
-				}
-
+				
 			}
 
 			for (Baserunner runner: runners) {
+				runner.decrementActionTimer();
 				runner.run(bases, stadium.getWalls());
 			}
-
-			//has ball and needs to decide what to do with it
+			
+			if (chasing != null) {
+				
+				if (Physics.within(chasing.loc.diff(hitBall.loc), chasing.getReach()/2)) {
+					chasing.receiveBall(hitBall, runners);
+					currentlyHasBall = chasing;
+					chasing = null;
+				}
+				
+			}
+			
 			if (currentlyHasBall != null) {
-
-				currentlyHasBall.decrementActionTimer();
-
-				if (currentlyHasBall.canPerformAction()) {
-
-					//TODO this can be significantly improved
-					if (currentlyHasBall.destination == null && currentlyHasBall.getThrowingDestination() == null) {
-						currentlyHasBall.throwingBrain(bases, runners, hitBall, onTheField);
-					}
-
-					else if (currentlyHasBall.getThrowingDestination() != null) {
+				
+				//decide who to throw the ball to
+				if (currentlyHasBall.needToMakeThrowingDecision()) {
+					chasing = currentlyHasBall.throwingBrain(bases, runners, hitBall, onTheField); //sets player being thrown to
+				}
+				
+				//throw ball
+				else if (currentlyHasBall.getThrowingDestination() != null){
+					
+					if (currentlyHasBall.canPerformAction()) {
 						currentlyHasBall.throwBall(hitBall, bases);
 						currentlyHasBall = null;
 					}
-
+					
 				}
-
+				
 			}
-
+			
 			//check for play being over
-			if (frame%100 == 0) {
+			if (frame%1000 == 0) {
 				boolean over = true;
 
 				for (Baserunner cur: runners) {
@@ -326,58 +342,70 @@ public class Game {
 			}
 
 			//update image
-			if (frame % 12 == 0) {
+			if (frame % 4 == 0) {
+				
 				for (Fielder curFielder: onTheField) {
 					drawObject(curFielder);
 				}
+				
 				for (Baserunner runner: runners) {
 					drawObject(runner);
 				}
+				
 				view.drawFieldOutline();
 				drawObject(hitBall);
 				view.repaint();
+				
 			}
 
+			/*
 			try {
-				Thread.sleep(2);
+				Thread.sleep(5);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			*/
 
 		}
 
-		//runner is standing on a base, determine what kind of hit they had
-		if (newBaserunner.baseOn != null) {
+		//determine play outcome
+		if (outsRec == 0) {
 
-			switch (newBaserunner.baseOn.getBase()) {
-			case FIRST:
+			int bases = newBaserunner.getBestBaseAchieved();
+
+			if (bases == 0) {
 				pa.setOutcome(Result.S);
-				break;
-			case SECOND:
+			}
+
+			else if (bases == 1) {
 				pa.setOutcome(Result.D);
-				break;
-			case THIRD:
+			}
+
+			else if (bases == 2) {
 				pa.setOutcome(Result.T);
-				break;
-			default:
-				break;
+			}
+
+			else if (bases == -1) {
+				pa.setOutcome(Result.OUT);
+			}
+
+			else {
+				pa.setOutcome(Result.HR);
 			}
 
 		}
-		
-		//batter is not on a base, an out has been recorded
+
 		else {
 			pa.setOutcome(Result.OUT);
 		}
-		
-		System.out.println(battingCard);
-		System.out.println(pitchingCard);
-		System.out.println(batter.pID);
+
+		view.writeText(batter.fullName() + "'s at bat has resulted in a(n) " + pa.getOutcome().toString());
 		battingCard.addBattingStats(batter.pID, pa);
 		pitchingCard.addPitchingStats(pitcher.pID, pa);
-		
-		System.out.println("Event over.");
+
+		view.updateCTR(inningsCTR, homeScore.runs, awayScore.runs);
+
 		//remove ball locator
 		clearObject(hitBall);
 		view.drawBall(airModel.loc, 0x000000,airModel.getMarkerSize()); //remove ball marker
@@ -401,9 +429,27 @@ public class Game {
 			Player curPitcher = inField.pitcher;
 			PlateAppearance pa = new PlateAppearance (abNumber,curBatter.pID,curPitcher.pID,inningsCTR);
 
-			System.out.println("Num outs " + inningsCTR.getOuts());
-			BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(RandomNumber.roll(0, 30)),Physics.degreesToRads(RandomNumber.roll(0, 90)),140,stadium,WHITE);
-			//BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(0), Physics.degreesToRads(10),145,stadium, WHITE);
+			BallInPlay hitBall = null;
+
+			HitBallType hitType = curBatter.bRatings.hitType();
+			
+			if (hitType.equals(HitBallType.GB)) {
+				hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(RandomNumber.roll(-5, 0)),Physics.degreesToRads(RandomNumber.roll(0, 90)),curBatter.bRatings.getHitSpeed(),stadium,WHITE);
+				view.writeText(curBatter.fullName() + " has hit a grounder");
+			}
+
+			else if (hitType.equals(HitBallType.LINER)) {
+				hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(RandomNumber.roll(10,25)),Physics.degreesToRads(RandomNumber.roll(0, 90)),curBatter.bRatings.getHitSpeed(),stadium,WHITE);
+				view.writeText(curBatter.fullName() + " has hit a liner");
+			}
+
+			else {
+				hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(RandomNumber.roll(20, 35)),Physics.degreesToRads(RandomNumber.roll(0, 90)),curBatter.bRatings.getHitSpeed(),stadium,WHITE);
+				view.writeText(curBatter.fullName() + " has hit a flybll");
+			}
+
+			//BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(RandomNumber.roll(0, 30)),Physics.degreesToRads(RandomNumber.roll(0, 90)),140,stadium,WHITE);
+			//hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(30), Physics.degreesToRads(10),135,stadium, WHITE);
 
 			fieldEvent(fielders, hitBall, runners, curBatter, curPitcher, pa);
 
@@ -414,6 +460,8 @@ public class Game {
 				curFielder.resetLoc();
 				curFielder.destination = null;
 				curFielder.baseGuard = null;
+				curFielder.setThrowingDecisionMade(false);
+				curFielder.setThrowingDestination(null);
 			}
 
 			//reset baserunners
@@ -492,8 +540,8 @@ public class Game {
 
 	//clear ball spot
 	private void clearObject (OnFieldObject obj) {
-		view.drawBall(obj.lastLoc, BLACK, 1);
-		view.drawBall(obj.loc, BLACK, 1);
+		view.drawBall(obj.lastLoc, BLACK, obj.getMarkerSize()+1);
+		view.drawBall(obj.loc, BLACK, obj.getMarkerSize()+1);
 	}
 
 	//Swaps which team is fielding and which is batting.  To be used after an inning is over.
@@ -504,7 +552,6 @@ public class Game {
 			return true;
 		}
 
-		System.out.println("Switching sides.");
 		inningsCTR.nextHalfInning();
 
 		for (Base curBase: bases) {
@@ -520,11 +567,14 @@ public class Game {
 		Linescore temp2 = toUpdate;
 		toUpdate = nextToUpdate;
 		nextToUpdate = temp2;
-		
+
 		Scorecard temp = pitchingCard;
 		pitchingCard = battingCard;
 		battingCard = temp;
-		
+
+		//update counter display
+		view.updateCTR(inningsCTR, homeScore.runs, awayScore.runs);
+
 		return false;
 
 	}
@@ -533,13 +583,12 @@ public class Game {
 	 * determines the action for the remaining fielders.  assumes that status.chasingBall has been updated
 	 * @param model the ball in play being modelled
 	 * */
-	private void decideRemainingFielders (List <Fielder> fielders, BallInPlay model, Fielder chaser, List <OnFieldPlayer> moving) {
+	private void decideRemainingFielders (List <Fielder> fielders, BallInPlay model, Fielder chaser) {
 
 		for (Fielder curFielder: fielders) {
 
 			if (curFielder.destination == null) {
-				if (curFielder.movementBrain(model,bases,fielders,chaser,stadium.getWalls()))
-					moving.add(curFielder);
+				curFielder.movementBrain(model,bases,fielders,chaser,stadium.getWalls());
 			}
 
 		}
@@ -548,19 +597,17 @@ public class Game {
 
 
 	//removes runner from event, inc outs
-	private void runnerOut (List <Baserunner> runners, List <OnFieldPlayer> movingPlayers, OnFieldPlayer rem) {
+	private void runnerOut (List <Baserunner> runners, OnFieldPlayer rem) {
 
 		runners.remove(rem);
-		movingPlayers.remove(rem);
 		clearObject(rem);
 		inningsCTR.incOuts();
 
 	}
 
-	private void runScored (List <Baserunner> runners, List <OnFieldPlayer> movingPlayers, OnFieldPlayer rem, int batterID, int pitcherID) {
+	private void runScored (List <Baserunner> runners, OnFieldPlayer rem, int batterID, int pitcherID) {
 
 		runners.remove(rem);
-		movingPlayers.remove(rem);
 		clearObject(rem);
 		toUpdate.runs++;
 

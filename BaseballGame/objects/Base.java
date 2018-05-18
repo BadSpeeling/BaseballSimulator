@@ -1,8 +1,9 @@
-package main;
+package objects;
 import java.util.List;
 
 import datatype.Coordinate3D;
 import game.Game;
+import main.BaseType;
 import messages.ForceOutMsg;
 import messages.RunScoredMsg;
 import messages.RunnerArrivedAtBaseMsg;
@@ -77,6 +78,8 @@ public class Base extends OnFieldObject {
 		else {
 			runnerOn = arriving; 
 			forceOut = false;
+			
+			arriving.setBestBaseAchieved(Math.max(arriving.getBestBaseAchieved(), this.base.num()));
 			
 			Game.messages.add(new RunnerArrivedAtBaseMsg(base,arriving));
 			

@@ -1,7 +1,7 @@
 package messages;
-import main.Base;
-import main.Baserunner;
-import main.Fielder;
+import objects.Base;
+import objects.Baserunner;
+import objects.Fielder;
 
 public class RunnerOutMsg extends BaserunnerOutMsg {
 	

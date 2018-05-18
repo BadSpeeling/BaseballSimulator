@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import datatype.Coordinate3D;
+import game.InningCounters;
 import stadium.Stadium;
 import stadium.Wall;
 import stats.BattingStatline;
@@ -44,6 +45,8 @@ public class GameDisplay extends JFrame {
 	
 	private StatsTable homeStats;
 	private StatsTable awayStats;
+	
+	private GameStatus ctrDisplay = new GameStatus ();
 	
 	public GameDisplay (int x, int y, int offset, Stadium curStadium) {
 		
@@ -72,18 +75,28 @@ public class GameDisplay extends JFrame {
 		
 		getContentPane().add(scrollBar);
 		
-		awayStats = new StatsTable (9,10,1);
-		homeStats = new StatsTable (9,10,1);
+		awayStats = new StatsTable (9,7,1);
+		homeStats = new StatsTable (9,7,1);
 		awayStats.setVisible(true);
 		awayStats.setSize(200, 100);
 		homeStats.setVisible(true);
 		homeStats.setSize(200, 100);
 		
 		getContentPane().add(awayStats);
+		getContentPane().add(homeStats);
 		
+		ctrDisplay.setVisible(true);
+		ctrDisplay.setText(ctrDisplay.toString());
+		
+		getContentPane().add(ctrDisplay);
 		
 		setVisible(true);
 		
+	}
+	
+	public void updateCTR (InningCounters ctr, int hRuns, int aRuns) {
+		ctrDisplay.upDate(ctr, hRuns, aRuns);
+		ctrDisplay.setText(ctrDisplay.toString());
 	}
 	
 	public StatsTable getHomeStats() {

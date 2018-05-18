@@ -1,6 +1,6 @@
 package messages;
-import main.Base;
-import main.Fielder;
+import objects.Base;
+import objects.Fielder;
 
 public class ForceOutMsg extends Message {
 	

@@ -2,8 +2,8 @@ package game;
 import java.util.LinkedList;
 import java.util.List;
 
-import main.Baserunner;
-import main.Fielder;
+import objects.Baserunner;
+import objects.Fielder;
 
 //encapsulates pointers to the OnFieldPlayer that in doing something
 

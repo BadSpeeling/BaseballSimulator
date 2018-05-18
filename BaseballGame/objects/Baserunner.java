@@ -1,4 +1,4 @@
-package main;
+package objects;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +9,7 @@ import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.Game;
 import game.GameLogger;
+import main.BaseType;
 import messages.AdvancingNumberOfBases;
 import physics.Physics;
 import player.Player;
@@ -25,7 +26,8 @@ public class Baserunner extends OnFieldPlayer {
 	public Base attempt = null;
 	private Base homeBase;
 	private boolean advancing = true;
-
+	private int bestBaseAchieved = -1;
+	
 	public Baserunner (GameLogger log, GeneralRatings gRatings, String fName, int color, int id) {
 		super (FieldConstants.homePlate(), gRatings, fName, color, id);
 		destinations = new LinkedList <Coordinate3D> ();
@@ -45,6 +47,14 @@ public class Baserunner extends OnFieldPlayer {
 
 	public void advancing () {
 		advancing = true;
+	}
+	
+	public int getBestBaseAchieved() {
+		return bestBaseAchieved;
+	}
+
+	public void setBestBaseAchieved(int bestBaseAchieved) {
+		this.bestBaseAchieved = bestBaseAchieved;
 	}
 
 	public void setHomeBase (Base home) {
@@ -119,6 +129,10 @@ public class Baserunner extends OnFieldPlayer {
 		baseOn = set;
 		loc = baseOn.getBase().equiv();
 	}
+	
+	public void setBestBase (int num) {
+		bestBaseAchieved = num;
+	}
 
 	//determines which base the batter can get to
 	public void batterBaseBrain (Map <String, BallInPlay> models, List <Fielder> fielders, BallInPlay curBall, Base [] bases) {
@@ -172,7 +186,6 @@ public class Baserunner extends OnFieldPlayer {
 		while (on != homeBase.getBase()) {
 			on = on.prevBase();
 			destinations.add(on.equiv());
-			System.out.println(on);
 		}
 
 		homeBase.setForceOut(true);

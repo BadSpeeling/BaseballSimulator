@@ -1,6 +1,6 @@
 package messages;
 
-import main.Baserunner;
+import objects.Baserunner;
 
 public class BallOverWallMsg extends Message {
 	

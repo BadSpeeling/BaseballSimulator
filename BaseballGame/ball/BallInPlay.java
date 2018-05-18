@@ -7,10 +7,10 @@ import java.util.List;
 
 import datatype.Coordinate3D;
 import game.Game;
-import main.Baserunner;
-import main.Fielder;
-import main.OnFieldObject;
 import messages.BallOverWallMsg;
+import objects.Baserunner;
+import objects.Fielder;
+import objects.OnFieldObject;
 import physics.Physics;
 import stadium.Stadium;
 import stadium.Wall;

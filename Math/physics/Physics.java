@@ -20,7 +20,7 @@ public class Physics {
 	private final static double degrees270 = 3*Math.PI/2;
 	public final static double accelGrav = 32.2; //ft/s^2
 	private final static double mass = .32; //lbs
-	public final static double tick = (double)1/360; //seconds
+	public final static double tick = (double)1/120; //seconds
 	private final static double dragCoef = .3; //unitless
 	private final static double surfaceArea = 0.045; //ft^2
 	private final static double airdensity = 0.0765; //lb/ft^3
