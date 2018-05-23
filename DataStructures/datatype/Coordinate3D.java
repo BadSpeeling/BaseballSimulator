@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import game.FieldConstants;
-import main.BaseType;
+import objects.BaseType;
 import physics.Physics;
 import player.Position;
 
@@ -25,6 +25,11 @@ public class Coordinate3D {
 	//computs the differnce between the two coors
 	public Coordinate3D diff (Coordinate3D other) {
 		return new Coordinate3D(this.x-other.x, this.y-other.y, this.z-other.z);
+	}
+	
+	//magnitude without z coordinate
+	public double mag2D () {
+		return Math.sqrt(Math.pow(x, 2.0) + Math.pow(y, 2.0));
 	}
 	
 	public BaseType equivBase () {

@@ -24,5 +24,26 @@ public enum Result {
 			return "unimplemented";
 		}
 	}
+	
+	public boolean wasAHit () {
+		switch(this) {
+		case OUT:
+			return false;
+		case BB:
+			return false;
+		case K:
+			return false;
+		case SACB:
+			return false;
+		case SACF:
+			return false;
+		case FC:
+			return false;
+		case IBB:
+			return false;
+		default:
+			return true;
+		}
+	}
 
 }

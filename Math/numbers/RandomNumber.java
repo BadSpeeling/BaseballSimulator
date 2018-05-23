@@ -1,4 +1,4 @@
-package datatype;
+package numbers;
 /* Eric Frye
  * RandomNumber is a basic class that makes generating random numbers simpler
  * */

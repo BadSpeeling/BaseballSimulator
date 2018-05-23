@@ -69,6 +69,14 @@ public class PlateAppearance {
 	public void incPitches () {
 		pitchesSeen++;
 	}
+	
+	public boolean isWalk () {
+		return balls >= 4;
+	}
+	
+	public boolean isStrikeout () {
+		return strikes >= 3;
+	}
 
 	public String toString() {
 		return "PlateAppearance [abID=" + abID + ", pID=" + pID + ", hID=" + hID + ", inning=" + inning + ", strikes="

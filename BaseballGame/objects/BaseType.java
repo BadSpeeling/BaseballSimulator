@@ -1,4 +1,4 @@
-package main;
+package objects;
 import datatype.Coordinate3D;
 import game.FieldConstants;
 

@@ -10,7 +10,7 @@ import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.Game;
 import game.RuleSet;
-import main.BaseType;
+import objects.BaseType;
 import objects.Baserunner;
 import objects.Fielder;
 import physics.Physics;
@@ -22,14 +22,13 @@ public class InningTest {
 
 	public static void main (String [] args) {
 
-		int playersOnTeam = 9;
 		int [] rules = {9,0,0,25};
 
 		Team home = new Team ();
-		home.addFakePlayers(playersOnTeam);
+		home.addFakePlayers();
 
 		Team away = new Team ();
-		away.addFakePlayers(playersOnTeam);
+		away.addFakePlayers();
 
 		RuleSet ruleSet = new RuleSet (rules);
 		ruleSet.numInnings = 9;
@@ -44,15 +43,9 @@ public class InningTest {
 		Stadium stadium = new Stadium ();
 		stadium.loadDimensions(input);
 
-
-		BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(45),Physics.degreesToRads(80),105,stadium, 0x000000);
-
 		Game g = new Game (ruleSet, 1, home, away, stadium,2);
 
-		g.playGame();
-		
-		System.out.println(g.awayScore.runs);
-		System.out.println(g.homeScore.runs);
+		g.playGame();		
 		
 	}
 

@@ -9,7 +9,7 @@ import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.Game;
 import game.RuleSet;
-import main.BaseType;
+import objects.BaseType;
 import objects.Baserunner;
 import objects.Fielder;
 import physics.Physics;
@@ -25,10 +25,10 @@ public class FielderTest {
 		int [] rules = {9,0,0,25};
 
 		Team home = new Team ();
-		home.addFakePlayers(playersOnTeam);
+		home.addFakePlayers();
 
 		Team away = new Team ();
-		away.addFakePlayers(playersOnTeam);
+		away.addFakePlayers();
 
 		home.printTeam();
 		System.out.println();

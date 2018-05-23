@@ -51,14 +51,23 @@ public class Scorecard {
 	}
 
 	public void addBattingStats (int id, PlateAppearance toAdd) {
-		battingStats.get(id).addPA(toAdd);
 
 		int row = battingStatsView.whichRow(id);
-
-		if (!toAdd.getOutcome().equals(Result.OUT)) {
+		
+		if (toAdd.getOutcome().equals(Result.BB)) {
+			battingStatsView.incCell(row, BB_COL);
+			return;
+		}
+		
+		else if (toAdd.getOutcome().equals(Result.K)) {
+			battingStatsView.incCell(row, K_COL);
+		}
+		
+		else if (!toAdd.getOutcome().equals(Result.OUT)) {
 			battingStatsView.incCell(row, HITS_COL);
 		}
 
+		battingStats.get(id).addPA(toAdd);
 		battingStatsView.incCell(row, AB_COL);
 
 

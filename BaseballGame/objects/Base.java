@@ -3,7 +3,6 @@ import java.util.List;
 
 import datatype.Coordinate3D;
 import game.Game;
-import main.BaseType;
 import messages.ForceOutMsg;
 import messages.RunScoredMsg;
 import messages.RunnerArrivedAtBaseMsg;

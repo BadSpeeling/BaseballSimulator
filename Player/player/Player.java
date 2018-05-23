@@ -1,4 +1,5 @@
 package player;
+import numbers.RandomNumber;
 import ratings.BattingRatings;
 import ratings.FieldingRatings;
 import ratings.GeneralRatings;
@@ -30,8 +31,9 @@ public class Player implements Comparable <Player>{
 		firstName = f;
 		lastName = l;
 		pos = p;
-		bRatings = new BattingRatings();
-		pRatings = new PitchingRatings("FB,90,95,40,60");
+		bRatings = new BattingRatings(RandomNumber.roll(-2, 2), RandomNumber.roll(-1, 2));
+		pRatings = new PitchingRatings();
+		pRatings.basicAddFastball();
 		fRatings = new FieldingRatings();	
 		gRatings = new GeneralRatings();
 				

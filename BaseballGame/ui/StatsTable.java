@@ -37,6 +37,7 @@ public class StatsTable extends JTable {
 		
 	}
 	
+	//increases the value of a cell by one
 	public void incCell (int row, int col) {
 		model.setValueAt((int)(model.getValueAt(row, col))+1, row, col);
 	}
@@ -57,6 +58,7 @@ public class StatsTable extends JTable {
 		pIDLocs.add(row, pID);
 	}
 	
+	//adds a new row to the display
 	public void addBattingRow (int pID, String fName) {
 		
 		pIDLocs.add(pID);

@@ -32,7 +32,6 @@ import stats.Scorecard;
 
 public class GameDisplay extends JFrame {
 	
-
 	private static final long serialVersionUID = 1L;
 	
 	private Stadium curStadium;
@@ -46,9 +45,11 @@ public class GameDisplay extends JFrame {
 	private StatsTable homeStats;
 	private StatsTable awayStats;
 	
+	private LinescoreTable linescore;
+	
 	private GameStatus ctrDisplay = new GameStatus ();
 	
-	public GameDisplay (int x, int y, int offset, Stadium curStadium) {
+	public GameDisplay (int x, int y, int offset, Stadium curStadium, int gID, int aID, int hID) {
 		
 		super("Display Test");
 		setSize(1200, 800);
@@ -75,8 +76,9 @@ public class GameDisplay extends JFrame {
 		
 		getContentPane().add(scrollBar);
 		
-		awayStats = new StatsTable (9,7,1);
-		homeStats = new StatsTable (9,7,1);
+		//stats setup
+		awayStats = new StatsTable (9,7,aID);
+		homeStats = new StatsTable (9,7,hID);
 		awayStats.setVisible(true);
 		awayStats.setSize(200, 100);
 		homeStats.setVisible(true);
@@ -84,11 +86,12 @@ public class GameDisplay extends JFrame {
 		
 		getContentPane().add(awayStats);
 		getContentPane().add(homeStats);
+	
+		linescore = new LinescoreTable (gID, aID, hID);
+		linescore.setVisible(true);
+		linescore.setSize(linescore.getSize());
 		
-		ctrDisplay.setVisible(true);
-		ctrDisplay.setText(ctrDisplay.toString());
-		
-		getContentPane().add(ctrDisplay);
+		getContentPane().add(linescore);
 		
 		setVisible(true);
 		
@@ -183,6 +186,10 @@ public class GameDisplay extends JFrame {
 		
 	}
 	
+	public LinescoreTable getLinescore () {
+		return linescore;
+	}
+	
 	//test
 	public void draw (int x, int y, int color) {
 	
@@ -217,12 +224,6 @@ public class GameDisplay extends JFrame {
 		
 	}
 	*/
-	public void setCoor (int x, int y, int color) {
-		
-		//System.out.println(board.getHeight()-(y+offset));
-		board.setRGB(x+offset, board.getHeight()-(y+offset), color);
-	
-	}
 	
 	public void removeSpot (Coordinate3D hitBall, int size) {
 		

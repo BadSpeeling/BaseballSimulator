@@ -8,13 +8,12 @@ import ball.BallInPlay;
 import ball.BallStatus;
 import ball.LocationTracker;
 import datatype.Coordinate3D;
-import datatype.RandomNumber;
 import game.FieldConstants;
 import game.Game;
 import game.GameLogger;
-import main.FielderDecision;
 import messages.FlyballCaughtMsg;
 import messages.ForceOutMsg;
+import numbers.RandomNumber;
 import physics.Physics;
 import player.Player;
 import player.Position;
@@ -151,7 +150,7 @@ public class Fielder extends OnFieldPlayer {
 			for (Fielder curFielder: fielders) {
 
 				if (curFielder != this && curFielder.baseGuard == targetBase) {
-					throwingDestination = curFielder.loc;
+					throwingDestination = curFielder.baseGuard.loc;
 					ret = curFielder;
 				}
 
@@ -393,7 +392,7 @@ public class Fielder extends OnFieldPlayer {
 	//return the LocationTracker of the first reachable spot.  returns the final resting spot if nowhere is reachable
 	public LocationTracker firstReachableSpot (BallInPlay fullFlightModel) {
 
-		final int SLACK = 5;
+		final int SLACK = 10;
 
 		List <LocationTracker> flyBallModel = fullFlightModel.getTracker();
 
@@ -417,45 +416,46 @@ public class Fielder extends OnFieldPlayer {
 
 	//returns the closest spot the fielder can get to given location, time and speed
 	//ball is a completed model of a ball
-	private LocationTracker closestSpot (BallInPlay ball, double airTime) {
+	private LocationTracker closestSpot (BallInPlay ball) {
 
 		List <LocationTracker> locs = ball.getTracker();
 
 		double speed = gRats.runSpeed();
 		LocationTracker ret = locs.get(locs.size()-1); //if no ball is reachable in time, return the last one
-		double bestSpaceTimeDist = 0;
-
+		final double timeDelay = gRats.reactionTime(); //delay time i.e. reaction
+		
 		for (LocationTracker cur: locs) {
-
-			double physicalDistance = Physics.distanceBetween(cur.loc,this.loc);
-
-			//the player can reach this ball in an appropriate amount of time
-			if (speed * (cur.time + airTime) >= physicalDistance) {
-
-				//finds the space time distance
-				double spaceTimeDist = Physics.spaceTimeDistance(cur, this.loc, 0);
-
-				if (spaceTimeDist > bestSpaceTimeDist) {
-					bestSpaceTimeDist = spaceTimeDist;
-					ret = cur;
+			
+			//only check if the ball is within z
+			if (cur.loc.z < getReach()) {
+			
+				double availTime = cur.time-timeDelay; //calc amount of time available to get to ball
+				double distCover = cur.loc.diff(loc).mag2D();
+				
+				//has enough time to get to the ball
+				if (availTime * speed > distCover) {
+					return cur;
 				}
-
+				
 			}
-
+			
 		}
 
 		return ret;
 
 	}
+	
+	//returns if the ball is within the reach of the fielder
+	public boolean canGrabBall (Coordinate3D hitBallLoc) {
+		return hitBallLoc.diff(loc).mag2D() <= this.getReach()/2 && hitBallLoc.z < getReach();
+	}
 
 	//returns the amount of time taken for the fielder to get to the ball.  looks at the closest route
 	//uses the final ball model
-	public double timeToBall (Map <String, BallInPlay> model) {
+	public LocationTracker timeToBall (BallInPlay model) {
 
-		double time = model.get("fM").airTime;
-		LocationTracker closestSpot = closestSpot(model.get("fM"), time);
-
-		return closestSpot.time + time;
+		LocationTracker closestSpot = closestSpot(model);
+		return closestSpot;
 
 	}
 

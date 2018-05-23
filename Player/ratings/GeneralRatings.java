@@ -5,7 +5,7 @@ package ratings;
 
 public class GeneralRatings {
 	
-	private double speed = 22; // ft/s
+	private double speed = 26; // ft/s
 	
 	public double runSpeed () {
 		return speed;
@@ -22,6 +22,10 @@ public class GeneralRatings {
 	//in ft/s
 	public double throwSpeed () {
 		return 100;
+	}
+	
+	public double reactionTime () {
+		return .25;
 	}
 	
 }

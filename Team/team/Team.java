@@ -65,19 +65,14 @@ public class Team {
 	/* 
 	 * Adds fake players up to max designated by RuleSet.
 	 * */
-	public void addFakePlayers (int max) {
+	public void addFakePlayers () {
 
 		File cwd = new File(System.getProperty("user.dir") + "\\Player\\Names");
 		Random r = new Random ();
 
 		int [] positions = {1,2,3,4,5,6,7,8,9};
 		Position [] posToAdd = Position.getAllEnums(positions);
-
-		if (max < posToAdd.length) {
-			System.out.println("Too many players in fake team generation (programmer error)");
-			return;
-		}
-
+		
 		Scanner firstNames = null;
 		Scanner lastNames = null;
 				

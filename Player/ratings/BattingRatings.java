@@ -1,7 +1,6 @@
 package ratings;
 
-import ball.HitBallType;
-import datatype.RandomNumber;
+import numbers.RandomNumber;
 
 /* Eric Frye
  * BattingRatings represents the batting ratings of a player.  They are as follows:
@@ -15,8 +14,25 @@ public class BattingRatings {
 	private double linerPct;
 	private double flyBallPct;
 	
-	public BattingRatings () {
+	private HitBallType hitBallType;
+	private SprayType sprayType;
+	
+	private RatingPair aggressiveness;
+	private RatingPair contactRate;
+	
+	public BattingRatings (int hitBallNum, int sprayNum) {
+		hitBallType = HitBallType.convert(hitBallNum);
+		sprayType = SprayType.convert(sprayNum);
+		aggressiveness = new RatingPair(.6, .10);
 		basicInit();
+	}
+	
+	public RatingPair getAggr () {
+		return aggressiveness;
+	}
+	
+	public RatingPair getContact () {
+		return contactRate;
 	}
 	
 	public void basicInit () {
@@ -32,25 +48,6 @@ public class BattingRatings {
 		
 	}
 	
-	public HitBallType hitType () {
-		
-		double rNum = RandomNumber.roll(0, 100);
-		
-		rNum -= groundBallPct;
-		
-		if (rNum <= 0) {
-			return HitBallType.GB;
-		}
-		
-		rNum  -= linerPct;
-		
-		if (rNum <= 0) {
-			return HitBallType.LINER;
-		}
-		
-		return HitBallType.FLY;
-		
-	}
 	
 	public double getHitSpeed () {
 		

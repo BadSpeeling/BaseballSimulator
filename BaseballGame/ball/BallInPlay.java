@@ -28,7 +28,7 @@ public class BallInPlay extends OnFieldObject {
 	public boolean canRecordOut = true;
 	public boolean thrown = false;
 	public InPlayType type;
-	public Stadium stad;
+	//public Stadium stad;
 	public Baserunner batter = null;
 	private Fielder holding = null;
 
@@ -39,7 +39,6 @@ public class BallInPlay extends OnFieldObject {
 		this.launchDir = launchDir;
 		this.velocity = Physics.calculateInitalVelo(launchSpeed, launchAngle, launchDir);
 		this.lastLoc = new Coordinate3D(0,0,0);
-		this.stad = stad;
 
 		//determine what kind of ball was hit
 		if (launchSpeed <= 20) {
@@ -68,7 +67,6 @@ public class BallInPlay extends OnFieldObject {
 		this.launchDir = copy.launchDir;
 		this.velocity = new Coordinate3D (copy.velocity.x, copy.velocity.y, copy.velocity.z);
 		this.state = copy.state;
-		this.stad = copy.stad;
 
 	}
 
@@ -82,7 +80,7 @@ public class BallInPlay extends OnFieldObject {
 
 	//returns a BallInPlay that's loc is either the place it makes contact with ground or last resting spot
 	//inAir - if the ball modelling should stop when it is in the air
-	public BallInPlay modelBallDistance (boolean inAir) {
+	public BallInPlay modelBallDistance (boolean inAir, Stadium stad) {
 
 		double time = 0;
 		final int split = 100; //time in between recordings
@@ -93,9 +91,7 @@ public class BallInPlay extends OnFieldObject {
 
 			do {
 
-
 				copy.track(new LocationTracker(copy.loc, time,true));
-
 
 				copy.tick(stad, true, true);
 
@@ -108,7 +104,6 @@ public class BallInPlay extends OnFieldObject {
 
 			BallInPlay copy = new BallInPlay (this);
 
-			//starts tracking the ball after it cant be an out anymore
 			do {
 				copy.tick(stad, true, true);
 				time += Physics.tick;
@@ -126,8 +121,8 @@ public class BallInPlay extends OnFieldObject {
 	}
 
 	//returns a LocationTracker
-	public List <LocationTracker> ballTracker () {
-		return modelBallDistance(false).getTracker();		
+	public List <LocationTracker> ballTracker (Stadium stad) {
+		return modelBallDistance(false, stad).getTracker();		
 	}
 
 	//batted: true if ball is hit by a bat, false if the ball is thrown by a fielder
