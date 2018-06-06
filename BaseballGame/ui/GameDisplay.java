@@ -35,9 +35,7 @@ public class GameDisplay extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private Stadium curStadium;
-	private BufferedImage board;
-	private JLabel frame = new JLabel (); 
-	private int offset; //the amount of foul territory
+	private BasicBoard view;
 	
 	private JTextArea info; 
 	private JScrollPane scrollBar;
@@ -56,14 +54,11 @@ public class GameDisplay extends JFrame {
 		setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.offset = offset;
-		this.curStadium = curStadium;
-		
-		board = new BufferedImage (x,y,BufferedImage.TYPE_3BYTE_BGR);
-		frame = new JLabel (new ImageIcon(board));
-		add(frame);
-		frame.setVisible(true);
-		
+        this.curStadium = curStadium;
+        
+		view = new BasicBoard (x,y,offset);
+		getContentPane().add(view.getDisplay());
+				
 		info = new JTextArea();
 		info.setVisible(true);
 		info.setSize(300, 500);
@@ -126,6 +121,8 @@ public class GameDisplay extends JFrame {
 	
 	//draws the outfield walls and foul lines
 	public void drawFieldOutline () {
+		
+		BufferedImage board = view.getData();
 		
 		int ySubtract = board.getHeight(); //this is need to flip the image over the x-axis.  otherwise the image is drawn in the 4th quadrant, which is confusing
 		int basePathDistance = 90;
@@ -190,18 +187,6 @@ public class GameDisplay extends JFrame {
 		return linescore;
 	}
 	
-	//test
-	public void draw (int x, int y, int color) {
-	
-		
-		for (int i = x-1; i <= x+1; i++) {
-
-			for (int j = y-1; j <= y+1; j++) {
-				board.setRGB(i,j, color);
-			}
-
-		}
-	}
 	/*
 	public void drawField (int foul, Stadium stad) {
 		
@@ -226,43 +211,11 @@ public class GameDisplay extends JFrame {
 	*/
 	
 	public void removeSpot (Coordinate3D hitBall, int size) {
-		
-		int i = (int)hitBall.x+offset;
-		int j = (int)hitBall.y+offset;
-		
-		if (i-size < 0 || i+size > board.getHeight() || j-size < 0 || j+size > board.getWidth()) {
-			return;
-		}
-		
-		for (int x = i-size; x <= i+size; x++) {
-
-			for (int y = j-size; y <= j+size; y++) {
-				//System.out.println(board.getHeight()-(y+offset));
-				board.setRGB(x, board.getHeight()-(y), 0x000000);
-			}
-
-		}
-		
+		view.clearObject(hitBall, size);
 	}
 	
 	public void drawBall (Coordinate3D hitBall, int color, int size) {
-		
-		int i = (int)hitBall.x+offset;
-		int j = (int)hitBall.y+offset;
-		
-		if (i-size < 0 || i+size > 450 || j-size < 0 || j+size > 450) {
-			return;
-		}
-		
-		for (int x = i-size; x <= i+size; x++) {
-
-			for (int y = j-size; y <= j+size; y++) {
-				//System.out.println(board.getHeight()-(y+offset));
-				board.setRGB(x, board.getHeight()-(y), color);
-			}
-
-		}
-		
+		view.drawObject(hitBall, color, size);
 	}
 	
 }

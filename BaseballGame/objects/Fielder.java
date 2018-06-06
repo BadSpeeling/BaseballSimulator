@@ -10,7 +10,6 @@ import ball.LocationTracker;
 import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.Game;
-import game.GameLogger;
 import messages.FlyballCaughtMsg;
 import messages.ForceOutMsg;
 import numbers.RandomNumber;
@@ -145,6 +144,16 @@ public class Fielder extends OnFieldPlayer {
 			
 			Baserunner leadRunner = runners.get(0);
 			Base targetBase = leadRunner.attempt;
+			
+			//on base needing tp guard
+			if (targetBase ==  baseGuard) {
+				return null;
+			}
+			
+			//lead runner isnt attempting anything, end
+			if (targetBase == null) {
+				return null;
+			}
 			
 			//check which fielder is covering the intended base
 			for (Fielder curFielder: fielders) {

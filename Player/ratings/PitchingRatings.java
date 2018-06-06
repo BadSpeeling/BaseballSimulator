@@ -21,8 +21,7 @@ public class PitchingRatings {
 	 * */
 	
 	public void basicAddFastball () {
-		double [][] stats = {{93,1.5},{0,.5},{35,15}};
-		PitchRatings toAdd = new PitchRatings(stats);
+		PitchRatings toAdd = new PitchRatings();
 		selection.put(PitchType.FB, toAdd);
 	}
 		

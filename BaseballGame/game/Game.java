@@ -9,6 +9,8 @@ import java.util.Queue;
 import java.util.Scanner;
 import javax.swing.*;
 
+import atbat.HitTypeCalculator;
+import atbat.ThrownPitch;
 import ball.BallInPlay;
 import ball.BallStatus;
 import ball.LocationTracker;
@@ -16,6 +18,7 @@ import datatype.Coordinate3D;
 import messages.AdvancingNumberOfBases;
 import messages.BallOverWallMsg;
 import messages.BaserunnerOutMsg;
+import messages.DebugMessage;
 import messages.FlyballCaughtMsg;
 import messages.ForceOutMsg;
 import messages.MakeNewDecisions;
@@ -37,6 +40,7 @@ import stats.Result;
 import stats.Scorecard;
 import team.GameTeam;
 import team.Team;
+import testing.AllOnFieldObjectContainer;
 import ui.GameDisplay;
 
 /* Eric Frye
@@ -91,9 +95,16 @@ public class Game {
 	private Scorecard awayStats;  //away stats
 	private Scorecard pitchingCard; //always has team pitching
 	private Scorecard battingCard; //always has team batting
-
+	
+	private HitTypeCalculator hitTypeCalc = new HitTypeCalculator ();
+	
+	//debugging
+	private AllOnFieldObjectContainer allObjs = null;
+	
 	public Game (RuleSet rules, int id, Team homeTeam, Team awayTeam, Stadium stadium, int wait) {
-
+		
+		hitTypeCalc.init();
+		
 		GameTeam home = homeTeam.makeInGameTeam(true);
 		GameTeam away = awayTeam.makeInGameTeam(false);
 
@@ -136,12 +147,21 @@ public class Game {
 		bases[1] = (new Base (FieldConstants.secondBase(), BaseType.SECOND, WHITE));
 		bases[2] = (new Base (FieldConstants.thirdBase(), BaseType.THIRD, WHITE));
 		bases[3] = (new Base (FieldConstants.homePlate(), BaseType.HOME, WHITE));
-
-
+		
+	}
+	
+	public void saveLog (String folderName) {
+		allObjs.writePlayToFile(folderName);
 	}
 
-	public void fieldEvent (LinkedList <Fielder> onTheField, BallInPlay hitBall, List <Baserunner> runners, Player batter, Player pitcher, PlateAppearance pa) {
-
+	public int fieldEvent (LinkedList <Fielder> onTheField, BallInPlay hitBall, List <Baserunner> runners, Player batter, Player pitcher, PlateAppearance pa, boolean debugMode) {
+		
+		int retCode = 0;
+		
+		if (debugMode) {
+			allObjs = new AllOnFieldObjectContainer ();
+		}
+		
 		//store ball handler info
 		Fielder currentlyHasBall = null;
 		Fielder chasing = null;
@@ -181,6 +201,7 @@ public class Game {
 
 		for (Fielder curFielder: onTheField) {
 			drawObject(curFielder);
+			curFielder.setActionTimer(curFielder.gRats.reactionTime());
 		}
 
 		//draw ball marker
@@ -193,13 +214,25 @@ public class Game {
 		while (!hitBall.state.equals(BallStatus.DEAD)) {
 
 			frame++;
-
+			
+			if (debugMode) {
+					
+				if (frame % 5 == 0) {
+					allObjs.addCur(onTheField, hitBall, runners);
+				}
+					
+			}
+			
 			//process messages
 			for (Message cur: messages) {
 
 				if (cur instanceof RunnerOutMsg) {
 					runnerOut(runners,((RunnerOutMsg) cur).runner);
 					outsRec++;
+				}
+				
+				else if (cur instanceof DebugMessage) {
+					retCode = -1;
 				}
 
 				else if (cur instanceof MakeNewDecisions) {
@@ -351,15 +384,6 @@ public class Game {
 				view.repaint();
 				
 			}
-
-			/*
-			try {
-				Thread.sleep(2);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			*/
 			
 		}
 
@@ -405,7 +429,7 @@ public class Game {
 		//remove ball locator
 		clearObject(hitBall);
 		view.drawBall(airModel.loc, 0x000000,airModel.getMarkerSize()); //remove ball marker
-		return;
+		return retCode;
 
 	}
 	
@@ -437,7 +461,8 @@ public class Game {
 			boolean struckOut = false;
 			
 			while (hitBall == null) {
-				hitBall = new ThrownPitch(curPitcher,curBatter).run(pa,stadium);
+				
+				hitBall = new ThrownPitch(curPitcher,curBatter).throwBall(pa,stadium,hitTypeCalc);
 				
 				if (pa.isStrikeout()) {
 					struckOut = true;
@@ -497,8 +522,13 @@ public class Game {
 				bases[i].clearFielder();
 			}
 			
-			fieldEvent(fielders, hitBall, runners, curBatter, curPitcher, pa);
+			
+			int code = fieldEvent(fielders, hitBall, runners, curBatter, curPitcher, pa,true);
 
+			if (code == -1) {
+				saveLog("D:\\Java_Projects\\BaseballSimulator\\temp_files");
+			}
+			
 			//remove ball
 			view.removeSpot(hitBall.loc, 1);
 

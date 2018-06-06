@@ -1,4 +1,5 @@
 package datatype;
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Coordinate3D {
 	public double x;
 	public double y;
 	public double z;
+	private static DecimalFormat df = new DecimalFormat ("#.##");
 	
 	public Coordinate3D (double x, double y, double z) {
 		
@@ -123,6 +125,17 @@ public class Coordinate3D {
 	
 	public String toString () {
 		return "[" + x + "," + y + "," + z + "]";
+	}
+	
+	public static Coordinate3D convertFromToString (String toString) {
+		
+		String [] val = toString.split(",");
+		return new Coordinate3D (Double.parseDouble(val[0]), Double.parseDouble(val[1]), Double.parseDouble(val[2]));
+		
+	}
+	
+	public String toStringPretty () {
+		return df.format(x) + "," + df.format(y) + "," + df.format(z);
 	}
 	
 	//gives the location of a position

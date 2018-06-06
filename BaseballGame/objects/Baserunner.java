@@ -9,7 +9,6 @@ import ball.LocationTracker;
 import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.Game;
-import game.GameLogger;
 import messages.AdvancingNumberOfBases;
 import physics.Physics;
 import player.Player;

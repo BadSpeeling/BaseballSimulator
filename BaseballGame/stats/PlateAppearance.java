@@ -70,6 +70,14 @@ public class PlateAppearance {
 		pitchesSeen++;
 	}
 	
+	public void foul () {
+		
+		if (strikes < 2) {
+			strikes++;
+		}
+		
+	}
+	
 	public boolean isWalk () {
 		return balls >= 4;
 	}

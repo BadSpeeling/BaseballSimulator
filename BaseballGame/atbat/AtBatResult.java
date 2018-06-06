@@ -1,4 +1,4 @@
-package game;
+package atbat;
 /*
  * HitResult is the result of a ball in play. 
  * */
