@@ -76,7 +76,10 @@ public class ThrownPitch {
 					}
 					
 					else {
-						return new BallInPlay (new Coordinate3D (0,0,0), Physics.degreesToRads(RandomNumber.roll(0, 25)), Physics.degreesToRads(RandomNumber.roll(0,90)), batter.bRatings.getHitSpeed(), stadium, 0xFF00FF);
+						return new BallInPlay (new Coordinate3D (0,0,3), 
+								hitType.launchAngle(), 
+								hitType.launchDir(),
+								hitType.baseHitSpeed(), stadium, 0xFF00FF, hitType);
 					}
 					
 				}
@@ -98,8 +101,8 @@ public class ThrownPitch {
 	}
 	
 	private void randomPitchLocation () {
-		x = RandomNumber.roll(-275, 275)/100.0;
-		y = RandomNumber.roll(-275, 275)/100.0;
+		x = RandomNumber.roll(-280, 280)/100.0;
+		y = RandomNumber.roll(-280, 280)/100.0;
 	}
 	
 	private boolean pitchIsBall () {

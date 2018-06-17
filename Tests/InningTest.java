@@ -18,7 +18,7 @@ public class InningTest {
 
 		int [] rules = {9,0,0,25};
 		
-		final int times = 10;
+		final int times = 100;
 		
 		for (int i = 0; i < times; i++) {
 			Team home = new Team ();
@@ -40,12 +40,18 @@ public class InningTest {
 			Stadium stadium = new Stadium ();
 			stadium.loadDimensions(input);
 	
-			Game g = new Game (ruleSet, 1, home, away, stadium,2);
+			Game g = new Game (ruleSet, 1, home, away, stadium,6);
 			
 			g.playGame();		
 			
-				
+			System.out.println("Home count: " + g.getHomeStatline().getTotalBattingStats().getHomeruns());
+			System.out.println("Away count: " + g.getAwayStatline().getTotalBattingStats().getHomeruns());
+			
+			
 		}
+		
+		System.out.println("done");
+		
 			
 	}
 

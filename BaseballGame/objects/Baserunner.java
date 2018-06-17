@@ -36,7 +36,7 @@ public class Baserunner extends OnFieldPlayer {
 		super(FieldConstants.homePlate(), other.gRatings, other.fullName(), color, other.pID);
 		destinations = new LinkedList <Coordinate3D> ();
 	}
-
+	
 	//to be used to initialize a baserunner  
 	public void init (BaseType base, Base [] bases) {
 
@@ -117,6 +117,7 @@ public class Baserunner extends OnFieldPlayer {
 
 				int baseNum = destination.equivBase().num();
 
+				//set attempt
 				if (baseNum != -1)
 					attempt = bases[baseNum];
 
@@ -141,6 +142,7 @@ public class Baserunner extends OnFieldPlayer {
 	}
 
 	public void setBaseOn (Base set) {
+		set.arriveAtBase(this);
 		baseOn = set;
 		loc = baseOn.getBase().equiv();
 	}
@@ -166,7 +168,7 @@ public class Baserunner extends OnFieldPlayer {
 		double distanceRunnerCanCover = throwTime * gRats.runSpeed();
 
 		//determine what base to run to
-		if (distanceRunnerCanCover > 270) {
+		if (distanceRunnerCanCover > 360) {
 			basesTake = 3;
 		}
 		

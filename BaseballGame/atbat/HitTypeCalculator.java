@@ -10,17 +10,17 @@ public class HitTypeCalculator {
 	private List <PingPongBall> lottery = new LinkedList <PingPongBall> ();
 	
 	//init values for ball counts
-	private int dribblerBalls = 5;
+	private int dribblerBalls = 10;
 	private int weakGrounderBalls = 15;
-	private int solidGrounderBalls = 15;
+	private int solidGrounderBalls = 20;
 	private int flareBalls = 10;
-	private int softlinerBalls = 15;
-	private int hardLinerBalls = 20;
+	private int softlinerBalls = 10;
+	private int hardLinerBalls = 15;
 	private int popupBalls = 10;
-	private int flyBalls = 15;
-	private int deepFlyBalls = 10;
+	private int flyBalls = 10;
+	private int deepFlyBalls = 6;
 	private int foulBalls = 25;
-	private int totalBalls;
+	private int totalBalls = 0;
 	
 	public void addBall (HitType type, int balls) {
 		lottery.add(new PingPongBall(type,balls));
@@ -38,7 +38,6 @@ public class HitTypeCalculator {
 		addBall(HitType.FLYBALL,flyBalls);
 		addBall(HitType.DEEPFLYBALL,deepFlyBalls);
 		addBall(HitType.FOUL,foulBalls);
-		
 	}
 	
 	public HitType getHitType () {
@@ -55,7 +54,7 @@ public class HitTypeCalculator {
 			
 		}
 		
-		return null;
+		return lottery.get(lottery.size()-1).getType();
 		
 	}
 	

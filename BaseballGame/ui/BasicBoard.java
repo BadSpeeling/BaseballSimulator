@@ -41,8 +41,7 @@ public class BasicBoard {
 		int i = (int)hitBall.x+foulDistance;
 		int j = (int)hitBall.y+foulDistance;
 				
-		if (i-size < 0 || i+size >= data.getWidth() || j-size < 0 || j+size >= data.getHeight()) {
-			Game.messages.add(new DebugMessage());
+		if (i-size-1 < 0 || i+size+1 >= data.getWidth() || j-size-1 < 0 || j+size+1 >= data.getHeight()) {
 			return;
 		}
 
@@ -70,7 +69,7 @@ public class BasicBoard {
 		int i = (int)loc.x+foulDistance;
 		int j = (int)loc.y+foulDistance;
 
-		if (i-size < 0 || i+size >= data.getWidth() || j-size < 0 || j+size >= data.getHeight()) {
+		if (i-size-1 < 0 || i+size+1 >= data.getWidth() || j-size-1 < 0 || j+size+1 >= data.getHeight()) {
 			return;
 		}
 

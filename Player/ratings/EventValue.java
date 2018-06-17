@@ -31,8 +31,8 @@ public class EventValue {
 		return mean;
 	}
 	
-	public void addModifier (int id, double mean, double change) {
-		modifiers.add(new Modifier(id,mean,change));
+	public void addModifier (int id, double change) {
+		modifiers.add(new Modifier(id,change));
 	}
 	
 	//if we get less than the percent, we have a success. aka what this object stands for happened

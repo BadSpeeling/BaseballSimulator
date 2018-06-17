@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import atbat.HitType;
 import datatype.Coordinate3D;
 import game.Game;
 import messages.BallOverWallMsg;
@@ -27,36 +28,19 @@ public class BallInPlay extends OnFieldObject {
 	public double airTime;
 	public boolean canRecordOut = true;
 	public boolean thrown = false;
-	public InPlayType type;
 	//public Stadium stad;
 	public Baserunner batter = null;
 	private Fielder holding = null;
-
-	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad, int color) {
+	private HitType hitType;
+	
+	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad, int color, HitType hitType) {
 		super(loc,loc, color);
+		this.hitType = hitType;
 		this.launchSpeed = launchSpeed;
 		this.launchAngle = launchAngle;
 		this.launchDir = launchDir;
 		this.velocity = Physics.calculateInitalVelo(launchSpeed, launchAngle, launchDir);
 		this.lastLoc = new Coordinate3D(0,0,0);
-
-		//determine what kind of ball was hit
-		if (launchSpeed <= 20) {
-			type = InPlayType.BUNT;
-		}
-
-		else if (Physics.radsToDegrees(launchAngle) <= 10) {
-			type = InPlayType.GROUNDER;
-		}
-
-		else if (Physics.radsToDegrees(launchAngle) <= 20) {
-			type = InPlayType.LINER;
-		}
-
-		else {
-			type = InPlayType.FLYBALL;
-		}
-
 	}
 
 	public BallInPlay (BallInPlay copy) {
@@ -77,6 +61,10 @@ public class BallInPlay extends OnFieldObject {
 	public void setHolding(Fielder holding) {
 		this.holding = holding;
 	}
+	
+	public HitType getHitType () {
+		return hitType;
+	}
 
 	//returns a BallInPlay that's loc is either the place it makes contact with ground or last resting spot
 	//inAir - if the ball modelling should stop when it is in the air
@@ -92,9 +80,13 @@ public class BallInPlay extends OnFieldObject {
 			do {
 
 				copy.track(new LocationTracker(copy.loc, time,true));
-
+				ctr++;
 				copy.tick(stad, true, true);
-
+				
+				if (ctr == 1000) {
+					return copy;
+				}
+				
 			} while (copy.canRecordOut);
 
 			return copy;
@@ -108,8 +100,11 @@ public class BallInPlay extends OnFieldObject {
 				copy.tick(stad, true, true);
 				time += Physics.tick;
 				ctr++;
-
-
+				
+				if (ctr == 1000) {
+					return copy;
+				}
+				
 				copy.track(new LocationTracker(copy.loc, time,false));
 
 
@@ -301,6 +296,13 @@ public class BallInPlay extends OnFieldObject {
 			System.out.println(x1);
 			System.out.println();*/
 		return (y2-y1)/(x2-x1);
+	}
+
+	@Override
+	public String toString() {
+		return "BallInPlay [launchSpeed=" + launchSpeed + ", launchAngle=" + Physics.radsToDegrees(launchAngle) + ", launchDir=" + Physics.degreesToRads(launchDir)
+				+ ", velocity=" + velocity.toStringPretty() + ", canRecordOut=" + canRecordOut + ", thrown=" + thrown + ", hitType="
+				+ hitType + ", loc=" + loc.toStringPretty() + "]";
 	}
 
 

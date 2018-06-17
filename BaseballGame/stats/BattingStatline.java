@@ -48,6 +48,7 @@ public class BattingStatline extends Statline {
 		
 		pa++;
 		plateAppearances.add(toAdd);
+		super.addPA(toAdd);
 		
 		Result outcome = toAdd.getOutcome();
 		

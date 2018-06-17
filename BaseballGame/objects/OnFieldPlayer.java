@@ -44,6 +44,13 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 		
 	}
 	
+	public double timeToDestination (Coordinate3D target) {
+		
+		double distToCover = target.diff(loc).mag2D();
+		return distToCover/gRats.runSpeed();
+		
+	}
+	
 	public int getID () {
 		return id;
 	}

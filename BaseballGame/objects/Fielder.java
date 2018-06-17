@@ -142,8 +142,13 @@ public class Fielder extends OnFieldPlayer {
 				return null;
 			}
 			
-			Baserunner leadRunner = runners.get(0);
-			Base targetBase = leadRunner.attempt;
+			Baserunner targetRunner = easiestOut(runners);
+			
+			if (targetRunner == null) {
+				return null;
+			}
+			
+			Base targetBase = targetRunner.attempt;
 			
 			//on base needing tp guard
 			if (targetBase ==  baseGuard) {
@@ -202,7 +207,50 @@ public class Fielder extends OnFieldPlayer {
 
 		
 	}
-
+	
+	//of possible baserunner to get out, returns the shortest throwing distance
+	public Baserunner easiestOut (List <Baserunner> runners) {
+		
+		Baserunner ret = null;
+		double shortestDist = Double.MAX_VALUE;
+		
+		for (Baserunner curRunner: runners) {
+			
+			//if this baserunner is not advancing, go to next runner
+			if (curRunner.attempt == null || curRunner.destination == null) {
+				continue;
+			}
+			
+			double groundDist = curRunner.attempt.loc.diff(loc).mag2D();
+			
+			double timeToBase = curRunner.timeToDestination(curRunner.destination);
+			double timeForThrow = timeForThrow(groundDist);
+			
+			
+			//check if there is enohgh time for a throw
+			if (timeToBase > timeForThrow) {
+				
+				if (shortestDist > groundDist) {
+					shortestDist = groundDist;
+					ret = curRunner;
+				}
+				
+			}
+			
+		}
+		
+		return ret;
+		
+	}
+	
+	//time needed for a throw to reach the base
+	public double timeForThrow (double dist) {
+		
+		double ret = gRats.gloveToHandTime() + gRats.windUpTime(); //factor in animation time
+		return ret + (dist/fRats.throwingSpeed());
+		
+	}
+	
 	/*controls all decisions regarding movement the fielder need to make.  flags actions that need to be taken
 	 *curBall - the actual ball that was hit
 	 *model - models of the ending position of balls that were hit
@@ -400,20 +448,24 @@ public class Fielder extends OnFieldPlayer {
 
 	//return the LocationTracker of the first reachable spot.  returns the final resting spot if nowhere is reachable
 	public LocationTracker firstReachableSpot (BallInPlay fullFlightModel) {
-
-		final int SLACK = 10;
-
+				
+		final int SLACK = 2;
+		double delay = gRats.reactionTime();
+		
 		List <LocationTracker> flyBallModel = fullFlightModel.getTracker();
 
 		LocationTracker toReturn = flyBallModel.get(flyBallModel.size()-1);
-
+		
 		for (LocationTracker curLoc: flyBallModel) {
 
 			Coordinate3D cur = curLoc.loc;
-			double physicalDistance = Physics.groundDistanceBetween(cur, loc);
-			double timeGiven = curLoc.time;
-
-			if ((physicalDistance+SLACK) <= (timeGiven * gRats.runSpeed()) + getReach()/2 && cur.z < getReach()) {
+			double physicalDistance = Physics.groundDistanceBetween(cur, loc); //how far away the ball is
+			double timeGiven = curLoc.time - delay; //amount of running time the player has
+			
+			double rangeInTime = (timeGiven * gRats.runSpeed()) + getReach()/2; //distance the player can run
+			boolean canCatchBall = cur.z < getReach();
+			
+			if ((physicalDistance+SLACK) <= rangeInTime && canCatchBall) {
 				return curLoc;
 			}
 
@@ -469,7 +521,7 @@ public class Fielder extends OnFieldPlayer {
 	}
 
 	public String toString () {
-		return fullName + "" + getID();
+		return fullName + "" + getID() + " " + position.toString();
 	}
 
 }

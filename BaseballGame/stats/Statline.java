@@ -20,29 +20,29 @@ public class Statline {
 	public void addPA (PlateAppearance toAdd) {
 
 		switch (toAdd.getOutcome()) {
-		case S:
-			hits++;
-			break;
-		case D:
-			doubles++;
-			hits++;
-			break;
-		case T:
-			triples++;
-			hits++;
-			break;
-		case HR:
-			homeruns++;
-			hits++;
-			break;
-		case BB:
-			walks++;
-			break;
-		case K:
-			strikeouts++;
-			break;
-		default:
-			break;
+			case S:
+				hits++;
+				break;
+			case D:
+				doubles++;
+				hits++;
+				break;
+			case T:
+				triples++;
+				hits++;
+				break;
+			case HR:
+				homeruns++;
+				hits++;
+				break;
+			case BB:
+				walks++;
+				break;
+			case K:
+				strikeouts++;
+				break;
+			default:
+				break;
 		}
 
 	}

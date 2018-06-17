@@ -25,6 +25,7 @@ import javax.swing.table.TableModel;
 
 import datatype.Coordinate3D;
 import game.InningCounters;
+import helpers.DebuggerInfo;
 import stadium.Stadium;
 import stadium.Wall;
 import stats.BattingStatline;
@@ -46,6 +47,8 @@ public class GameDisplay extends JFrame {
 	private LinescoreTable linescore;
 	
 	private GameStatus ctrDisplay = new GameStatus ();
+	
+	private DebuggerInfo debugInfo;
 	
 	public GameDisplay (int x, int y, int offset, Stadium curStadium, int gID, int aID, int hID) {
 		
@@ -88,13 +91,34 @@ public class GameDisplay extends JFrame {
 		
 		getContentPane().add(linescore);
 		
+		debugInfo = new DebuggerInfo (new JTextArea(), x*2, y/4);
+		getContentPane().add(debugInfo);
+		
 		setVisible(true);
 		
+	}
+	
+	public void showDebugger (boolean val) {
+		debugInfo.setVisible(val);
+	}
+	
+	public void writeToDebugger (String [] toAdd) {
+		debugInfo.addText(toAdd);
+	}
+	
+	public void writeToDebuggerAndUpdate (String [] toAdd) {
+		debugInfo.addText(toAdd);
+		debugInfo.update();
 	}
 	
 	public void updateCTR (InningCounters ctr, int hRuns, int aRuns) {
 		ctrDisplay.upDate(ctr, hRuns, aRuns);
 		ctrDisplay.setText(ctrDisplay.toString());
+	}
+	
+	public void setStatsView (boolean val) {
+		homeStats.setVisible(val);
+		awayStats.setVisible(val);
 	}
 	
 	public StatsTable getHomeStats() {
