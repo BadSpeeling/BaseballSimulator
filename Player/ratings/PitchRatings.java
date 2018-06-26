@@ -1,5 +1,4 @@
 package ratings;
-import datatype.PitchType;
 import numbers.RandomNumber;
 
 import org.apache.commons.math3.distribution.NormalDistribution;

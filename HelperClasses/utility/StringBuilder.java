@@ -1,4 +1,4 @@
-package datatype;
+package utility;
 
 //used to build strings.  can check for gramatical correctness
 public class StringBuilder {

@@ -1,0 +1,35 @@
+Swing vs. No Swing :
+	
+	1) Determine the quality of the pitch
+	
+		How to generate?
+		-A function of the pitch location, pitch type, pitchers skill
+	
+	2) Determine if the batter will swing  
+		
+		-A function of the batter discipline and the quality of the pitch
+		
+
+ContactType generation :	how should this be done?
+
+	1) Generate a negative value for the quality of the pitch and a positive value for the quality of the swing
+	2) These are offsetting values, the more negative the lower on the hit rung you will be, the more positive the higher.
+	
+	PitchQuality and SwingQuality generation : how should this be done?
+	
+		This could be a good reason to create a Formula data structure.  The quality of a pitch depends on location, and 
+		
+Function :
+
+	A list of Equations that are in order by their Domain least to greatest
+	
+	Equation :
+		
+		-degree
+		-List of EquationParts
+		
+		EquationPart :
+			
+			-degree
+			-constant
+			Compute value

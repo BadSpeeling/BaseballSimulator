@@ -580,8 +580,6 @@ public class Game {
 
 		}
 		
-		view.setVisible(false);
-
 	}
  
 	public void walkTester (Player batter, Player pitcher, List <Baserunner> runners) {

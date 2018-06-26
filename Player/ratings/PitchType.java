@@ -1,4 +1,4 @@
-package datatype;
+package ratings;
 
 public enum PitchType {
 	FB,CH,CB;

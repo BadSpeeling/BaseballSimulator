@@ -2,8 +2,6 @@ package ratings;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import datatype.PitchType;
-
 /* Eric Frye
  * PitchingRatings represents the pitching stats of a player.  They are as follows:
  * */

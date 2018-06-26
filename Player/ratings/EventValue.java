@@ -9,7 +9,7 @@ public class EventValue {
 	
 	private EventValueType type;
 	private double mean; //the average value  - the higher the number the more likely this event happens
-	private List <Modifier> modifiers = new LinkedList <Modifier> ();
+	private List <Modifier> modifiers = new LinkedList <Modifier> (); //values that can change the value for a given player
 	
 	public EventValue (int id, double mean) {
 		this.mean = mean;
@@ -20,8 +20,7 @@ public class EventValue {
 		this.type = type;
 		this.mean = mean;
 	}
-	
-	
+		
 	//change by diff.  can be  negative
 	public void changeMeanBy (double diff) {
 		mean += diff;

@@ -18,7 +18,7 @@ public class InningTest {
 
 		int [] rules = {9,0,0,25};
 		
-		final int times = 100;
+		final int times = 5;
 		
 		for (int i = 0; i < times; i++) {
 			Team home = new Team ();
