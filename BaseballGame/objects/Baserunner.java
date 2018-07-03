@@ -10,14 +10,17 @@ import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.Game;
 import messages.AdvancingNumberOfBases;
+import messages.RunnerOutMsg;
 import physics.Physics;
 import player.Player;
 import ratings.GeneralRatings;
 import stadium.Wall;
+import stats.BattingStatline;
+import stats.PitchingStatline;
+import ui.GameDisplay;
 
 public class Baserunner extends OnFieldPlayer {
 
-	public Queue <Coordinate3D> destinations;
 	public Coordinate3D destination = null;
 	public Coordinate3D lastLoc = new Coordinate3D (0,0,0);
 	public Base baseOn = null;
@@ -25,18 +28,12 @@ public class Baserunner extends OnFieldPlayer {
 	private Base homeBase;
 	private boolean advancing = true;
 	private int bestBaseAchieved = -1;
+	private Base lastBaseAttempt = null;
 
-	public Baserunner (GeneralRatings gRatings, String fName, int color, int id) {
-		super (FieldConstants.homePlate(), gRatings, fName, color, id);
-		destinations = new LinkedList <Coordinate3D> ();
-		this.fName = fName;
+	public Baserunner (Player other, int color, BattingStatline bs, PitchingStatline ps) {
+		super(other, FieldConstants.homePlate(), color, bs, ps);
 	}
 
-	public Baserunner (Player other, int color) {
-		super(FieldConstants.homePlate(), other.gRatings, other.fullName(), color, other.pID);
-		destinations = new LinkedList <Coordinate3D> ();
-	}
-	
 	//to be used to initialize a baserunner  
 	public void init (BaseType base, Base [] bases) {
 
@@ -44,10 +41,9 @@ public class Baserunner extends OnFieldPlayer {
 		this.baseOn = bases[numBase];
 		advancing = true;
 		attempt = null;
-		destinations.clear();
 		destination = null;
-		loc = baseOn.getBase().equiv();
-		lastLoc = loc.copy();
+		setLoc(baseOn.getBase().equiv());
+		lastLoc = getLoc().copy();
 		bestBaseAchieved = -1;
 		homeBase = this.baseOn;
 		//clear and set base
@@ -80,159 +76,201 @@ public class Baserunner extends OnFieldPlayer {
 		return homeBase;
 	}
 
-	//adds the bases to run to to the queue
-	//returns whether of not the player will be moving
-	public boolean baserunnerBrain (int basesTake) {
-
-		BaseType temp = baseOn.getBase();
-
-		for (int i = 0; i < basesTake; i++) {
-			destinations.add(temp.nextDestination());
-			temp = temp.nextBase();
+	//returns the base the player should run to
+	//null if stay put
+	//chaser is the person to be receiving the ball, either running after it or 
+	public Base baserunnerBrain (Base [] bases, Fielder chaser, LocationTracker pickUpInfo, BallInPlay curBall) {
+		
+		//forced to run to next base
+		if (baseOn.isForceOut() || baseOn.getRunnerTo() != null) {
+			return nextBaseFromBase(bases);
+		}
+		
+		//check if the next base is open to run to
+		if (baseOn.runnerOn() || baseOn.getRunnerTo() != null) {
+			return null;
+		}
+		
+		double mySpeed = getPlayer().getgRatings().getSpeed();
+		Coordinate3D ballLoc = curBall.getLoc();
+		double timeAvailable = 1.0;
+		double distanceToBase = 90;
+		
+		if (chaser != null && curBall.isBallLoose()) {
+			Coordinate3D chaserLoc = chaser.getLoc();
+			
+			//check if the ball is under controll of fielders, i.e dont need to factor in chasing time 
+		
+	
+				Coordinate3D pickUpLoc = pickUpInfo.loc;
+				double runToGroundDist = pickUpLoc.diff(chaserLoc).mag2D();
+				double chaserSpeed = chaser.getPlayer().getgRatings().getSpeed();
+				timeAvailable += runToGroundDist/chaserSpeed;
+	
+		
 		}
 
-		return !destinations.isEmpty();
+		Base baseTry = nextBaseFromBase(bases);
+		Coordinate3D baseLoc = baseTry.getLoc();
+		
+		double throwDist = -1;
+		
+		//the ball is coming to us
+		if (!curBall.isBallLoose())
+			throwDist = ballLoc.diff(baseLoc).mag2D();
+		//the ball is being chased
+		else
+			throwDist = pickUpInfo.loc.diff(baseLoc).mag2D();
+		
+		double throwSpeed = chaser.getPlayer().getgRatings().throwSpeed();
+		timeAvailable += throwDist/throwSpeed;
+
+		//do we have enough time to make it to the next base
+		if (distanceToBase < mySpeed * timeAvailable) {
+			
+			//dont run to a base with someone on
+			if (baseTry.runnerOn()) {
+				return null;
+			}
+			
+			else {
+				return baseTry;
+			}
+				
+		}
+
+		//we are staying put
+		else {
+			return null;
+		}
 
 	}
 
-	public boolean run (Base [] bases, List <Wall> walls) {
+	//flip the way that the play is running, set their destination to this new place
+	public void reverseDirection () {
+		
+		if (lastBaseAttempt == null) {
+			System.out.println("DAFsas");
+		}
+		
+		Base temp = lastBaseAttempt;
+		lastBaseAttempt = attempt;
+		attempt = temp;
+		if(attempt != null)destination = attempt.getLoc();
+		advancing = !advancing;
 
-		if (destination == null) {
+	}
+	
+	public void resetLastBaseAttempt () {
+		if (baseOn != null) {
+			lastBaseAttempt = baseOn;
+		}
+	}
+	
+	//sets the players running destination to the next appropriate base.
+	//player must be on a base
+	public void getNewDestination (Base [] bases, Fielder chaser, LocationTracker tracker, BallInPlay curBall) {
 
-			//we are done running for now
-			if (destinations.isEmpty()) {
-				attempt = null;
-				return false;
-			}
+		if (baseOn != null) {
 
-			else {
+			Base runTo = baserunnerBrain(bases, chaser, tracker, curBall);
+						
+			if (runTo != null) {
 
-				//set destination
-				destination = destinations.poll();
-
+				attempt = runTo;
+				attempt.setRunnerTo(this);
+				destination = attempt.getLoc();
+				
 				if (baseOn != null) {
 					baseOn.leaveBase(this);
 					baseOn = null;
 				}
 
-				int baseNum = destination.equivBase().num();
-
-				//set attempt
-				if (baseNum != -1)
-					attempt = bases[baseNum];
-
 			}
+			
+			else {
+				attempt = null;
+			}
+			
+		}
 
+	}
+
+	//take a step towards the base
+	//player must have a destination
+	public int run (Base [] bases, Fielder chaser, LocationTracker tracker, BallInPlay curBall) {
+		
+		move(destination.diff(getLoc()));
+		
+		if (Physics.within(getLoc().diff(destination), 2.0)) {
+			
+			destination = null;
+			boolean safe = attempt.arriveAtBase(this);
+			
+			if (safe) {
+			
+				lastBaseAttempt = attempt;
+				baseOn = attempt;
+				baseOn.setRunnerTo(null);
+				bestBaseAchieved = baseOn.getBase().num();
+				getNewDestination(bases, chaser, tracker, curBall);
+				setLoc(baseOn.getLoc().copy());
+				
+			}
+			
+		}
+		
+		return 1;
+		
+	}
+
+	//gets the next base to advance to, given the runner is on a base
+	public Base nextBaseFromBase (Base [] bases) {
+
+		int num = baseOn.getBase().num();
+
+		if (advancing) {
+			num++;
 		}
 
 		else {
-
-			move(destination.diff(loc));
-
-			if (Physics.within(destination.diff(loc), 2.0)) {
-				if (attempt.arriveAtBase(this))
-					baseOn = attempt;
-				destination = null;
-			}
-
+			num--;
 		}
-
-		return true;
+		
+		if (num < 0) {
+			return bases[0];
+		}
+		
+		return bases[num];
 
 	}
 
 	public void setBaseOn (Base set) {
 		set.arriveAtBase(this);
 		baseOn = set;
-		loc = baseOn.getBase().equiv();
+		setLoc(baseOn.getBase().equiv());
 	}
 
 	public void setBestBase (int num) {
 		bestBaseAchieved = num;
 	}
 
-	//determines which base the batter can get to
-	public int batterBaseBrain (BallInPlay model, List <Fielder> fielders, Fielder chaser, BallInPlay curBall, Base [] bases) {
-
-		baseOn = bases[3];
-
-		int basesTake = 0;
-		//find the time it will take for the ball to be fielded
-		LocationTracker timeToPickBall = chaser.timeToBall(model);
-		double throwDistance = timeToPickBall.loc.diff(FieldConstants.pitchersMound()).mag2D();
-		double armStrength = chaser.gRats.throwSpeed();
-		
-		double throwTime = throwDistance/armStrength;
-		throwTime += timeToPickBall.time;
-		
-		double distanceRunnerCanCover = throwTime * gRats.runSpeed();
-
-		//determine what base to run to
-		if (distanceRunnerCanCover > 360) {
-			basesTake = 3;
-		}
-		
-		else if (distanceRunnerCanCover > 180) {
-			basesTake = 2;
-		}
-		
-		else {
-			basesTake = 1;
-		}
-		
-		return basesTake;
-
-	}
 
 	public boolean isAttempting () {
 		return attempt != null;
 	}
 
-	//run back to the home base.  set advancing to false
-	public void returnToHomeBase () {
-
-		if (homeBase == null) {
-			return;
-		}
-
-		advancing = false;
-		destination = null;
-		destinations.clear();
+	@Override
+	public String toString() {
 		
-		if (attempt == null) {
-			return;
-		}
+		BaseType homeBaseType = homeBase == null ? BaseType.NONE : homeBase.getBase();
+		BaseType attemptBaseType = attempt == null ? BaseType.NONE : attempt.getBase();
+		BaseType onBaseType = baseOn == null ? BaseType.NONE : baseOn.getBase();
+		BaseType lastBaseAttemptType = baseOn == null ? BaseType.NONE : lastBaseAttempt.getBase();
 		
-		BaseType on = attempt.getBase();
-
-		while (on != homeBase.getBase()) {
-			on = on.prevBase();
-			destinations.add(on.equiv());
-		}
-
-		homeBase.setForceOut(true);
-
+		return "Baserunner [name= "+getPlayer().fullName()+", destination=" + destination + ", loc=" + getLoc() + ", lastLoc=" + lastLoc + ", baseOn=" + onBaseType + ", attempt="
+				+ attemptBaseType + ", homeBase=" + homeBaseType + ", advancing=" + advancing + ", bestBaseAchieved="
+				+ bestBaseAchieved + ", lastBaseAttempt=" + lastBaseAttemptType + "]";
 	}
-
-	//gives the next base in order
-	public Coordinate3D nextBase (Coordinate3D at) {
-
-		if (at.equals(FieldConstants.firstBase())) {
-			return FieldConstants.secondBase();
-		}
-
-		else if (at.equals(FieldConstants.secondBase())) {
-			return FieldConstants.thirdBase();
-		}
-
-		else {
-			return FieldConstants.homePlate();
-		}
-
-	}
-
-	public String toString () {
-		return this.fName + " " + getID();
-	}
-
+	
 }

@@ -16,6 +16,39 @@ public class Statline {
 		super();
 		this.pID = pID;
 	}
+	
+	public void add (int h, int d, int t, int hr, int bb, int k) {
+		incHits(h);
+		incDoubles(d);
+		incTriples(t);
+		incHomeruns(hr);
+		incWalks(bb);
+		incStrikeouts(k);
+	}
+	
+	public void incHits (int by) {
+		hits += by;
+	}
+	
+	public void incDoubles (int by) {
+		hits += by;
+	}
+	
+	public void incTriples (int by) {
+		hits += by;
+	}
+	
+	public void incHomeruns (int by) {
+		hits += by;
+	}
+	
+	public void incWalks (int by) {
+		hits += by;
+	}
+	
+	public void incStrikeouts (int by) {
+		hits += by;
+	}
 
 	public void addPA (PlateAppearance toAdd) {
 

@@ -1,7 +1,7 @@
 package atbat;
 
 public enum ContactType {
-	MISS,FOUL,TERRIBLE,POOR,BELOW_AVG,AVERAGE,GOOD,EXCELLENT;
+	MISS,FOUL,TERRIBLE,POOR,BELOW_AVG,AVERAGE,ABOVE_AVG,GOOD,EXCELLENT;
 	
 	public int [] ballCountChange () {
 				
@@ -17,10 +17,13 @@ public enum ContactType {
 				int [] ret3 = {2,2,-2,2,5,-2,0,2,0};
 				return ret3;
 			case AVERAGE:
-				int [] ret4 = {-5,-7,3,-2,1,3,-2,5,0};
+				int [] ret4 = {0,0,0,0,0,0,0,0,0};
 				return ret4;
+			case ABOVE_AVG:
+				int [] ret7 = {-2,-4,2,-2,1,3,-2,2,0};
+				return ret7;
 			case GOOD:
-				int [] ret5 = {-7,-5,6,-3,0,0,-3,3,2};
+				int [] ret5 = {-3,-4,6,-3,0,0,-3,3,2};
 				return ret5;
 			case EXCELLENT:
 				int [] ret6 = {-5,-6,7,0,0,7,-10,6,5};

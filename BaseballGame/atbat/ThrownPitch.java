@@ -6,19 +6,32 @@ import numbers.PercentileConverter;
 import numbers.RandomNumber;
 import physics.Physics;
 import player.Player;
+import ratings.Modifier;
 import ratings.PitchRatings;
 import ratings.PitchType;
 import ratings.UniversalRatings;
 import stadium.Stadium;
 import stats.PlateAppearance;
+import utility.Function;
 
 /* ThrownPitch is a ball the has been pitched by a pitcher to a hitter
  * */
 
 public class ThrownPitch {
 
-	private PitchType pitchSelection;
+	private final int missBoundry = -50;
+	private final int terribleBoundry = -35;
+	private final int poorBoundry = -20;
+	private final int belowAvgBoundry = -5;
+	private final int avgBoundry = 0;
+	private final int aboveBoundry = 15;
+	private final int goodBoundry = 30;
+	private final int excellentBoundry = 45;
 
+	private PitchType pitchSelection;
+	
+	private Modifier contactMod;
+	
 	//coordinate vals
 	private double x; 
 	private double y;
@@ -33,8 +46,11 @@ public class ThrownPitch {
 	public ThrownPitch (Player pitcher, Player batter) {
 		this.pitcher = pitcher;
 		this.batter = batter;
+		this.contactMod = new Modifier(0,2.5);
+		this.contactMod.setMean(100);
+		this.contactMod.setSd(30);
 	}
-	
+
 	public PitchType getPitchSelection() {
 		return pitchSelection;
 	}
@@ -63,6 +79,62 @@ public class ThrownPitch {
 		return batter;
 	}
 
+	private ContactType determineContactType (double pitchQuality, double swingQuality) {
+
+		double diff = swingQuality - pitchQuality;
+
+		if (diff < missBoundry) {
+			return ContactType.MISS;
+		}
+
+		else if (diff < terribleBoundry) {
+			return ContactType.TERRIBLE;
+		}
+
+		else if (diff < poorBoundry) {
+			return ContactType.POOR;
+		}
+
+		else if (diff < belowAvgBoundry) {
+			return ContactType.BELOW_AVG;
+		}
+
+		else if (diff < avgBoundry) {
+			return ContactType.AVERAGE;
+		}
+
+		else if (diff < aboveBoundry){
+			return ContactType.ABOVE_AVG;
+		}
+
+		else if (diff < goodBoundry) {
+			return ContactType.GOOD;
+		}
+		
+		else {
+			return ContactType.EXCELLENT;
+		}
+
+	}
+
+	//returns the quality of a pitch
+	private double calculatePitchQuality () {
+
+		double [][] bounds = {{0,1},{1,2},{2,3}};
+		String [] function = {"-10+10x^2","5x^2","-3.3x"};
+		Function func = new Function (function,bounds);
+		
+		double val = func.val(Math.abs(x)) + func.val(Math.abs(y));
+		
+		return val;
+
+	}
+	
+	//returns quality of swing
+	private double calculateSwingQuality () {		
+		return (RandomNumber.roll(-400, 400)/10) + contactMod.changeBy(batter.getbRatings().getContact());
+	}
+
 	//generates a BallInPlay, or null if the ThrownPitch is not put in play.
 	//post condition: balls and strikes have been updated
 	public BallInPlay throwBall (PlateAppearance pa, Stadium stadium, HitTypeCalculator calc) {
@@ -71,8 +143,10 @@ public class ThrownPitch {
 
 		catchersCall = PitchType.FB;
 
-		PitchRatings curPitchRatings = pitcher.pRatings.selection.get(catchersCall);
-
+		PitchRatings curPitchRatings = pitcher.getpRatings().selection.get(catchersCall);
+		
+		double pitchQuality = calculatePitchQuality();
+		
 		/*
 		 * calculate the location of the pitch
 		 * */
@@ -94,19 +168,21 @@ public class ThrownPitch {
 		else {
 
 			if (UniversalRatings.swingAtStrikePercent.success()) {
-
-				ContactType contactType = getContactType();
 				
+				double swingQuality = calculateSwingQuality();
+				
+				ContactType contactType = determineContactType(pitchQuality, swingQuality);
+
 				if (contactType.notInPlay()) {
 					pa.incStrikes();
 				}
-				
+
 				//we hit the ball, get a hit type
 				else {
-					
+
 					calc.changeBallCounts(contactType.ballCountChange());
 					HitType hitType = calc.getHitType();
-					
+
 					return new BallInPlay (new Coordinate3D (0,0,3), 
 							hitType.launchAngle(), 
 							hitType.launchDir(),
@@ -133,24 +209,6 @@ public class ThrownPitch {
 		y = RandomNumber.roll(-280, 280)/100.0;
 	}
 
-	private ContactType getContactType () {
-		
-		int num = RandomNumber.roll(0,7);
-		
-		switch (num) {
-			case 0: return ContactType.MISS;
-			case 1: return ContactType.FOUL;
-			case 2: return ContactType.TERRIBLE;
-			case 3: return ContactType.POOR;
-			case 4: return ContactType.BELOW_AVG;
-			case 5: return ContactType.AVERAGE;
-			case 6: return ContactType.GOOD;
-			case 7: return ContactType.EXCELLENT;
-			default: return null;
-		}
-		
-	}
-	
 	private boolean pitchIsBall () {
 		return x < -2 || x > 2 || y < -2 || y > 2;
 	}

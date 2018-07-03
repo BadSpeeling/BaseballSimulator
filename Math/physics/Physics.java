@@ -70,9 +70,9 @@ public class Physics {
 			//the ball will stop bouncing now
 			if (ball.state.equals(BallStatus.IN_AIR) && Math.abs(ball.velocity.z) < .2) {
 				ball.velocity.z = 0;
-				ball.loc.z = .75;
+				ball.getLoc().z = .75;
 				ball.state = BallStatus.ON_GROUND;
-				ball.airDistance = calcPythag(ball.loc.x,ball.loc.y);
+				ball.airDistance = calcPythag(ball.getLoc().x,ball.getLoc().y);
 			}
 
 			ball.velocity.z = ball.velocity.z/-5;
@@ -206,7 +206,7 @@ public class Physics {
 
 	//true if the coordinate is hitting the ground. the ball must end up within an inch of hitting the ground to be considered a collision
 	public static boolean goingToHitGround (BallInPlay ball) {
-		return ball.velocity.z*tick+ball.loc.z <= (double)1/12;
+		return ball.velocity.z*tick+ball.getLoc().z <= (double)1/12;
 	}
 
 	//returns a new Coordinate3D that has been dispalced by curVelo*tick amount

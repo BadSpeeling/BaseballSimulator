@@ -16,6 +16,30 @@ public class PitchingStatline extends Statline {
 		super(pID);
 	}
 	
+	public void add (PitchingStatline other) {
+		incOutsRec(other.getOutsRec());
+		incERA(other.getEra());
+		incRA(other.getRa());
+		incBf(other.getBf());
+		super.add(other.getHits(), other.getDoubles(), other.getTriples(), other.getHomeruns(), other.getWalks(), other.getStrikeouts());
+	}
+	
+	public void incOutsRec (int by) {
+		outsRec += by;
+	}
+	
+	public void incERA (int by) {
+		era += by;
+	}
+	
+	public void incRA (int by) {
+		ra += by;
+	}
+	
+	public void incBf (int by) {
+		bf += by;
+	}
+	
 	public void incOutsRec () {
 		outsRec++;
 	}

@@ -32,6 +32,22 @@ public class BattingStatline extends Statline {
 		return pa;
 	}
 	
+	public void incRuns(int by) {
+		runs += by;
+	}
+
+	public void incRbi(int by) {
+		rbi += by;
+	}
+
+	public void incAB(int by) {
+		ab += by;
+	}
+	
+	public void incPA(int by) {
+		pa += by;
+	}
+	
 	public void incRuns () {
 		runs++;
 	}
@@ -63,5 +79,12 @@ public class BattingStatline extends Statline {
 				+ ab + ", pa=" + pa + "]";
 	}
 
+	public void add (BattingStatline other) {
+		incRuns(other.getRuns());
+		incRbi(other.getRbi());
+		incAB(other.getAB());
+		incPA(other.getPA());
+		super.add(other.getHits(), other.getDoubles(), other.getTriples(), other.getHomeruns(), other.getWalks(), other.getStrikeouts());
+	}
 	
 }

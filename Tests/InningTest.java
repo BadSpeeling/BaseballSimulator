@@ -18,7 +18,10 @@ public class InningTest {
 
 		int [] rules = {9,0,0,25};
 		
-		final int times = 5;
+		final int times = 5000;
+		
+		double tot = 0;
+		double errors = 0;
 		
 		for (int i = 0; i < times; i++) {
 			Team home = new Team ();
@@ -42,15 +45,24 @@ public class InningTest {
 	
 			Game g = new Game (ruleSet, 1, home, away, stadium,6);
 			
-			g.playGame();		
+			try {
+				g.playGame();		
+				
+				//System.out.println("Home count: " + g.getHomeStatline().getTotalBattingStats().getRuns());
+				//System.out.println("Away count: " + g.getAwayStatline().getTotalBattingStats().getRuns());
+				tot += g.getHomeStatline().getTotalBattingStats().getRuns() + g.getAwayStatline().getTotalBattingStats().getRuns();
+			}
 			
-			System.out.println("Home count: " + g.getHomeStatline().getTotalBattingStats().getHomeruns());
-			System.out.println("Away count: " + g.getAwayStatline().getTotalBattingStats().getHomeruns());
-			
+			catch (Exception e) {
+				errors++;
+			}
 			
 		}
 		
+		System.out.println(errors/times);
 		System.out.println("done");
+		
+		System.out.println(tot/(2*times));
 		
 			
 	}

@@ -1,4 +1,5 @@
 package ratings;
+import numbers.PercentileConverter;
 import numbers.RandomNumber;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
@@ -32,6 +33,14 @@ public class PitchRatings {
 
 	public double getFilth() {
 		return filth;
+	}
+	
+	public void simpleGeneratePitchRatings () {
+
+		velocity = PercentileConverter.getValue(93, 2);
+		control = PercentileConverter.getValue(50, 15);
+		filth = PercentileConverter.getValue(50, 15);
+		
 	}
 	
 }

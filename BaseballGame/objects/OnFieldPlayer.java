@@ -6,53 +6,68 @@ import java.util.Queue;
 import ball.LocationTracker;
 import datatype.Coordinate3D;
 import physics.Physics;
+import player.Player;
 import ratings.GeneralRatings;
 import stadium.Wall;
+import stats.BattingStatline;
+import stats.PitchingStatline;
 
 public abstract class OnFieldPlayer extends OnFieldObject{
 
-	public GeneralRatings gRats;
-	public String fName;
 	private double height = 6; //ft
 	private double wingspan = 2;
 	private double actionTimer = 0;
-	private final int id;
+	private Player backingPlayer;
+	private BattingStatline battingStats;
+	private PitchingStatline pitchingStats;
 	
 	private List <LocationTracker> tracker = new LinkedList <LocationTracker> ();
 	
-	public OnFieldPlayer(Coordinate3D loc, GeneralRatings gRats, String fName, int color, int id) {
+	public OnFieldPlayer(Player player, Coordinate3D loc,int color, BattingStatline bS, PitchingStatline pS) {
 		super(loc, loc.copy(), color);
-		this.gRats = gRats;
-		this.fName = fName;
-		this.id = id;
+		backingPlayer = player;
+		this.battingStats = bS;
+		this.pitchingStats = pS;
 	}
-	
-	public abstract boolean run (Base [] bases, List <Wall> walls);
 	
 	//player running
 	//toGo is a corrdinate pointing towards destination
-	public void move (Coordinate3D toGo) {
+	public boolean move (Coordinate3D toGo) {
 		
-		double runSpeed = gRats.runSpeed();
+		double runSpeed = backingPlayer.getgRatings().getSpeed();
 		
 		double angleToSpot = Physics.angleFromXAxis(toGo);
 		double yDisplacement = runSpeed * Math.sin(angleToSpot) * Physics.tick;
 		double xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
-
-		//move the player
-		loc.add(xDisplacement, yDisplacement, 0);
 		
+		if (Double.isFinite(xDisplacement) && Double.isFinite(yDisplacement)) {
+			//move the player
+			getLoc().add(xDisplacement, yDisplacement, 0);
+			return true;
+			
+		}
+		
+		return false;
+		
+	}
+	
+	public Player getPlayer () {
+		return backingPlayer;
+	}
+	
+	public String getName () {
+		return backingPlayer.fullName();
 	}
 	
 	public double timeToDestination (Coordinate3D target) {
 		
-		double distToCover = target.diff(loc).mag2D();
-		return distToCover/gRats.runSpeed();
+		double distToCover = target.diff(getLoc()).mag2D();
+		return distToCover/backingPlayer.getgRatings().getSpeed();
 		
 	}
 	
 	public int getID () {
-		return id;
+		return backingPlayer.getpID();
 	}
 	
 	public void setActionTimer (double val) {

@@ -16,6 +16,14 @@ public class Modifier {
 		this.type = getType(id);
 	}
 	
+	public void setMean(double mean) {
+		this.mean = mean;
+	}
+
+	public void setSd(double sd) {
+		this.sd = sd;
+	}
+
 	//NOTE --- this method must be called before all calculations are performed
 	//computes the mean and sd for the based in ratings
 	public void computeStatistics (double [] ratings) {

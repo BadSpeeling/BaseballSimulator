@@ -27,7 +27,7 @@ public class BallInPlay extends OnFieldObject {
 	public double airDistance;
 	public double airTime;
 	public boolean canRecordOut = true;
-	public boolean thrown = false;
+	public boolean loose = true;
 	//public Stadium stad;
 	public Baserunner batter = null;
 	private Fielder holding = null;
@@ -45,7 +45,7 @@ public class BallInPlay extends OnFieldObject {
 
 	public BallInPlay (BallInPlay copy) {
 
-		super(copy.loc, copy.loc, copy.getColor());
+		super(copy.getLoc(), copy.getLoc(), copy.getColor());
 		this.launchSpeed = copy.launchSpeed;
 		this.launchAngle = copy.launchAngle;
 		this.launchDir = copy.launchDir;
@@ -60,6 +60,11 @@ public class BallInPlay extends OnFieldObject {
 
 	public void setHolding(Fielder holding) {
 		this.holding = holding;
+		this.loose = false;
+	}
+	
+	public boolean isBallLoose () {
+		return loose;
 	}
 	
 	public HitType getHitType () {
@@ -79,7 +84,7 @@ public class BallInPlay extends OnFieldObject {
 
 			do {
 
-				copy.track(new LocationTracker(copy.loc, time,true));
+				copy.track(new LocationTracker(copy.getLoc(), time,true));
 				ctr++;
 				copy.tick(stad, true, true);
 				
@@ -105,7 +110,7 @@ public class BallInPlay extends OnFieldObject {
 					return copy;
 				}
 				
-				copy.track(new LocationTracker(copy.loc, time,false));
+				copy.track(new LocationTracker(copy.getLoc(), time,false));
 
 
 			} while (copy.inMotion());
@@ -137,7 +142,7 @@ public class BallInPlay extends OnFieldObject {
 			}
 
 			//this can be improved.  we clip into slack slightly, but it should never go through wall unless the tick is very high
-			int res = Physics.handleCollision(walls, loc);
+			int res = Physics.handleCollision(walls, getLoc());
 
 			if (res == 1) {
 
@@ -148,7 +153,7 @@ public class BallInPlay extends OnFieldObject {
 				this.velocity.y += addY;
 				this.velocity.x += addX;
 				//this.lastLoc.y = loc.y;
-				this.loc.y -= Physics.slack*2; 
+				this.getLoc().y -= Physics.slack*2; 
 				canRecordOut = false;
 
 			}
@@ -160,7 +165,7 @@ public class BallInPlay extends OnFieldObject {
 				double addX = this.velocity.x * -1/3;
 				this.velocity.y += addY;
 				this.velocity.x += addX;
-				this.loc.x -= Physics.slack*2;
+				this.getLoc().x -= Physics.slack*2;
 				canRecordOut = false;
 
 			}
@@ -171,7 +176,7 @@ public class BallInPlay extends OnFieldObject {
 				}
 			}
 
-			Coordinate3D newPos = Physics.tickPos(loc, velocity);
+			Coordinate3D newPos = Physics.tickPos(getLoc(), velocity);
 			Coordinate3D accl = Physics.calcAccel(this);
 			Coordinate3D newVelo = Physics.tickVelo(velocity, accl);
 
@@ -184,16 +189,16 @@ public class BallInPlay extends OnFieldObject {
 				newVelo.y = 0;
 			}
 
-			loc = newPos;
+			setLoc(newPos);
 			velocity = newVelo;
 
 		}
 
 		//ball being thrown by fielders
 		else if (state.equals(BallStatus.THROWN)) {
-			Coordinate3D newPos = Physics.tickPos(loc, velocity);
+			Coordinate3D newPos = Physics.tickPos(getLoc(), velocity);
 			velocity.multByFactor(.9995);
-			loc = newPos;
+			setLoc(newPos);
 		}
 
 		//the ball should follow the velocity of the player carrying it
@@ -206,11 +211,11 @@ public class BallInPlay extends OnFieldObject {
 
 	public int getMarkerSize () {
 		
-		if (loc.z < 10) {
+		if (getLoc().z < 10) {
 			return 0;
 		}
 		
-		else if (loc.z < 20) {
+		else if (getLoc().z < 20) {
 			return 1;
 		}
 		
@@ -246,19 +251,19 @@ public class BallInPlay extends OnFieldObject {
 			Coordinate3D p2 = allVals.get(i+1);
 
 			//check if ball is reasonably close to wall
-			if (Physics.calcPythag(loc.x-p1.x, loc.y-p1.y) <= 200 && (loc.x > p1.x && loc.x < p2.x)) {
+			if (Physics.calcPythag(getLoc().x-p1.x, getLoc().y-p1.y) <= 200 && (getLoc().x > p1.x && getLoc().x < p2.x)) {
 
 				double m = calculateSlope(p1.x, p1.y, p2.x, p2.y);
 				double targetY = 0;
 
 				if (p1.x < p2.x)
-					targetY = m*(loc.x-p1.x)+p1.y;
+					targetY = m*(getLoc().x-p1.x)+p1.y;
 				else {
-					targetY = p2.y+m*(loc.x-p2.x);
+					targetY = p2.y+m*(getLoc().x-p2.x);
 				}				
 
 				//we have collided with the wall {p1,p2}.  we will now flip the velocity and leave function. walls are 10 feet high
-				if (Math.abs(targetY-loc.y) < slack && loc.z < 10) {
+				if (Math.abs(targetY-getLoc().y) < slack && getLoc().z < 10) {
 					/*
 					System.out.println("Wall " + (i+1) + " ");
 					System.out.println(loc.x);
@@ -301,8 +306,8 @@ public class BallInPlay extends OnFieldObject {
 	@Override
 	public String toString() {
 		return "BallInPlay [launchSpeed=" + launchSpeed + ", launchAngle=" + Physics.radsToDegrees(launchAngle) + ", launchDir=" + Physics.degreesToRads(launchDir)
-				+ ", velocity=" + velocity.toStringPretty() + ", canRecordOut=" + canRecordOut + ", thrown=" + thrown + ", hitType="
-				+ hitType + ", loc=" + loc.toStringPretty() + "]";
+				+ ", velocity=" + velocity.toStringPretty() + ", canRecordOut=" + canRecordOut + ", thrown=" + loose + ", hitType="
+				+ hitType + ", loc=" + getLoc().toStringPretty() + "]";
 	}
 
 

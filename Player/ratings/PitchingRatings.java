@@ -2,12 +2,18 @@ package ratings;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import numbers.PercentileConverter;
+
 /* Eric Frye
  * PitchingRatings represents the pitching stats of a player.  They are as follows:
  * */
 
 public class PitchingRatings {
 
+	private double velocity;
+	private double control; 
+	private double filth;
+	
 	public HashMap <PitchType,PitchRatings> selection = new HashMap <PitchType,PitchRatings> (); 
 	
 	/* adds a pitch to the players pitch selection
@@ -23,5 +29,17 @@ public class PitchingRatings {
 		selection.put(PitchType.FB, toAdd);
 	}
 		
+	public void simpleGeneratePitchRatings () {
+
+		velocity = PercentileConverter.getValue(93, 2);
+		control = PercentileConverter.getValue(50, 15);
+		filth = PercentileConverter.getValue(50, 15);
+		
+	}
+	
+	public String toWriter () {
+		return velocity + "," + control + "," + filth;
+	}
+	
 }
 

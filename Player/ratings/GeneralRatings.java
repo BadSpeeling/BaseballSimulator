@@ -1,5 +1,6 @@
 package ratings;
 
+import numbers.PercentileConverter;
 import numbers.RandomNumber;
 
 /* Eric Frye
@@ -8,13 +9,16 @@ import numbers.RandomNumber;
 
 public class GeneralRatings {
 	
-	private double speed = 26; // ft/s
+	private double speed; // ft/s
 	
-	public GeneralRatings () {
-		speed = 24 + RandomNumber.roll(-2,2);
+	public void simpleGenerateGeneralRatings () {
+		speed = PercentileConverter.getValue(25, 1.5);
+		
+		speed = Math.max(speed, 18);
+		
 	}
 	
-	public double runSpeed () {
+	public double getSpeed () {
 		return speed;
 	}
 	
@@ -33,6 +37,10 @@ public class GeneralRatings {
 	
 	public double reactionTime () {
 		return .25;
+	}
+	
+	public String toWriter () {
+		return speed + ",";
 	}
 	
 }

@@ -4,12 +4,13 @@ public class FunctionTest {
 	
 	public static void main (String [] args) {
 		
-		double [][] bounds = {{-1,1},{1,3}};
-		String [] fns = {"2x^1+2x^1", "7+9"};
-		Function func = new Function (fns,bounds);
+
+		double [][] bounds = {{0,1},{1,2},{2,3}};
+		String [] function = {"-10+10x^2","5x^2","-3.3x"};
+	
+		Function func = new Function (function,bounds);
 		
-		System.out.println(func);
-		System.out.println(func.val(2.1));
+		func.testVals(0, 3, .2);
 		
 	}
 	

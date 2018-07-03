@@ -13,7 +13,15 @@ public class OnFieldObjectTracker {
 	}
 	
 	public void addLocation (Coordinate3D toAdd) {
-		locations.add(toAdd.copy());
+		
+		if (toAdd != null) {
+			locations.add(toAdd.copy());
+		}
+		
+		else {
+			locations.add(new Coordinate3D (0,0,0));
+		}
+		
 	}
 	
 	public Coordinate3D getIndex (int i) {

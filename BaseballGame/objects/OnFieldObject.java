@@ -10,7 +10,7 @@ import physics.Physics;
 
 public abstract class OnFieldObject {
 
-	public Coordinate3D loc;
+	private Coordinate3D loc;
 	public Coordinate3D lastLoc;
 
 	private int color;
@@ -38,20 +38,37 @@ public abstract class OnFieldObject {
 	public int getColor () {
 		return color;
 	}
+	
+	public Coordinate3D getLoc () {
+		return loc;
+	}
+	
+	public void setLoc (Coordinate3D toSet) {
+		this.loc = toSet;
+	}
 
-	public void move (Coordinate3D toGo, double runSpeed) {
+	public boolean move (Coordinate3D toGo, double runSpeed) {
 
 		double angleToSpot = Physics.angleFromXAxis(toGo);
 		double yDisplacement = runSpeed * Math.sin(angleToSpot) * Physics.tick;
 		double xDisplacement = runSpeed * Math.cos(angleToSpot) * Physics.tick;
 
-		//move the player
-		loc.add(xDisplacement, yDisplacement, 0);
-
+		if (Double.isFinite(xDisplacement) && Double.isFinite(yDisplacement)) {
+			//move the player
+			loc.add(xDisplacement, yDisplacement, 0);
+			return true;
+			
+		}
+		
+		else {
+			return false;
+		}
+			
 	}
 
-	public void move (Coordinate3D disp) {
+	public boolean move (Coordinate3D disp) {
 		loc.add(disp.x, disp.y, disp.z);
+		return true;
 	}
 
 }

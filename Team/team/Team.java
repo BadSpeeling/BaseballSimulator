@@ -88,7 +88,8 @@ public class Team {
 
 		for (int i = 0; i < posToAdd.length; i++) {
 
-			Player toAdd = new Player (allFirstNames[r.nextInt(allFirstNames.length)], allLastNames[r.nextInt(allLastNames.length)], posToAdd[i], nextID++);
+			Player toAdd = new Player (posToAdd[i], allFirstNames[r.nextInt(allFirstNames.length)], allLastNames[r.nextInt(allLastNames.length)], nextID++);
+			toAdd.generatePlayer();
 			playersOnTeam.add(toAdd);
 
 		}
@@ -125,11 +126,11 @@ public class Team {
 		for (Player cur: playersOnTeam) {
 						
 			//if player is a pitcher
-			if ((cur.pos.ordinal()+1) == 1) {
-				pitcher = new Player(cur.firstName, cur.lastName, cur.pos, cur.pID);
+			if (cur.isPitcher()) {
+				pitcher = cur;
 			}
 			
-			Player toAdd = new Player(cur.firstName, cur.lastName, cur.pos, cur.pID);
+			Player toAdd = cur;
 			
 			lineup.add(toAdd);
 			fielders.add(toAdd);

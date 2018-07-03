@@ -4,6 +4,8 @@ import ratings.BattingRatings;
 import ratings.FieldingRatings;
 import ratings.GeneralRatings;
 import ratings.PitchingRatings;
+import stats.BattingStatline;
+import stats.PitchingStatline;
 
 /* Eric Frye
  * Player represents a baseball player.  A player does not have to be on a team.
@@ -11,21 +13,22 @@ import ratings.PitchingRatings;
 
 public class Player implements Comparable <Player>{
 	
-	public int pID; //ID of player.
-	public int teamID; //ID of the team the player is on. 0 means that the player is a free agent.
-	public int leagueID; //ID of the league that the player is in. 0 means that the player is not in a league.
-	public Position pos; //Primary Position of player.
-	public String firstName; //First name of player.
-	public String lastName; //Last name of player.
-	public BattingRatings bRatings; //Batting ratings.
-	public PitchingRatings pRatings; //Pitching ratings.
-	public FieldingRatings fRatings; //Fielding ratings.
-	public GeneralRatings gRatings; //General Ratings
+	private int pID; //ID of player.
+	private int teamID = 0; //ID of the team the player is on. 0 means that the player is a free agent.
+	private int leagueID = 0; //ID of the league that the player is in. 0 means that the player is not in a league.
+	private Position pos; //Primary Position of player.
+	private String firstName; //First name of player.
+	private String lastName; //Last name of player.
+	private BattingRatings bRatings; //Batting ratings.
+	private PitchingRatings pRatings; //Pitching ratings.
+	private FieldingRatings fRatings; //Fielding ratings.
+	private GeneralRatings gRatings; //General Ratings
+	private SeasonStats cumStats;
 	
 	/* 
 	 * Basic constructor for Player.  Only uses first and last name, position and a unique ID
 	 * */
-	public Player (String f, String l, Position p, int id) {
+	public Player (Position p, String f, String l, int id) {
 		
 		pID = id;
 		firstName = f;
@@ -36,6 +39,7 @@ public class Player implements Comparable <Player>{
 		pRatings.basicAddFastball();
 		fRatings = new FieldingRatings();	
 		gRatings = new GeneralRatings();
+		cumStats = new SeasonStats(id);
 				
 	}
 	
@@ -49,6 +53,69 @@ public class Player implements Comparable <Player>{
 	
 	public String fullName () {
 		return firstName + " " + lastName; 
+	}
+	
+	public void generatePlayer () {
+		bRatings.simpleGenerateBattingStats();
+		pRatings.simpleGeneratePitchRatings();
+		gRatings.simpleGenerateGeneralRatings();
+	}
+	
+	public boolean isPitcher () {
+		return pos.equals(Position.PITCHER);
+	}
+
+	public int getpID() {
+		return pID;
+	}
+
+	public int getTeamID() {
+		return teamID;
+	}
+
+	public int getLeagueID() {
+		return leagueID;
+	}
+
+	public Position getPos() {
+		return pos;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public BattingRatings getbRatings() {
+		return bRatings;
+	}
+
+	public PitchingRatings getpRatings() {
+		return pRatings;
+	}
+
+	public FieldingRatings getfRatings() {
+		return fRatings;
+	}
+
+	public GeneralRatings getgRatings() {
+		return gRatings;
+	}
+	
+	public String toWriter () {
+		return pID +","+ teamID + "," + leagueID + "," + pos.ordinal()+1 + "," + firstName + "," + lastName + ",";
+	}
+	
+	public String basicToWriter () {
+		String ret = toWriter() + getbRatings().toWriter() + getpRatings().toWriter() + getgRatings().toWriter();
+		return (ret).substring(0, ret.length()-1);
+	}
+	
+	public void add (BattingStatline b, PitchingStatline p) {
+		cumStats.add(b, p);
 	}
 		
 }

@@ -27,23 +27,12 @@ public class AllOnFieldObjectContainer {
 	
 	private final int BALLNUMBER = -10; //special id for a ball in play - since it doesnt have a unique id
 	
-	private List <OnFieldObjectTracker> allObjects = new LinkedList <OnFieldObjectTracker> ();
+	private List <List <String>> allObjects = new LinkedList <List <String>> ();
 	
-	public void addCur (List <Fielder> fielders, BallInPlay curBall, List <Baserunner> runners) {
+	//toWrite contains all data to be on a singleline of ouput, i.e. current game state
+	public void writeLine (List <String> toWrite) {
 		
-		OnFieldObjectTracker add = new OnFieldObjectTracker ();
-		
-		for (Fielder curFielder: fielders) {
-			add.addLocation(curFielder.loc);
-		}
-		
-		for (Baserunner curRunner: runners) {
-			add.addLocation(curRunner.loc);
-		}
-		
-		add.addLocation(curBall.loc);
-		
-		allObjects.add(add);
+		allObjects.add(toWrite);
 		
 	}
 	
@@ -52,8 +41,12 @@ public class AllOnFieldObjectContainer {
 		File data = new File (folderName + "\\"  + java.lang.System.nanoTime());
 		String toWrite = "";
 		
-		for (OnFieldObjectTracker curObj: allObjects) {
-			toWrite += curObj;
+		for (List <String> curObj: allObjects) {
+
+			for (String curString: curObj) {
+				toWrite += curString + "\n";
+			}
+			
 			toWrite += "\n";
 		}
 		

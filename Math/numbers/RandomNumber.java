@@ -27,4 +27,8 @@ public class RandomNumber {
 		return roll(min, max) < val;
 	}
 	
+	public static boolean coinFlip () {
+		return new Random().nextBoolean();
+	}
+	
 }

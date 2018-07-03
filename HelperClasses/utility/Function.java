@@ -161,4 +161,15 @@ public class Function {
 		
 	}
 	
+	public void testVals (double start, double end, double by) {
+		
+		double curNum = start;
+		
+		while (curNum < end) {
+			System.out.println(curNum +": "+val(curNum));
+			curNum += by;
+		}
+		
+	}
+	
 }

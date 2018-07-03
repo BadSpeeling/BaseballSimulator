@@ -14,7 +14,8 @@ public class Base extends OnFieldObject {
 	private Fielder fielderOn = null;
 	private Baserunner runnerOn = null;
 	private boolean forceOut = false;
-
+	private Baserunner runnerTo = null;
+	
 	public Base(Coordinate3D loc, BaseType base, int color) {
 		super(loc, loc, color);
 		this.base = base;
@@ -22,6 +23,18 @@ public class Base extends OnFieldObject {
 
 	public BaseType getBase() {
 		return base;
+	}
+	
+	public void clearRunnerTo () {
+		runnerTo = null;
+	}
+
+	public Baserunner getRunnerTo() {
+		return runnerTo;
+	}
+
+	public void setRunnerTo(Baserunner runnerTo) {
+		this.runnerTo = runnerTo;
 	}
 
 	public void setBase(BaseType base) {
@@ -38,8 +51,9 @@ public class Base extends OnFieldObject {
 	
 	public void clearBase () {
 		fielderOn = null;
-		runnerOn = null;
 		forceOut = false;
+		runnerTo = null;
+		runnerOn = null;
 	}
 	
 	public int getMarkerSize () {
@@ -50,8 +64,10 @@ public class Base extends OnFieldObject {
 		runnerOn = null;
 	}
 	
-	public void clearFielder () {
+	public void clearForNextAB () {
 		fielderOn = null;	
+		runnerTo = null;
+		forceOut = false;
 	}
 	
 	public void arriveAtBase (Fielder arriving) {
@@ -59,12 +75,13 @@ public class Base extends OnFieldObject {
 				
 		if (arriving.hasBall() && runnerOn == null && forceOut) {
 			forceOut = false;
-			Game.messages.add(new ForceOutMsg(arriving,this));
+			Game.messages.add(new ForceOutMsg(arriving,runnerTo));
 		}
 		
 	}
 	
 	//baserunner reaching the base.  sends message if the baserunner is out
+	//returns false if the player should determine if they should take another base
 	//forceOut is flipped since anytime a runner reaches a base safely a forceout cannot occur any longer
 	public boolean arriveAtBase (Baserunner arriving) {
 		
@@ -75,7 +92,7 @@ public class Base extends OnFieldObject {
 		}
 		
 		else {
-			runnerOn = arriving; 
+			
 			forceOut = false;
 			
 			arriving.setBestBaseAchieved(Math.max(arriving.getBestBaseAchieved(), this.base.num()));
@@ -84,6 +101,11 @@ public class Base extends OnFieldObject {
 			
 			if (base.equals(BaseType.HOME) && arriving.attempt != null) {
 				Game.messages.add(new RunScoredMsg(arriving));
+				return false;
+			}
+			
+			else {
+				runnerOn = arriving; 
 			}
 			
 			return true;
@@ -110,7 +132,18 @@ public class Base extends OnFieldObject {
 
 	@Override
 	public String toString() {
-		return "Base [base=" + base + ", fielderOn=" + fielderOn + ", runnerOn=" + runnerOn + ", forceOut=" + forceOut + "]";
+		
+		String runnerOnName = runnerOn == null ? "No Runner" : runnerOn.getName();
+		String fielderOnName = fielderOn == null ? "No Runner" : fielderOn.getName();
+		String runnerToName = runnerTo == null ? "No Runner" : runnerTo.getName();
+		
+		
+		return "Base [loc=" + getLoc() + "base=" + base + 
+				", fielderOn=" + fielderOnName + 
+				", runnerOn=" + runnerOnName + 
+				", forceOut=" + forceOut
+				+ ", runnerTo=" +
+				runnerToName + "]";
 	}
 	
 }

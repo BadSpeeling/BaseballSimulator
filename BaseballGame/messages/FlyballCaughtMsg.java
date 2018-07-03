@@ -10,7 +10,7 @@ public class FlyballCaughtMsg extends BaserunnerOutMsg {
 	}
 	
 	public String toString () {
-		return super.toString() + " The catch was made at " + fielder.loc;
+		return super.toString() + " The catch was made at " + fielder.getLoc();
 	}
 	
 }
