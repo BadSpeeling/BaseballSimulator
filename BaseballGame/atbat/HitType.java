@@ -25,9 +25,9 @@ public enum HitType {
 		case POPUP:
 			return PercentileConverter.getValue(90, 8);
 		case FLYBALL:
-			return PercentileConverter.getValue(120, 12);
+			return PercentileConverter.getValue(130, 12);
 		case DEEPFLYBALL:
-			return PercentileConverter.getValue(155, 12);
+			return PercentileConverter.getValue(165, 12);
 		default:
 			return -1;
 		}

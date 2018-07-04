@@ -101,7 +101,7 @@ public class Game {
 
 	//debugging
 	private AllOnFieldObjectContainer allObjs = null;
-
+	
 	public Game (RuleSet rules, int id, Team homeTeam, Team awayTeam, Stadium stadium, int wait) {
 
 		hitTypeCalc.init();
@@ -137,11 +137,11 @@ public class Game {
 		battingCard = awayStats;
 
 		for (Player curPlayer: homeTeam.playersOnTeam) {
-			homeStats.addPlayer(curPlayer.getpID());
+			homeStats.addPlayer(curPlayer);
 		}
 
 		for (Player curPlayer: awayTeam.playersOnTeam) {
-			awayStats.addPlayer(curPlayer.getpID());
+			awayStats.addPlayer(curPlayer);
 		}
 
 		bases[0] = (new Base (FieldConstants.firstBase(), BaseType.FIRST, WHITE));
@@ -357,10 +357,10 @@ public class Game {
 			}
 
 
-			draw(frame, onTheField, runners, hitBall, true);
+			//draw(frame, onTheField, runners, hitBall, true);
 
 			//check for play being over
-			if (frame%100 == 0) {
+			if (frame%20 == 0) {
 				boolean over = true;
 
 				for (Baserunner cur: runners) {
@@ -570,7 +570,10 @@ public class Game {
 			gameOver = halfInningOver();
 
 		}
-				
+		
+		homeStats.updateSeasonStats();
+		awayStats.updateSeasonStats();
+		
 		view.setVisible(false);
 
 	}

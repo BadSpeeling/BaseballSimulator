@@ -1,8 +1,11 @@
 package stats;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
+import player.Player;
 import ui.StatsTable;
 
 public class Scorecard {
@@ -19,6 +22,7 @@ public class Scorecard {
 
 	private Map <Integer, BattingStatline> battingStats = new HashMap <Integer,BattingStatline> ();
 	private Map <Integer, PitchingStatline> pitchingStats = new HashMap <Integer, PitchingStatline> ();
+	private List <Player> playerRef = new LinkedList <Player> ();
 	private StatsTable battingStatsView;
 
 	private BattingStatline totalBattingStats = new BattingStatline(-1);
@@ -36,9 +40,10 @@ public class Scorecard {
 	}
 
 	//creates a statline for a player
-	public void addPlayer (int pID) {
-		battingStats.put(pID,new BattingStatline(pID));
-		pitchingStats.put(pID,new PitchingStatline(pID));
+	public void addPlayer (Player curPlayer) {
+		battingStats.put(curPlayer.getpID(),new BattingStatline(curPlayer.getpID()));
+		pitchingStats.put(curPlayer.getpID(),new PitchingStatline(curPlayer.getpID()));
+		playerRef.add(curPlayer);
 	}
 
 	public Map<Integer, BattingStatline> getBattingStats() {
@@ -116,6 +121,19 @@ public class Scorecard {
 
 		return ret;
 
+	}
+	
+	public void updateSeasonStats () {
+		
+		for (Player curPlayer: playerRef) {
+			
+			BattingStatline curBatting = battingStats.get(curPlayer.getpID());
+			PitchingStatline curPitching = pitchingStats.get(curPlayer.getpID());
+			curPlayer.add(curBatting, curPitching);
+			curPlayer.resetGameStats();
+			
+		}
+		
 	}
 	
 }

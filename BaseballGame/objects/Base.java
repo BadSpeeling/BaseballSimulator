@@ -8,6 +8,8 @@ import messages.RunScoredMsg;
 import messages.RunnerArrivedAtBaseMsg;
 import messages.RunnerOutMsg;
 
+
+
 public class Base extends OnFieldObject {
 	
 	private BaseType base;
@@ -62,6 +64,7 @@ public class Base extends OnFieldObject {
 	
 	public void leaveBase (Baserunner blank) {
 		runnerOn = null;
+		blank.baseOn = null;
 	}
 	
 	public void clearForNextAB () {
@@ -106,6 +109,8 @@ public class Base extends OnFieldObject {
 			
 			else {
 				runnerOn = arriving; 
+				arriving.baseOn = this;
+				runnerTo = null;
 			}
 			
 			return true;

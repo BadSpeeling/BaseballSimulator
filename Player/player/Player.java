@@ -24,6 +24,8 @@ public class Player implements Comparable <Player>{
 	private FieldingRatings fRatings; //Fielding ratings.
 	private GeneralRatings gRatings; //General Ratings
 	private SeasonStats cumStats;
+	private BattingStatline curGameBatting;
+	private PitchingStatline curGamePitching;
 	
 	/* 
 	 * Basic constructor for Player.  Only uses first and last name, position and a unique ID
@@ -40,7 +42,9 @@ public class Player implements Comparable <Player>{
 		fRatings = new FieldingRatings();	
 		gRatings = new GeneralRatings();
 		cumStats = new SeasonStats(id);
-				
+		curGameBatting = new BattingStatline (id);
+		curGamePitching = new PitchingStatline (id);		
+		
 	}
 	
 	public String toString () {
@@ -59,6 +63,11 @@ public class Player implements Comparable <Player>{
 		bRatings.simpleGenerateBattingStats();
 		pRatings.simpleGeneratePitchRatings();
 		gRatings.simpleGenerateGeneralRatings();
+	}
+	
+	public void resetGameStats () {
+		curGameBatting = new BattingStatline(pID);
+		curGamePitching = new PitchingStatline(pID);
 	}
 	
 	public boolean isPitcher () {

@@ -17,7 +17,8 @@ public class SeasonStats {
 	
 	public void add (BattingStatline batting, PitchingStatline pitching) {
 		
-		
+		seasonBattingStats.add(batting);
+		seasonPitchingStats.add(pitching);
 		
 	}
 	

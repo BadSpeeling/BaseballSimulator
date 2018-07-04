@@ -49,7 +49,7 @@ public class HitTypeCalculator {
 	//generates a random number which is then used to run the lottery to determine the type of hit
 	public HitType getHitType () {
 		
-		int chosenNum = RandomNumber.roll(0,totalBalls-1);
+		int chosenNum = RandomNumber.roll(0,amountOfBalls());
 		
 		for (PingPongBall curBall: lottery) {
 			
@@ -63,6 +63,18 @@ public class HitTypeCalculator {
 		}
 		
 		return lottery.get(lottery.size()-1).getType();
+		
+	}
+	
+	public int amountOfBalls () {
+		
+		int ret = 0;
+		
+		for (PingPongBall ball: lottery) {
+			ret += ball.getNumBalls();
+		}
+		
+		return ret;
 		
 	}
 	

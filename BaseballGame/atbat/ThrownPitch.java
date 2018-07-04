@@ -24,7 +24,7 @@ public class ThrownPitch {
 	private final int poorBoundry = -20;
 	private final int belowAvgBoundry = -5;
 	private final int avgBoundry = 0;
-	private final int aboveBoundry = 15;
+	private final int aboveBoundry = 10;
 	private final int goodBoundry = 30;
 	private final int excellentBoundry = 45;
 
@@ -121,7 +121,7 @@ public class ThrownPitch {
 	private double calculatePitchQuality () {
 
 		double [][] bounds = {{0,1},{1,2},{2,3}};
-		String [] function = {"-10+10x^2","5x^2","-3.3x"};
+		String [] function = {"-5.5+5x^2","3.5x^2","-3.3x"};
 		Function func = new Function (function,bounds);
 		
 		double val = func.val(Math.abs(x)) + func.val(Math.abs(y));
@@ -145,13 +145,11 @@ public class ThrownPitch {
 
 		PitchRatings curPitchRatings = pitcher.getpRatings().selection.get(catchersCall);
 		
-		double pitchQuality = calculatePitchQuality();
-		
 		/*
 		 * calculate the location of the pitch
 		 * */
 		randomPitchLocation();
-
+		double pitchQuality = calculatePitchQuality();
 
 		if (pitchIsBall()) {
 
