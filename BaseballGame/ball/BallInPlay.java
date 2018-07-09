@@ -7,6 +7,7 @@ import java.util.List;
 
 import atbat.HitType;
 import datatype.Coordinate3D;
+import game.FieldEvent;
 import game.Game;
 import messages.BallOverWallMsg;
 import objects.Baserunner;
@@ -32,6 +33,7 @@ public class BallInPlay extends OnFieldObject {
 	public Baserunner batter = null;
 	private Fielder holding = null;
 	private HitType hitType;
+	private boolean outOfPlay = false;
 	
 	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad, int color, HitType hitType) {
 		super(loc,loc, color);
@@ -172,7 +174,7 @@ public class BallInPlay extends OnFieldObject {
 
 			else if (res == 3) {
 				if (!model) {
-					Game.messages.add(new BallOverWallMsg(canRecordOut, batter));
+					this.outOfPlay = true;
 				}
 			}
 

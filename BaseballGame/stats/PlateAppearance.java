@@ -17,13 +17,13 @@ public class PlateAppearance {
 	
 	private Result outcome;
 
-	public PlateAppearance(int abID, int pID, int hID, InningCounters ctr) {
+	public PlateAppearance(int abID, int pID, int hID, int inning, int numOuts) {
 		super();
 		this.abID = abID;
-		this.inning = ctr.getInning();
+		this.inning = inning;
 		this.pID = pID;
 		this.hID = hID;
-		this.numOuts = ctr.getInning();
+		this.numOuts = numOuts;
 	}
 
 	public void setOutcome(Result outcome) {

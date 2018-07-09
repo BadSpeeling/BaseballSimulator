@@ -7,38 +7,33 @@ import java.util.Scanner;
 import ball.BallInPlay;
 import datatype.Coordinate3D;
 import game.FieldConstants;
+import game.FieldEvent;
 import game.Game;
 import game.RuleSet;
+import helpers.DebuggingBuddy;
+import objects.Base;
 import objects.BaseType;
 import objects.Baserunner;
 import objects.Fielder;
 import physics.Physics;
+import player.Player;
+import player.Position;
 import stadium.Stadium;
 import team.GameTeam;
 import team.Team;
+import ui.GameDisplay;
 
 public class FielderTest {
 	
+	final static int WHITE = 0xFFFFFF;
+	
 	public static void main (String [] args) {
 				
-		int playersOnTeam = 9;
-		int [] rules = {9,0,0,25};
-
 		Team home = new Team ();
 		home.addFakePlayers();
 
 		Team away = new Team ();
 		away.addFakePlayers();
-
-		home.printTeam();
-		System.out.println();
-		away.printTeam();
-
-		GameTeam homeTeam = home.makeInGameTeam(true);
-		GameTeam awayTeam = away.makeInGameTeam(true);
-			
-		RuleSet ruleSet = new RuleSet (rules);
-		ruleSet.numInnings = 3;
 
 		Scanner input = null;
 		try {
@@ -50,32 +45,43 @@ public class FielderTest {
 		Stadium stadium = new Stadium ();
 		stadium.loadDimensions(input);
 
+		Base [] bases = new Base [4]; 
+		
+		bases[0] = (new Base (FieldConstants.firstBase(), BaseType.FIRST, WHITE));
+		bases[1] = (new Base (FieldConstants.secondBase(), BaseType.SECOND, WHITE));
+		bases[2] = (new Base (FieldConstants.thirdBase(), BaseType.THIRD, WHITE));
+		bases[3] = (new Base (FieldConstants.homePlate(), BaseType.HOME, WHITE));
+		
+		GameDisplay gameView = new GameDisplay (500,500, 10, stadium, 1, away.tID, home.tID);
 
-		/*
-		BallInPlay hitBall = new BallInPlay (FieldConstants.newPitch(),Physics.degreesToRads(45),Physics.degreesToRads(80),105,stadium);
-		
-		Game g = new Game (ruleSet, 1, homeTeam, awayTeam, stadium,2);
-		
-		LinkedList <Fielder> fielders = new LinkedList <Fielder> ();
-		fielders.add(new Fielder(g.log,FieldConstants.stdLeft(), homeTeam.inTheField.get(6), allVals));
-		fielders.add(new Fielder(g.log,FieldConstants.stdCenter(), homeTeam.inTheField.get(7), allVals));
-		fielders.add(new Fielder(g.log,FieldConstants.stdRight(), homeTeam.inTheField.get(8), allVals));
-		fielders.add(new Fielder(g.log,FieldConstants.stdCatcher(), homeTeam.inTheField.get(1), allVals));
-		fielders.add(new Fielder(g.log,FieldConstants.stdFirst(), homeTeam.inTheField.get(2), allVals));
-		fielders.add(new Fielder(g.log,FieldConstants.stdThird(), homeTeam.inTheField.get(4), allVals));
-		fielders.add(new Fielder(g.log,FieldConstants.stdSecond(), homeTeam.inTheField.get(3), allVals));
-		fielders.add(new Fielder(g.log,FieldConstants.stdShort(), homeTeam.inTheField.get(5), allVals));
-		
+		List <Fielder> fielders = new LinkedList <Fielder> ();
 		List <Baserunner> runners = new LinkedList <Baserunner> ();
 		
-		Baserunner runner1 = new Baserunner(g.curBatter, g.log);
-		Baserunner runner2 = new Baserunner(g.curBatter, g.log);
+		for (Player curPlayer: home.playersOnTeam) {
+			Fielder newFielder = new Fielder (curPlayer, 0xFFFFFF);
+			fielders.add(newFielder);
+		}
 		
-		runners.add(runner1);
-		runners.add(runner2);
+		String name = "a";
+		int times = 100000;
 		
-		g.fieldEvent(fielders, hitBall, runners, awayTeam.lineup.next());
-		*/
+		for (int i = 0; i < times; i++) {
+				
+			Player batter = new Player (Position.FIRST,name,name,times);
+			batter.generatePlayer();
+			
+			FieldEvent event = new FieldEvent (1,runners,fielders,gameView,away.playersOnTeam.get(0),batter,stadium,bases);
+			event.batterPitcherInteraction();
+			
+			//DebuggingBuddy.wait(gameView);
+			
+			int num = (i%26) + 65;
+			name = (char)(num) + "";
+			
+		}
+		
+		gameView.writeText("done");
+		
 	}
 	
 }

@@ -1,0 +1,1227 @@
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[0.0,90.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[0.0,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,89.78482955362047,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[0.2165221488060189,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,89.56965910724094,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[0.4330442976120378,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,89.3544886608614,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[0.6495664464180566,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,89.13931821448188,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[0.8660885952240756,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,88.92414776810234,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[1.0826107440300945,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,88.70897732172281,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[1.2991328928361134,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,88.49380687534328,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[1.5156550416421324,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,88.27863642896375,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[1.7321771904481513,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,88.06346598258422,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[1.9486993392541703,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,87.84829553620469,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[2.165221488060189,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,87.63312508982516,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[2.381743636866208,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,87.41795464344563,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[2.598265785672227,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,87.2027841970661,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[2.814787934478246,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,86.98761375068656,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[3.0313100832842648,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,86.77244330430703,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[3.2478322320902837,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,86.5572728579275,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[3.4643543808963027,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,86.34210241154797,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[3.6808765297023216,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,86.12693196516844,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[3.8973986785083405,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,85.91176151878891,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[4.1139208273143595,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,85.69659107240938,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[4.330442976120378,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,85.48142062602984,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[4.5469651249263965,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,85.26625017965031,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[4.763487273732415,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,85.05107973327078,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[4.9800094225384335,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,84.83590928689125,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[5.196531571344452,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,84.62073884051172,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[5.4130537201504705,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,84.40556839413219,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[5.629575868956489,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,84.19039794775266,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[5.8460980177625075,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,83.97522750137313,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[6.062620166568526,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,83.7600570549936,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[6.2791423153745445,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,83.54488660861406,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[6.495664464180563,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,83.32971616223453,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[6.7121866129865815,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,83.114545715855,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[6.9287087617926,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,82.89937526947547,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[7.1452309105986185,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,82.68420482309594,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[7.361753059404637,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,82.46903437671641,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[7.5782752082106555,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,82.25386393033688,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[7.794797357016674,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,82.03869348395735,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[8.011319505822692,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,81.82352303757781,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[8.227841654628712,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,81.60835259119828,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[8.444363803434731,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,81.39318214481875,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[8.66088595224075,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,81.17801169843922,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[8.87740810104677,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,80.96284125205969,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[9.09393024985279,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,80.74767080568016,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[9.310452398658809,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,80.53250035930063,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[9.526974547464828,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,80.3173299129211,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[9.743496696270848,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,80.10215946654156,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[9.960018845076867,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,79.88698902016203,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[10.176540993882886,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,79.6718185737825,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[10.393063142688906,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,79.45664812740297,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[10.609585291494925,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,79.24147768102344,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[10.826107440300945,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,79.02630723464391,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[11.042629589106964,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,78.81113678826438,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[11.259151737912983,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,78.59596634188485,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[11.475673886719003,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,78.38079589550532,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[11.692196035525022,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,78.16562544912578,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[11.908718184331041,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,77.95045500274625,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[12.12524033313706,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,77.73528455636672,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[12.34176248194308,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,77.52011410998719,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[12.5582846307491,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,77.30494366360766,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[12.774806779555119,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,77.08977321722813,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[12.991328928361138,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,76.8746027708486,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[13.207851077167158,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,76.65943232446907,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[13.424373225973177,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,76.44426187808953,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[13.640895374779197,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,76.22909143171,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[13.857417523585216,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,76.01392098533047,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[14.073939672391235,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,75.79875053895094,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[14.290461821197255,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,75.58358009257141,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[14.506983970003274,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,75.36840964619188,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[14.723506118809293,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,75.15323919981235,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[14.940028267615313,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,74.93806875343282,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[15.156550416421332,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,74.72289830705328,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[15.373072565227352,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,74.50772786067375,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[15.589594714033371,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,74.29255741429422,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[15.80611686283939,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,74.07738696791469,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[16.02263901164541,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,73.86221652153516,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[16.239161160451427,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,73.64704607515563,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[16.455683309257445,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,73.4318756287761,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[16.672205458063463,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,73.21670518239657,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[16.88872760686948,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,73.00153473601704,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[17.105249755675498,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,72.7863642896375,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[17.321771904481515,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,72.57119384325797,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[17.538294053287533,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,72.35602339687844,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[17.75481620209355,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,72.14085295049891,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[17.97133835089957,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,71.92568250411938,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[18.187860499705586,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,71.71051205773985,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[18.404382648511604,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,71.49534161136032,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[18.62090479731762,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,71.28017116498079,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[18.83742694612364,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,71.06500071860125,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[19.053949094929656,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,70.84983027222172,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[19.270471243735674,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,70.63465982584219,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[19.48699339254169,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,70.41948937946266,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[19.70351554134771,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,70.20431893308313,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[19.920037690153727,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,69.9891484867036,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[20.136559838959744,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,69.77397804032407,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[20.353081987765762,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,69.55880759394454,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[20.56960413657178,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,69.343637147565,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[20.786126285377797,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,69.12846670118547,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[21.002648434183815,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,68.91329625480594,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[21.219170582989832,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,68.69812580842641,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[21.43569273179585,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,68.48295536204688,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[21.652214880601868,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,68.26778491566735,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[21.868737029407885,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,68.05261446928782,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[22.085259178213903,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,67.83744402290829,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[22.30178132701992,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,67.62227357652876,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[22.518303475825938,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,67.40710313014922,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[22.734825624631956,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,67.19193268376969,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[22.951347773437973,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,66.97676223739016,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[23.16786992224399,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,66.76159179101063,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[23.38439207105001,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,66.5464213446311,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[23.600914219856026,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,66.33125089825157,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[23.817436368662044,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,66.11608045187204,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[24.03395851746806,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,65.9009100054925,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[24.25048066627408,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,65.68573955911297,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[24.467002815080097,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,65.47056911273344,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[24.683524963886114,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,65.25539866635391,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[24.900047112692132,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,65.04022821997438,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[25.11656926149815,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,64.82505777359485,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[25.333091410304167,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,64.60988732721532,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[25.549613559110185,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,64.39471688083579,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[25.766135707916202,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,64.17954643445626,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[25.98265785672222,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,63.96437598807672,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[26.199180005528238,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,63.74920554169718,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[26.415702154334255,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,63.53403509531764,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[26.632224303140273,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,63.3188646489381,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[26.84874645194629,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,63.103694202558565,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[27.065268600752308,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,62.888523756179026,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[27.281790749558326,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,62.67335330979949,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[27.498312898364343,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,62.45818286341995,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[27.71483504717036,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,62.24301241704041,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[27.93135719597638,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,62.02784197066087,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[28.147879344782396,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,61.812671524281335,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[28.364401493588414,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,61.597501077901796,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[28.58092364239443,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,61.38233063152226,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[28.79744579120045,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,61.16716018514272,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[29.013967940006467,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,60.95198973876318,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[29.230490088812484,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,60.73681929238364,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[29.4470122376185,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,60.521648846004105,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[29.66353438642452,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,60.30647839962457,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[29.880056535230537,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,60.09130795324503,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[30.096578684036555,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,59.87613750686549,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[30.313100832842572,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,59.66096706048595,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[30.52962298164859,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,59.44579661410641,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[30.746145130454607,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,59.230626167726875,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[30.962667279260625,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,59.01545572134734,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[31.179189428066643,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,58.8002852749678,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[31.39571157687266,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,58.58511482858826,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[31.612233725678678,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,58.36994438220872,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[31.828755874484695,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,58.15477393582918,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[32.04527802329071,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,57.939603489449645,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[32.261800172096734,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,57.72443304307011,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[32.478322320902755,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,57.50926259669057,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[32.69484446970878,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,57.29409215031103,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[32.9113666185148,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,57.07892170393149,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[33.12788876732082,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,56.863751257551954,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[33.34441091612684,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,56.648580811172415,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[33.56093306493286,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,56.43341036479288,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[33.77745521373888,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,56.21823991841334,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[33.9939773625449,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,56.0030694720338,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[34.210499511350925,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,55.78789902565426,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[34.427021660156946,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,55.572728579274724,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[34.64354380896297,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,55.357558132895186,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[34.86006595776899,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,55.14238768651565,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[35.07658810657501,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,54.92721724013611,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[35.29311025538103,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,54.71204679375657,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[35.50963240418705,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,54.49687634737703,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[35.72615455299307,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,54.281705900997494,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[35.942676701799094,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,54.066535454617956,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[36.159198850605115,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,53.85136500823842,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[36.375720999411136,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,53.63619456185888,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[36.59224314821716,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,53.42102411547934,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[36.80876529702318,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,53.2058536690998,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[37.0252874458292,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,52.990683222720264,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[37.24180959463522,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,52.775512776340726,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[37.45833174344124,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,52.56034232996119,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[37.67485389224726,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,52.34517188358165,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[37.891376041053284,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,52.13000143720211,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[38.107898189859306,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,51.91483099082257,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[38.32442033866533,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,51.699660544443034,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[38.54094248747135,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,51.484490098063496,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[38.75746463627737,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,51.26931965168396,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[38.97398678508339,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,51.05414920530442,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[39.19050893388941,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,50.83897875892488,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[39.40703108269543,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,50.62380831254534,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[39.623553231501454,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,50.408637866165805,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[39.840075380307475,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,50.193467419786266,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[40.056597529113496,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,49.97829697340673,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[40.27311967791952,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,49.76312652702719,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[40.48964182672554,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,49.54795608064765,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[40.70616397553156,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,49.33278563426811,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[40.92268612433758,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,49.117615187888575,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[41.1392082731436,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,48.902444741509036,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[41.35573042194962,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,48.6872742951295,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[41.572252570755644,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,48.47210384874996,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[41.788774719561665,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,48.25693340237042,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[42.00529686836769,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,48.04176295599088,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[42.22181901717371,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,47.826592509611345,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[42.43834116597973,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,47.61142206323181,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[42.65486331478575,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,47.39625161685227,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[42.87138546359177,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,47.18108117047273,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[43.08790761239779,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,46.96591072409319,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[43.304429761203814,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,46.75074027771365,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[43.520951910009835,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,46.535569831334115,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[43.737474058815856,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,46.32039938495458,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[43.95399620762188,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,46.10522893857504,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[44.1705183564279,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,45.8900584921955,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[44.38704050523392,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,45.67488804581596,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[44.60356265403994,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,45.45971759943642,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[44.82008480284596,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,45.244547153056885,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[45.03660695165198,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,45.02937670667735,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[45.253129100458004,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,44.81420626029781,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[45.469651249264025,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,44.59903581391827,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[45.686173398070046,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,44.38386536753873,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[45.90269554687607,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,44.168694921159194,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[46.11921769568209,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,43.953524474779655,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[46.33573984448811,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,43.73835402840012,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[46.55226199329413,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,43.52318358202058,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[46.76878414210015,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,43.30801313564104,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[46.98530629090617,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,43.0928426892615,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[47.201828439712195,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,42.877672242881964,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[47.418350588518216,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,42.662501796502426,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[47.63487273732424,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,42.44733135012289,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[47.85139488613026,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,42.23216090374335,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[48.06791703493628,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,42.01699045736381,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[48.2844391837423,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,41.80182001098427,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[48.50096133254832,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,41.586649564604734,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[48.71748348135434,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,41.371479118225196,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[48.934005630160364,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,41.15630867184566,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[49.150527778966385,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,40.94113822546612,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[49.367049927772406,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,40.72596777908658,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[49.58357207657843,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,40.51079733270704,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[49.80009422538445,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,40.295626886327504,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[50.01661637419047,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,40.080456439947966,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[50.23313852299649,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,39.86528599356843,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[50.44966067180251,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,39.65011554718889,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[50.66618282060853,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,39.43494510080935,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[50.882704969414554,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,39.21977465442981,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[51.099227118220576,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,39.004604208050274,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[51.3157492670266,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,38.789433761670736,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[51.53227141583262,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,38.5742633152912,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[51.74879356463864,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,38.35909286891166,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[51.96531571344466,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,38.14392242253212,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[52.18183786225068,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,37.92875197615258,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[52.3983600110567,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,37.713581529773045,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[52.614882159862724,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,37.498411083393506,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[52.831404308668745,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,37.28324063701397,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[53.047926457474766,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,37.06807019063443,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[53.26444860628079,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,36.85289974425489,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[53.48097075508681,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,36.63772929787535,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[53.69749290389283,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,36.422558851495815,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[53.91401505269885,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,36.207388405116276,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[54.13053720150487,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,35.99221795873674,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[54.34705935031089,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,35.7770475123572,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[54.563581499116914,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,35.56187706597766,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[54.780103647922935,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,35.34670661959812,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[54.99662579672896,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,35.131536173218585,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[55.21314794553498,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,34.91636572683905,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[55.429670094341,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,34.70119528045951,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[55.64619224314702,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,34.48602483407997,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[55.86271439195304,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,34.27085438770043,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[56.07923654075906,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,34.05568394132089,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[56.29575868956508,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,33.840513494941355,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[56.512280838371105,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,33.62534304856182,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[56.728802987177126,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,33.41017260218228,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[56.94532513598315,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,33.19500215580274,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[57.16184728478917,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,32.9798317094232,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[57.37836943359519,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,32.76466126304366,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[57.59489158240121,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,32.549490816664125,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[57.81141373120723,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,32.33432037028459,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[58.02793588001325,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,32.11914992390505,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[58.244458028819274,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,31.903979477525514,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[58.460980177625295,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,31.68880903114598,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[58.677502326431316,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,31.473638584766444,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[58.89402447523734,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,31.25846813838691,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[59.11054662404336,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,31.043297692007375,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[59.32706877284938,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,30.82812724562784,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[59.5435909216554,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,30.612956799248305,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[59.76011307046142,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,30.39778635286877,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[59.97663521926744,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,30.182615906489236,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[60.193157368073464,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,29.9674454601097,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[60.409679516879486,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,29.752275013730166,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[60.62620166568551,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,29.53710456735063,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[60.84272381449153,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,29.321934120971097,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[61.05924596329755,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,29.106763674591562,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[61.27576811210357,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,28.891593228212027,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[61.49229026090959,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,28.676422781832493,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[61.70881240971561,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,28.461252335452958,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[61.925334558521634,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,28.246081889073423,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[62.141856707327655,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,28.03091144269389,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[62.358378856133676,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,27.815740996314354,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[62.5749010049397,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,27.60057054993482,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[62.79142315374572,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,27.385400103555284,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[63.00794530255174,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,27.17022965717575,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[63.22446745135776,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,26.955059210796215,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[63.44098960016378,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,26.73988876441668,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[63.6575117489698,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,26.524718318037145,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[63.874033897775824,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,26.30954787165761,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[64.09055604658184,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,26.094377425278076,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[64.30707819538786,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,25.87920697889854,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[64.52360034419388,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,25.664036532519006,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[64.7401224929999,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,25.44886608613947,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[64.95664464180592,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,25.233695639759937,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[65.17316679061194,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,25.018525193380402,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[65.38968893941797,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,24.803354747000867,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[65.60621108822399,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,24.588184300621332,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[65.82273323703001,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,24.373013854241798,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[66.03925538583603,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,24.157843407862263,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[66.25577753464205,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,23.942672961482728,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[66.47229968344807,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,23.727502515103193,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[66.68882183225409,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,23.51233206872366,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[66.90534398106011,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,23.297161622344124,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[67.12186612986613,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,23.08199117596459,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[67.33838827867216,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,22.866820729585054,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[67.55491042747818,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,22.65165028320552,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[67.7714325762842,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,22.436479836825985,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[67.98795472509022,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,22.22130939044645,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[68.20447687389624,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,22.006138944066915,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[68.42099902270226,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,21.79096849768738,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[68.63752117150828,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,21.575798051307846,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[68.8540433203143,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,21.36062760492831,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[69.07056546912033,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,21.145457158548776,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[69.28708761792635,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,20.93028671216924,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[69.50360976673237,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,20.715116265789707,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[69.72013191553839,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,20.499945819410172,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[69.93665406434441,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,20.284775373030637,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[70.15317621315043,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,20.069604926651103,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[70.36969836195645,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,19.854434480271568,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[70.58622051076247,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,19.639264033892033,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[70.8027426595685,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,19.4240935875125,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[71.01926480837452,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,19.208923141132964,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[71.23578695718054,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,18.99375269475343,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[71.45230910598656,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,18.778582248373894,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[71.66883125479258,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,18.56341180199436,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[71.8853534035986,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,18.348241355614824,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[72.10187555240462,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,18.13307090923529,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[72.31839770121064,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,17.917900462855755,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[72.53491985001666,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,17.70273001647622,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[72.75144199882268,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,17.487559570096685,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[72.9679641476287,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,17.27238912371715,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[73.18448629643473,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,17.057218677337616,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[73.40100844524075,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,16.84204823095808,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[73.61753059404677,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,16.626877784578546,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[73.83405274285279,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,16.41170733819901,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[74.05057489165881,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,16.196536891819477,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[74.26709704046483,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,15.98136644543994,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[74.48361918927085,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,15.766195999060404,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[74.70014133807688,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,15.551025552680867,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[74.9166634868829,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,15.33585510630133,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[75.13318563568892,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,15.120684659921794,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[75.34970778449494,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,14.905514213542258,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[75.56622993330096,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,14.690343767162721,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[75.78275208210698,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,14.475173320783185,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[75.999274230913,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,14.260002874403648,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[76.21579637971902,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,14.044832428024112,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[76.43231852852504,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,13.829661981644575,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[76.64884067733107,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,13.614491535265039,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[76.86536282613709,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,13.399321088885502,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[77.08188497494311,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,13.184150642505966,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[77.29840712374913,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,12.968980196126429,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[77.51492927255515,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,12.753809749746893,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[77.73145142136117,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,12.538639303367356,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[77.94797357016719,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,12.32346885698782,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[78.16449571897321,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,12.108298410608283,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[78.38101786777924,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,11.893127964228746,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[78.59754001658526,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,11.67795751784921,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[78.81406216539128,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,11.462787071469673,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[79.0305843141973,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,11.247616625090137,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[79.24710646300332,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,11.0324461787106,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[79.46362861180934,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,10.817275732331064,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[79.68015076061536,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,10.602105285951527,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[79.89667290942138,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,10.38693483957199,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[80.1131950582274,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,10.171764393192454,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[80.32971720703343,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,9.956593946812918,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[80.54623935583945,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,9.741423500433381,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[80.76276150464547,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,9.526253054053845,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[80.97928365345149,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,9.311082607674308,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[81.19580580225751,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,9.095912161294772,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[81.41232795106353,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,8.880741714915235,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[81.62885009986955,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,8.665571268535698,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[81.84537224867557,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,8.450400822156162,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[82.0618943974816,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,8.235230375776625,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[82.27841654628762,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,8.020059929397089,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[82.49493869509364,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,7.804889483017553,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[82.71146084389966,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,7.589719036638018,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[82.92798299270568,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,7.374548590258482,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[83.1445051415117,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,7.159378143878946,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[83.36102729031772,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,6.944207697499411,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[83.57754943912374,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,6.729037251119875,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[83.79407158792976,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,6.513866804740339,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[84.01059373673579,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,6.298696358360804,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[84.2271158855418,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,6.083525911981268,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[84.44363803434783,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,5.8683554656017325,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[84.66016018315385,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,5.653185019222197,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[84.87668233195987,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,5.438014572842661,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[85.09320448076589,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,5.222844126463126,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[85.30972662957191,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,5.00767368008359,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[85.52624877837793,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,4.792503233704054,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[85.74277092718395,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,4.577332787324519,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[85.95929307598998,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,4.362162340944983,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[86.175815224796,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,4.146991894565447,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[86.39233737360202,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,3.9318214481859113,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[86.60885952240804,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,3.716651001806375,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[86.82538167121406,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,3.501480555426839,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[87.04190382002008,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,3.286310109047303,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[87.2584259688261,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,3.071139662667767,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[87.47494811763212,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-3.952616976447088E-17,2.855969216288231,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[87.69147026643815,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-2.6350779842980587E-17,2.6407987699086948,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=[90.0,0.0,0.0], loc=[87.90799241524417,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=FIRST, homeBase=NONE, advancing=true, bestBaseAchieved=-1, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[-1.3175389921490292E-17,2.4256283235291587,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=null, loc=[88.12451456405019,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=FIRST, attempt=NONE, homeBase=NONE, advancing=true, bestBaseAchieved=0, lastBaseAttempt=NONE]
+
+Baserunner [name= D D, destination=[0.0,0.0,0.0], loc=[3.0814879110195774E-33,2.2104578771496226,0.0], lastLoc=[0.0,0.0,0.0], baseOn=NONE, attempt=HOME, homeBase=THIRD, advancing=true, bestBaseAchieved=2, lastBaseAttempt=THIRD]
+Baserunner [name= N N, destination=null, loc=[88.12451456405019,0.0,0.0], lastLoc=[0.0,0.0,0.0], baseOn=FIRST, attempt=NONE, homeBase=NONE, advancing=true, bestBaseAchieved=0, lastBaseAttempt=NONE]
+

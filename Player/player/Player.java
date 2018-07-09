@@ -47,6 +47,14 @@ public class Player implements Comparable <Player>{
 		
 	}
 	
+	public BattingStatline getCurGameBatting() {
+		return curGameBatting;
+	}
+
+	public PitchingStatline getCurGamePitching() {
+		return curGamePitching;
+	}
+
 	public String toString () {
 		return pID + "," + firstName + "," + lastName;
 	}

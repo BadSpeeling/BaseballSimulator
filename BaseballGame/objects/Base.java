@@ -1,4 +1,5 @@
 package objects;
+import java.util.LinkedList;
 import java.util.List;
 
 import datatype.Coordinate3D;
@@ -16,7 +17,8 @@ public class Base extends OnFieldObject {
 	private Fielder fielderOn = null;
 	private Baserunner runnerOn = null;
 	private boolean forceOut = false;
-	private Baserunner runnerTo = null;
+	private List <Baserunner> runnerTo = new LinkedList <Baserunner> ();
+	private Baserunner toBeForced = null;
 	
 	public Base(Coordinate3D loc, BaseType base, int color) {
 		super(loc, loc, color);
@@ -27,104 +29,43 @@ public class Base extends OnFieldObject {
 		return base;
 	}
 	
-	public void clearRunnerTo () {
-		runnerTo = null;
+	public void reset () {
+		fielderOn = null;
+		runnerOn = null;
+		forceOut = false;
+		runnerTo.clear();
+		toBeForced = null;
 	}
-
-	public Baserunner getRunnerTo() {
-		return runnerTo;
+	
+	public void nextAtBat () {
+		fielderOn = null;
+		forceOut = false;
+		runnerTo.clear();
+		toBeForced = null;
 	}
-
-	public void setRunnerTo(Baserunner runnerTo) {
-		this.runnerTo = runnerTo;
-	}
-
-	public void setBase(BaseType base) {
-		this.base = base;
-	}
-
+		
 	public Fielder getFielderOn() {
 		return fielderOn;
 	}
-	
-	public void leaveBase (Fielder blank) {
-		fielderOn = null;
-	}
-	
-	public void clearBase () {
-		fielderOn = null;
-		forceOut = false;
-		runnerTo = null;
-		runnerOn = null;
-	}
-	
-	public int getMarkerSize () {
-		return 1;
-	}
-	
-	public void leaveBase (Baserunner blank) {
-		runnerOn = null;
-		blank.baseOn = null;
-	}
-	
-	public void clearForNextAB () {
-		fielderOn = null;	
-		runnerTo = null;
-		forceOut = false;
-	}
-	
-	public void arriveAtBase (Fielder arriving) {
-		fielderOn = arriving;
-				
-		if (arriving.hasBall() && runnerOn == null && forceOut) {
-			forceOut = false;
-			Game.messages.add(new ForceOutMsg(arriving,runnerTo));
-		}
-		
-	}
-	
-	//baserunner reaching the base.  sends message if the baserunner is out
-	//returns false if the player should determine if they should take another base
-	//forceOut is flipped since anytime a runner reaches a base safely a forceout cannot occur any longer
-	public boolean arriveAtBase (Baserunner arriving) {
-		
-		//fielder 
-		if (fielderOn != null && fielderOn.hasBall()) {
-			Game.messages.add(new RunnerOutMsg(this,arriving,fielderOn));
-			return false;
-		}
-		
-		else {
-			
-			forceOut = false;
-			
-			arriving.setBestBaseAchieved(Math.max(arriving.getBestBaseAchieved(), this.base.num()));
-			
-			Game.messages.add(new RunnerArrivedAtBaseMsg(base,arriving));
-			
-			if (base.equals(BaseType.HOME) && arriving.attempt != null) {
-				Game.messages.add(new RunScoredMsg(arriving));
-				return false;
-			}
-			
-			else {
-				runnerOn = arriving; 
-				arriving.baseOn = this;
-				runnerTo = null;
-			}
-			
-			return true;
-			
-		}
- 		
-	}
-	
-	public boolean runnerOn () {
-		return runnerOn != null;
+
+	public void setFielderOn(Fielder fielderOn) {
+		this.fielderOn = fielderOn;
 	}
 
 	public Baserunner getRunnerOn() {
 		return runnerOn;
+	}
+	
+	public boolean isRunnerOn () {
+		return runnerOn != null;
+	}
+
+	public boolean isSomeoneRunningAtMyBase () {
+		return !runnerTo.isEmpty();
+	}
+	
+	public void setRunnerOn(Baserunner runnerOn) {
+		this.runnerOn = runnerOn;
 	}
 
 	public boolean isForceOut() {
@@ -134,13 +75,67 @@ public class Base extends OnFieldObject {
 	public void setForceOut(boolean forceOut) {
 		this.forceOut = forceOut;
 	}
+	
+	public void clearForce (Baserunner runner) {
+		forceOut = false;
+		toBeForced = null;
+		removeRunnerTo(runner);
+	}
+	
+	public void clearForNextAB () {
+		fielderOn = null;
+		forceOut = false;
+		runnerTo.clear();
+		toBeForced = null;
+	}
+	
+	public void clearForNextInning () {
+		clearForNextAB();
+		runnerOn = null;
+	}
+
+	public Baserunner getToBeForced() {
+		return toBeForced;
+	}
+
+	public void setToBeForced(Baserunner toBeForced) {
+		this.toBeForced = toBeForced;
+	}
+
+	public List<Baserunner> getRunnerTo() {
+		return runnerTo;
+	}
+	
+	public void addRunnerTo (Baserunner to) {
+		runnerTo.add(to);
+	}
+	
+	public void removeRunnerTo (Baserunner to) {
+		runnerTo.remove(to);
+	}
+
+	public void setBase(BaseType base) {
+		this.base = base;
+	}
+	
+	public void fielderLeave () {
+		fielderOn = null;
+	}
+	
+	public void baserunnerLeave () {
+		runnerOn = null;
+	}
+	
+	public boolean isHome () {
+		return base.equals(BaseType.HOME);
+	}
 
 	@Override
 	public String toString() {
 		
 		String runnerOnName = runnerOn == null ? "No Runner" : runnerOn.getName();
 		String fielderOnName = fielderOn == null ? "No Runner" : fielderOn.getName();
-		String runnerToName = runnerTo == null ? "No Runner" : runnerTo.getName();
+		//String runnerToName = runnerTo == null ? "No Runner" : runnerTo.getName();
 		
 		
 		return "Base [loc=" + getLoc() + "base=" + base + 
@@ -148,7 +143,13 @@ public class Base extends OnFieldObject {
 				", runnerOn=" + runnerOnName + 
 				", forceOut=" + forceOut
 				+ ", runnerTo=" +
-				runnerToName + "]";
+				 "]";
+	}
+
+	@Override
+	public int getMarkerSize() {
+		// TODO Auto-generated method stub
+		return 1;
 	}
 	
 }

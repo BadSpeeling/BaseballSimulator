@@ -36,6 +36,10 @@ public class AllOnFieldObjectContainer {
 		
 	}
 	
+	public void clear () {
+		allObjects.clear();
+	}
+	
 	public void writePlayToFile (String folderName) {
 		
 		File data = new File (folderName + "\\"  + java.lang.System.nanoTime());

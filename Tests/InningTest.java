@@ -49,7 +49,7 @@ public class InningTest {
 			
 			g = new Game (ruleSet, 1, home, away, stadium,6);
 			
-			try {
+		
 				g.playGame();		
 				
 				//System.out.println("Home count: " + g.getHomeStatline().getTotalBattingStats().getRuns());
@@ -58,11 +58,11 @@ public class InningTest {
 				
 				System.out.println(g.getHomeStatline().getTotalBattingStats().getHomeruns() + g.getAwayStatline().getTotalBattingStats().getHomeruns());
 				
-			}
 			
-			catch (Exception e) {
+			
+			
 				errors++;
-			}
+			
 			
 		}
 		

@@ -9,6 +9,7 @@ import ball.BallStatus;
 import ball.LocationTracker;
 import datatype.Coordinate3D;
 import game.FieldConstants;
+import game.FieldEvent;
 import game.Game;
 import messages.FlyballCaughtMsg;
 import messages.ForceOutMsg;
@@ -31,9 +32,10 @@ public class Fielder extends OnFieldPlayer {
 	private BallInPlay ball = null;
 	private Coordinate3D throwingDestination = null;
 	private boolean throwingDecisionMade = false;
+	private Base baseOn = null;
 	
-	public Fielder (Player cur, int color, BattingStatline bs, PitchingStatline ps) {
-		super(cur, Coordinate3D.standardPos(cur.getPos()), color, bs, ps);
+	public Fielder (Player cur, int color) {
+		super(cur, Coordinate3D.standardPos(cur.getPos()), color, cur.getCurGameBatting(), cur.getCurGamePitching());
 		lastLoc = new Coordinate3D(0,0,0);
 	}
 	
@@ -319,7 +321,7 @@ public class Fielder extends OnFieldPlayer {
 		
 		//leave base if they were on one
 		if (baseGuard != null) {
-			baseGuard.leaveBase(this);
+			leaveBase(baseGuard);
 		}
 		
 		setDestination(destination,bases);
@@ -359,13 +361,10 @@ public class Fielder extends OnFieldPlayer {
 			//we are on the base
 			if (toGo.mag() < 1) {
 				
-				destination = null; //remove destination
-
-				//update the base
 				if (baseGuard != null) {
-					baseGuard.arriveAtBase(this);
+					arriveAtBase(baseGuard);
 				}
-				
+			
 			}
 
 			//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
@@ -373,6 +372,7 @@ public class Fielder extends OnFieldPlayer {
 
 				move(toGo);
 
+				//move the ball with the player if they are holding it
 				if (hasBall) {
 					ball.move(toGo, getPlayer().getgRatings().getSpeed());
 				}
@@ -386,6 +386,31 @@ public class Fielder extends OnFieldPlayer {
 		return 0;
 
 	}
+	
+	public void setTarget (Base toGo) {
+		destination = toGo.getLoc().copy();
+		baseGuard = toGo;
+	}
+	
+	public void leaveBase (Base leave) {
+		baseOn = null;
+		leave.setFielderOn(null);
+	}
+	
+	public void arriveAtBase (Base arrivedAt) {
+		
+		Baserunner force = arrivedAt.getToBeForced();
+		baseGuard.setFielderOn(this);
+		baseOn = arrivedAt;
+		
+		//force out
+		if (force != null && arrivedAt.isForceOut() && hasBall) {
+			FieldEvent.messages.add(new ForceOutMsg(this,force));
+			//clear variables for runner
+			arrivedAt.clearForce(force);
+		}
+		
+	}
 
 	//set the balls velocity to zero.  return true if the ball was successfully picked up. flags that the ball is possessed by a fielder. changes the balls state
 	//post-condition: fielders destination will be set to null
@@ -393,14 +418,15 @@ public class Fielder extends OnFieldPlayer {
 
 		//check for fly out
 		if (ball.canRecordOut) {
-			Game.messages.add(new FlyballCaughtMsg(this,runners.get(runners.size()-1)));
+			FieldEvent.messages.add(new FlyballCaughtMsg(this,runners.get(runners.size()-1)));
 			ball.canRecordOut = false;
 		}
 
 		//force out is recorded
-		if (baseGuard != null && baseGuard.isForceOut()) {
+		if (baseOn != null && baseOn.isForceOut()) {
 
-			Game.messages.add(new ForceOutMsg(this, baseGuard.getRunnerTo()));
+			FieldEvent.messages.add(new ForceOutMsg(this, baseOn.getToBeForced()));
+			baseOn.getToBeForced();
 			
 		}
 		
@@ -462,6 +488,7 @@ public class Fielder extends OnFieldPlayer {
 		resetLoc();
 		destination = null;
 		baseGuard = null;
+		baseOn = null;
 		setThrowingDecisionMade(false);
 		setThrowingDestination(null);
 		setActionTimer(getPlayer().getgRatings().reactionTime());

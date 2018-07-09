@@ -53,7 +53,7 @@ public class GameDisplay extends JFrame {
 	public GameDisplay (int x, int y, int offset, Stadium curStadium, int gID, int aID, int hID) {
 		
 		super("Display Test");
-		setSize(1200, 800);
+		setSize(1200, 900);
 		setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
