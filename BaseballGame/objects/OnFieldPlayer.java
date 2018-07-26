@@ -42,7 +42,9 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 		
 		if (Double.isFinite(xDisplacement) && Double.isFinite(yDisplacement)) {
 			//move the player
-			getLoc().add(xDisplacement, yDisplacement, 0);
+			Coordinate3D newLoc = getLoc().copy();
+			newLoc.add(xDisplacement, yDisplacement, 0);
+			setLoc(newLoc);
 			return true;
 			
 		}

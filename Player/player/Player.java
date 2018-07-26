@@ -67,7 +67,7 @@ public class Player implements Comparable <Player>{
 		return firstName + " " + lastName; 
 	}
 	
-	public void generatePlayer () {
+	public void generateSimpleStats () {
 		bRatings.simpleGenerateBattingStats();
 		pRatings.simpleGeneratePitchRatings();
 		gRatings.simpleGenerateGeneralRatings();

@@ -10,6 +10,7 @@ import datatype.Coordinate3D;
 import game.FieldEvent;
 import game.Game;
 import messages.BallOverWallMsg;
+import objects.Base;
 import objects.Baserunner;
 import objects.Fielder;
 import objects.OnFieldObject;
@@ -34,6 +35,7 @@ public class BallInPlay extends OnFieldObject {
 	private Fielder holding = null;
 	private HitType hitType;
 	private boolean outOfPlay = false;
+	private Base thrownTo;
 	
 	public BallInPlay (Coordinate3D loc, double launchAngle, double launchDir, double launchSpeed, Stadium stad, int color, HitType hitType) {
 		super(loc,loc, color);
@@ -42,7 +44,6 @@ public class BallInPlay extends OnFieldObject {
 		this.launchAngle = launchAngle;
 		this.launchDir = launchDir;
 		this.velocity = Physics.calculateInitalVelo(launchSpeed, launchAngle, launchDir);
-		this.lastLoc = new Coordinate3D(0,0,0);
 	}
 
 	public BallInPlay (BallInPlay copy) {
@@ -60,6 +61,18 @@ public class BallInPlay extends OnFieldObject {
 		return holding;
 	}
 
+	public Base getThrownTo() {
+		return thrownTo;
+	}
+	
+	public void clearThrownTo () {
+		thrownTo = null;
+	}
+
+	public void setThrownTo(Base thrownTo) {
+		this.thrownTo = thrownTo;
+	}
+
 	public void setHolding(Fielder holding) {
 		this.holding = holding;
 		this.loose = false;
@@ -73,6 +86,10 @@ public class BallInPlay extends OnFieldObject {
 		return hitType;
 	}
 
+	public boolean isBallOutOfPlay () {
+		return outOfPlay;
+	}
+	
 	//returns a BallInPlay that's loc is either the place it makes contact with ground or last resting spot
 	//inAir - if the ball modelling should stop when it is in the air
 	public BallInPlay modelBallDistance (boolean inAir, Stadium stad) {
@@ -131,7 +148,9 @@ public class BallInPlay extends OnFieldObject {
 	public void tick (Stadium stad, boolean batted, boolean model) {
 
 		List <Wall> walls = stad.getWalls();
-
+		
+		lastLoc = getLoc().copy();
+		
 		//controls a ball that is not being thrown by fielders
 		if (state.equals(BallStatus.IN_AIR) || state.equals(BallStatus.ON_GROUND)) {
 
@@ -175,6 +194,7 @@ public class BallInPlay extends OnFieldObject {
 			else if (res == 3) {
 				if (!model) {
 					this.outOfPlay = true;
+					this.canRecordOut = false;
 				}
 			}
 

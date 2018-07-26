@@ -14,11 +14,11 @@ import messages.RunnerOutMsg;
 public class Base extends OnFieldObject {
 	
 	private BaseType base;
-	private Fielder fielderOn = null;
-	private Baserunner runnerOn = null;
-	private boolean forceOut = false;
-	private List <Baserunner> runnerTo = new LinkedList <Baserunner> ();
-	private Baserunner toBeForced = null;
+	public Fielder fielderOn = null;
+	public Baserunner runnerOn = null;
+	public boolean forceOut = false;
+	public List <Baserunner> runnerTo = new LinkedList <Baserunner> ();
+	public Baserunner toBeForced = null;
 	
 	public Base(Coordinate3D loc, BaseType base, int color) {
 		super(loc, loc, color);
@@ -27,6 +27,32 @@ public class Base extends OnFieldObject {
 
 	public BaseType getBase() {
 		return base;
+	}
+	
+	public void arriveAtBase (Baserunner copy) {
+		
+		clearRunnerTo(copy);
+		
+		if (copy.isEqual(toBeForced)) {
+			forceOut = false;
+			toBeForced = null;
+		}
+		
+		runnerOn = copy;
+		
+	}
+	
+	private void clearRunnerTo (Baserunner clear) {
+		
+		for (int i = runnerTo.size()-1; i >= 0; i--) {
+		
+			if (runnerTo.get(i).isEqual(clear)) {
+				runnerTo.remove(i);
+				return;
+			}
+			
+		}
+		
 	}
 	
 	public void reset () {
@@ -89,11 +115,21 @@ public class Base extends OnFieldObject {
 		toBeForced = null;
 	}
 	
+	public void nowIsForceOut (Baserunner toBeForced) {
+		this.toBeForced = toBeForced;
+		forceOut = true;
+	}
+	
+	public void clearForce () {
+		toBeForced = null;
+		forceOut = false;
+	}
+	
 	public void clearForNextInning () {
 		clearForNextAB();
 		runnerOn = null;
 	}
-
+	
 	public Baserunner getToBeForced() {
 		return toBeForced;
 	}

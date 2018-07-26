@@ -109,70 +109,36 @@ public class Fielder extends OnFieldPlayer {
 		//only do something if there are runners
 		if (!runners.isEmpty()) {
 			
-			Baserunner firstAdvancing = null;
-			
-			//check if there are any runners attempting a base
-			for (Baserunner curRunner: runners) {
-								
-				if (curRunner.attempt != null) {
-					firstAdvancing = curRunner;
-				}
-				
-			}
-			
-			if (firstAdvancing == null) {
-				curBall.state = BallStatus.DEAD;
-			}
-			
-			//no one is advancing, the play should end
-			if (firstAdvancing == null) {
-				//curBall.state = BallStatus.DEAD;
+			Base targetBase = runners.get(0).attempt;
+
+			//the base we want to throw to is the base we are on
+			if (targetBase == baseOn) {
 				return null;
 			}
 			
-			Baserunner targetRunner = easiestOut(runners);
-			
-			if (targetRunner == null) {
-				return null;
-			}
-			
-			Base targetBase = targetRunner.attempt;
-			
-			//on base needing tp guard
-			if (targetBase ==  baseGuard) {
-				return null;
-			}
-			
-			//lead runner isnt attempting anything, end
+			//do nothing
 			if (targetBase == null) {
 				return null;
 			}
 			
-			//check which fielder is covering the intended base
-			for (Fielder curFielder: fielders) {
-
-				if (curFielder != this && curFielder.baseGuard == targetBase) {
-					throwingDestination = curFielder.baseGuard.getLoc();
-					ret = curFielder;
+			else {
+				
+				Fielder throwTo = targetBase.getFielderOn();
+				
+				//throw the ball to the defended base
+				if (throwTo != null) {
+					throwingDestination = targetBase.getLoc();
+					return throwTo;
 				}
-
-			}
-
-			//if the target is not found, run to the base
-			if (throwingDestination == null) {
-
-				baseGuard = targetBase;
-				setDestination(targetBase.getLoc(),bases);
-				return null;
+				
+				//run to base yourself
+				else {
+					setDestination(targetBase.getLoc(), bases);
+					return null;
+				}
 				
 			}
 			
-			//add time for transfer
-			else {
-				setActionTimer(getPlayer().getgRatings().windUpTime());
-				return ret;
-			}
-
 		}
 		
 		else {
@@ -348,44 +314,6 @@ public class Fielder extends OnFieldPlayer {
 		*/
 
 	}
-
-	//updates the player location
-	public int run (Base [] bases, List <Wall> walls) {
-		
-		//only move if theres somewhere to go
-		if (destination != null) {
-
-			Coordinate3D toGo = this.destination.diff(this.getLoc());
-			double runSpeed = getPlayer().getgRatings().getSpeed();
-
-			//we are on the base
-			if (toGo.mag() < 1) {
-				
-				if (baseGuard != null) {
-					arriveAtBase(baseGuard);
-				}
-			
-			}
-
-			//the player does not need to move if they are within a half foot of the target location. also makes sure player is not colliding with a wall
-			else if (Physics.handleCollision(walls, this.getLoc()) == 0) {
-
-				move(toGo);
-
-				//move the ball with the player if they are holding it
-				if (hasBall) {
-					ball.move(toGo, getPlayer().getgRatings().getSpeed());
-				}
-
-			}
-			
-			return 1;
-
-		}
-		
-		return 0;
-
-	}
 	
 	public void setTarget (Base toGo) {
 		destination = toGo.getLoc().copy();
@@ -405,7 +333,6 @@ public class Fielder extends OnFieldPlayer {
 		
 		//force out
 		if (force != null && arrivedAt.isForceOut() && hasBall) {
-			FieldEvent.messages.add(new ForceOutMsg(this,force));
 			//clear variables for runner
 			arrivedAt.clearForce(force);
 		}
@@ -414,25 +341,13 @@ public class Fielder extends OnFieldPlayer {
 
 	//set the balls velocity to zero.  return true if the ball was successfully picked up. flags that the ball is possessed by a fielder. changes the balls state
 	//post-condition: fielders destination will be set to null
-	public boolean receiveBall (BallInPlay ball, List <Baserunner> runners) {
+	public boolean receiveBall (BallInPlay ball) {
 
-		//check for fly out
-		if (ball.canRecordOut) {
-			FieldEvent.messages.add(new FlyballCaughtMsg(this,runners.get(runners.size()-1)));
-			ball.canRecordOut = false;
-		}
-
-		//force out is recorded
-		if (baseOn != null && baseOn.isForceOut()) {
-
-			FieldEvent.messages.add(new ForceOutMsg(this, baseOn.getToBeForced()));
-			baseOn.getToBeForced();
-			
-		}
-		
+		ball.loose = false;
 		destination = null;
 		ball.state = BallStatus.CARRIED;
 		pickUpBall(ball);
+		ball.clearThrownTo();
 		ball.velocity.x = 0;
 		ball.velocity.y = 0;
 		ball.velocity.z = 0;
@@ -440,12 +355,21 @@ public class Fielder extends OnFieldPlayer {
 
 	}
 	
+	public Base getBaseOn () {
+		return baseOn;
+	}
+	
 	public void resetHasBall () {
 		hasBall = false;
 	}
+	
+	//returns the ground distance from the player to the ball
+	public double distanceFromBall (Coordinate3D ballLoc) {
+		return getLoc().diff(ballLoc).mag2D();
+	}
 
 	//return true if picking up ball was successful
-	private boolean pickUpBall (BallInPlay ball) {
+	public boolean pickUpBall (BallInPlay ball) {
 		setActionTimer(getPlayer().getgRatings().gloveToHandTime());
 		ball.getLoc().z = getLoc().z;
 		this.ball = ball;

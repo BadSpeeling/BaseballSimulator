@@ -11,6 +11,7 @@ import physics.Physics;
 public abstract class OnFieldObject {
 
 	private Coordinate3D loc;
+	private Coordinate3D lastDrawnLoc;
 	public Coordinate3D lastLoc;
 
 	private int color;
@@ -31,6 +32,14 @@ public abstract class OnFieldObject {
 		tracker.add(toAdd);
 	}
 
+	public Coordinate3D getLastDrawnLoc() {
+		return lastDrawnLoc;
+	}
+
+	public void setLastDrawnLoc(Coordinate3D lastDrawnLoc) {
+		this.lastDrawnLoc = lastDrawnLoc;
+	}
+
 	public List <LocationTracker> getTracker () {
 		return tracker;
 	}
@@ -44,7 +53,8 @@ public abstract class OnFieldObject {
 	}
 	
 	public void setLoc (Coordinate3D toSet) {
-		this.loc = toSet;
+		lastLoc = loc.copy();
+		this.loc = toSet.copy();
 	}
 
 	public boolean move (Coordinate3D toGo, double runSpeed) {
@@ -55,6 +65,7 @@ public abstract class OnFieldObject {
 
 		if (Double.isFinite(xDisplacement) && Double.isFinite(yDisplacement)) {
 			//move the player
+			lastLoc = loc.copy();
 			loc.add(xDisplacement, yDisplacement, 0);
 			return true;
 			

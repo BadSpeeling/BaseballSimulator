@@ -89,7 +89,7 @@ public class Team {
 		for (int i = 0; i < posToAdd.length; i++) {
 
 			Player toAdd = new Player (posToAdd[i], allFirstNames[r.nextInt(allFirstNames.length)], allLastNames[r.nextInt(allLastNames.length)], nextID++);
-			toAdd.generatePlayer();
+			toAdd.generateSimpleStats();
 			playersOnTeam.add(toAdd);
 
 		}
