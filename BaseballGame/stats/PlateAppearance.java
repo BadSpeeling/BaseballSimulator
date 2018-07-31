@@ -87,9 +87,7 @@ public class PlateAppearance {
 	}
 
 	public String toString() {
-		return "PlateAppearance [abID=" + abID + ", pID=" + pID + ", hID=" + hID + ", inning=" + inning + ", strikes="
-				+ strikes + ", balls=" + balls + ", pitchesSeen=" + pitchesSeen + ", numOuts=" + numOuts
-				+ ", runsScored=" + runsScored + ", outcome=" + outcome + "]";
+		return outcome.toString();
 	}
 	
 }

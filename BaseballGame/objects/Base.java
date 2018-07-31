@@ -178,7 +178,7 @@ public class Base extends OnFieldObject {
 				", fielderOn=" + fielderOnName + 
 				", runnerOn=" + runnerOnName + 
 				", forceOut=" + forceOut
-				+ ", runnerTo=" +
+				+ ", runnerTo=" + runnerTo.toString() +
 				 "]";
 	}
 

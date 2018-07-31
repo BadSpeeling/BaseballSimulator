@@ -57,30 +57,35 @@ public class FielderTest {
 			fielders.add(newFielder);
 		}
 		
+		int times;
+		
 		String name = "a";
-		//int times = 1000000;
-		int times = 1;
+		times = 1000000;
+		//times = 1;
 		
 		HitTypeCalculator calc = new HitTypeCalculator ();
 		calc.init();
 
 		FieldEvent event = new FieldEvent (1,gameView,stadium);
 		
-		event.placeTestRunner(BaseType.FIRST);
-		event.placeTestRunner(BaseType.SECOND);
+		//event.placeTestRunner(BaseType.THIRD);
+		//event.placeTestRunner(BaseType.SECOND);
+		//event.placeTestRunner(BaseType.FIRST);
+		event.pitcher = away.playersOnTeam.get(0);
 		
 		for (int i = 0; i < times; i++) {
 				
 			Player batter = new Player (Position.FIRST,name,name,times);
+			event.batter = batter;
 			batter.generateSimpleStats();
 			
-			event.batterPitcherInteraction(batter,away.playersOnTeam.get(0), fielders, calc);
-			
-			//DebuggingBuddy.wait(gameView);
-			
+			gameView.writeText(event.batterPitcherInteraction(fielders, calc).toString());
+						
 			int num = (i%26) + 65;
 			name = (char)(num) + "";
-						
+			
+			DebuggingBuddy.wait(gameView);
+			
 		}
 		
 		gameView.writeText("done");

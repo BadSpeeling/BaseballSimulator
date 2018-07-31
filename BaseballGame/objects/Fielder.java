@@ -32,7 +32,7 @@ public class Fielder extends OnFieldPlayer {
 	private BallInPlay ball = null;
 	private Coordinate3D throwingDestination = null;
 	private boolean throwingDecisionMade = false;
-	private Base baseOn = null;
+	public Base baseOn = null;
 	
 	public Fielder (Player cur, int color) {
 		super(cur, Coordinate3D.standardPos(cur.getPos()), color, cur.getCurGameBatting(), cur.getCurGamePitching());
@@ -66,11 +66,6 @@ public class Fielder extends OnFieldPlayer {
 	public boolean hasBall () {
 		return hasBall;
 	}
-
-	//determine what the fielder should do for a hitball
-	public void decideInitAction (BallInPlay curBall) {
-
-	}
 	
 	//post condition: throwingDestination set to null
 	public void throwBall (BallInPlay toThrow, Base [] bases) {
@@ -96,6 +91,11 @@ public class Fielder extends OnFieldPlayer {
 	
 	public void setThrowingDecisionMade(boolean throwingDecisionMade) {
 		this.throwingDecisionMade = throwingDecisionMade;
+	}
+	
+	//true if throwingbrain has been called one.  throwingbrain will always set value to true
+	public boolean getThrowingDecisionMade () {
+		return throwingDecisionMade;
 	}
 
 	//decides who to throw the ball to, or set a new destination to run to
@@ -358,7 +358,7 @@ public class Fielder extends OnFieldPlayer {
 	public Base getBaseOn () {
 		return baseOn;
 	}
-	
+		
 	public void resetHasBall () {
 		hasBall = false;
 	}
