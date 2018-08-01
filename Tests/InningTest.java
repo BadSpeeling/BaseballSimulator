@@ -1,79 +1,43 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-
 import game.Game;
-import game.RuleSet;
-
+import objects.Fielder;
+import player.Player;
 import stadium.Stadium;
 import team.Team;
+import ui.FieldEventDisplay;
 
 public class InningTest {
-
+	
 	public static void main (String [] args) {
+		
+		Team home = new Team ();
+		home.addFakePlayers();
 
-		int [] rules = {9,0,0,25};
-		
-		final int times = 162;
-		
-		double tot = 0;
-		double errors = 0;
-		
-		
-			Team home = new Team ();
-			home.addFakePlayers();
-	
-			Team away = new Team ();
-			away.addFakePlayers();
-	
-			RuleSet ruleSet = new RuleSet (rules);
-			ruleSet.numInnings = 9;
-	
-			Scanner input = null;
-			try {
-				input = new Scanner (new File (System.getProperty("user.dir") + "/Stadium/Data/stadium_data"));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-	
-			Stadium stadium = new Stadium ();
-			stadium.loadDimensions(input);
-	
-			Game g = new Game (ruleSet, 1, home, away, stadium,6);
-		
-		for (int i = 0; i < times; i++) {	
-			
-			g = new Game (ruleSet, 1, home, away, stadium,6);
-			
-		
-				g.playGame();		
-				
-				//System.out.println("Home count: " + g.getHomeStatline().getTotalBattingStats().getRuns());
-				//System.out.println("Away count: " + g.getAwayStatline().getTotalBattingStats().getRuns());
-				tot += g.getHomeStatline().getTotalBattingStats().getHomeruns() + g.getAwayStatline().getTotalBattingStats().getHomeruns();
-				
-				System.out.println(g.getHomeStatline().getTotalBattingStats().getHomeruns() + g.getAwayStatline().getTotalBattingStats().getHomeruns());
-				
-			
-			
-			
-				errors++;
-			
-			
+		Team away = new Team ();
+		away.addFakePlayers();
+
+		Scanner input = null;
+		try {
+			input = new Scanner (new File (System.getProperty("user.dir") + "/Stadium/Data/stadium_data"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 		
-		System.out.println(errors/times);
-		System.out.println("done");
+		Stadium stadium = new Stadium ();
+		stadium.loadDimensions(input);
 		
-		System.out.println(tot);
+		FieldEventDisplay gameView = new FieldEventDisplay (500,500, 10, stadium, 1, away.tID, home.tID);
+
+		Game newGame = new Game (home, away, stadium, gameView);
+		newGame.playInning();
 		
-			
+		System.out.println("done!");
+		
 	}
-
+	
 }
-
-

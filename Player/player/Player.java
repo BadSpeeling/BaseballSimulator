@@ -47,6 +47,10 @@ public class Player implements Comparable <Player>{
 		
 	}
 	
+	public boolean isEqual (int id) {
+		return pID == id;
+	}
+	
 	public BattingStatline getCurGameBatting() {
 		return curGameBatting;
 	}

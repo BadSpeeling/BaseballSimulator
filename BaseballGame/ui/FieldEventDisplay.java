@@ -31,7 +31,7 @@ import stadium.Wall;
 import stats.BattingStatline;
 import stats.Scorecard;
 
-public class GameDisplay extends JFrame {
+public class FieldEventDisplay extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -50,7 +50,7 @@ public class GameDisplay extends JFrame {
 	
 	private DebuggerInfo debugInfo;
 	
-	public GameDisplay (int x, int y, int offset, Stadium curStadium, int gID, int aID, int hID) {
+	public FieldEventDisplay (int x, int y, int offset, Stadium curStadium, int gID, int aID, int hID) {
 		
 		super("Display Test");
 		setSize(1200, 900);
@@ -143,6 +143,10 @@ public class GameDisplay extends JFrame {
 		
 	}
 	
+	public LinescoreTable getLinescore () {
+		return linescore;
+	}
+	
 	//draws the outfield walls and foul lines
 	public void drawFieldOutline () {
 		
@@ -206,33 +210,6 @@ public class GameDisplay extends JFrame {
 		rightCenterToRight.dispose();
 		
 	}
-	
-	public LinescoreTable getLinescore () {
-		return linescore;
-	}
-	
-	/*
-	public void drawField (int foul, Stadium stad) {
-		
-		for (int i = -1*stad.dim.get("f") + 1; i < stad.field.field.length - stad.dim.get("f"); i++) {
-			
-			for (int j = -1*stad.dim.get("f") + 1; j < stad.field.field[0].length - stad.dim.get("f"); j++) {
-				
-				if (stad.field.get(i, j) == SectorT.HR) {
-					setCoor(i, j, 16777215);
-				}
-				
-				else if (stad.field.get(i, j) == SectorT.FOUL) {
-					setCoor(i, j, 11673118);
-				}
-				
-			}
-			
-		}
-		
-		
-	}
-	*/
 	
 	public void removeSpot (Coordinate3D hitBall, int size) {
 		view.clearObject(hitBall, size);

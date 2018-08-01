@@ -3,11 +3,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeSet;
 
 import datatype.CircularLinkedList;
+import objects.Fielder;
 import player.Player;
 import player.Position;
 
@@ -121,7 +123,7 @@ public class Team {
 		
 		Player pitcher = null;
 		
-		LinkedList <Player> fielders = new LinkedList <Player> ();
+		List <Fielder> fielders = new LinkedList <Fielder> ();
 		
 		for (Player cur: playersOnTeam) {
 						
@@ -133,7 +135,7 @@ public class Team {
 			Player toAdd = cur;
 			
 			lineup.add(toAdd);
-			fielders.add(toAdd);
+			fielders.add(new Fielder(toAdd,0xFFFFFF));
 			
 		}
 		

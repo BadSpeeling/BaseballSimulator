@@ -5,23 +5,25 @@ package team;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 
 import datatype.CircularLinkedList;
 import game.Linescore;
 import manager.Manager;
+import objects.Fielder;
 import player.Player;
 
 public class GameTeam {
 	
-	public CircularLinkedList <Player> lineup; //Lineup. This variable is a CLL because a lineup loops back up to the first spot once it reaches the end.
-	public LinkedList <Player> inTheField;
-	public Player pitcher; //Current player on the mound.
-	public HashSet <Player> bench; //Available players on bench.  This variable is a set because there is no ordering of the players.
-	public HashSet <Player> bullPen; //Available players in the bullpen.  No specific ordering.
-	public Manager manager; //Manager.
-	public Linescore score;
+	private CircularLinkedList <Player> lineup; //Lineup. This variable is a CLL because a lineup loops back up to the first spot once it reaches the end.
+	private List <Fielder> inTheField;
+	private Player pitcher; //Current player on the mound.
+	private HashSet <Player> bench; //Available players on bench.  This variable is a set because there is no ordering of the players.
+	private HashSet <Player> bullPen; //Available players in the bullpen.  No specific ordering.
+	private Manager manager; //Manager.
+	private Linescore score;
 	
-	public GameTeam (CircularLinkedList <Player> lineup, Player pitcher, HashSet <Player> bench, HashSet <Player> bullPen, Manager manager, boolean homeTeam, LinkedList <Player> inField) {
+	public GameTeam (CircularLinkedList <Player> lineup, Player pitcher, HashSet <Player> bench, HashSet <Player> bullPen, Manager manager, boolean homeTeam, List <Fielder> inField) {
 		this.lineup = lineup;
 		this.pitcher = pitcher;
 		this.bench = bench;
@@ -41,5 +43,19 @@ public class GameTeam {
 		score = copy.score;
 		
 	}
-
+	
+	public List <Fielder> getFielders () {
+		return inTheField;
+	}
+	
+	//returns the player that will throw the next pitch
+	public Player getCurrentPitcher () {
+		return pitcher;
+	}
+	
+	//returns the next player due up in the batting order
+	public Player nextBatter () {
+		return lineup.next();
+	}
+	
 }

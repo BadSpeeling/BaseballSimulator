@@ -9,7 +9,6 @@ import ball.BallInPlay;
 import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.FieldEvent;
-import game.Game;
 import game.RuleSet;
 import helpers.DebuggingBuddy;
 import objects.Base;
@@ -23,7 +22,7 @@ import player.Position;
 import stadium.Stadium;
 import team.GameTeam;
 import team.Team;
-import ui.GameDisplay;
+import ui.FieldEventDisplay;
 
 public class FielderTest {
 	
@@ -48,7 +47,7 @@ public class FielderTest {
 		stadium.loadDimensions(input);
 		
 		
-		GameDisplay gameView = new GameDisplay (500,500, 10, stadium, 1, away.tID, home.tID);
+		FieldEventDisplay gameView = new FieldEventDisplay (500,500, 10, stadium, 1, away.tID, home.tID);
 
 		List <Fielder> fielders = new LinkedList <Fielder> ();
 		
@@ -65,12 +64,15 @@ public class FielderTest {
 		
 		HitTypeCalculator calc = new HitTypeCalculator ();
 		calc.init();
-
+		
+		GameTeam awayTeam = away.makeInGameTeam(false); 
+		
 		FieldEvent event = new FieldEvent (1,gameView,stadium);
 		
 		//event.placeTestRunner(BaseType.THIRD);
 		//event.placeTestRunner(BaseType.SECOND);
 		//event.placeTestRunner(BaseType.FIRST);
+		
 		event.pitcher = away.playersOnTeam.get(0);
 		
 		for (int i = 0; i < times; i++) {
@@ -79,12 +81,14 @@ public class FielderTest {
 			event.batter = batter;
 			batter.generateSimpleStats();
 			
-			gameView.writeText(event.batterPitcherInteraction(fielders, calc).toString());
-						
+			gameView.writeText(event.batterPitcherInteraction(fielders).toString());
+							
 			int num = (i%26) + 65;
 			name = (char)(num) + "";
 			
-			DebuggingBuddy.wait(gameView);
+			System.out.println(i);
+			
+			//DebuggingBuddy.wait(gameView);
 			
 		}
 		

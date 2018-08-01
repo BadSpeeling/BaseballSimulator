@@ -19,7 +19,7 @@ import ratings.GeneralRatings;
 import stadium.Wall;
 import stats.BattingStatline;
 import stats.PitchingStatline;
-import ui.GameDisplay;
+import ui.FieldEventDisplay;
 
 public class Baserunner extends OnFieldPlayer {
 
@@ -27,7 +27,7 @@ public class Baserunner extends OnFieldPlayer {
 	public Coordinate3D lastLoc = new Coordinate3D (0,0,0);
 	public Base baseOn = null;
 	public Base attempt = null;
-	private Base homeBase;
+	public Base homeBase;
 	private boolean advancing = true;
 	private int bestBaseAchieved = -1;
 	private Base lastBaseOn = null;
@@ -169,31 +169,6 @@ public class Baserunner extends OnFieldPlayer {
 
 	public void flipAdvancing () {
 		advancing = !advancing;
-	}
-
-	public void resetLastBaseAttempt () {
-		if (baseOn != null) {
-			lastBaseOn = baseOn;
-		}
-	}
-
-	//sets the players running destination to the next appropriate base.
-	//player must be on a base
-	public Base getNewDestination (Base [] bases, Fielder chaser, LocationTracker tracker, BallInPlay curBall) {
-
-		if (baseOn != null) {
-
-			Base runTo = baserunnerBrain(nextBaseFromBase(bases, baseOn), bases, chaser, tracker, curBall);
-			return runTo;
-
-		}
-
-		//retreat to last base
-		else {
-			Base runTo = baserunnerBrain(lastBaseOn, bases, chaser, tracker, curBall);
-			return runTo;
-		}
-
 	}
 
 	public void clearRunnersBases () {
