@@ -1,4 +1,4 @@
-package ui;
+package boxscore;
 
 import java.awt.Dimension;
 

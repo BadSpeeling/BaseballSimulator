@@ -138,5 +138,16 @@ public class Player implements Comparable <Player>{
 	public void add (BattingStatline b, PitchingStatline p) {
 		cumStats.add(b, p);
 	}
+	
+	//returns array to be added to a row in PlayerStatsTable
+	public String [] generateGameBattingStatsDisp () {
+		String [] ret = {pos.shorthand(),fullName(),"0","0","0","0","0","0"};
+		return ret;
+	}
+	
+	public String [] generateGamePitchingStatsDisp () {
+		String [] ret = {fullName(), "0","0","0","0","0","0"};
+		return ret;
+	}
 		
 }

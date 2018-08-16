@@ -119,14 +119,16 @@ public class Team {
 	 * */
 	public GameTeam makeInGameTeam (boolean homeTeam) {
 		
-		CircularLinkedList <Player> lineup = new CircularLinkedList <Player> (9);
+		Player [] lineup = new Player [9]; 
 		
 		Player pitcher = null;
 		
 		List <Fielder> fielders = new LinkedList <Fielder> ();
 		
-		for (Player cur: playersOnTeam) {
+		for (int i = 0; i < 9; i++) {
 						
+			Player cur = playersOnTeam.get(i);
+			
 			//if player is a pitcher
 			if (cur.isPitcher()) {
 				pitcher = cur;
@@ -134,12 +136,12 @@ public class Team {
 			
 			Player toAdd = cur;
 			
-			lineup.add(toAdd);
 			fielders.add(new Fielder(toAdd,0xFFFFFF));
+			lineup[i] = cur;
 			
 		}
 		
-		return new GameTeam(lineup, pitcher, null, null, null, homeTeam, fielders);
+		return new GameTeam(tID,lineup, pitcher, null, null, null, homeTeam, fielders);
 		
 	}
 

@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import datatype.Coordinate3D;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.math.*;
 
 /* Stadium represents a place that a baseball game is played in.  A stadium can have different
@@ -78,4 +80,19 @@ public class Stadium {
 		return walls;
 	}
 
+	public static Stadium stdStadium () {
+		
+		Scanner input = null;
+		try {
+			input = new Scanner (new File (System.getProperty("user.dir") + "/Stadium/Data/stadium_data"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		Stadium stadium = new Stadium ();
+		stadium.loadDimensions(input);
+		return stadium;
+		
+	}
+	
 }

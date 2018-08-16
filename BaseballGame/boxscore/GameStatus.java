@@ -1,4 +1,4 @@
-package ui;
+package boxscore;
 
 import javax.swing.JLabel;
 

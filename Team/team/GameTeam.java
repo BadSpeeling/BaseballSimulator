@@ -8,22 +8,28 @@ import java.util.LinkedList;
 import java.util.List;
 
 import datatype.CircularLinkedList;
+import game.Game;
 import game.Linescore;
 import manager.Manager;
 import objects.Fielder;
 import player.Player;
 
 public class GameTeam {
-	
-	private CircularLinkedList <Player> lineup; //Lineup. This variable is a CLL because a lineup loops back up to the first spot once it reaches the end.
+
+	private int curPA = 0;
+	private Player [] lineup; //Lineup. This variable is a CLL because a lineup loops back up to the first spot once it reaches the end.
 	private List <Fielder> inTheField;
 	private Player pitcher; //Current player on the mound.
 	private HashSet <Player> bench; //Available players on bench.  This variable is a set because there is no ordering of the players.
 	private HashSet <Player> bullPen; //Available players in the bullpen.  No specific ordering.
 	private Manager manager; //Manager.
 	private Linescore score;
+	private int tID;
 	
-	public GameTeam (CircularLinkedList <Player> lineup, Player pitcher, HashSet <Player> bench, HashSet <Player> bullPen, Manager manager, boolean homeTeam, List <Fielder> inField) {
+	private final int PLAYERSININITLINEUP = 9;
+	private final int STARTINGPITCHERCOUNT = 1;
+	
+	public GameTeam (int id,Player [] lineup, Player pitcher, HashSet <Player> bench, HashSet <Player> bullPen, Manager manager, boolean homeTeam, List <Fielder> inField) {
 		this.lineup = lineup;
 		this.pitcher = pitcher;
 		this.bench = bench;
@@ -31,31 +37,81 @@ public class GameTeam {
 		this.manager = manager;
 		this.score = new Linescore (homeTeam);
 		this.inTheField = inField;
+		this.tID = id;
 	}
-	
+
 	public GameTeam (GameTeam copy) {
-		
+
 		lineup = copy.lineup;
 		pitcher = copy.pitcher;
 		bench = copy.bench;
 		bullPen = copy.bullPen;
 		manager = copy.manager;
 		score = copy.score;
-		
+		tID = copy.tID;
+
 	}
-	
+
+	public int getID () {
+		return tID;
+	}
+
 	public List <Fielder> getFielders () {
 		return inTheField;
 	}
-	
+
 	//returns the player that will throw the next pitch
 	public Player getCurrentPitcher () {
 		return pitcher;
 	}
-	
+
 	//returns the next player due up in the batting order
 	public Player nextBatter () {
-		return lineup.next();
+		return lineup[curPA++%9];
+	}
+
+	public Player [] getLineup () {
+		return lineup;
+	}
+
+	//returns a model for the initial box score for this team, to be added to a stats table
+	public String [][] initBattingBoxScore () {
+		
+		String [][] ret = new String [PLAYERSININITLINEUP][Game.battingStatsDisplayed.length];
+		
+		for (int i = 0; i < ret.length; i++) {
+			
+			Player curPlayer = lineup[i];
+			String [] playerBox = curPlayer.generateGameBattingStatsDisp();
+			
+			for (int j = 0; j < playerBox.length; j++) {
+				ret[i][j] = playerBox[j];
+			}
+			
+		}
+		
+		return ret;
+		
 	}
 	
+	//returns a model for the intial pitching box score for this team, to be added to a stats table
+	public String [][] initPitchingBoxScore () {
+		
+		String [][] ret = new String [STARTINGPITCHERCOUNT][Game.pitchingStatsDisplayed.length];
+		
+		for (int i = 0; i < ret.length; i++) {
+			
+			Player curPlayer = lineup[i];
+			String [] playerBox = curPlayer.generateGamePitchingStatsDisp();
+			
+			for (int j = 0; j < playerBox.length; j++) {
+				ret[i][j] = playerBox[j];
+			}
+			
+		}
+		
+		return ret;
+		
+	}
+
 }

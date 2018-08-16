@@ -33,7 +33,6 @@ import player.Player;
 import stadium.Stadium;
 import stats.PlateAppearance;
 import stats.Result;
-import stats.Scorecard;
 import team.GameTeam;
 import testing.AllOnFieldObjectContainer;
 import ui.FieldEventDisplay;
@@ -62,9 +61,11 @@ public class FieldEvent {
 	private AllOnFieldObjectContainer allObjs = new AllOnFieldObjectContainer ();
 	private AllOnFieldObjectContainer prevAllObjs = new AllOnFieldObjectContainer ();
 
-	public FieldEvent (int abNumber, FieldEventDisplay view, Stadium stadium) {
+	public FieldEvent (int abNumber, Stadium stadium, FieldEventDisplay display) {
 
-		this.view = view;
+		System.out.println(display);
+		
+		this.view = display;
 		this.stadium = stadium;
 		this.abNumber = abNumber;
 		this.hitTypeCalc = new HitTypeCalculator ();
@@ -228,6 +229,7 @@ public class FieldEvent {
 		for (int i = runners.size()-2; i >= 0 ; i--) {
 			Base attempt = runnerDecision(runners.get(i), toReceiveBall, pickUpSpot, hitBall, bases);
 			Baserunner runner = runners.get(i);
+			runner.setAdvancingTimer(2.0);
 			
 			//attempt base
 			if (attempt != null) {
@@ -240,7 +242,6 @@ public class FieldEvent {
 			
 		}
 		
-		writeBases();
 		
 		while (true) {
 		
@@ -441,10 +442,12 @@ public class FieldEvent {
 						
 			for (Baserunner curRunner: runners) {
 
+				curRunner.setFlyBallLanded(!hitBall.canRecordOut);
 				curRunner.decrementActionTimer();
-								
+				curRunner.decrementAdvancingTimer(Physics.tick);	
+				
 				//dont do anything if no where to run
-				if (curRunner.destination != null && curRunner.canPerformAction()) {
+				if (curRunner.destination != null && curRunner.canPerformAction() && !curRunner.isAdvanceLocked()) {
 
 					//move the runner
 					curRunner.move(curRunner.destination.diff(curRunner.getLoc()));
@@ -662,7 +665,7 @@ public class FieldEvent {
 			vals[i] = bases[i].forceOut ? "Force" : "No Force";
 		}
 
-		view.writeToDebuggerAndUpdate(vals);
+		//view.writeToDebuggerAndUpdate(vals);
 		
 	}
 	
@@ -699,7 +702,7 @@ public class FieldEvent {
 			vals[i] = runners.get(i).toString();
 		}
 
-		view.writeToDebuggerAndUpdate(vals);
+		//view.writeToDebuggerAndUpdate(vals);
 	}
 
 	private boolean playIsOver (List <Baserunner> runners, BallInPlay hitBall) {
@@ -772,7 +775,7 @@ public class FieldEvent {
 
 			view.drawFieldOutline();
 			drawObject(hitBall);
-			view.repaint();
+			view.getFieldImage().repaint();
 
 		}
 

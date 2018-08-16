@@ -31,6 +31,8 @@ public class Baserunner extends OnFieldPlayer {
 	private boolean advancing = true;
 	private int bestBaseAchieved = -1;
 	private Base lastBaseOn = null;
+	private boolean flyBallLanded = false;
+	private Double advancingTimer = null; //controlls how long the baserunner can advance on a flyball until needing to wait
 
 	public Baserunner (Player other, int color) {
 		super(other, FieldConstants.homePlate(), color, other.getCurGameBatting(), other.getCurGamePitching());
@@ -247,6 +249,28 @@ public class Baserunner extends OnFieldPlayer {
 
 	public boolean isEqual (Baserunner other) {
 		return this.getID() == other.getID();
+	}
+	
+	//checks if this runner can move
+	public boolean isAdvanceLocked () {
+		return advancingTimer != null && advancingTimer < 0 && !flyBallLanded;
+	}
+	
+	public void setFlyBallLanded (boolean value) {
+		flyBallLanded = value;
+	}
+	
+	public void decrementAdvancingTimer (double delta) {
+		
+		//prevent decreasing a null value
+		if (advancingTimer != null) {
+			advancingTimer -= delta;
+		}
+		
+	}
+	
+	public void setAdvancingTimer (double time) {
+		advancingTimer = time;
 	}
 	
 	@Override

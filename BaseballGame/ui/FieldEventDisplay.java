@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -29,122 +30,23 @@ import helpers.DebuggerInfo;
 import stadium.Stadium;
 import stadium.Wall;
 import stats.BattingStatline;
-import stats.Scorecard;
 
-public class FieldEventDisplay extends JFrame {
+public class FieldEventDisplay {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private Stadium curStadium;
 	private BasicBoard view;
 	
-	private JTextArea info; 
-	private JScrollPane scrollBar;
-	
-	private StatsTable homeStats;
-	private StatsTable awayStats;
-	
-	private LinescoreTable linescore;
-	
-	private GameStatus ctrDisplay = new GameStatus ();
-	
-	private DebuggerInfo debugInfo;
-	
-	public FieldEventDisplay (int x, int y, int offset, Stadium curStadium, int gID, int aID, int hID) {
+	public FieldEventDisplay (int x, int y, int offset, Stadium curStadium) {
 		
-		super("Display Test");
-		setSize(1200, 900);
-		setLayout(new FlowLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-        this.curStadium = curStadium;
-        
-		view = new BasicBoard (x,y,offset);
-		getContentPane().add(view.getDisplay());
-				
-		info = new JTextArea();
-		info.setVisible(true);
-		info.setSize(300, 500);
-		info.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-		info.setEnabled(false);
-		
-		scrollBar = new JScrollPane(info);
-		scrollBar.setVisible(true);
-		scrollBar.setPreferredSize(info.getSize());
-		
-		getContentPane().add(scrollBar);
-		
-		//stats setup
-		awayStats = new StatsTable (9,7,aID);
-		homeStats = new StatsTable (9,7,hID);
-		awayStats.setVisible(true);
-		awayStats.setSize(200, 100);
-		homeStats.setVisible(true);
-		homeStats.setSize(200, 100);
-		
-		getContentPane().add(awayStats);
-		getContentPane().add(homeStats);
-	
-		linescore = new LinescoreTable (gID, aID, hID);
-		linescore.setVisible(true);
-		linescore.setSize(linescore.getSize());
-		
-		getContentPane().add(linescore);
-		
-		debugInfo = new DebuggerInfo (new JTextArea(), x*2, y/4);
-		getContentPane().add(debugInfo);
-		
-		setVisible(true);
+		this.curStadium = curStadium;
+		this.view = new BasicBoard (x, y, offset);
 		
 	}
 	
-	public void showDebugger (boolean val) {
-		debugInfo.setVisible(val);
-	}
-	
-	public void writeToDebugger (String [] toAdd) {
-		debugInfo.addText(toAdd);
-	}
-	
-	public void writeToDebuggerAndUpdate (String [] toAdd) {
-		debugInfo.addText(toAdd);
-		debugInfo.update();
-	}
-	
-	public void updateCTR (InningCounters ctr, int hRuns, int aRuns) {
-		ctrDisplay.upDate(ctr, hRuns, aRuns);
-		ctrDisplay.setText(ctrDisplay.toString());
-	}
-	
-	public void setStatsView (boolean val) {
-		homeStats.setVisible(val);
-		awayStats.setVisible(val);
-	}
-	
-	public StatsTable getHomeStats() {
-		return homeStats;
-	}
-
-	public StatsTable getAwayStats() {
-		return awayStats;
-	}
-
-	public void writeText (String text) {
-		info.setText(info.getText() + "\n" + text);
-			
-		//update the text later
-		Thread setBar = new Thread () {
-			public void run () {
-				scrollBar.getVerticalScrollBar().setValue(scrollBar.getVerticalScrollBar().getMaximum());
-			}
-		};
-		
-		SwingUtilities.invokeLater(setBar);
-		
-	}
-	
-	public LinescoreTable getLinescore () {
-		return linescore;
+	public JLabel getFieldImage () {
+		return view.getDisplay();
 	}
 	
 	//draws the outfield walls and foul lines

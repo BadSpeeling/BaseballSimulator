@@ -31,10 +31,10 @@ public class InningTest {
 		Stadium stadium = new Stadium ();
 		stadium.loadDimensions(input);
 		
-		FieldEventDisplay gameView = new FieldEventDisplay (500,500, 10, stadium, 1, away.tID, home.tID);
+		FieldEventDisplay gameView = new FieldEventDisplay (500,500, 10, stadium);
 
-		Game newGame = new Game (home, away, stadium, gameView);
-		newGame.playInning();
+		//Game newGame = new Game (home, away, stadium, gameView);
+		//newGame.playInning();
 		
 		System.out.println("done!");
 		

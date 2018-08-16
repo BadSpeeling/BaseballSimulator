@@ -30,6 +30,34 @@ public enum Position {
 			
 	}
 	
+	//returns shorthand
+	public String shorthand () {
+		
+		switch (this) {
+			case PITCHER:
+				return "P";
+			case CATCHER:
+				return "C";
+			case FIRST:
+				return "1B";
+			case SECOND:
+				return "2B";
+			case THIRD:
+				return "3B";
+			case SHORT:
+				return "SS";
+			case LEFT:
+				return "LF";
+			case CENTER:
+				return "CF";
+			case RIGHT:
+				return "RF";
+			default:
+				return "";
+		}
+		
+	}
+	
 	//true if the player is an outfielder
 	public boolean isOutField () {
 		return this.equals(LEFT) || this.equals(CENTER) || this.equals(RIGHT);

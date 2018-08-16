@@ -21,6 +21,7 @@ public class BasicBoard {
 		data = new BufferedImage (width, height, BufferedImage.TYPE_3BYTE_BGR);		
 		display = new JLabel(new ImageIcon (data));
 		display.setSize(width, height);
+		display.setVisible(true);
 		this.foulDistance = foulDistance;
 		
 	}
