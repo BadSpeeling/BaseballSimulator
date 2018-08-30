@@ -10,7 +10,8 @@ import java.util.TreeSet;
 
 import datatype.CircularLinkedList;
 import objects.Fielder;
-import player.Player;
+import objects.GamePlayer;
+import objects.GameTeam;
 import player.Position;
 
 /* Eric Frye
@@ -22,7 +23,7 @@ public class Team {
 	
 	private static int nextID = 1;
 	
-	public LinkedList <Player> playersOnTeam = new LinkedList <Player> (); //Set of players on the team
+	public LinkedList <GamePlayer> playersOnTeam = new LinkedList <GamePlayer> (); //Set of players on the team
 	public int tID; //Team ID
 	public int leagueID; //ID of league that the team is in
 
@@ -30,7 +31,7 @@ public class Team {
 	 * Adds single Player to Team.
 	 * toAdd: player to add.
 	 * */
-	public void addPlayer (Player toAdd, int max) {
+	public void addPlayer (GamePlayer toAdd, int max) {
 
 		//check that there are not too many players on team
 		if (playersOnTeam.size()+1 > max) {
@@ -47,7 +48,7 @@ public class Team {
 	 * Adds multiple Player's to Team.
 	 * toAdd: players to add. 
 	 * */
-	public void addPlayers (LinkedList <Player> toAdd, int max) {
+	public void addPlayers (LinkedList <GamePlayer> toAdd, int max) {
 
 		//check that there are not too many players on team
 		if (toAdd.size()+playersOnTeam.size() > max) {
@@ -90,7 +91,7 @@ public class Team {
 
 		for (int i = 0; i < posToAdd.length; i++) {
 
-			Player toAdd = new Player (posToAdd[i], allFirstNames[r.nextInt(allFirstNames.length)], allLastNames[r.nextInt(allLastNames.length)], nextID++);
+			GamePlayer toAdd = new GamePlayer (posToAdd[i], allFirstNames[r.nextInt(allFirstNames.length)], allLastNames[r.nextInt(allLastNames.length)], nextID++);
 			toAdd.generateSimpleStats();
 			playersOnTeam.add(toAdd);
 
@@ -106,7 +107,7 @@ public class Team {
 	 * */
 	public void printTeam () {
 		
-		Iterator <Player> cur = playersOnTeam.iterator();
+		Iterator <GamePlayer> cur = playersOnTeam.iterator();
 		
 		while (cur.hasNext()) {
 			System.out.println(cur.next());
@@ -119,22 +120,22 @@ public class Team {
 	 * */
 	public GameTeam makeInGameTeam (boolean homeTeam) {
 		
-		Player [] lineup = new Player [9]; 
+		GamePlayer [] lineup = new GamePlayer [9]; 
 		
-		Player pitcher = null;
+		GamePlayer pitcher = null;
 		
 		List <Fielder> fielders = new LinkedList <Fielder> ();
 		
 		for (int i = 0; i < 9; i++) {
 						
-			Player cur = playersOnTeam.get(i);
+			GamePlayer cur = playersOnTeam.get(i);
 			
 			//if player is a pitcher
 			if (cur.isPitcher()) {
 				pitcher = cur;
 			}
 			
-			Player toAdd = cur;
+			GamePlayer toAdd = cur;
 			
 			fielders.add(new Fielder(toAdd,0xFFFFFF));
 			lineup[i] = cur;

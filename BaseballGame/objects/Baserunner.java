@@ -14,7 +14,6 @@ import messages.AdvancingNumberOfBases;
 import messages.RunScoredMsg;
 import messages.RunnerOutMsg;
 import physics.Physics;
-import player.Player;
 import ratings.GeneralRatings;
 import stadium.Wall;
 import stats.BattingStatline;
@@ -34,7 +33,7 @@ public class Baserunner extends OnFieldPlayer {
 	private boolean flyBallLanded = false;
 	private Double advancingTimer = null; //controlls how long the baserunner can advance on a flyball until needing to wait
 
-	public Baserunner (Player other, int color) {
+	public Baserunner (GamePlayer other, int color) {
 		super(other, FieldConstants.homePlate(), color, other.getCurGameBatting(), other.getCurGamePitching());
 	}
 
@@ -96,6 +95,33 @@ public class Baserunner extends OnFieldPlayer {
 		destination = null;
 		advancing = true;
 		lastBaseOn = baseOn;
+		flyBallLanded = false;
+	}
+	
+	//baserunner will begin running to the base 
+	public void runToBase (Base baseRunningTo) {
+		
+		//clear out base that is being run to, remove destination
+		if (attempt != null) {
+			attempt.removeRunnerTo(this);
+			attempt = null;
+			destination = null;
+		}
+		
+		//clear the base that you are on
+		if (baseOn != null) {
+			lastBaseOn = baseRunningTo;
+			baseOn.clearRunnerOn();
+			baseOn = null;
+		}
+		
+		//set variables for running to the next base
+		if (baseRunningTo != null) {
+			attempt = baseRunningTo;
+			destination = baseRunningTo.getLoc().copy();
+			baseRunningTo.addRunnerTo(this);
+		}
+			
 	}
 
 	//returns the base the player should run to
@@ -284,6 +310,7 @@ public class Baserunner extends OnFieldPlayer {
 		return "Baserunner [name= "+getPlayer().fullName()+", destination=" + destination + ", loc=" + getLoc() + ", lastLoc=" + lastLoc + ", baseOn=" + onBaseType + ", attempt="
 		+ attemptBaseType + ", homeBase=" + homeBaseType + ", advancing=" + advancing + ", bestBaseAchieved="
 		+ bestBaseAchieved + ", lastBaseAttempt=" + lastBaseAttemptType + "]";
+		
 	}
 
 }

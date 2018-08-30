@@ -15,7 +15,9 @@ import boxscore.GameStatus;
 import boxscore.LinescoreTable;
 import game.InningCounters;
 import helpers.DebuggerInfo;
+import objects.Base;
 import stadium.Stadium;
+import testing.DebugInfoFrame;
 
 public class BaseballGameDisplay extends JPanel {
 		
@@ -47,8 +49,6 @@ public class BaseballGameDisplay extends JPanel {
 		scrollBar.setVisible(true);
 		scrollBar.setPreferredSize(info.getSize());
 		
-
-	
 		linescore = new LinescoreTable (gID, aID, hID);
 		linescore.setVisible(true);
 		linescore.setSize(linescore.getSize());

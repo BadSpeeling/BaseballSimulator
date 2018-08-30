@@ -11,23 +11,34 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import game.Game;
-import player.Player;
+import objects.GamePlayer;
+import objects.GameTeam;
 import stats.BattingStatline;
-import team.GameTeam;
 import view.StatsTable;
 
 public class TeamBoxScore extends StatsTable {
 
-	private ArrayList <Integer> pIDLocations; //the index for a pID in this list corresponds to its location in the StatsTable
- 	
-	public TeamBoxScore (String [] disp, String [][] data, Player [] order) {
+	private ArrayList <Integer> idLocations; //the index for a pID in this list corresponds to its location in the StatsTable
+	
+	public TeamBoxScore (String [] disp, String [][] data, GamePlayer [] order) {
 		
 		super(disp, data);
 		
-		pIDLocations = new ArrayList <Integer> ();
+		idLocations = new ArrayList <Integer> ();
 		
-		for (Player curPlayer: order) {
-			pIDLocations.add(curPlayer.getpID());
+		for (GamePlayer curPlayer: order) {
+			idLocations.add(curPlayer.getpID());
+		}
+		
+	}
+	
+	public void updateBox (int curPlayerID, String [] stats) {
+		
+		int index = idLocations.indexOf(curPlayerID);
+		
+		//dont try to update for a player that is not in this box
+		if (index != -1) {
+			update(index, stats);
 		}
 		
 	}

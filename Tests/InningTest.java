@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import game.Game;
 import objects.Fielder;
-import player.Player;
+import objects.GamePlayer;
 import stadium.Stadium;
 import team.Team;
 import ui.FieldEventDisplay;

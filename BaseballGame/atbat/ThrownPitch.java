@@ -4,8 +4,8 @@ import datatype.Coordinate3D;
 import game.FieldConstants;
 import numbers.PercentileConverter;
 import numbers.RandomNumber;
+import objects.GamePlayer;
 import physics.Physics;
-import player.Player;
 import ratings.Modifier;
 import ratings.PitchRatings;
 import ratings.PitchType;
@@ -40,10 +40,10 @@ public class ThrownPitch {
 	private double filth; //movement of pitch
 
 	//players involved in event
-	private Player pitcher;
-	private Player batter;
+	private GamePlayer pitcher;
+	private GamePlayer batter;
 
-	public ThrownPitch (Player pitcher, Player batter) {
+	public ThrownPitch (GamePlayer pitcher, GamePlayer batter) {
 		this.pitcher = pitcher;
 		this.batter = batter;
 		this.contactMod = new Modifier(0,2.5);
@@ -71,11 +71,11 @@ public class ThrownPitch {
 		return filth;
 	}
 
-	public Player getPitcher() {
+	public GamePlayer getPitcher() {
 		return pitcher;
 	}
 
-	public Player getBatter() {
+	public GamePlayer getBatter() {
 		return batter;
 	}
 
@@ -181,12 +181,18 @@ public class ThrownPitch {
 					calc.changeBallCounts(contactType.ballCountChange());
 					HitType hitType = calc.getHitType();
 
-					return new BallInPlay (new Coordinate3D (0,0,3), 
-							hitType.launchAngle(), 
-							hitType.launchDir(),
-							hitType.baseHitSpeed(), stadium, 0xFF00FF, hitType);
-
-
+					BallInPlay ret = null;
+					
+					do {
+						ret =  new BallInPlay (new Coordinate3D (0,0,3), 
+								hitType.launchAngle(), 
+								hitType.launchDir(),
+								hitType.baseHitSpeed(), stadium, 0xFF00FF, hitType);
+					}//prevent infinity from being a value - likely a result of the .jar file being used for percentile calc
+					while (Double.isInfinite(ret.launchAngle) || Double.isInfinite(ret.launchDir) || Double.isInfinite(ret.launchSpeed));
+					
+					return ret;
+					
 				}
 
 

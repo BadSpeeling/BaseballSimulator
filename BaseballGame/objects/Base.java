@@ -55,6 +55,14 @@ public class Base extends OnFieldObject {
 		
 	}
 	
+	public void clearRunnerOn () {
+		runnerOn = null;
+	}
+	
+	public void clearFielderOn () {
+		fielderOn = null;
+	}
+	
 	public void reset () {
 		fielderOn = null;
 		runnerOn = null;
@@ -171,15 +179,20 @@ public class Base extends OnFieldObject {
 		
 		String runnerOnName = runnerOn == null ? "No Runner" : runnerOn.getName();
 		String fielderOnName = fielderOn == null ? "No Runner" : fielderOn.getName();
-		//String runnerToName = runnerTo == null ? "No Runner" : runnerTo.getName();
+		String toBeForcedName = toBeForced == null ? "Empty" : toBeForced.getName();
 		
+		String runnersToName = "";
 		
-		return "Base [loc=" + getLoc() + "base=" + base + 
+		for (Baserunner runner: runnerTo) {
+			runnersToName += runner.getName() + ",";
+		}
+		
+		return "Base [" + "base=" + base + 
 				", fielderOn=" + fielderOnName + 
 				", runnerOn=" + runnerOnName + 
 				", forceOut=" + forceOut
-				+ ", runnerTo=" + runnerTo.toString() +
-				 "]";
+				+ ", runnerTo=" + runnersToName +
+				", toBeForced=" + toBeForcedName + "]";
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class StatsTable extends JTable {
 		getColumnModel().getColumn(col).setWidth(size);
 	}
 	
-	//returns a component ready to be displayed
+	//returns a component ready to be displayed w/ scroll bar
 	public JScrollPane getScrollView () {
 		
 		Dimension d = getPreferredSize();
@@ -23,6 +23,15 @@ public class StatsTable extends JTable {
 		ret.setPreferredSize(new Dimension(d.width, getRowHeight()*(getRowCount()+1) + 7 ));
 		setFillsViewportHeight(true);
 		return ret;
+		
+	}
+	
+	//updates the model behind the jtable
+	public void update (int row, String [] vals) {
+		
+		for (int col = 0; col < getColumnCount(); col++) {
+			setValueAt(vals[col], row, col);
+		}
 		
 	}
 	

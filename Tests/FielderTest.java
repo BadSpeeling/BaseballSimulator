@@ -14,12 +14,12 @@ import objects.Base;
 import objects.BaseType;
 import objects.Baserunner;
 import objects.Fielder;
+import objects.GamePlayer;
+import objects.GameTeam;
 import physics.Physics;
 import player.Generators;
-import player.Player;
 import player.Position;
 import stadium.Stadium;
-import team.GameTeam;
 import team.Team;
 import ui.FieldEventDisplay;
 
@@ -50,7 +50,7 @@ public class FielderTest {
 
 		List <Fielder> fielders = new LinkedList <Fielder> ();
 		
-		for (Player curPlayer: home.playersOnTeam) {
+		for (GamePlayer curPlayer: home.playersOnTeam) {
 			Fielder newFielder = new Fielder (curPlayer, 0xFFFFFF);
 			fielders.add(newFielder);
 		}
@@ -76,7 +76,7 @@ public class FielderTest {
 		
 		for (int i = 0; i < times; i++) {
 				
-			Player batter = new Player (Position.FIRST,name,name,times);
+			GamePlayer batter = new GamePlayer (Position.FIRST,name,name,times);
 			//event.batter = batter;
 			batter.generateSimpleStats();
 										

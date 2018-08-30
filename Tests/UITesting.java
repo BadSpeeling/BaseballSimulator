@@ -16,8 +16,7 @@ public class UITesting {
 		Game baseballGame = Game.basicGame();
 		
 		fullGame.addBaseballGame(baseballGame);
-		
-		baseballGame.playInning();
+		fullGame.playGame();
 		
 	}
 	
