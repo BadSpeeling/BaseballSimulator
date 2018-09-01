@@ -1,6 +1,5 @@
 package ball;
 
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,7 +8,6 @@ import atbat.HitType;
 import datatype.Coordinate3D;
 import game.FieldEvent;
 import game.Game;
-import messages.BallOverWallMsg;
 import objects.Base;
 import objects.Baserunner;
 import objects.Fielder;

@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 
 import datatype.Coordinate3D;
 import game.Game;
-import messages.DebugMessage;
 
 public class BasicBoard {
 

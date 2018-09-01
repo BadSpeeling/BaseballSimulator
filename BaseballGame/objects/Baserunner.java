@@ -10,9 +10,6 @@ import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.FieldEvent;
 import game.Game;
-import messages.AdvancingNumberOfBases;
-import messages.RunScoredMsg;
-import messages.RunnerOutMsg;
 import physics.Physics;
 import ratings.GeneralRatings;
 import stadium.Wall;
@@ -22,17 +19,17 @@ import ui.FieldEventDisplay;
 
 public class Baserunner extends OnFieldPlayer {
 
-	public Coordinate3D destination = null;
-	public Coordinate3D lastLoc = new Coordinate3D (0,0,0);
-	public Base baseOn = null;
-	public Base attempt = null;
-	public Base homeBase;
+	private Coordinate3D destination = null;
+	private Base baseOn = null;
+	private Base attempt = null;
+	private Base homeBase;
 	private boolean advancing = true;
+	private boolean returningToHomeBase = false;
 	private int bestBaseAchieved = -1;
 	private Base lastBaseOn = null;
-	private boolean flyBallLanded = false;
 	private Double advancingTimer = null; //controlls how long the baserunner can advance on a flyball until needing to wait
-
+	private BaserunnerStatus basePathStatus = BaserunnerStatus.Init;
+	
 	public Baserunner (GamePlayer other, int color) {
 		super(other, FieldConstants.homePlate(), color, other.getCurGameBatting(), other.getCurGamePitching());
 	}
@@ -95,10 +92,9 @@ public class Baserunner extends OnFieldPlayer {
 		destination = null;
 		advancing = true;
 		lastBaseOn = baseOn;
-		flyBallLanded = false;
 	}
 	
-	//baserunner will begin running to the base 
+	//baserunner will begin running to the base, checking  
 	public void runToBase (Base baseRunningTo) {
 		
 		//clear out base that is being run to, remove destination
@@ -123,7 +119,68 @@ public class Baserunner extends OnFieldPlayer {
 		}
 			
 	}
-
+	
+	public void setBasePathStatus (BaserunnerStatus status) {
+		basePathStatus = status;
+	}
+	
+	//stops a runner from running to a base
+	public void stopRunningToBase () {
+		
+		if (attempt != null) {
+			
+			attempt.removeRunnerTo(this);
+			attempt = null;
+			
+		}
+		
+	}
+	
+	//assumes that the runner is close enough to reach the base
+	//returns true if the runner has been tagged out, otherwise sets on base and returns true
+	//return codes: 0-tag out, 1-safe, 2-safe at home 
+	public int arriveAtBase () {
+		
+		Base arrivingAt = attempt;
+		
+		//clear base of runnerTo
+		attempt.removeRunnerTo(this);
+		attempt = null;
+		destination = null;
+		
+		Fielder curFielder = arrivingAt.getFielderOn();
+		
+		//a tag out has occured
+		if (curFielder != null && curFielder.hasBall()) {
+			return 0;
+		}
+		
+		else {
+			
+			this.baseOn = arrivingAt;
+			
+			//check if a force needs to be cleared
+			if (baseOn.isThisPlayerToBeForced(this)) {
+				baseOn.clearForce(this);
+			}
+			
+			//the base the runner has reached is not home
+			if (!arrivingAt.isHome()) {
+				arrivingAt.setRunnerOn(this);
+				baseOn = arrivingAt;
+				lastBaseOn = arrivingAt;
+				setLoc(baseOn.getLoc().copy());
+				return 1;
+			}
+			
+			//runner reached home and scored a run
+			else {
+				return 2;
+			}
+			
+		}
+		
+	}
 	//returns the base the player should run to
 	//null if stay put
 	//chaser is the person to be receiving the ball, either running after it or 
@@ -199,11 +256,27 @@ public class Baserunner extends OnFieldPlayer {
 		advancing = !advancing;
 	}
 
-	public void clearRunnersBases () {
-
-		attempt = null;	
-		destination = null;
-
+	public void clearAttempt () {
+		
+		if (attempt != null) {
+			
+			attempt.removeRunnerTo(this);
+			attempt = null;
+			destination = null;
+			
+		}
+		
+	}
+	
+	public void clearBaseOn () {
+		
+		if (baseOn != null) {
+			
+			baseOn.clearRunnerOn();
+			baseOn = null;
+			
+		}
+		
 	}
 	
 	public void placeOnBase (Base on) {
@@ -212,25 +285,6 @@ public class Baserunner extends OnFieldPlayer {
 		setLoc(baseOn.getLoc().copy());
 		lastBaseOn = on;
 		on.setRunnerOn(this);
-	}
-
-	public void leaveBase (Base toLeave) {
-
-		lastBaseOn = baseOn;
-		baseOn = null;
-
-	}
-
-	//updates fields for arriving at a base
-	public void arriveAtBase () {
-
-		//clear base of attempt
-		baseOn = attempt;
-		setLoc(baseOn.getLoc().copy());
-		lastBaseOn = attempt;
-		destination = null;
-		attempt = null;
-
 	}
 	
 	public int getBestBase () {
@@ -278,25 +332,38 @@ public class Baserunner extends OnFieldPlayer {
 	}
 	
 	//checks if this runner can move
-	public boolean isAdvanceLocked () {
-		return advancingTimer != null && advancingTimer < 0 && !flyBallLanded;
+	public boolean isAdvanceLocked (boolean canRecordAirOut) {
+		return advancingTimer != null && advancingTimer < 0 && canRecordAirOut;
 	}
 	
-	public void setFlyBallLanded (boolean value) {
-		flyBallLanded = value;
-	}
-	
-	public void decrementAdvancingTimer (double delta) {
+	public void decrementAdvancingTimer () {
 		
 		//prevent decreasing a null value
 		if (advancingTimer != null) {
-			advancingTimer -= delta;
+			advancingTimer -= Physics.tick;
 		}
 		
 	}
 	
 	public void setAdvancingTimer (double time) {
 		advancingTimer = time;
+	}
+	
+	public Base getBaseOn () {
+		return baseOn;
+	}
+	
+	public Base getAttempt () {
+		return attempt;
+	}
+	
+	public void clearForce () {
+		attempt.clearForce(this);
+		clearAttempt();
+	}
+
+	public Coordinate3D getDestination () {
+		return destination;
 	}
 	
 	@Override

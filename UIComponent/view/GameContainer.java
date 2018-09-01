@@ -62,15 +62,15 @@ public class GameContainer extends JFrame {
 		while (!game.isGameOver()) {
 			
 			game.playPlateAppearance();
-			updateBoxScores();
+			//updateBoxScores();
 			
-			if (game.didTeamsSwitch()) {
+			//if (game.didTeamsSwitch()) {
 				
-				GameTeamContainer temp = onOffense;
-				onOffense = onDefense;
-				onDefense = temp;
+			//	GameTeamContainer temp = onOffense;
+			//	onOffense = onDefense;
+			//	onDefense = temp;
 				
-			}
+			//}
 			
 		}
 		

@@ -4,12 +4,6 @@ import java.util.List;
 
 import datatype.Coordinate3D;
 import game.Game;
-import messages.ForceOutMsg;
-import messages.RunScoredMsg;
-import messages.RunnerArrivedAtBaseMsg;
-import messages.RunnerOutMsg;
-
-
 
 public class Base extends OnFieldObject {
 	
@@ -128,11 +122,6 @@ public class Base extends OnFieldObject {
 		forceOut = true;
 	}
 	
-	public void clearForce () {
-		toBeForced = null;
-		forceOut = false;
-	}
-	
 	public void clearForNextInning () {
 		clearForNextAB();
 		runnerOn = null;
@@ -172,6 +161,15 @@ public class Base extends OnFieldObject {
 	
 	public boolean isHome () {
 		return base.equals(BaseType.HOME);
+	}
+	
+	public void runnerWillBeForced (Baserunner toBeForced) {
+		this.toBeForced = toBeForced;
+		this.forceOut = true;
+	}
+	
+	public boolean isThisPlayerToBeForced (Baserunner player) {
+		return player == toBeForced;
 	}
 
 	@Override

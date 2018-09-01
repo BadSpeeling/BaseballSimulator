@@ -11,8 +11,6 @@ import datatype.Coordinate3D;
 import game.FieldConstants;
 import game.FieldEvent;
 import game.Game;
-import messages.FlyballCaughtMsg;
-import messages.ForceOutMsg;
 import numbers.RandomNumber;
 import physics.Physics;
 import player.Position;
@@ -108,7 +106,7 @@ public class Fielder extends OnFieldPlayer {
 		//only do something if there are runners
 		if (!runners.isEmpty()) {
 			
-			Base targetBase = runners.get(0).attempt;
+			Base targetBase = runners.get(0).getAttempt();
 
 			//the base we want to throw to is the base we are on
 			if (targetBase == baseOn) {
@@ -170,13 +168,13 @@ public class Fielder extends OnFieldPlayer {
 		for (Baserunner curRunner: runners) {
 			
 			//if this baserunner is not advancing, go to next runner
-			if (curRunner.attempt == null || curRunner.destination == null) {
+			if (curRunner.getAttempt() == null || curRunner.getDestination() == null) {
 				continue;
 			}
 			
-			double groundDist = curRunner.attempt.getLoc().diff(getLoc()).mag2D();
+			double groundDist = curRunner.getAttempt().getLoc().diff(getLoc()).mag2D();
 			
-			double timeToBase = curRunner.timeToDestination(curRunner.destination);
+			double timeToBase = curRunner.timeToDestination(curRunner.getDestination());
 			double timeForThrow = timeForThrow(groundDist);
 			
 			
@@ -324,7 +322,8 @@ public class Fielder extends OnFieldPlayer {
 		leave.setFielderOn(null);
 	}
 	
-	public void arriveAtBase (Base arrivedAt) {
+	//returns true if there was a force out at the base
+	public boolean arriveAtBase (Base arrivedAt) {
 		
 		Baserunner force = arrivedAt.getToBeForced();
 		baseGuard.setFielderOn(this);
@@ -332,8 +331,12 @@ public class Fielder extends OnFieldPlayer {
 		
 		//force out
 		if (force != null && arrivedAt.isForceOut() && hasBall) {
-			//clear variables for runner
-			arrivedAt.clearForce(force);
+			return true;
+		}
+		
+		//no force out
+		else {
+			return false;
 		}
 		
 	}

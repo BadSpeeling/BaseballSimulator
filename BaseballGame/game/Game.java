@@ -58,7 +58,7 @@ public class Game {
 		fieldEvent.batter = nextBatter;
 		PlateAppearance paResult = fieldEvent.batterPitcherInteraction(onDefense.getFielders(), inning, numOuts);
 		
-		incrementOuts();
+		//incrementOuts();
 		
 		for (Integer cur: fieldEvent.getIDRunnersScored()) {
 			
