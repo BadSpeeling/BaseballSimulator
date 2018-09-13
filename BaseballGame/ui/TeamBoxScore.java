@@ -11,8 +11,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import game.Game;
-import objects.GamePlayer;
 import objects.GameTeam;
+import player.Player;
 import stats.BattingStatline;
 import view.StatsTable;
 
@@ -20,13 +20,13 @@ public class TeamBoxScore extends StatsTable {
 
 	private ArrayList <Integer> idLocations; //the index for a pID in this list corresponds to its location in the StatsTable
 	
-	public TeamBoxScore (String [] disp, String [][] data, GamePlayer [] order) {
+	public TeamBoxScore (String [] disp, String [][] data, Player [] order) {
 		
 		super(disp, data);
 		
 		idLocations = new ArrayList <Integer> ();
 		
-		for (GamePlayer curPlayer: order) {
+		for (Player curPlayer: order) {
 			idLocations.add(curPlayer.getpID());
 		}
 		

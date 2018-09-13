@@ -6,6 +6,7 @@ import java.util.Queue;
 import ball.LocationTracker;
 import datatype.Coordinate3D;
 import physics.Physics;
+import player.Player;
 import ratings.GeneralRatings;
 import stadium.Wall;
 import stats.BattingStatline;
@@ -16,13 +17,13 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 	private double height = 6; //ft
 	private double wingspan = 2;
 	private double actionTimer = 0;
-	private GamePlayer backingPlayer;
+	private Player backingPlayer;
 	private BattingStatline battingStats;
 	private PitchingStatline pitchingStats;
 	
 	private List <LocationTracker> tracker = new LinkedList <LocationTracker> ();
 	
-	public OnFieldPlayer(GamePlayer player, Coordinate3D loc,int color, BattingStatline bS, PitchingStatline pS) {
+	public OnFieldPlayer(Player player, Coordinate3D loc,int color, BattingStatline bS, PitchingStatline pS) {
 		super(loc, loc.copy(), color);
 		backingPlayer = player;
 		this.battingStats = bS;
@@ -52,7 +53,7 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 		
 	}
 	
-	public GamePlayer getPlayer () {
+	public Player getPlayer () {
 		return backingPlayer;
 	}
 	

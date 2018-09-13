@@ -13,6 +13,7 @@ import game.FieldEvent;
 import game.Game;
 import numbers.RandomNumber;
 import physics.Physics;
+import player.Player;
 import player.Position;
 import ratings.FieldingRatings;
 import stadium.Wall;
@@ -31,7 +32,7 @@ public class Fielder extends OnFieldPlayer {
 	private boolean throwingDecisionMade = false;
 	public Base baseOn = null;
 	
-	public Fielder (GamePlayer cur, int color) {
+	public Fielder (Player cur, int color) {
 		super(cur, Coordinate3D.standardPos(cur.getPos()), color, cur.getCurGameBatting(), cur.getCurGamePitching());
 		lastLoc = new Coordinate3D(0,0,0);
 	}

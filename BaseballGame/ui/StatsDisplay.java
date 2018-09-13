@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import game.Game;
-import objects.GamePlayer;
 import objects.GameTeam;
+import player.Player;
 
 public class StatsDisplay extends JPanel {
 	
@@ -17,7 +17,7 @@ public class StatsDisplay extends JPanel {
 	
 	public StatsDisplay (GameTeam team) {
 		
-		GamePlayer [] toSend = {team.getCurrentPitcher()};
+		Player [] toSend = {team.getCurrentPitcher()};
 		
 		battingStats = new TeamBoxScore (Game.battingStatsDisplayed, team.initBattingBoxScore(), team.getLineup());
 		pitchingStats = new TeamBoxScore (Game.pitchingStatsDisplayed, team.initPitchingBoxScore(), toSend);
@@ -35,11 +35,11 @@ public class StatsDisplay extends JPanel {
 		
 	}
 	
-	public void updateBattingDisp (GamePlayer player) {
+	public void updateBattingDisp (Player player) {
 		battingStats.updateBox(player.getpID(), player.generateCurGameBattingStatsDisp());
 	}
 	
-	public void updatePitchingDIsp (GamePlayer pitcher) {
+	public void updatePitchingDIsp (Player pitcher) {
 		pitchingStats.updateBox(pitcher.getpID(), pitcher.generateCurPitchingBattingStatsDisp());
 	}
 	

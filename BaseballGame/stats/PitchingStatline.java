@@ -72,15 +72,13 @@ public class PitchingStatline extends Statline {
 		return ra;
 	}
 	
-	public void addPA (PlateAppearance toAdd) {
+	public void addPA (PlateAppearance toAdd, int outsRec) {
 		
 		bf++;
 		
 		super.addPA(toAdd);
 		
-		if (toAdd.getOutcome().equals(Result.OUT)) {
-			outsRec++;
-		}
+		this.outsRec += outsRec;
 		
 	}
 

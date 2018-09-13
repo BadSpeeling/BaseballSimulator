@@ -1,31 +1,19 @@
 import java.io.IOException;
 
-import objects.GamePlayer;
+import FileSystem.DataFileWriter;
+import FileSystem.LocalFile;
 import player.Generators;
+import player.Player;
 import utility.Writer;
 
 public class PlayerSavingTest {
 	
 	public static void main (String [] args) {
 		
-		GamePlayer [] players = Generators.basicPlayerGenerator(100);
-		String metaData [][] = {{"nextID","101"}};
-		Writer writer = new Writer ("D:\\Java_Projects\\BaseballSimulator\\SavedData", "testPlayers.txt", metaData, false);
+		Player [] players = Generators.basicPlayerGenerator(1000);
 		
-		for (GamePlayer curPlayer: players) {
-			try {
-				writer.writeLine(curPlayer.basicToWriter());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		try {
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	
+		LocalFile myFile = new LocalFile ("D:\\Java_Projects\\BaseballSimulator\\SavedData","players.txt");
+		DataFileWriter.appendPlayer(myFile, players);
 		
 	}
 	

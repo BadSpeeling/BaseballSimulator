@@ -1,0 +1,14 @@
+Player
+PlayerID,TeamID,LeagueID,FirstName,LastName,Position,Speed
+
+PlayerBattingRatings
+ID,Contact,Power,Discipline,HitBallType,SprayType
+
+PlayerPitchingRatings
+ID,FBVelo,FBMovement,FBControl,CHVelo,CHMovement,CHControl,CVControl,CVMovement,CVControl
+
+PlayerSeasonBattingStats
+ID,Year,TeamID,LeagueID,PA,Hits,Doubles,Triples,Homeruns,Walks,Strikeouts,RunsBattedIn,RunsScored
+
+PlayerSeasonPitchingStats
+ID,Year,TeamID,LeagueID,IP,Hits,Doubles,Triples,Homeruns,Walks,Strikeouts,RunsAllowed

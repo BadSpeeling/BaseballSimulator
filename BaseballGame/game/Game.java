@@ -4,25 +4,23 @@ import java.util.List;
 
 import javax.swing.JTable;
 
+import ID.Serialized;
 import atbat.HitTypeCalculator;
 import helpers.DebuggingBuddy;
-import objects.GamePlayer;
 import objects.GameTeam;
+import player.Player;
 import stadium.Stadium;
 import stats.PlateAppearance;
 import team.Team;
 import ui.BaseballGameDisplay;
 import ui.FieldEventDisplay;
 import ui.TeamBoxScore;
+import view.GameContainer;
 import view.StatsTable;
  
-public class Game {
+public class Game extends Serialized {
 	
-	private GameTeam homeTeam;
-	private GameTeam awayTeam;
 	private FieldEvent fieldEvent;
-	private BaseballGameDisplay fullGameView;
-	private int gameID;
 	
 	private int numOuts = 0;
 	private int inning = 1;
@@ -30,76 +28,95 @@ public class Game {
 	
 	private boolean teamsSwitched = false; //lets containing objects know when the teams are switched
 	
-	//holds the team currently on offense
+	private GameContainer displayedOnScreen;
+	
 	private GameTeam onOffense;
-	//holds the team currently pitching
 	private GameTeam onDefense;
 	
 	public final static String [] battingStatsDisplayed = {"", "Name", "AB", "H", "R", "RBI", "K", "BB"};
 	public final static String [] pitchingStatsDisplayed = {"Name", "IP", "H", "R", "BB", "K", "HR"}; 
 	
-	public Game (Team home, Team away, Stadium stadium, int id) {
-		this.homeTeam = home.makeInGameTeam(true);
-		this.awayTeam = away.makeInGameTeam(false);
-		this.onOffense = awayTeam;
-		this.onDefense = homeTeam;
-
-		FieldEventDisplay fieldDisplay = new FieldEventDisplay (500,500,10,stadium);
+	public Game (Team home, Team away, Stadium stadium, int id, GameContainer displayedOnScreen, FieldEvent fieldEvent) {
 		
-		this.fieldEvent = new FieldEvent (1,stadium,fieldDisplay,onDefense.getCurrentPitcher());
-		this.fullGameView  = new BaseballGameDisplay (fieldDisplay,1,awayTeam.getID(), homeTeam.getID()); 
-		this.gameID = id;
+		super(id);
+		
+		this.onDefense = home.makeInGameTeam(true);
+		this.onOffense = away.makeInGameTeam(false);
+		
+		this.fieldEvent = fieldEvent;
+		
+		this.displayedOnScreen = displayedOnScreen;
+		
+		if (displayedOnScreen != null) {
+			displayedOnScreen.addBaseballGame(this);
+		}
 		
 	}
 	
 	public void playPlateAppearance () {
 		
-		GamePlayer nextBatter = onOffense.nextBatter();
-		fieldEvent.batter = nextBatter;
+		Player nextBatter = onOffense.nextBatter();
+		fieldEvent.setCurBatter(nextBatter);
 		PlateAppearance paResult = fieldEvent.batterPitcherInteraction(onDefense.getFielders(), inning, numOuts);
-		
-		//incrementOuts();
-		
+				
 		for (Integer cur: fieldEvent.getIDRunnersScored()) {
 			
-			GamePlayer curPlayer = onOffense.getPlayer(cur);
+			Player curPlayer = onOffense.getPlayer(cur);
 			
 			if (curPlayer != null) {
 				curPlayer.scoredRun();
+				nextBatter.droveInRuns(1);
+			}
+			
+			else {
+				System.out.println("Player not found?");
 			}
 			
 		}
 		
 		if (!fieldEvent.getIDRunnersScored().isEmpty()) {
-			nextBatter.droveInRuns(fieldEvent.getIDRunnersScored().size());
-		}
-		
-		if (!fieldEvent.getIDRunnersScored().isEmpty()) {
-			fieldEvent.pitcher.allowedRuns(fieldEvent.getIDRunnersScored().size());
+			fieldEvent.getCurPitcher().allowedRuns(fieldEvent.getIDRunnersScored().size());
 		}
 			
 		nextBatter.addBattingPA(paResult);
-		fieldEvent.pitcher.addPitchingPA(paResult);
+		fieldEvent.getCurPitcher().addPitchingPA(paResult, fieldEvent.getIDRunnersOut().size());
+		
+		incrementOuts();
 		
 	}
 	
-
+	public void playGame () {
+		
+		while (!isGameOver()) {
+			
+			fieldEvent.setCurPitcher(onDefense.getCurrentPitcher());
+			playPlateAppearance();
+			displayedOnScreen.updateTeamBoxDisp(getHomeTeam(), getAwayTeam());
+			
+		}
+		
+	}
+	
 	public static Game basicGame () {
 		
-		Team home = new Team ();
-		Team away = new Team ();
+		Team home = new Team (1);
+		Team away = new Team (2);
 		Stadium stadium = Stadium.stdStadium();
 		FieldEventDisplay disp = new FieldEventDisplay (500,500,10,stadium);
 		
 		home.addFakePlayers();
 		away.addFakePlayers();
 		
-		return new Game (home, away, stadium, 1);
+		return new Game (home, away, stadium, 1, new GameContainer(1600,1000), new FieldEvent(1,stadium,disp));
 		
 	}
 	
+	public GameContainer getGameView () {
+		return displayedOnScreen;
+	}
+	
 	public boolean isGameOver () {
-		return inning == 9 && !topOfInning; 
+		return inning == 10 && topOfInning; 
 	}
 	
 	public void incrementOuts () {
@@ -126,7 +143,7 @@ public class Game {
 		onOffense = onDefense;
 		onDefense = temp;
 		
-		fieldEvent.pitcher = onDefense.getCurrentPitcher();
+		fieldEvent.setCurPitcher(onDefense.getCurrentPitcher());
 		
 	}
 	
@@ -142,16 +159,17 @@ public class Game {
 		
 	}
 	
-	public BaseballGameDisplay getFullGameView () {
-		return fullGameView;
+	public FieldEventDisplay getFieldEventDisp () {
+		return fieldEvent.view;
 	}
 
 	public GameTeam getHomeTeam() {
-		return homeTeam;
+		return topOfInning ? onDefense : onOffense;
 	}
 
 	public GameTeam getAwayTeam() {
-		return awayTeam;
+		return topOfInning ? onOffense : onDefense;
 	}
-		
+	
+	
 }

@@ -11,6 +11,7 @@ import game.FieldConstants;
 import game.FieldEvent;
 import game.Game;
 import physics.Physics;
+import player.Player;
 import ratings.GeneralRatings;
 import stadium.Wall;
 import stats.BattingStatline;
@@ -30,7 +31,7 @@ public class Baserunner extends OnFieldPlayer {
 	private Double advancingTimer = null; //controlls how long the baserunner can advance on a flyball until needing to wait
 	private BaserunnerStatus basePathStatus = BaserunnerStatus.Init;
 	
-	public Baserunner (GamePlayer other, int color) {
+	public Baserunner (Player other, int color) {
 		super(other, FieldConstants.homePlate(), color, other.getCurGameBatting(), other.getCurGamePitching());
 	}
 
@@ -106,7 +107,7 @@ public class Baserunner extends OnFieldPlayer {
 		
 		//clear the base that you are on
 		if (baseOn != null) {
-			lastBaseOn = baseRunningTo;
+			lastBaseOn = baseOn;
 			baseOn.clearRunnerOn();
 			baseOn = null;
 		}
@@ -333,7 +334,7 @@ public class Baserunner extends OnFieldPlayer {
 	
 	//checks if this runner can move
 	public boolean isAdvanceLocked (boolean canRecordAirOut) {
-		return advancingTimer != null && advancingTimer < 0 && canRecordAirOut;
+		return advancingTimer != null && (advancingTimer < 0 && canRecordAirOut);
 	}
 	
 	public void decrementAdvancingTimer () {
@@ -358,7 +359,11 @@ public class Baserunner extends OnFieldPlayer {
 	}
 	
 	public void clearForce () {
-		attempt.clearForce(this);
+		
+		if (attempt != null) {
+			attempt.clearForce(this);
+		}
+			
 		clearAttempt();
 	}
 
@@ -374,7 +379,7 @@ public class Baserunner extends OnFieldPlayer {
 		BaseType onBaseType = baseOn == null ? BaseType.NONE : baseOn.getBase();
 		BaseType lastBaseAttemptType = lastBaseOn == null ? BaseType.NONE : lastBaseOn.getBase();
 
-		return "Baserunner [name= "+getPlayer().fullName()+", destination=" + destination + ", loc=" + getLoc() + ", lastLoc=" + lastLoc + ", baseOn=" + onBaseType + ", attempt="
+		return "Baserunner [name= "+getPlayer().fullName()+" " + this.getID() + ", destination=" + destination + ", loc=" + getLoc() + ", lastLoc=" + lastLoc + ", baseOn=" + onBaseType + ", attempt="
 		+ attemptBaseType + ", homeBase=" + homeBaseType + ", advancing=" + advancing + ", bestBaseAchieved="
 		+ bestBaseAchieved + ", lastBaseAttempt=" + lastBaseAttemptType + "]";
 		

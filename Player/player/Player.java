@@ -1,7 +1,5 @@
-package objects;
+package player;
 import numbers.RandomNumber;
-import player.Position;
-import player.SeasonStats;
 import ratings.BattingRatings;
 import ratings.FieldingRatings;
 import ratings.GeneralRatings;
@@ -9,16 +7,15 @@ import ratings.PitchingRatings;
 import stats.BattingStatline;
 import stats.PitchingStatline;
 import stats.PlateAppearance;
+import utility.General;
 
 /* Eric Frye
  * Player represents a baseball player.  A player does not have to be on a team.
  * */
 
-public class GamePlayer implements Comparable <GamePlayer>{
+public class Player implements Comparable <Player>{
 	
 	private int pID; //ID of player.
-	private int teamID = 0; //ID of the team the player is on. 0 means that the player is a free agent.
-	private int leagueID = 0; //ID of the league that the player is in. 0 means that the player is not in a league.
 	private Position pos; //Primary Position of player.
 	private String firstName; //First name of player.
 	private String lastName; //Last name of player.
@@ -33,7 +30,7 @@ public class GamePlayer implements Comparable <GamePlayer>{
 	/* 
 	 * Basic constructor for Player.  Only uses first and last name, position and a unique ID
 	 * */
-	public GamePlayer (Position p, String f, String l, int id) {
+	public Player (Position p, String f, String l, int id) {
 		
 		pID = id;
 		firstName = f;
@@ -66,7 +63,7 @@ public class GamePlayer implements Comparable <GamePlayer>{
 		return pID + "," + firstName + "," + lastName;
 	}
 
-	public int compareTo(GamePlayer comp) {
+	public int compareTo(Player comp) {
 		return pID - comp.pID;
 	}
 	
@@ -76,7 +73,7 @@ public class GamePlayer implements Comparable <GamePlayer>{
 	
 	public void generateSimpleStats () {
 		bRatings.simpleGenerateBattingStats();
-		pRatings.simpleGeneratePitchRatings();
+		pRatings.simpleGeneratePitchingRatings();
 		gRatings.simpleGenerateGeneralRatings();
 	}
 	
@@ -91,14 +88,6 @@ public class GamePlayer implements Comparable <GamePlayer>{
 
 	public int getpID() {
 		return pID;
-	}
-
-	public int getTeamID() {
-		return teamID;
-	}
-
-	public int getLeagueID() {
-		return leagueID;
 	}
 
 	public Position getPos() {
@@ -141,13 +130,8 @@ public class GamePlayer implements Comparable <GamePlayer>{
 		curGamePitching.incERA(amt);
 	}
 	
-	public String toWriter () {
-		return pID +","+ teamID + "," + leagueID + "," + pos.ordinal()+1 + "," + firstName + "," + lastName + ",";
-	}
-	
-	public String basicToWriter () {
-		String ret = toWriter() + getbRatings().toWriter() + getpRatings().toWriter() + getgRatings().toWriter();
-		return (ret).substring(0, ret.length()-1);
+	public String getPlayerDataToSaveInfo (Integer teamID, Integer leagueID) {
+		return pID + "," + General.ifExistsElseZero(teamID) + "," + General.ifExistsElseZero(leagueID) + "," + firstName + "," + lastName + "," + pos.ordinal() + "," + gRatings.getSpeed() + "\r";
 	}
 	
 	public void add (BattingStatline b, PitchingStatline p) {
@@ -179,8 +163,8 @@ public class GamePlayer implements Comparable <GamePlayer>{
 		curGameBatting.addPA(toAdd);
 	}
 	
-	public void addPitchingPA (PlateAppearance toAdd) {
-		curGamePitching.addPA(toAdd);
+	public void addPitchingPA (PlateAppearance toAdd, int outsRec) {
+		curGamePitching.addPA(toAdd, outsRec);
 	}
 		
 }

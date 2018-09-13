@@ -8,13 +8,12 @@ import java.util.Scanner;
 import numbers.RandomNumber;
 import objects.Base;
 import objects.Baserunner;
-import objects.GamePlayer;
 
 public class Generators {
 	
-	public static GamePlayer [] basicPlayerGenerator (int num) {
+	public static Player [] basicPlayerGenerator (int num) {
 		
-		GamePlayer [] toRet = new GamePlayer [num];
+		Player [] toRet = new Player [num];
 		String [] fNames = randomFirstNames(num);
 		String [] lNames = randomLastNames(num);
 		Position [] pos = randomPosition(num);
@@ -22,7 +21,7 @@ public class Generators {
 		
 		for (int i = 0; i < num; i++) {
 			
-			GamePlayer curBasicPlayer = new GamePlayer (pos[i],fNames[i],lNames[i],nextID);
+			Player curBasicPlayer = new Player (pos[i],fNames[i],lNames[i],nextID);
 			curBasicPlayer.generateSimpleStats();
 			nextID++;
 			toRet[i] = curBasicPlayer;
@@ -35,7 +34,7 @@ public class Generators {
 	
 	public static Baserunner generateRunner (Base on) {
 		
-		GamePlayer [] temp = basicPlayerGenerator(1);
+		Player [] temp = basicPlayerGenerator(1);
 		Baserunner runner = new Baserunner(temp[0],0xFFFFFF);
 		runner.placeOnBase(on);
 		return runner;

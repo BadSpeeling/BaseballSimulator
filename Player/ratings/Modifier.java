@@ -5,7 +5,7 @@ package ratings;
 public class Modifier {
 	
 	private ModifierType type;
-	private double changeByZScore;
+	private double changeByZScore; //how much 1 z score is worth
 	
 	//calculated one time before going into a game.  
 	private double mean;

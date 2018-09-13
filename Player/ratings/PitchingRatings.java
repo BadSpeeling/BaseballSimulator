@@ -10,9 +10,6 @@ import numbers.PercentileConverter;
 
 public class PitchingRatings {
 
-	private double velocity;
-	private double control; 
-	private double filth;
 	
 	public HashMap <PitchType,PitchRatings> selection = new HashMap <PitchType,PitchRatings> (); 
 	
@@ -29,16 +26,8 @@ public class PitchingRatings {
 		selection.put(PitchType.FB, toAdd);
 	}
 		
-	public void simpleGeneratePitchRatings () {
+	public void simpleGeneratePitchingRatings () {
 
-		velocity = PercentileConverter.getValue(93, 2);
-		control = PercentileConverter.getValue(50, 15);
-		filth = PercentileConverter.getValue(50, 15);
-		
-	}
-	
-	public String toWriter () {
-		return velocity + "," + control + "," + filth;
 	}
 	
 }

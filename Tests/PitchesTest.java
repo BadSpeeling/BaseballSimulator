@@ -1,4 +1,4 @@
-import objects.GamePlayer;
+import player.Player;
 import ratings.PitchRatings;
 import ratings.PitchType;
 import team.Team;

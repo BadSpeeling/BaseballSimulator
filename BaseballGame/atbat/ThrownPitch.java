@@ -4,8 +4,8 @@ import datatype.Coordinate3D;
 import game.FieldConstants;
 import numbers.PercentileConverter;
 import numbers.RandomNumber;
-import objects.GamePlayer;
 import physics.Physics;
+import player.Player;
 import ratings.Modifier;
 import ratings.PitchRatings;
 import ratings.PitchType;
@@ -40,10 +40,10 @@ public class ThrownPitch {
 	private double filth; //movement of pitch
 
 	//players involved in event
-	private GamePlayer pitcher;
-	private GamePlayer batter;
+	private Player pitcher;
+	private Player batter;
 
-	public ThrownPitch (GamePlayer pitcher, GamePlayer batter) {
+	public ThrownPitch (Player pitcher, Player batter) {
 		this.pitcher = pitcher;
 		this.batter = batter;
 		this.contactMod = new Modifier(0,2.5);
@@ -71,11 +71,11 @@ public class ThrownPitch {
 		return filth;
 	}
 
-	public GamePlayer getPitcher() {
+	public Player getPitcher() {
 		return pitcher;
 	}
 
-	public GamePlayer getBatter() {
+	public Player getBatter() {
 		return batter;
 	}
 
