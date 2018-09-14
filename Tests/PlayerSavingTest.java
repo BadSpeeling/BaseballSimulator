@@ -12,8 +12,13 @@ public class PlayerSavingTest {
 		
 		Player [] players = Generators.basicPlayerGenerator(1000);
 		
-		LocalFile myFile = new LocalFile ("D:\\Java_Projects\\BaseballSimulator\\SavedData","players.txt");
-		DataFileWriter.appendPlayer(myFile, players);
+		LocalFile playersFile = new LocalFile ("D:\\Java_Projects\\BaseballSimulator\\SavedData","players.txt");
+		LocalFile playersBattingRatingsFile = new LocalFile ("D:\\Java_Projects\\BaseballSimulator\\SavedData","playersBatting.txt");
+		LocalFile playersPitchingRatingsFile = new LocalFile ("D:\\Java_Projects\\BaseballSimulator\\SavedData","playersPitching.txt");
+
+		DataFileWriter.appendPlayer(playersFile, players,null,null);
+		DataFileWriter.appendPlayerBattingRatings(playersBattingRatingsFile, players);
+		DataFileWriter.appendPlayerPitchingRatings(playersPitchingRatingsFile, players);
 		
 	}
 	

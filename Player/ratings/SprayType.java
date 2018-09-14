@@ -27,4 +27,14 @@ public enum SprayType {
 		
 	}
 	
+	public int num () {
+		switch (this) {
+		case OPPOSITE: return -1;
+		case NEUTRAL: return 0;
+		case PULL: return 1;
+		case HEAVY_PULL: return 2;
+		default: return 0;
+		}
+	}
+	
 }

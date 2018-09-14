@@ -26,6 +26,22 @@ public class BattingRatings {
 		return contact;
 	}
 	
+	public double getPower () {
+		return power;
+	}
+	
+	public double getDiscipline () {
+		return discipline;
+	}
+	
+	public HitBallType getHitBallType () {
+		return hitBallType;
+	}
+	
+	public SprayType getSprayType () {
+		return sprayType;
+	}
+
 	public double getHitSpeed () {
 		
 		if (RandomNumber.roll(0, 100) > 50) {

@@ -23,11 +23,12 @@ public class PitchingRatings {
 	
 	public void basicAddFastball () {
 		PitchRatings toAdd = new PitchRatings();
+		toAdd.simpleGeneratePitchRatings();
 		selection.put(PitchType.FB, toAdd);
 	}
 		
 	public void simpleGeneratePitchingRatings () {
-
+		basicAddFastball();
 	}
 	
 }

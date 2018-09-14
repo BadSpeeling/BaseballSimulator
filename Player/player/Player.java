@@ -3,6 +3,8 @@ import numbers.RandomNumber;
 import ratings.BattingRatings;
 import ratings.FieldingRatings;
 import ratings.GeneralRatings;
+import ratings.PitchRatings;
+import ratings.PitchType;
 import ratings.PitchingRatings;
 import stats.BattingStatline;
 import stats.PitchingStatline;
@@ -132,6 +134,25 @@ public class Player implements Comparable <Player>{
 	
 	public String getPlayerDataToSaveInfo (Integer teamID, Integer leagueID) {
 		return pID + "," + General.ifExistsElseZero(teamID) + "," + General.ifExistsElseZero(leagueID) + "," + firstName + "," + lastName + "," + pos.ordinal() + "," + gRatings.getSpeed() + "\r";
+	}
+	
+	public String getPlayerBattingRatingsDataToSaveInfo () {
+		return pID + "," + bRatings.getContact() + "," + bRatings.getPower() + "," + bRatings.getDiscipline() + "," + bRatings.getHitBallType().num() + "," + bRatings.getSprayType().num() + "\r";
+	}
+	
+	public String getPlayerPitchingRatingsDataToSaveInfo () {
+		
+		PitchRatings fastball = pRatings.selection.get(PitchType.FB);
+		
+		return pID + "," + fastball.getVelocity() + "," + fastball.getFilth() + "," + fastball.getControl() + "\r";
+	}
+	
+	public String getPlayerCurGameBatting (Integer year, Integer teamID, Integer leagueID) {
+		return pID + "," + General.ifExistsElseZero(year) + "," + General.ifExistsElseZero(teamID) + "," + General.ifExistsElseZero(leagueID) + "," + curGameBatting.getPA() + "," + curGameBatting.getHits() + "," + curGameBatting.getDoubles() + "," + curGameBatting.getTriples() + "," + curGameBatting.getHomeruns() + "," + curGameBatting.getWalks() + "," + curGameBatting.getStrikeouts() + "," + curGameBatting.getRbi() + "," + curGameBatting.getRuns() + "\r"; 
+	}
+	
+	public String getPlayerCurGamePitching (Integer year, Integer teamID, Integer leagueID) {
+		return pID + "," + General.ifExistsElseZero(year) + "," + General.ifExistsElseZero(teamID) + "," + General.ifExistsElseZero(leagueID) + "," + curGamePitching.getOutsRec() + "," + curGamePitching.getHits() + "," + curGamePitching.getDoubles() + "," + curGamePitching.getTriples() + "," + curGamePitching.getHomeruns() + "," + curGamePitching.getWalks() + "," + curGamePitching.getStrikeouts() + "," + curGamePitching.getRa() + "\r";
 	}
 	
 	public void add (BattingStatline b, PitchingStatline p) {

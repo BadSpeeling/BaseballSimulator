@@ -34,4 +34,16 @@ public enum HitBallType {
 		
 	}
 	
+	
+	public int num () {
+		switch(this) {
+		case HEAVY_GROUNDBALL: return -2;
+		case GROUND_BALL: return -1;
+		case NEUTRAL: return 0;
+		case FLYBALL: return 1;
+		case HEAVY_FLYBALL: return 2;
+		default: return 0;
+		}
+	}
+	
 }
