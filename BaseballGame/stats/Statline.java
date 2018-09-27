@@ -11,9 +11,11 @@ public class Statline {
 	private int homeruns = 0;
 	private int walks = 0;
 	private int strikeouts = 0;
-
-	public Statline(int pID) {
+	private boolean isStarter;
+	
+	public Statline(int pID, boolean isStarter) {
 		super();
+		this.isStarter = isStarter;
 		this.pID = pID;
 	}
 	

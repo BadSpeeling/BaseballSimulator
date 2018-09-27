@@ -87,4 +87,6 @@ public class BattingStatline extends Statline {
 		super.add(other.getHits(), other.getDoubles(), other.getTriples(), other.getHomeruns(), other.getWalks(), other.getStrikeouts());
 	}
 	
+	
+	
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import player.Player;
+import stats.BattingStatline;
 
 public class DataFileWriter {
 	
@@ -69,6 +70,13 @@ public class DataFileWriter {
 			} catch (IOException e) {
 				return false;
 			}
+		
+	}
+	
+	//writes new lines of batting stats
+	public static boolean appendPlayerBattingStats (LocalFile filePath, BattingStatline [] toAdd) {
+		
+		
 		
 	}
 	
