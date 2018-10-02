@@ -1,4 +1,4 @@
-package Stats;
+package stats;
 
 import stats.BattingStatline;
 
@@ -23,9 +23,25 @@ public class BattingSeasonStatistics extends SeasonStatistics{
 		
 	}
 	
-	public void addGameStats (BattingStatline line) {
+	public void addGameStats (BattingStatline line, boolean wasStarter) {
 		
+		incGamesPlayed();
 		
+		runs += line.getRuns();
+		rbi += line.getRbi();
+		pa += line.getPA();
+		ab += line.getAB();
+		
+		if (wasStarter) {
+			incGamesStarted();
+		}
+		
+		incHitsBy(line.getHits());
+		incDoublesBy(line.getDoubles());
+		incTriplesBy(line.getTriples());
+		incHomersBy(line.getHomeruns());
+		incStrikeoutsBy(line.getStrikeouts());
+		incWalksBy(line.getWalks());
 		
 	}
 	

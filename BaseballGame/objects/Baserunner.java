@@ -32,7 +32,7 @@ public class Baserunner extends OnFieldPlayer {
 	private BaserunnerStatus basePathStatus = BaserunnerStatus.Init;
 	
 	public Baserunner (Player other, int color) {
-		super(other, FieldConstants.homePlate(), color, other.getCurGameBatting(), other.getCurGamePitching());
+		super(other, FieldConstants.homePlate(), color);
 	}
 
 	//to be used to initialize a baserunner  

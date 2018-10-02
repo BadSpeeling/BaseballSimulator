@@ -35,12 +35,12 @@ public class StatsDisplay extends JPanel {
 		
 	}
 	
-	public void updateBattingDisp (Player player) {
-		battingStats.updateBox(player.getpID(), player.generateCurGameBattingStatsDisp());
+	public void updateBattingDisp (int id, String [] line) {
+		battingStats.updateBox(id, line, 2);
 	}
 	
-	public void updatePitchingDIsp (Player pitcher) {
-		pitchingStats.updateBox(pitcher.getpID(), pitcher.generateCurPitchingBattingStatsDisp());
+	public void updatePitchingDIsp (int id, String [] line) {
+		pitchingStats.updateBox(id, line, 1);
 	}
 	
 }

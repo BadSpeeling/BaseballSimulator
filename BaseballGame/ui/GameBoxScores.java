@@ -34,21 +34,21 @@ public class GameBoxScores extends JPanel {
 	
 	public void updateHomeBox (GameTeam homeTeam) {
 		
-		for (Player curPlayer: homeTeam.getLineup()) {
-			homeBox.updateBattingDisp(curPlayer);
+		for (Integer id: homeTeam.getBattingsStatsKeys()) {
+			homeBox.updateBattingDisp(id, homeTeam.generateCurBattingLineFor(id));
 		}
 		
-		homeBox.updatePitchingDIsp(homeTeam.getCurrentPitcher());
+		homeBox.updatePitchingDIsp(homeTeam.getCurrentPitcher().getpID(), homeTeam.generateCurPitchingLineFor(homeTeam.getCurrentPitcher().getpID()));
 		
 	}
 	
 	public void updateAwayBox (GameTeam awayTeam) {
 		
-		for (Player curPlayer: awayTeam.getLineup()) {
-			awayBox.updateBattingDisp(curPlayer);
+		for (Integer id: awayTeam.getBattingsStatsKeys()) {
+			awayBox.updateBattingDisp(id, awayTeam.generateCurBattingLineFor(id));
 		}
 		
-		awayBox.updatePitchingDIsp(awayTeam.getCurrentPitcher());
+		awayBox.updatePitchingDIsp(awayTeam.getCurrentPitcher().getpID(), awayTeam.generateCurPitchingLineFor(awayTeam.getCurrentPitcher().getpID()));
 		
 	}
 	

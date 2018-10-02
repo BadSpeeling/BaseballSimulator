@@ -3,15 +3,20 @@ package objects;
  * InGameTeam is a team that is taking part in a Game.
  * */
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import datatype.CircularLinkedList;
 import game.Game;
 import game.Linescore;
 import manager.Manager;
 import player.Player;
+import stats.BattingStatline;
+import stats.PitchingStatline;
+import stats.PlateAppearance;
 
 public class GameTeam {
 
@@ -28,12 +33,16 @@ public class GameTeam {
 	private Manager manager; //Manager.
 	private Linescore score;
 	
+	private HashMap <Integer, BattingStatline> battingStats;
+	private HashMap <Integer, PitchingStatline> pitchingStats;
+	
 	private int tID;
 	
 	private final int PLAYERSININITLINEUP = 9;
-	private final int STARTINGPITCHERCOUNT = 1;
+	private final int STARTINGPITCHERCOUNT = 1; 
 	
 	public GameTeam (int id,Player [] lineup, Player pitcher, HashSet <Player> bench, HashSet <Player> bullPen, Manager manager, boolean homeTeam, List <Fielder> inField) {
+		
 		this.lineup = lineup;
 		this.pitcher = pitcher;
 		this.bench = bench;
@@ -42,11 +51,14 @@ public class GameTeam {
 		this.score = new Linescore (homeTeam);
 		this.inTheField = inField;
 		this.tID = id;
+		this.battingStats = new HashMap <Integer, BattingStatline> ();
+		this.pitchingStats = new HashMap <Integer, PitchingStatline> ();
 		
 		allPlayersOnTeam = new LinkedList <Player> ();
 		
 		for (Player cur: lineup) {
 			allPlayersOnTeam.add(cur);
+			battingStats.put(cur.getpID(), new BattingStatline());
 		}
 		
 		if (bench != null) {
@@ -58,6 +70,7 @@ public class GameTeam {
 		}
 		
 		allPlayersOnTeam.add(pitcher);
+		pitchingStats.put(pitcher.getpID(), new PitchingStatline());
 		
 	}
 
@@ -149,45 +162,42 @@ public class GameTeam {
 		return null;
 		
 	}
-	
-	public String getBattingBoxScore () {
-		
-		String toRet = "";
-			
-		for (Player cur: allPlayersOnTeam) {
-				
-			String [] curStats = cur.generateCurGameBattingStatsDisp();
 
-			for (String curStr: curStats) {
-				toRet += curStr + " ";
-			}
-				
-			toRet += "\n";
-				
-		}
-		
-		return toRet;
-			
+	
+	public void updateBattersLine (int id, PlateAppearance pa) {
+		battingStats.get(id).addPA(pa);	
 	}
 	
-	public String getPitchingBoxScore () {
+	public void updatePitchersLine (int id, PlateAppearance pa, int outs, int runs) {
+		pitchingStats.get(id).addPA(pa, outs, runs);
+	}
+	
+	public void updateRunnersRuns (int id) {
+		battingStats.get(id).incRuns();
+	}
+	
+	public void updateBattersRBI (int id, int by) {
+		battingStats.get(id).incRbi(by);
+	}
+	
+	public String [] generateCurBattingLineFor (int id) {
 		
-		String toRet = "";
-		
-		for (Player cur: allPlayersOnTeam) {
-			
-			String [] curStats = cur.generateCurPitchingBattingStatsDisp();
-
-			for (String curStr: curStats) {
-				toRet += curStr + " ";
-			}
-			
-			toRet += "\n";
-			
-		}
-		
-		return toRet;
+		BattingStatline curGameBatting = battingStats.get(id);
+		String [] ret = {curGameBatting.getAB()+"",curGameBatting.getHits()+"",curGameBatting.getRuns()+"",curGameBatting.getRbi()+"",curGameBatting.getStrikeouts()+"",curGameBatting.getWalks()+""};
+		return ret;
 		
 	}
-			
+	
+	public String [] generateCurPitchingLineFor (int id) {
+		
+		PitchingStatline curGamePitching = pitchingStats.get(id);
+		String [] ret = {curGamePitching.getOutsRec()+"",curGamePitching.getHits()+"",curGamePitching.getEra()+"",curGamePitching.getWalks()+"",curGamePitching.getStrikeouts()+"",curGamePitching.getHomeruns()+""};
+		return ret;
+		
+	}
+	
+	public Set <Integer> getBattingsStatsKeys () {
+		return battingStats.keySet();
+	}
+	
 }

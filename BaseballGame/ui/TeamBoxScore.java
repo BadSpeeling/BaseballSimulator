@@ -32,13 +32,17 @@ public class TeamBoxScore extends StatsTable {
 		
 	}
 	
-	public void updateBox (int curPlayerID, String [] stats) {
+	public void updateBox (int curPlayerID, String [] stats, int colOffset) {
 		
 		int index = idLocations.indexOf(curPlayerID);
 		
 		//dont try to update for a player that is not in this box
 		if (index != -1) {
-			update(index, stats);
+			
+			for (int i = colOffset; i < stats.length+colOffset; i++) {
+				updateLoc(index, i, stats[i-colOffset]);
+			}
+			
 		}
 		
 	}

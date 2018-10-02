@@ -59,28 +59,17 @@ public class Game extends Serialized {
 		fieldEvent.setCurBatter(nextBatter);
 		PlateAppearance paResult = fieldEvent.batterPitcherInteraction(onDefense.getFielders(), inning, numOuts);
 				
+		onOffense.updateBattersRBI(nextBatter.getpID(), fieldEvent.getIDRunnersScored().size());
+		onOffense.updateBattersLine(nextBatter.getpID(), paResult);
+
 		for (Integer cur: fieldEvent.getIDRunnersScored()) {
 			
 			Player curPlayer = onOffense.getPlayer(cur);
-			
-			if (curPlayer != null) {
-				curPlayer.scoredRun();
-				nextBatter.droveInRuns(1);
-			}
-			
-			else {
-				System.out.println("Player not found?");
-			}
+			onOffense.updateRunnersRuns(curPlayer.getpID());
 			
 		}
 		
-		if (!fieldEvent.getIDRunnersScored().isEmpty()) {
-			fieldEvent.getCurPitcher().allowedRuns(fieldEvent.getIDRunnersScored().size());
-		}
-			
-		nextBatter.addBattingPA(paResult);
-		fieldEvent.getCurPitcher().addPitchingPA(paResult, fieldEvent.getIDRunnersOut().size());
-		
+		onDefense.updatePitchersLine(onDefense.getCurrentPitcher().getpID(), paResult, (fieldEvent.getIDRunnersOut().size() + numOuts) > 3 ? 3 - numOuts : fieldEvent.getIDRunnersOut().size() ,fieldEvent.getIDRunnersScored().size());
 		incrementOuts();
 		
 	}

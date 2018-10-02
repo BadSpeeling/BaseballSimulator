@@ -12,10 +12,6 @@ public class BattingStatline extends Statline {
 	private int ab = 0;	
 	private int pa = 0;
 	
-	public BattingStatline(int pID) {
-		super(pID);
-	}
-
 	public int getRuns() {
 		return runs;
 	}
@@ -86,7 +82,7 @@ public class BattingStatline extends Statline {
 		incPA(other.getPA());
 		super.add(other.getHits(), other.getDoubles(), other.getTriples(), other.getHomeruns(), other.getWalks(), other.getStrikeouts());
 	}
-	
+
 	
 	
 }

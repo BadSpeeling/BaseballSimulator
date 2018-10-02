@@ -11,11 +11,7 @@ public class PitchingStatline extends Statline {
 	private int outsRec = 0; //num outs recorded
 	private int era = 0; //earned runs allowed
 	private int ra = 0; //runs allowd
-	
-	public PitchingStatline(int pID) {
-		super(pID);
-	}
-	
+		
 	public void add (PitchingStatline other) {
 		incOutsRec(other.getOutsRec());
 		incERA(other.getEra());
@@ -72,13 +68,14 @@ public class PitchingStatline extends Statline {
 		return ra;
 	}
 	
-	public void addPA (PlateAppearance toAdd, int outsRec) {
+	public void addPA (PlateAppearance toAdd, int outsRec, int runs) {
 		
 		bf++;
 		
 		super.addPA(toAdd);
 		
 		this.outsRec += outsRec;
+		this.era += runs;
 		
 	}
 

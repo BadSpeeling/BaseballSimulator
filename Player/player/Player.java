@@ -6,7 +6,9 @@ import ratings.GeneralRatings;
 import ratings.PitchRatings;
 import ratings.PitchType;
 import ratings.PitchingRatings;
+import stats.BattingSeasonStatistics;
 import stats.BattingStatline;
+import stats.PitchingSeasonStatistics;
 import stats.PitchingStatline;
 import stats.PlateAppearance;
 import utility.General;
@@ -21,13 +23,11 @@ public class Player implements Comparable <Player>{
 	private Position pos; //Primary Position of player.
 	private String firstName; //First name of player.
 	private String lastName; //Last name of player.
+	
 	private BattingRatings bRatings; //Batting ratings.
 	private PitchingRatings pRatings; //Pitching ratings.
 	private FieldingRatings fRatings; //Fielding ratings.
 	private GeneralRatings gRatings; //General Ratings
-	private SeasonStats cumStats;
-	private BattingStatline curGameBatting;
-	private PitchingStatline curGamePitching;
 	
 	/* 
 	 * Basic constructor for Player.  Only uses first and last name, position and a unique ID
@@ -42,10 +42,7 @@ public class Player implements Comparable <Player>{
 		pRatings = new PitchingRatings();
 		pRatings.basicAddFastball();
 		fRatings = new FieldingRatings();	
-		gRatings = new GeneralRatings();
-		cumStats = new SeasonStats(id);
-		curGameBatting = new BattingStatline (id);
-		curGamePitching = new PitchingStatline (id);		
+		gRatings = new GeneralRatings();	
 		
 	}
 	
@@ -53,14 +50,6 @@ public class Player implements Comparable <Player>{
 		return pID == id;
 	}
 	
-	public BattingStatline getCurGameBatting() {
-		return curGameBatting;
-	}
-
-	public PitchingStatline getCurGamePitching() {
-		return curGamePitching;
-	}
-
 	public String toString () {
 		return pID + "," + firstName + "," + lastName;
 	}
@@ -78,11 +67,7 @@ public class Player implements Comparable <Player>{
 		pRatings.simpleGeneratePitchingRatings();
 		gRatings.simpleGenerateGeneralRatings();
 	}
-	
-	public void resetGameStats () {
-		curGameBatting = new BattingStatline(pID);
-		curGamePitching = new PitchingStatline(pID);
-	}
+
 	
 	public boolean isPitcher () {
 		return pos.equals(Position.PITCHER);
@@ -119,19 +104,7 @@ public class Player implements Comparable <Player>{
 	public GeneralRatings getgRatings() {
 		return gRatings;
 	}
-	
-	public void scoredRun () {
-		curGameBatting.incRuns();
-	}
-	
-	public void droveInRuns (int amt) {
-		curGameBatting.incRbi(amt);
-	}
-	
-	public void allowedRuns (int amt) {
-		curGamePitching.incERA(amt);
-	}
-	
+
 	public String getPlayerDataToSaveInfo (Integer teamID, Integer leagueID) {
 		return pID + "," + General.ifExistsElseZero(teamID) + "," + General.ifExistsElseZero(leagueID) + "," + firstName + "," + lastName + "," + pos.ordinal() + "," + gRatings.getSpeed() + "\r";
 	}
@@ -147,31 +120,9 @@ public class Player implements Comparable <Player>{
 		return pID + "," + fastball.getVelocity() + "," + fastball.getFilth() + "," + fastball.getControl() + "\r";
 	}
 	
-	public String getPlayerCurGameBatting (Integer year, Integer teamID, Integer leagueID) {
-		return pID + "," + General.ifExistsElseZero(year) + "," + General.ifExistsElseZero(teamID) + "," + General.ifExistsElseZero(leagueID) + "," + curGameBatting.getPA() + "," + curGameBatting.getHits() + "," + curGameBatting.getDoubles() + "," + curGameBatting.getTriples() + "," + curGameBatting.getHomeruns() + "," + curGameBatting.getWalks() + "," + curGameBatting.getStrikeouts() + "," + curGameBatting.getRbi() + "," + curGameBatting.getRuns() + "\r"; 
-	}
-	
-	public String getPlayerCurGamePitching (Integer year, Integer teamID, Integer leagueID) {
-		return pID + "," + General.ifExistsElseZero(year) + "," + General.ifExistsElseZero(teamID) + "," + General.ifExistsElseZero(leagueID) + "," + curGamePitching.getOutsRec() + "," + curGamePitching.getHits() + "," + curGamePitching.getDoubles() + "," + curGamePitching.getTriples() + "," + curGamePitching.getHomeruns() + "," + curGamePitching.getWalks() + "," + curGamePitching.getStrikeouts() + "," + curGamePitching.getRa() + "\r";
-	}
-	
-	public void add (BattingStatline b, PitchingStatline p) {
-		cumStats.add(b, p);
-	}
-	
 	//returns array to be added to a row in PlayerStatsTable
 	public String [] generateGameBattingStatsDisp () {
 		String [] ret = {pos.shorthand(),fullName(),"0","0","0","0","0","0"};
-		return ret;
-	}
-	
-	public String [] generateCurGameBattingStatsDisp () {
-		String [] ret = {pos.shorthand(),fullName(),curGameBatting.getAB()+"",curGameBatting.getHits()+"",curGameBatting.getRuns()+"",curGameBatting.getRbi()+"",curGameBatting.getStrikeouts()+"",curGameBatting.getWalks()+""};
-		return ret;
-	}
-	
-	public String [] generateCurPitchingBattingStatsDisp () {
-		String [] ret = {fullName(),curGamePitching.getOutsRec()+"",curGamePitching.getHits()+"",curGamePitching.getEra()+"",curGamePitching.getWalks()+"",curGamePitching.getStrikeouts()+"",curGamePitching.getHomeruns()+""};
 		return ret;
 	}
 	
@@ -180,12 +131,4 @@ public class Player implements Comparable <Player>{
 		return ret;
 	}
 	
-	public void addBattingPA (PlateAppearance toAdd) {
-		curGameBatting.addPA(toAdd);
-	}
-	
-	public void addPitchingPA (PlateAppearance toAdd, int outsRec) {
-		curGamePitching.addPA(toAdd, outsRec);
-	}
-		
 }

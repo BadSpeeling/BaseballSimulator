@@ -1,4 +1,4 @@
-package Stats;
+package stats;
 
 import stats.Statline;
 

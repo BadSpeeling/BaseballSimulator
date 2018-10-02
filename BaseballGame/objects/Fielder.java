@@ -33,7 +33,7 @@ public class Fielder extends OnFieldPlayer {
 	public Base baseOn = null;
 	
 	public Fielder (Player cur, int color) {
-		super(cur, Coordinate3D.standardPos(cur.getPos()), color, cur.getCurGameBatting(), cur.getCurGamePitching());
+		super(cur, Coordinate3D.standardPos(cur.getPos()), color);
 		lastLoc = new Coordinate3D(0,0,0);
 	}
 	

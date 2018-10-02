@@ -18,16 +18,12 @@ public abstract class OnFieldPlayer extends OnFieldObject{
 	private double wingspan = 2;
 	private double actionTimer = 0;
 	private Player backingPlayer;
-	private BattingStatline battingStats;
-	private PitchingStatline pitchingStats;
 	
 	private List <LocationTracker> tracker = new LinkedList <LocationTracker> ();
 	
-	public OnFieldPlayer(Player player, Coordinate3D loc,int color, BattingStatline bS, PitchingStatline pS) {
+	public OnFieldPlayer(Player player, Coordinate3D loc,int color) {
 		super(loc, loc.copy(), color);
 		backingPlayer = player;
-		this.battingStats = bS;
-		this.pitchingStats = pS;
 	}
 	
 	//player running

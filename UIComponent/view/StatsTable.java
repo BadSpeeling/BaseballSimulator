@@ -35,4 +35,8 @@ public class StatsTable extends JTable {
 		
 	}
 	
+	public void updateLoc (int row, int col, String val) {
+		setValueAt(val, row, col);
+	}
+	
 }

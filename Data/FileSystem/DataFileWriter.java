@@ -76,7 +76,7 @@ public class DataFileWriter {
 	//writes new lines of batting stats
 	public static boolean appendPlayerBattingStats (LocalFile filePath, BattingStatline [] toAdd) {
 		
-		
+		return true;
 		
 	}
 	

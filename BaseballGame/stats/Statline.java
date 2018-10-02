@@ -2,8 +2,6 @@ package stats;
 
 public class Statline {
 
-	private final int pID;
-
 	//counting stats
 	private int hits = 0;
 	private int doubles = 0;
@@ -11,13 +9,6 @@ public class Statline {
 	private int homeruns = 0;
 	private int walks = 0;
 	private int strikeouts = 0;
-	private boolean isStarter;
-	
-	public Statline(int pID, boolean isStarter) {
-		super();
-		this.isStarter = isStarter;
-		this.pID = pID;
-	}
 	
 	public void add (int h, int d, int t, int hr, int bb, int k) {
 		incHits(h);
@@ -82,10 +73,6 @@ public class Statline {
 
 	}
 
-	public int getpID() {
-		return pID;
-	}
-
 	public int getHits() {
 		return hits;
 	}
@@ -135,7 +122,7 @@ public class Statline {
 	}
 
 	public String toString() {
-		return "Statline [pID=" + pID + ", hits=" + hits + ", doubles=" + doubles + ", triples=" + triples
+		return "Statline [hits=" + hits + ", doubles=" + doubles + ", triples=" + triples
 				+ ", homeruns=" + homeruns + ", walks=" + walks + ", strikeouts=" + strikeouts + "]";
 	}
 	
