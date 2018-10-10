@@ -14,6 +14,7 @@ import objects.Fielder;
 import objects.GameTeam;
 import player.Player;
 import player.Position;
+import stats.BattingStatline;
 
 /* Eric Frye
  * Team represents a baseball team.  A baseball team is valid if it follows the roster restrictions designated by a RuleSet.  Players
@@ -24,9 +25,12 @@ public class Team extends Serialized {
 	
 	public LinkedList <Player> playersOnTeam = new LinkedList <Player> (); //Set of players on the team
 	private static int nextID = 1;
+	private PlayerBattingStatistics battingStats; 
 	
+
 	public Team (int ID) {
 		super(ID);
+		battingStats = new PlayerBattingStatistics ();
 	}
 	
 	/*
@@ -117,10 +121,14 @@ public class Team extends Serialized {
 		
 	}
 	
+	public void loadPlayersOnTeam () {
+		
+	}
+	
 	/*
 	 * Creates an InGameTeam.  Currently using a basic method - no unique lineup, no bullpen and no bench.
 	 * */
-	public GameTeam makeInGameTeam (boolean homeTeam) {
+	public GameTeam makeInGameTeam (boolean homeTeam, int leagueID) {
 		
 		Player [] lineup = new Player [9]; 
 		
@@ -144,8 +152,14 @@ public class Team extends Serialized {
 			
 		}
 		
+		battingStats.addEmptyRecords(playersOnTeam, 2018, getID(), leagueID);
+		
 		return new GameTeam(getID(),lineup, pitcher, null, null, null, homeTeam, fielders);
 		
+	}
+	
+	public void addPlayerBattingStats (int id, BattingStatline line, boolean wasStarter) {
+		battingStats.addGameStats(id, line, wasStarter);
 	}
 
 }

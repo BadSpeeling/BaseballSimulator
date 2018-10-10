@@ -37,11 +37,12 @@ public class GameTeam {
 	private HashMap <Integer, PitchingStatline> pitchingStats;
 	
 	private int tID;
+
 	
 	private final int PLAYERSININITLINEUP = 9;
 	private final int STARTINGPITCHERCOUNT = 1; 
 	
-	public GameTeam (int id,Player [] lineup, Player pitcher, HashSet <Player> bench, HashSet <Player> bullPen, Manager manager, boolean homeTeam, List <Fielder> inField) {
+	public GameTeam (int id, Player [] lineup, Player pitcher, HashSet <Player> bench, HashSet <Player> bullPen, Manager manager, boolean homeTeam, List <Fielder> inField) {
 		
 		this.lineup = lineup;
 		this.pitcher = pitcher;
@@ -198,6 +199,54 @@ public class GameTeam {
 	
 	public Set <Integer> getBattingsStatsKeys () {
 		return battingStats.keySet();
+	}
+	
+	public Set <Integer> getPitchingStatsKeys () {
+		return pitchingStats.keySet();
+	}
+	
+	public BattingStatline getGameBattingStatsFor (int id) {
+		return battingStats.get(id);
+	}
+	
+	public PitchingStatline getGamePitchingStatsFor (int id) {
+		return pitchingStats.get(id);
+	}
+	
+	//returns a String that represents the data that is to be saved for this players batting stat
+	public String generateBattingLineToSaveFor (int id, int yearIn, int leagueID) {
+		
+		BattingStatline line = battingStats.get(id);
+		return id + "," + yearIn
+				+ "," + tID 
+				+ ","  + leagueID 
+				+ "," + line.getPA() 
+				+ "," + line.getAB() 
+				+ "," + line.getHits() 
+				+ "," + line.getDoubles() 
+				+ "," + line.getTriples()
+				+ "," + line.getHomeruns() 
+				+ "," + line.getWalks() 
+				+ "," + line.getStrikeouts() 
+				+ "," + line.getRbi() 
+				+ "," + line.getRuns();
+	}
+	
+	public String generatePitchingLineToSaveFor (int id, int yearIn, int leagueID) {
+		
+		PitchingStatline line = pitchingStats.get(id);
+		return id + "," + yearIn
+				+ "," + tID 
+				+ ","  + leagueID 
+				+ "," + line.getOutsRec() 
+				+ "," + line.getHits() 
+				+ "," + line.getDoubles() 
+				+ "," + line.getTriples() 
+				+ "," + line.getHomeruns()
+				+ "," + line.getWalks() 
+				+ "," + line.getStrikeouts() 
+				+ "," + line.getEra();
+		
 	}
 	
 }

@@ -17,11 +17,13 @@ import ui.GameBoxScores;
 import ui.TeamBoxScore;
 import ui.StatsDisplay;
 
+//hold the ui for a game being played
+
 public class GameContainer extends JLabel {
 	
-	private GameTeamContainer onOffense = new GameTeamContainer ();
-	private GameTeamContainer onDefense = new GameTeamContainer ();
+	//the on field graphics
 	private FieldEventDisplay fieldDisplay;
+	//box scores for both teams
 	private GameBoxScores boxScore;
 
 	public GameContainer (int width, int height) {
@@ -62,12 +64,5 @@ public class GameContainer extends JLabel {
 		
 	}
 	
-	private class GameTeamContainer {
-		
-		public GameTeam team;
-		public StatsDisplay teamBox;
-		
-	}
-
 	
 }

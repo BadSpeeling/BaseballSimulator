@@ -9,6 +9,9 @@ import game.Game;
 import objects.GameTeam;
 import player.Player;
 
+/* 
+ * The container that holds a teams batting and pitching box scores along with info in between i.e. doubles, homers
+ * */
 public class StatsDisplay extends JPanel {
 	
 	private TeamBoxScore battingStats;

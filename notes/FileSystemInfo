@@ -5,10 +5,10 @@ PlayerBattingRatings
 ID,Contact,Power,Discipline,HitBallType,SprayType
 
 PlayerPitchingRatings
-ID,FBVelo,FBMovement,FBControl,CHVelo,CHMovement,CHControl,CVControl,CVMovement,CVControl
+ID,FBVelo,FBMovement,FBControl
 
 PlayerSeasonBattingStats
-ID,Year,TeamID,LeagueID,PA,Hits,Doubles,Triples,Homeruns,Walks,Strikeouts,RunsBattedIn,RunsScored
+ID,Year,TeamID,LeagueID,GS,G,PA,AB,Hits,Doubles,Triples,Homeruns,Walks,Strikeouts,RunsBattedIn,RunsScored
 
 PlayerSeasonPitchingStats
-ID,Year,TeamID,LeagueID,IP,Hits,Doubles,Triples,Homeruns,Walks,Strikeouts,RunsAllowed
+ID,Year,TeamID,LeagueID,GS,G,IP,Hits,Doubles,Triples,Homeruns,Walks,Strikeouts,RunsAllowed

@@ -11,6 +11,14 @@ public class GeneralRatings {
 	
 	private double speed; // ft/s
 	
+	public GeneralRatings () {
+		
+	}
+	
+	public GeneralRatings (double speed) {
+		this.speed = speed;
+	}
+	
 	public void simpleGenerateGeneralRatings () {
 		speed = PercentileConverter.getValue(25, 1.5);
 		

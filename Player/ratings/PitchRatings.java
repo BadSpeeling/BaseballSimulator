@@ -17,9 +17,15 @@ public class PitchRatings {
 	//VELO mean VELO sd
 	//CONTROL mean CONTROL sd
 	//FILTH mean FILTH sd
+	public PitchRatings (double velocity, double control, double filth) {
+		
+		this.velocity = velocity;
+		this.control = control;
+		this.filth = filth;
+		
+	}
+	
 	public PitchRatings () {
-		
-		
 		
 	}
 	

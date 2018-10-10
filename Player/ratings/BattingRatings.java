@@ -22,6 +22,15 @@ public class BattingRatings {
 		sprayType = SprayType.convert(sprayNum);
 	}
 	
+	public BattingRatings(HitBallType hitBallType, SprayType sprayType, double contact, double power, double discipline) {
+		super();
+		this.hitBallType = hitBallType;
+		this.sprayType = sprayType;
+		this.contact = contact;
+		this.power = power;
+		this.discipline = discipline;
+	}
+
 	public double getContact () {
 		return contact;
 	}

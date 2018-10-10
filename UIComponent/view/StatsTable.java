@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+//table that displays player statistics
 public class StatsTable extends JTable {
 	
 	public StatsTable (String [] colNames, String [][] data) {

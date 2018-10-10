@@ -34,6 +34,25 @@ public class SeasonStatistics {
 		
 	}
 
+	
+	
+	public SeasonStatistics(int year, int gamesPlayed, int gamesStarted, int teamID, int playerID, int leagueID,
+			int hits, int doubles, int triples, int homers, int strikeouts, int walks) {
+		this.year = year;
+		this.gamesPlayed = gamesPlayed;
+		this.gamesStarted = gamesStarted;
+		this.teamID = teamID;
+		this.playerID = playerID;
+		this.leagueID = leagueID;
+		this.hits = hits;
+		this.doubles = doubles;
+		this.triples = triples;
+		this.homers = homers;
+		this.strikeouts = strikeouts;
+		this.walks = walks;
+	}
+
+
 	public int getYear() {
 		return year;
 	}
@@ -113,5 +132,7 @@ public class SeasonStatistics {
 	public void incWalksBy (int by) {
 		this.walks += by;
 	}
+	
+	
 	
 }

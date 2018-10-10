@@ -31,5 +31,9 @@ public class PitchingRatings {
 		basicAddFastball();
 	}
 	
+	public void addPitch (PitchType type, double velo, double movement, double control) {
+		selection.put(type, new PitchRatings(velo,control,movement));
+	}
+	
 }
 

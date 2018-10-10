@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import objects.GameTeam;
 import player.Player;
 
+//container for the two teams StatsDisplay's
 public class GameBoxScores extends JPanel {
 	
 	private StatsDisplay homeBox;

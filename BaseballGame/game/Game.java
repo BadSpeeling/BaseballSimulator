@@ -1,6 +1,8 @@
 package game;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JTable;
 
@@ -10,6 +12,7 @@ import helpers.DebuggingBuddy;
 import objects.GameTeam;
 import player.Player;
 import stadium.Stadium;
+import stats.BattingStatline;
 import stats.PlateAppearance;
 import team.Team;
 import ui.BaseballGameDisplay;
@@ -33,6 +36,9 @@ public class Game extends Serialized {
 	private GameTeam onOffense;
 	private GameTeam onDefense;
 	
+	private Team homeTeam;
+	private Team awayTeam;
+	
 	public final static String [] battingStatsDisplayed = {"", "Name", "AB", "H", "R", "RBI", "K", "BB"};
 	public final static String [] pitchingStatsDisplayed = {"Name", "IP", "H", "R", "BB", "K", "HR"}; 
 	
@@ -40,8 +46,11 @@ public class Game extends Serialized {
 		
 		super(id);
 		
-		this.onDefense = home.makeInGameTeam(true);
-		this.onOffense = away.makeInGameTeam(false);
+		this.onDefense = home.makeInGameTeam(true,0);
+		this.onOffense = away.makeInGameTeam(false,0);
+		
+		this.homeTeam = home;
+		this.awayTeam = away;
 		
 		this.fieldEvent = fieldEvent;
 		
@@ -81,6 +90,23 @@ public class Game extends Serialized {
 			fieldEvent.setCurPitcher(onDefense.getCurrentPitcher());
 			playPlateAppearance();
 			displayedOnScreen.updateTeamBoxDisp(getHomeTeam(), getAwayTeam());
+			
+		}
+		
+		GameTeam homeGameTeam = onDefense;
+		GameTeam awayGameTeam = onOffense;
+		
+		for (Integer curHomeID: homeGameTeam.getBattingsStatsKeys()) {
+			
+			BattingStatline curBattingLine = homeGameTeam.getGameBattingStatsFor(curHomeID); 
+			this.homeTeam.addPlayerBattingStats(curHomeID, curBattingLine, true);
+			
+		}
+		
+		for (Integer curAwayID: awayGameTeam.getBattingsStatsKeys()) {
+			
+			BattingStatline curBattingLine = awayGameTeam.getGameBattingStatsFor(curAwayID); 
+			this.awayTeam.addPlayerBattingStats(curAwayID, curBattingLine, true);
 			
 		}
 		
@@ -160,5 +186,29 @@ public class Game extends Serialized {
 		return topOfInning ? onOffense : onDefense;
 	}
 	
+	public void saveGameStats (int leagueID, int year) {
+		
+		List <String> battingToSave = new LinkedList <String> ();
+		
+		for (Integer curID: onOffense.getBattingsStatsKeys()) {
+			battingToSave.add(onOffense.generateBattingLineToSaveFor(curID, year, leagueID));
+		}
+
+		for (Integer curID: onDefense.getBattingsStatsKeys()) {
+			battingToSave.add(onDefense.generateBattingLineToSaveFor(curID, year, leagueID));
+		}
+		
+		List <String> pitchingToSave = new LinkedList <String> ();
+		
+		for (Integer curID: onOffense.getPitchingStatsKeys()) {
+			pitchingToSave.add(onOffense.generatePitchingLineToSaveFor(curID, year, leagueID));
+		}
+
+		for (Integer curID: onDefense.getPitchingStatsKeys()) {
+			pitchingToSave.add(onDefense.generatePitchingLineToSaveFor(curID, year, leagueID));
+		}
+		
+		
+	}
 	
 }
