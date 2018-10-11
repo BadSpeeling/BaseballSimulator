@@ -10,7 +10,7 @@ import player.Player;
 
 public class DataFileReader {
 	
-	public static List <Player> loadPlayers (String pathName, int teamID) {
+	public static List <Player> loadPlayers (LocalFile dataDir, int teamID) {
 		
 		List <Player> ret = new LinkedList <Player> ();
 		final String players = "players.txt";

@@ -16,6 +16,7 @@ import stats.BattingStatline;
 import stats.PlateAppearance;
 import team.Team;
 import ui.BaseballGameDisplay;
+import ui.BasicBoard;
 import ui.FieldEventDisplay;
 import ui.TeamBoxScore;
 import view.GameContainer;
@@ -33,16 +34,18 @@ public class Game extends Serialized {
 	
 	private GameContainer displayedOnScreen;
 	
+	//this will be swapped each half inning so that the same pointer can be used
 	private GameTeam onOffense;
 	private GameTeam onDefense;
 	
 	private Team homeTeam;
 	private Team awayTeam;
+	private GameMetadata info; 
 	
 	public final static String [] battingStatsDisplayed = {"", "Name", "AB", "H", "R", "RBI", "K", "BB"};
 	public final static String [] pitchingStatsDisplayed = {"Name", "IP", "H", "R", "BB", "K", "HR"}; 
 	
-	public Game (Team home, Team away, Stadium stadium, int id, GameContainer displayedOnScreen, FieldEvent fieldEvent) {
+	public Game (Team home, Team away, Stadium stadium, int id, GameContainer displayedOnScreen, FieldEvent fieldEvent, int year, int leagueID) {
 		
 		super(id);
 		
@@ -54,11 +57,33 @@ public class Game extends Serialized {
 		
 		this.fieldEvent = fieldEvent;
 		
+		this.info = new GameMetadata(year,leagueID,home.getID(),away.getID(),id);
+		
 		this.displayedOnScreen = displayedOnScreen;
 		
 		if (displayedOnScreen != null) {
 			displayedOnScreen.addBaseballGame(this);
 		}
+		
+	}
+	
+	public Game (Team home, Team away, int gameID, int leagueID, int year) {
+		
+		super(gameID);
+		
+		GameTeam homeGameTeam = home.makeInGameTeam(true, leagueID);
+		GameTeam awayGameTeam =  away.makeInGameTeam(false, leagueID);
+		
+		this.onDefense = homeGameTeam;
+		this.onOffense = awayGameTeam;
+		this.homeTeam = home;
+		this.awayTeam = away;
+		
+		Stadium stadiumForGame = Stadium.stdStadium();
+		
+		this.displayedOnScreen = new GameContainer (1600,1000,450,450,10,stadiumForGame,homeGameTeam,awayGameTeam);
+		this.fieldEvent = new FieldEvent(1,stadiumForGame,displayedOnScreen.getFieldEventDisplay());
+		this.info = new GameMetadata(year,leagueID,home.getID(),away.getID(),gameID);
 		
 	}
 	
@@ -96,19 +121,7 @@ public class Game extends Serialized {
 		GameTeam homeGameTeam = onDefense;
 		GameTeam awayGameTeam = onOffense;
 		
-		for (Integer curHomeID: homeGameTeam.getBattingsStatsKeys()) {
-			
-			BattingStatline curBattingLine = homeGameTeam.getGameBattingStatsFor(curHomeID); 
-			this.homeTeam.addPlayerBattingStats(curHomeID, curBattingLine, true);
-			
-		}
-		
-		for (Integer curAwayID: awayGameTeam.getBattingsStatsKeys()) {
-			
-			BattingStatline curBattingLine = awayGameTeam.getGameBattingStatsFor(curAwayID); 
-			this.awayTeam.addPlayerBattingStats(curAwayID, curBattingLine, true);
-			
-		}
+		saveGameStats(info.getLeagueID(),info.getYearPlayedIn());
 		
 	}
 	
@@ -117,15 +130,15 @@ public class Game extends Serialized {
 		Team home = new Team (1);
 		Team away = new Team (2);
 		Stadium stadium = Stadium.stdStadium();
-		FieldEventDisplay disp = new FieldEventDisplay (500,500,10,stadium);
+		FieldEventDisplay disp = new FieldEventDisplay (450,450,10,stadium);
 		
 		home.addFakePlayers();
 		away.addFakePlayers();
 		
-		return new Game (home, away, stadium, 1, new GameContainer(1600,1000), new FieldEvent(1,stadium,disp));
+		return new Game (home, away, stadium, 1, new GameContainer(1600,1000), new FieldEvent(1,stadium,disp), 2018, 0);
 		
 	}
-	
+
 	public GameContainer getGameView () {
 		return displayedOnScreen;
 	}
@@ -193,7 +206,7 @@ public class Game extends Serialized {
 		for (Integer curID: onOffense.getBattingsStatsKeys()) {
 			battingToSave.add(onOffense.generateBattingLineToSaveFor(curID, year, leagueID));
 		}
-
+	
 		for (Integer curID: onDefense.getBattingsStatsKeys()) {
 			battingToSave.add(onDefense.generateBattingLineToSaveFor(curID, year, leagueID));
 		}
@@ -203,7 +216,7 @@ public class Game extends Serialized {
 		for (Integer curID: onOffense.getPitchingStatsKeys()) {
 			pitchingToSave.add(onOffense.generatePitchingLineToSaveFor(curID, year, leagueID));
 		}
-
+	
 		for (Integer curID: onDefense.getPitchingStatsKeys()) {
 			pitchingToSave.add(onDefense.generatePitchingLineToSaveFor(curID, year, leagueID));
 		}

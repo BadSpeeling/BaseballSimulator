@@ -14,6 +14,7 @@ import objects.Fielder;
 import objects.GameTeam;
 import player.Player;
 import player.Position;
+import stadium.Stadium;
 import stats.BattingStatline;
 
 /* Eric Frye
@@ -26,11 +27,18 @@ public class Team extends Serialized {
 	public LinkedList <Player> playersOnTeam = new LinkedList <Player> (); //Set of players on the team
 	private static int nextID = 1;
 	private PlayerBattingStatistics battingStats; 
-	
+	private Stadium ourStadium;
 
 	public Team (int ID) {
 		super(ID);
 		battingStats = new PlayerBattingStatistics ();
+		this.ourStadium = Stadium.stdStadium();
+	}
+	
+	public static Team generateSimpleTeam (int ID) {
+		Team ret = new Team(ID);
+		ret.addFakePlayers();
+		return ret;
 	}
 	
 	/*
@@ -160,6 +168,10 @@ public class Team extends Serialized {
 	
 	public void addPlayerBattingStats (int id, BattingStatline line, boolean wasStarter) {
 		battingStats.addGameStats(id, line, wasStarter);
+	}
+	
+	public Stadium getStadium () {
+		return ourStadium;
 	}
 
 }

@@ -9,7 +9,12 @@ public class LocalFile {
 		this.path = path;
 		this.fileName = fileName;
 	}
-
+	
+	public LocalFile (String path) {
+		this.path = path;
+		this.fileName = "";
+	}
+ 
 	public String getPath() {
 		return path;
 	}
@@ -20,6 +25,10 @@ public class LocalFile {
 	
 	public String getFullPath () {
 		return path + "\\" + fileName;
+	}
+	
+	public String getFile (String fileName) {
+		return path + "\\" +fileName;
 	}
 	
 }

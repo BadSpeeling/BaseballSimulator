@@ -11,7 +11,9 @@ import javax.swing.JScrollPane;
 import game.Game;
 import objects.GameTeam;
 import player.Player;
+import stadium.Stadium;
 import ui.BaseballGameDisplay;
+import ui.BasicBoard;
 import ui.FieldEventDisplay;
 import ui.GameBoxScores;
 import ui.TeamBoxScore;
@@ -32,6 +34,23 @@ public class GameContainer extends JLabel {
 		setSize(width,height);
 		setVisible(true);
 		setLayout(new FlowLayout());
+		
+	}
+	
+	public GameContainer (int width, int height, int fieldViewWidth, int fieldViewHeight, int foulSize, Stadium playedIn, GameTeam home, GameTeam away) {
+		
+		setSize(width,height);
+		setVisible(true);
+		setLayout(new FlowLayout());
+		
+		this.fieldDisplay = new FieldEventDisplay(fieldViewWidth, fieldViewHeight, foulSize, playedIn);
+		add(this.fieldDisplay.getFieldImage());
+		
+		this.boxScore = new GameBoxScores (new StatsDisplay(home), new StatsDisplay(away));
+		add(this.boxScore);
+		
+		revalidate();
+		repaint();
 		
 	}
 	
@@ -62,6 +81,10 @@ public class GameContainer extends JLabel {
 		revalidate();
 		repaint();
 		
+	}
+	
+	public FieldEventDisplay getFieldEventDisplay () {
+		return fieldDisplay;
 	}
 	
 	

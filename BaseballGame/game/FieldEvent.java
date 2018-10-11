@@ -34,7 +34,7 @@ import ui.FieldEventDisplay;
 
 public class FieldEvent {
 
-	private final boolean drawField = false;
+	private final boolean drawField = true;
 
 	private final int WHITE = 0xFFFFFF;
 	
