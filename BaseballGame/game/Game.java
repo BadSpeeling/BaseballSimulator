@@ -201,27 +201,12 @@ public class Game extends Serialized {
 	
 	public void saveGameStats (int leagueID, int year) {
 		
-		List <String> battingToSave = new LinkedList <String> ();
+		GameTeam homeTeam = getHomeTeam();
 		
-		for (Integer curID: onOffense.getBattingsStatsKeys()) {
-			battingToSave.add(onOffense.generateBattingLineToSaveFor(curID, year, leagueID));
-		}
+	}
 	
-		for (Integer curID: onDefense.getBattingsStatsKeys()) {
-			battingToSave.add(onDefense.generateBattingLineToSaveFor(curID, year, leagueID));
-		}
-		
-		List <String> pitchingToSave = new LinkedList <String> ();
-		
-		for (Integer curID: onOffense.getPitchingStatsKeys()) {
-			pitchingToSave.add(onOffense.generatePitchingLineToSaveFor(curID, year, leagueID));
-		}
-	
-		for (Integer curID: onDefense.getPitchingStatsKeys()) {
-			pitchingToSave.add(onDefense.generatePitchingLineToSaveFor(curID, year, leagueID));
-		}
-		
-		
+	public void shouldUIBeDrawn (boolean value) {
+		fieldEvent.setDrawField(value);
 	}
 	
 }

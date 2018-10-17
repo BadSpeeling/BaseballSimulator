@@ -34,7 +34,7 @@ import ui.FieldEventDisplay;
 
 public class FieldEvent {
 
-	private final boolean drawField = true;
+	private boolean drawField;
 
 	private final int WHITE = 0xFFFFFF;
 	
@@ -64,6 +64,7 @@ public class FieldEvent {
 		this.hitTypeCalc = new HitTypeCalculator ();
 		this.hitTypeCalc.init();
 		this.outs = 0;
+		this.drawField = false;
 		runners = new LinkedList <Baserunner> ();
 		
 		//init bases
@@ -78,6 +79,10 @@ public class FieldEvent {
 	public void placeTestRunner (BaseType on) {
 		Baserunner first = Generators.generateRunner(bases[on.num()]);
 		runners.add(first);
+	}
+	
+	public void setDrawField (boolean value) {
+		this.drawField = value;
 	}
 
 	public PlateAppearance batterPitcherInteraction (List <Fielder> fielders, int inning, int numOuts) {
