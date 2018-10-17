@@ -15,6 +15,7 @@ import objects.GameTeam;
 import player.Player;
 import player.Position;
 import stadium.Stadium;
+import stats.BattingSeasonStatistics;
 import stats.BattingStatline;
 
 /* Eric Frye
@@ -166,12 +167,22 @@ public class Team extends Serialized {
 		
 	}
 	
-	public void addPlayerBattingStats (int id, BattingStatline line, boolean wasStarter) {
-		battingStats.addGameStats(id, line, wasStarter);
+	public void addPlayerBattingStats (int id, BattingStatline line) {
+		
+		try {
+			battingStats.addGameStats(id, line);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.toString() + "\nTeamID " + getID());
+		}
+		
 	}
 	
 	public Stadium getStadium () {
 		return ourStadium;
+	}
+	
+	public BattingSeasonStatistics [] getBattingSeasonStats () {
+		return battingStats.getAllBattingSeasonStatistics();
 	}
 
 }

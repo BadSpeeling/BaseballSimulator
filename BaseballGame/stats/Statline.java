@@ -9,6 +9,11 @@ public class Statline {
 	private int homeruns = 0;
 	private int walks = 0;
 	private int strikeouts = 0;
+	private boolean wasStarter;
+	
+	public Statline (boolean wasStarter) {
+		this.wasStarter = wasStarter;
+	}
 	
 	public void add (int h, int d, int t, int hr, int bb, int k) {
 		incHits(h);
@@ -97,6 +102,10 @@ public class Statline {
 		return strikeouts;
 	}
 
+	public boolean getWasStarter () {
+		return wasStarter;
+	}
+	
 	public void incHits () {
 		hits++;
 	}

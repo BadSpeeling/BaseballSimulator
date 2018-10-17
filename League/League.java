@@ -31,6 +31,12 @@ public class League extends Serialized {
 		teams.put(toAdd.getID(), toAdd);
 	}
 	
+	/**
+	 * Plays a Game.  homeID and awayID must be IDs of valid teams already added to the league.  The game being played will be added to activeGame
+	 * @param homeID
+	 * @param awayID
+	 * @param uiContainer The container that will hold the UI for the game.  If null no UI will be shown
+	 */
 	public void playGame (int homeID, int awayID, Container uiContainer) {
 		
 		Team homeTeam = teams.get(homeID);
@@ -56,6 +62,7 @@ public class League extends Serialized {
 		activeGame.put(nextGameID, gameToPlay);
 		nextGameID++;
 		gameToPlay.playGame();
+		gameToPlay.saveGameStats(getID(), currentYear);
 		
 	}
 	

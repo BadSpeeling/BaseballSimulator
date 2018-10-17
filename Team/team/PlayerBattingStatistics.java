@@ -26,18 +26,32 @@ public class PlayerBattingStatistics {
 		
 	}
 	
-	public boolean addGameStats (int id, BattingStatline line, boolean wasStarter) {
+	public void addGameStats (int id, BattingStatline line) throws IllegalArgumentException {
 		
 		BattingSeasonStatistics curSeasonStats = stats.get(id);
 		
 		if (curSeasonStats != null) {
-			curSeasonStats.addGameStats(line, wasStarter);
-			return true;
+			curSeasonStats.addGameStats(line);
 		}
 		
 		else {
-			return false;
+			throw new IllegalArgumentException ("Attempted to add game batting stats for player ID "+ id +" that does not have records");
 		}
+		
+	}
+	
+	public BattingSeasonStatistics [] getAllBattingSeasonStatistics () {
+		
+		BattingSeasonStatistics [] ret = new BattingSeasonStatistics [stats.keySet().size()];
+		
+		int ctr = 0;
+		
+		for (Integer curBattingStatsID: stats.keySet()) {
+			ret[ctr] = stats.get(curBattingStatsID);
+			ctr++;
+		}
+		
+		return ret;
 		
 	}
 	

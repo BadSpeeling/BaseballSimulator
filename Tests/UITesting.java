@@ -5,6 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import FileSystem.DataFileWriter;
+import FileSystem.FileInfo;
+import FileSystem.LocalFile;
 import game.Game;
 import team.Team;
 import ui.TeamBoxScore;
@@ -14,6 +17,10 @@ import view.StatsTable;
 public class UITesting {
 	
 	public static void main (String [] args) {
+		
+		final LocalFile file = new LocalFile ("D:\\Java_Projects\\BaseballSimulator\\SavedData");
+		
+		final boolean IS_VISIBLE = false;
 		
 		final int width = 1600;
 		final int height = 1000;
@@ -25,7 +32,7 @@ public class UITesting {
 		
 		JFrame frame = new JFrame ("Baseball Game");
 		frame.setSize(width, height);
-		frame.setVisible(true);
+		frame.setVisible(IS_VISIBLE);
 		
 		Team team1 = Team.generateSimpleTeam(team1ID);
 		Team team2 = Team.generateSimpleTeam(team2ID);
@@ -34,8 +41,15 @@ public class UITesting {
 		testLeague.addTeam(team1);
 		testLeague.addTeam(team2);
 		
-		testLeague.playGame(team1ID, team2ID, frame);
+		final int GAMES_TO_PLAY = 81;
 		
+		for (int times = 0; times < GAMES_TO_PLAY; times++) {
+			testLeague.playGame(team1ID, team2ID, null);
+		}
+		
+		file.setFileName(FileInfo.playersSeasonBattingStats.getFileName());
+		
+		DataFileWriter.appendPlayerSeasonBattingStats(file, team1.getBattingSeasonStats());
 				
 	}
 	

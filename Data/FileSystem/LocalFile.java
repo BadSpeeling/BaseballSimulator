@@ -23,6 +23,10 @@ public class LocalFile {
 		return fileName;
 	}
 	
+	public void setFileName (String name) {
+		this.fileName = name;
+	}
+	
 	public String getFullPath () {
 		return path + "\\" + fileName;
 	}

@@ -120,9 +120,7 @@ public class Game extends Serialized {
 		
 		GameTeam homeGameTeam = onDefense;
 		GameTeam awayGameTeam = onOffense;
-		
-		saveGameStats(info.getLeagueID(),info.getYearPlayedIn());
-		
+				
 	}
 	
 	public static Game basicGame () {
@@ -201,12 +199,15 @@ public class Game extends Serialized {
 	
 	public void saveGameStats (int leagueID, int year) {
 		
-		GameTeam homeTeam = getHomeTeam();
+		getHomeTeam().sendBattingStatsToTeam(homeTeam);
+		getAwayTeam().sendBattingStatsToTeam(awayTeam);
 		
 	}
 	
 	public void shouldUIBeDrawn (boolean value) {
 		fieldEvent.setDrawField(value);
 	}
+	
+	
 	
 }

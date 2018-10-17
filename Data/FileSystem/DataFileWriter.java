@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import player.Player;
+import stats.BattingSeasonStatistics;
 import stats.BattingStatline;
 
 public class DataFileWriter {
@@ -85,6 +86,25 @@ public class DataFileWriter {
 		
 	}
 	
+	public static boolean appendPlayerSeasonBattingStats (LocalFile filePath, BattingSeasonStatistics [] toAdd) {
+		
+		try(
+				FileWriter fw = new FileWriter(filePath.getFullPath(), true); 
+				BufferedWriter bw = new BufferedWriter(fw);
+			    PrintWriter out = new PrintWriter(bw))
+			{
+			
+				for (BattingSeasonStatistics curToAdd: toAdd) {
+					bw.write(curToAdd.convertToDataFormat());
+				}
+			
+				return true;
+			
+			} catch (IOException e) {
+				return false;
+			}
+		
+	}
 	
 	
 }

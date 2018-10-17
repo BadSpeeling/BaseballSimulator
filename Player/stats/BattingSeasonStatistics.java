@@ -48,7 +48,7 @@ public class BattingSeasonStatistics extends SeasonStatistics{
 		
 	}
 	
-	public void addGameStats (BattingStatline line, boolean wasStarter) {
+	public void addGameStats (BattingStatline line) {
 		
 		incGamesPlayed();
 		
@@ -57,7 +57,7 @@ public class BattingSeasonStatistics extends SeasonStatistics{
 		pa += line.getPA();
 		ab += line.getAB();
 		
-		if (wasStarter) {
+		if (line.getWasStarter()) {
 			incGamesStarted();
 		}
 		
@@ -87,7 +87,7 @@ public class BattingSeasonStatistics extends SeasonStatistics{
 				"," + getWalks() +
 				"," + getStrikeouts() +
 				"," + rbi +
-				"," + runs;
+				"," + runs + "\n";
 	
 	}
 	

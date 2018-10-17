@@ -11,7 +11,11 @@ public class PitchingStatline extends Statline {
 	private int outsRec = 0; //num outs recorded
 	private int era = 0; //earned runs allowed
 	private int ra = 0; //runs allowd
-		
+	
+	public PitchingStatline (boolean wasStarter) {
+		super(wasStarter);
+	}
+	
 	public void add (PitchingStatline other) {
 		incOutsRec(other.getOutsRec());
 		incERA(other.getEra());

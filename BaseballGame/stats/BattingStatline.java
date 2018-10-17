@@ -12,6 +12,10 @@ public class BattingStatline extends Statline {
 	private int ab = 0;	
 	private int pa = 0;
 	
+	public BattingStatline (boolean wasStarter) {
+		super(wasStarter);
+	}
+	
 	public int getRuns() {
 		return runs;
 	}
